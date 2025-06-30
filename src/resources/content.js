@@ -15,13 +15,16 @@ const person = {
 
 const newsletter = {
   display: true,
-  title: <>Langganan Newsletter dari {person.firstName}</>,
+  title: <>Ayo Bangun Sesuatu Bersama!</>,
   description: (
     <>
-      Saya sesekali menulis tentang pengembangan web, teknologi terbaru, serta membagikan wawasan tentang Laravel, CodeIgniter, dan praktik terbaik dalam membangun sistem yang efisien.
+      Saya terbuka untuk kerja sama dalam bentuk proyek freelance, kemitraan teknis,
+      atau pengembangan sistem berbasis web dan aplikasi. Hubungi saya jika Anda memiliki
+      tantangan yang ingin diselesaikan!
     </>
   ),
 };
+
 
 const social = [
   {
@@ -113,20 +116,20 @@ const about = {
             height: 9,
           },
           {
-            src: "/images/projects/sdmuhammadiyah3.jpeg",
-            alt: "Sistem SD Muhammadiyah 3 Samarinda",
+            src: "/images/projects/sd1.jpeg",
+            alt: "list pembayaran siswa SD Muhammadiyah 3 Samarinda",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/sdmuhammadiyah3.jpeg",
-            alt: "Sistem SD Muhammadiyah 3 Samarinda",
+            src: "/images/projects/sd2.jpeg",
+            alt: "Data Lengkap Siswa SD Muhammadiyah 3 Samarinda",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/sdmuhammadiyah3.jpeg",
-            alt: "Sistem SD Muhammadiyah 3 Samarinda",
+            src: "/images/projects/sd3.png",
+            alt: "Berita Sd Muhammadiyah 3 Samarinda",
             width: 16,
             height: 9,
           },
@@ -141,7 +144,20 @@ const about = {
           <>Dashboard interaktif berisi grafik dan laporan PDF/Excel.</>,
           <>Desain responsif dan aksesibilitas lintas perangkat.</>,
         ],
-        images: [],
+        images: [
+          {
+            src: "/images/projects/bappeda1.jpeg",
+            alt: "Bappeda Kalimantan Timur",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/bappeda2.jpeg",
+            alt: "Berita Bappeda Kalimantan Timur",
+            width: 16,
+            height: 9,
+          }
+        ],
       },
       {
         company: "Karta Spa",
@@ -152,7 +168,20 @@ const about = {
           <>Sistem perhitungan bahan berdasarkan stok dan resep F&B.</>,
           <>Monitoring stok dan notifikasi stok rendah untuk multi-role user.</>,
         ],
-        images: [],
+        images: [
+          {
+            src: "/images/projects/karta1.png",
+            alt: "Karta Spa",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/karta2.png",
+            alt: "Karta Spa",
+            width: 16,
+            height: 9,
+          }
+        ],
       },
       {
         company: "Database Relawan MHF",
@@ -206,29 +235,168 @@ const about = {
     title: "Kemampuan Teknis",
     skills: [
       {
-        title: "Laravel & CodeIgniter",
-        description: <>REST API, sistem pembayaran Midtrans, dashboard sekolah, validasi NIK, dsb.</>,
+        title: "Bahasa Pemrograman",
+        description: <>PHP, JavaScript, HTML, CSS, dan MySQL.</>,
+        images: [
+          { 
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+            alt: "PHP",
+            width: 9,
+            height: 9,
+          },
+          { 
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+            alt: "JavaScript",
+            width: 9,
+            height: 9,
+          },
+          { 
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+            alt: "HTML5",
+            width: 9,
+            height: 9,
+          },
+          { 
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+            alt: "CSS3",
+            width: 9,
+            height: 9,
+          },
+          { 
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+            alt: "MySQL",
+            width: 9,
+            height: 9,
+          }
+        ],
+      },
+      {
+        title: "Framework & Library",
+        description: (
+          <>
+            Laravel (Livewire, Fortify, Sanctum, Spatie), CodeIgniter 4, Vue.js, Inertia.js,
+            Alpine.js, jQuery, Tailwind CSS, dan Bootstrap.
+          </>
+        ),
         images: [
           {
-            src: "/images/projects/laravel-app/cover-01.jpg",
-            alt: "Laravel Project",
-            width: 16,
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
+            alt: "Laravel",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+            alt: "Vue.js",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg",
+            alt: "jQuery",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+            alt: "Bootstrap",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg",
+            alt: "Tailwind CSS",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/livewire/livewire-original-wordmark.svg",
+            alt: "Livewire",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://raw.githubusercontent.com/spatie/laravel-permission/main/docs/logo.svg",
+            alt: "Spatie",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/codeigniter/codeigniter-plain.svg",
+            alt: "CodeIgniter",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/alpinejs/alpinejs-original.svg",
+            alt: "Alpine.js",
+            width: 9,
             height: 9,
           },
         ],
       },
       {
-        title: "Frontend (Blade, Vue.js)",
-        description: <>UI interaktif dengan Blade, TailwindCSS, dan Vue.js untuk kebutuhan dinamis.</>,
-        images: [],
-      },
-      {
         title: "Database & Tools",
-        description: <>MySQL, Redis, CI/CD dasar, server Linux, dan task scheduling.</>,
-        images: [],
+        description: (
+          <>
+            MySQL, Redis, CI/CD dasar (GitHub Actions), Linux Server (Kali, Ubuntu), Vite,
+            Laravel Task Scheduling, Midtrans Snap API, dan LarapexCharts.
+          </>
+        ),
+        images: [
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+            alt: "MySQL",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+            alt: "Redis",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+            alt: "GitHub",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+            alt: "Linux",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://vitejs.dev/logo.svg",
+            alt: "Vite",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "/images/tech/midtrans.jpeg",
+            alt: "Midtrans",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "https://www.laravel.com/img/logomark.min.svg",
+            alt: "Laravel Schedule",
+            width: 9,
+            height: 9,
+          },
+          {
+            src: "/images/tech/larapexchart.png",
+            alt: "LarapexCharts",
+            width: 30,
+            height: 9,
+          },
+        ],
       },
     ],
   },
+
 };
 
 const blog = {
