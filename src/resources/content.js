@@ -1,46 +1,38 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Andy",
+  lastName: "Pratama",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Fullstack Developer",
+  avatar: "/images/photo.jpg",
+  email: "andypratama1211@gmail.com",
+  location: "Asia/Jakarta",
+  languages: ["Indonesian", "English"],
 };
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Langganan Newsletter dari {person.firstName}</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      Saya sesekali menulis tentang pengembangan web, teknologi terbaru, serta membagikan wawasan tentang Laravel, CodeIgniter, dan praktik terbaik dalam membangun sistem yang efisien.
     </>
   ),
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/andypratama3",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/andypratama3",
   },
   {
     name: "Email",
@@ -54,26 +46,27 @@ const home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  description: `Website portofolio yang menampilkan karya dan keahlian saya sebagai ${person.role}`,
+  headline: <>Andy Pratama</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Proyek terkini: <strong className="ml-4">Sistem SD Muhammadiyah 3</strong></>,
+    href: "/work/sistem-sekolah-kreatif",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      Saya Andy Pratama, seorang Fullstack Developer yang berfokus pada Laravel dan CodeIgniter.{" "}
+      <br />
+      Saya membangun berbagai sistem digital untuk sekolah, instansi, SPA, pembayaran, dan manajemen data kompleks.
     </>
   ),
 };
 
 const about = {
   path: "/about",
-  label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  label: "Tentang",
+  title: `Tentang – ${person.name}`,
+  description: `Profil ${person.name}, ${person.role} dari ${person.location}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -87,110 +80,152 @@ const about = {
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "Perkenalan",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Saya adalah seorang pengembang web asal Indonesia yang berfokus pada pengembangan sistem
+        berbasis Laravel dan CodeIgniter. Saya memiliki pengalaman dalam membangun berbagai fitur seperti
+        sistem sekolah, reservasi SPA, tiket event, hingga manajemen relawan dan dashboard pemerintah.
+        Dengan semangat untuk menciptakan solusi digital yang efisien dan bermanfaat, saya terus mengembangkan
+        kemampuan di bidang teknologi, desain antarmuka pengguna, dan sistem yang kompleks.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
+    display: true,
+    title: "Pengalaman Kerja",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "SD Muhammadiyah 3 Samarinda",
+        timeframe: "06/2024 – 05/2025",
+        role: "Fullstack Developer",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Membangun website sekolah dengan CMS dinamis dan konten SEO-friendly.</>,
+          <>Mengintegrasikan Midtrans dan VA per siswa untuk pembayaran SPP/DPP.</>,
+          <>Notifikasi otomatis via WhatsApp tiap bulan dengan format pesan admin yang dapat dikustomisasi.</>,
+          <>Dashboard admin berbasis role, galeri, jadwal, dan modul berita.</>,
         ],
         images: [
-          // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            src: "/images/projects/sdmuhammadiyah3.jpeg",
+            alt: "Sistem SD Muhammadiyah 3 Samarinda",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/sdmuhammadiyah3.jpeg",
+            alt: "Sistem SD Muhammadiyah 3 Samarinda",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/sdmuhammadiyah3.jpeg",
+            alt: "Sistem SD Muhammadiyah 3 Samarinda",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/sdmuhammadiyah3.jpeg",
+            alt: "Sistem SD Muhammadiyah 3 Samarinda",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Bappeda Kalimantan Timur",
+        timeframe: "12/2023 – 01/2024",
+        role: "Fullstack Developer",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Membuat situs resmi Bappeda dengan sistem berita dan artikel yang ramah SEO.</>,
+          <>Dashboard interaktif berisi grafik dan laporan PDF/Excel.</>,
+          <>Desain responsif dan aksesibilitas lintas perangkat.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Karta Spa",
+        timeframe: "06/2024 – 11/2024",
+        role: "Backend Developer",
+        achievements: [
+          <>Membangun sistem reservasi, F&B, dan laporan keuangan untuk SPA.</>,
+          <>Sistem perhitungan bahan berdasarkan stok dan resep F&B.</>,
+          <>Monitoring stok dan notifikasi stok rendah untuk multi-role user.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Database Relawan MHF",
+        timeframe: "08/2023 – 10/2023",
+        role: "Fullstack Developer",
+        achievements: [
+          <>Mengurangi duplikasi input 90% dengan basis data relawan terpusat.</>,
+          <>Validasi NIK dan pengecekan redundansi TPS.</>,
+          <>Ekspor PDF/Excel dan visualisasi data suara berdasarkan wilayah.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Koetai Mahkota Soundline",
+        timeframe: "07/2023 – 08/2023",
+        role: "Fullstack Developer",
+        achievements: [
+          <>Website tiket dengan integrasi Midtrans, tingkatkan penjualan online 45%.</>,
+          <>Halaman berita dan acara dinamis, sistem beli tiket otomatis.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Proyek Freelance",
+        timeframe: "2019 – 2022",
+        role: "Web Developer",
+        achievements: [
+          <>Website profil perusahaan dan sistem manajemen internal UMKM & institusi.</>,
+          <>Integrasi API pembayaran, autentikasi, serta laporan dinamis berbasis Laravel dan Vue.js.</>,
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Pendidikan",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Politeknik Negeri Pertanian Samarinda",
+        description: <>Sarjana Terapan di bidang Rekayasa Perangkat Lunak.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "SMK TI Airlangga",
+        description: <>Diploma di bidang Software Engineering.</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Kemampuan Teknis",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
+        title: "Laravel & CodeIgniter",
+        description: <>REST API, sistem pembayaran Midtrans, dashboard sekolah, validasi NIK, dsb.</>,
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
+            src: "/images/projects/laravel-app/cover-01.jpg",
+            alt: "Laravel Project",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Frontend (Blade, Vue.js)",
+        description: <>UI interaktif dengan Blade, TailwindCSS, dan Vue.js untuk kebutuhan dinamis.</>,
+        images: [],
+      },
+      {
+        title: "Database & Tools",
+        description: <>MySQL, Redis, CI/CD dasar, server Linux, dan task scheduling.</>,
+        images: [],
       },
     ],
   },
@@ -199,28 +234,22 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Tulisan seputar pengembangan web...",
+  description: `Baca tulisan terbaru dari ${person.name} seputar Laravel, desain sistem, dan teknologi.`,
 };
 
 const work = {
   path: "/work",
-  label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  label: "Karya",
+  title: `Proyek – ${person.name}`,
+  description: `Daftar proyek pengembangan dan desain oleh ${person.name}`,
 };
 
 const gallery = {
   path: "/gallery",
-  label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  label: "Galeri",
+  title: `Galeri Foto – ${person.name}`,
+  description: `Kumpulan dokumentasi visual dan momen proyek oleh ${person.name}`,
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
@@ -233,32 +262,12 @@ const gallery = {
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
       src: "/images/gallery/vertical-1.jpg",
       alt: "image",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
       alt: "image",
       orientation: "vertical",
     },
