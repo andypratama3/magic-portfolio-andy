@@ -1,12 +1,10 @@
 import React from "react";
 
-
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
 import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
-import { Analytics } from '@vercel/analytics/next';
 
 export default function Home() {
   return (
@@ -24,7 +22,6 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      
       <Column fillWidth paddingY="24" gap="m">
         <Column maxWidth="s">
           {home.featured.display && (
@@ -87,7 +84,6 @@ export default function Home() {
       )}
       <Projects range={[2]} />
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
-      <Analytics />
     </Column>
   );
 }
