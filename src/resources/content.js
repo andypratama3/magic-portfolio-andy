@@ -316,7 +316,7 @@ const about = {
             height: 9,
           },
           {
-            src: "https://raw.githubusercontent.com/spatie/laravel-permission/main/docs/logo.svg",
+            src: "/images/tech/spatie.png",
             alt: "Spatie",
             width: 9,
             height: 9,
@@ -357,7 +357,7 @@ const about = {
             height: 9,
           },
           {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+            src: "/images/tech/github.png",
             alt: "GitHub",
             width: 9,
             height: 9,
