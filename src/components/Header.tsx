@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/next"
 
 import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 

@@ -408,7 +408,7 @@ const blog = {
 
 const work = {
   path: "/work",
-  label: "Karya",
+  label: "Portofolio",
   title: `Proyek – ${person.name}`,
   description: `Daftar proyek pengembangan dan desain oleh ${person.name}`,
 };
