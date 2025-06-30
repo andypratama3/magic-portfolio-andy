@@ -167,6 +167,7 @@ export const Header = () => {
             <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
           </Flex>
         </Flex>
+        <Analytics />
       </Flex>
     </>
   );
