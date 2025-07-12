@@ -58,11 +58,12 @@ const home = {
   },
   subline: (
     <>
-      Saya Andy Pratama, seorang Fullstack Developer yang berfokus pada Laravel dan CodeIgniter.{" "}
+      Fullstack Developer dengan spesialisasi dalam menciptakan solusi digital terintegrasi untuk sekolah, instansi, dan UMKM.
       <br />
-      Saya membangun berbagai sistem digital untuk sekolah, instansi, SPA, pembayaran, dan manajemen data kompleks.
+      Fokus saya adalah membantu bisnis Anda tumbuh melalui sistem yang rapi, modern, dan siap pakai.
     </>
   ),
+
 };
 
 const about = {
