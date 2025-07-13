@@ -54,7 +54,7 @@ const home = {
   featured: {
     display: true,
     title: <>Proyek terkini: <strong className="ml-4">Sistem SD Muhammadiyah 3</strong></>,
-    href: "/work/sistem-sekolah-kreatif",
+    href: "/work/sdmuhammadiyah3",
   },
   subline: (
     <>
