@@ -10,42 +10,85 @@ images:
   - "/images/projects/sd1.jpeg"
 team:
   - name: "Andy Pratama"
-    role: "Software Engineer | Fullstack developer"
+    role: "Software Engineer | Fullstack Developer"
     avatar: "/images/photo.jpg"
     linkedIn: "https://www.linkedin.com/in/andypratama3"
-
 ---
+
 ## Overview
 
-Pengembangan sistem desain fleksibel dan dapat dikustomisasi sepenuhnya menggunakan **Laravel** dan **Tailwind CSS** untuk antarmuka pengguna, serta **Figma** sebagai alat kolaborasi desain yang terintegrasi.
+Website ini dibangun menggunakan **Laravel** sebagai framework backend & frontend, dengan desain responsif berbasis **Tailwind CSS**. Sistem ini dirancang untuk mendukung kebutuhan informasi sekolah modern, memudahkan komunikasi antara pihak sekolah, siswa, dan orang tua, serta mendukung pembayaran digital.
 
 ## Key Features
 
-- **Component Library**  
-  Membangun kumpulan komponen UI yang modular dan reusable menggunakan **Laravel Blade Components** dan **Livewire**, memastikan pengalaman pengguna yang interaktif, cepat, dan konsisten di seluruh aplikasi.
+- **Landing Page Modern & Responsif**  
+  Tampilan utama yang menampilkan profil sekolah, visi & misi, serta informasi terkini.
 
-- **Theming and Customization**  
-  Sistem theming berbasis konfigurasi **Tailwind** yang memungkinkan pengubahan skema warna, tipografi, dan layout hanya dengan beberapa baris konfigurasi, mendukung kustomisasi sesuai identitas visual instansi atau proyek.
+- **Profil Sekolah Lengkap**  
+  Halaman tentang sekolah, sejarah, visi misi, dan struktur organisasi sekolah.
 
-- **Figma Integration**  
-  Bekerja secara sinkron dengan desainer melalui sistem desain di **Figma** yang selaras dengan implementasi kode. Desain token seperti warna dan tipografi dijaga konsistensinya dalam bentuk variabel Tailwind dan class utility.
+- **Data Guru & Staf**  
+  Modul CRUD untuk menampilkan data guru lengkap dengan foto, dan bidang mengajar.
 
-- **Documentation and Usage Guidelines**  
-  Menyusun dokumentasi internal berbasis markdown dan Laravel Blade untuk membantu tim lain mengadopsi, menggunakan kembali, dan memperluas komponen dengan mudah.
+- **Galeri & Dokumentasi Kegiatan**  
+  Fitur galeri foto dan video kegiatan sekolah yang terintegrasi dalam halaman khusus.
+
+- **Fasilitas Sekolah**  
+  Menampilkan daftar fasilitas sekolah beserta deskripsinya.
+
+- **Prestasi Siswa**  
+  Modul khusus untuk mencatat dan menampilkan prestasi siswa baik akademik maupun non-akademik.
+
+- **Ekstrakurikuler**  
+  Informasi kegiatan ekskul lengkap dengan jadwal dan pembina ekskul.
+
+- **Jadwal Pelajaran**  
+  Sistem pengelolaan jadwal belajar siswa per kelas.
+
+- **Berita & Artikel**  
+  Modul artikel dan berita sekolah, termasuk fitur **komentar interaktif** untuk siswa/orang tua.
+
+- **Pembayaran Sekolah Digital (Midtrans)**  
+  Integrasi dengan **Midtrans** untuk pembayaran biaya sekolah menggunakan Virtual Account dan metode pembayaran modern lainnya.
+
+- **Task Scheduler Otomatis**  
+  Fitur otomatisasi untuk pembuatan tagihan siswa menggunakan Virtual Account dan Qr-code Midtrans.
+
+- **Snap Midtrans di Halaman List Charge**  
+  Memungkinkan siswa/orang tua melakukan pembayaran langsung melalui Snap UI Midtrans di halaman utama.
+
+- **Dashboard Admin Lengkap (CRUD)**  
+  Panel admin untuk mengelola data siswa, guru, galeri, artikel, fasilitas, dan modul lainnya.
+
+- **Fitur Kenaikan Kelas**  
+  Otomatisasi proses kenaikan kelas siswa setiap akhir tahun ajaran.
+
+- **Penghargaan Sekolah (Awards)**  
+  Menampilkan penghargaan atau sertifikat yang pernah diraih sekolah.
+
+- **Hero Slider Dinamis**  
+  Slide banner utama yang dapat dikelola langsung dari dashboard.
+
+- **Pengisian & Pembaruan Nomor HP Orang Tua**  
+  Formulir khusus untuk memudahkan pembaruan kontak orang tua, terintegrasi dengan validasi AJAX.
+- **Absensi Siswa Menggunakan Fingerspot
 
 ## Technologies Used
 
-- **Laravel** – Framework utama untuk aplikasi backend dan frontend (Blade + Livewire).  
-- **Tailwind CSS** – Framework utility-first untuk styling responsif dan konsisten.  
-- **Livewire** – Untuk membuat antarmuka dinamis tanpa perlu menulis banyak JavaScript.  
-- **Figma** – Sebagai alat utama desain antarmuka dan kolaborasi UI/UX.  
-- **Vite** – Build tool modern yang digunakan untuk fast refresh dan asset bundling.  
-- **Git** – Untuk kolaborasi versi dan alur kerja pengembangan yang efisien.
+- **Laravel 10** – Backend & frontend utama menggunakan Blade Components.  
+- **Tailwind CSS** – Desain responsif berbasis utility-first.  
+- **Livewire** – Interaktivitas tanpa JavaScript tambahan.  
+- **Midtrans API** – Integrasi pembayaran digital (Virtual Account & Snap).  
+- **Figma** – Desain UI/UX kolaboratif.  
+- **Vite** – Build tool modern untuk asset bundling cepat.  
+- **Git & GitHub** – Version control dan kolaborasi pengembangan.
 
 ## Challenges and Learnings
 
-Salah satu tantangan utama adalah menjaga keseimbangan antara fleksibilitas komponen dengan konsistensi desain visual. Solusinya adalah dengan menyusun sistem token dan class berbasis Tailwind, serta menerapkan standar struktur folder komponen di Laravel. Kolaborasi aktif antara desainer dan developer melalui **Figma** dan **Git** sangat membantu menyatukan visi desain dengan implementasi.
+Tantangan terbesar adalah menyatukan berbagai fitur seperti manajemen akademik, galeri, berita, dan pembayaran digital dalam satu sistem terintegrasi yang tetap ringan dan mudah digunakan.  
+Saya mempelajari banyak hal tentang integrasi API pembayaran (Midtrans), optimasi query Laravel untuk dataset besar, serta penerapan **task scheduling** di Laravel untuk otomatisasi proses administrasi sekolah.
 
 ## Outcome
 
-Sistem desain ini telah digunakan di berbagai proyek Laravel internal seperti website sekolah, manajemen pembayaran dengan Midtrans, serta modul galeri dan berita. Hasilnya adalah proses pengembangan yang lebih cepat, tampilan konsisten, dan alur kerja kolaboratif yang lebih efisien antara desainer dan pengembang.
+Website ini berhasil menghadirkan platform informasi sekolah yang **modern, responsif, dan mudah diakses** oleh guru, siswa, dan orang tua. Sistem pembayaran online melalui Midtrans juga mempermudah proses administrasi keuangan sekolah, serta mengurangi antrian manual.  
+Hasilnya adalah **peningkatan efisiensi operasional sekolah** dan pengalaman digital yang lebih baik bagi seluruh pemangku kepentingan sekolah.
