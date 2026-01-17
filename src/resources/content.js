@@ -100,6 +100,75 @@ const about = {
     title: "Pengalaman Kerja",
     experiences: [
       {
+  company: "SD Muhammadiyah 3 Samarinda",
+  timeframe: "06/2024 – Present",
+  role: "Fullstack Developer | Software Engineer",
+  achievements: [
+    <>
+      Re-architecture website dari monolithic Laravel ke headless architecture
+      (Next.js + Laravel API) dengan peningkatan performa 70%+ dan Lighthouse
+      score 90+.
+    </>,
+    <>
+      Deploy menggunakan Cloudflare Pages/Workers dengan edge caching,
+      mencapai response time kurang dari 1 detik dan 99.9% uptime di 200+
+      lokasi global.
+    </>,
+    <>
+      Implementasi client-side caching dengan localStorage dan HTTP cookies
+      untuk optimasi UX, menghasilkan peningkatan session duration 40%.
+    </>,
+    <>
+      Integrasi WhatsApp Business API untuk notifikasi pembayaran otomatis
+      dengan 98% delivery rate dan auto-reminder tagihan bulanan.
+    </>,
+    <>
+      Membangun dashboard admin lengkap dengan role-based access control,
+      analytics real-time, dan automated task scheduling untuk invoice
+      generation.
+    </>,
+    <>
+      SEO optimization dengan proven results: 167 clicks, 4,471 impressions,
+      CTR 3.5%, ranking posisi 5.9 (first page) dalam 3 bulan.
+    </>,
+    <>
+      Mencapai Security A+ rating dengan implementasi multi-layer security:
+      Cloudflare WAF, CSRF/XSS protection, rate limiting, dan zero security
+      incidents.
+    </>,
+    <>
+      Meningkatkan adopsi pembayaran digital hingga 70%+ dan efisiensi
+      administrasi 60% melalui otomatisasi proses.
+    </>,
+  ],
+  images: [
+          {
+            src: "/images/projects/page-landing.png",
+            alt: "Landing Page SD Muhammadiyah 3 Samarinda v2 - Modern & Responsive",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/page-berita.png",
+            alt: "Halaman Berita & Artikel dengan CMS Lengkap",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/page-jadwal.png",
+            alt: "Sistem Jadwal Pelajaran Per Kelas",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/page-tenaga-pendidikan.png",
+            alt: "Data Guru & Tenaga Pendidik SD Muhammadiyah 3 Samarinda",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
         company: "SD Muhammadiyah 3 Samarinda",
         timeframe: "06/2024 – 05/2025",
         role: "Fullstack Developer",
