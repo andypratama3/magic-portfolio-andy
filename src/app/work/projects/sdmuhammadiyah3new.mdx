@@ -1,8 +1,7 @@
 ---
-title: "Pembaruan Sistem Sekolah SD Muhammadiyah 3 Samarinda v2"
-publishedAt: "2026-05-01"
-summary: "Pengembangan Sistem Informasi Sekolah – SD Muhammadiyah 3 Samarinda v2.0
-Saya berperan dalam re-architecture dan pengembangan website resmi SD Muhammadiyah 3 Samarinda versi 2.0, yang kini menghadirkan pengalaman digital modern dengan performa superior, keamanan enterprise-level, dan user experience yang lebih baik untuk mendukung transparansi, efisiensi, dan kemudahan akses informasi bagi seluruh pemangku kepentingan sekolah."
+title: "School Management System v2 — SD Muhammadiyah 3 Samarinda"
+publishedAt: "2026-01-01"
+summary: "Full re-architecture from monolithic Laravel Blade to headless Next.js 14 + Laravel 10 API. Achieved 70%+ improvement in page load time (3–5s to under 1s), 90+ Lighthouse Score across all categories, 4,471 organic search impressions in 3 months, Security Rating Grade A+, and 99.9% uptime on Cloudflare edge infrastructure."
 images:
   - "/images/projects/page-landing.png"
   - "/images/projects/page-berita.png"
@@ -10,310 +9,98 @@ images:
   - "/images/projects/page-tenaga-pendidikan.png"
 team:
   - name: "Andy Pratama"
-    role: "Software Engineer | Fullstack Developer"
+    role: "Tech Lead — Senior Fullstack Developer"
     avatar: "/images/photo.jpg"
     linkedIn: "https://www.linkedin.com/in/andypratama3"
 ---
 
 ## Overview
 
-Website ini telah mengalami **transformasi besar dari v1 ke v2** dengan perubahan arsitektur fundamental. Versi 2.0 dibangun menggunakan **Next.js 14+** sebagai frontend framework dengan **Laravel 10** sebagai backend API, menggantikan arsitektur monolithic Laravel Blade di v1. Sistem ini di-deploy menggunakan **Cloudflare Pages/Workers** untuk performa global yang optimal dan keamanan tingkat enterprise.
+Complete re-architecture of the SD Muhammadiyah 3 school management system from a monolithic Laravel 10 Blade application (v1) to a decoupled headless architecture — Next.js 14 as the frontend and Laravel 10 as the REST API backend — deployed on Cloudflare Pages with global edge network distribution.
 
-### 🔄 Evolution: v1 → v2
+The decision to re-architect was driven by performance ceilings in v1 (3–5 second page load times), limited SEO capability of server-rendered Blade templates, and scalability constraints of the monolithic structure. V2 addresses all three while preserving the full feature set of v1 and adding new capabilities.
 
-**Version 1.0 (2024)**
-- Arsitektur monolithic dengan Laravel Blade
-- Server-side rendering tradisional
-- Hosting konvensional
-- Response time 3-5 detik
-- Limited scalability
+## Architecture: v1 vs v2
 
-**Version 2.0 (2025) - Current**
-- Headless/decoupled architecture
-- Next.js dengan SSR/SSG/ISR
-- Cloudflare edge network deployment
-- Response time kurang dari 1 detik (improvement 70%+)
-- Highly scalable & globally distributed
-- Client-side caching dengan localStorage & HTTP cookies
-- SEO optimized dengan 167 clicks dan 4,471 impressions (3 bulan)
+| Dimension | Version 1 (2024) | Version 2 (2025) |
+|---|---|---|
+| Architecture | Monolithic Laravel Blade | Headless: Next.js 14 + Laravel 10 API |
+| Rendering | Server-side only | SSR / SSG / ISR per route |
+| Page load time | 3–5 seconds | Under 1 second |
+| Hosting | Conventional VPS | Cloudflare Pages (edge network) |
+| Lighthouse Score | Not measured | 90+ (all categories) |
+| SEO | Basic meta tags | Full Schema.org, sitemap, Open Graph |
+| CDN coverage | Single server | 200+ global edge locations |
 
-## Key Features
+## Quantified Results
 
-### 🎨 Frontend & User Interface
+**Performance**
+- **70%+ improvement** in page load time — from 3–5 seconds to under 1 second
+- **90+ Lighthouse Score** across Performance, Accessibility, SEO, and Best Practices
+- **Under 0.8 seconds** First Contentful Paint
+- **Under 2 seconds** Time to Interactive
+- **99.9% uptime** via Cloudflare edge network (200+ global CDN locations)
 
-- **Landing Page Modern & Responsif**  
-  Tampilan utama dengan hero slider dinamis, menampilkan profil sekolah, program unggulan, statistik real-time (siswa, guru, prestasi), dan informasi terkini. Dibangun dengan Next.js dan Tailwind CSS untuk performa optimal.
+**SEO and Organic Reach (3 months post-launch)**
+- **4,471 total organic search impressions**
+- **167 total clicks** from organic search
+- **3.5% click-through rate** — above industry average of 2.5%
+- **Average search position 5.9** — first page results
 
-- **Program Unggulan Showcase**  
-  - Tahfidz Al-Qur'an 2 Juz (29-30)
-  - Pembiasaan Akhlak Islami Sejak Dini
-  - Pembiasaan Sholat Wajib dan Sunnah
-  - Pembelajaran Berbasis Edutainment
-  - Lulus Dengan 3 Ijazah (Sekolah, Muhammadiyah, Tilawati)
+**Business and Operational Impact**
+- **60% reduction** in manual administrative tasks through workflow automation (billing, attendance, notifications)
+- **70%+ parent adoption** of digital payment — reduced manual payment queues significantly
+- **80% reduction** in paper-based administrative processes (invoices, schedules, report cards)
+- **98% delivery rate** on WhatsApp automated payment notifications
+- **Zero security incidents** since v2 launch
 
-- **Profil Sekolah Lengkap**  
-  Halaman tentang sekolah, sejarah, visi misi, struktur organisasi, dan profil kepala sekolah (Ansar HS. S.Pd.,M.M. Gr.).
+## Key Technical Features
 
-- **Data Guru & Staf**  
-  Modul CRUD untuk menampilkan data guru lengkap dengan foto profesional, bidang mengajar, dan kontak.
+**Headless Architecture**
+The frontend and backend are fully decoupled. Next.js 14 with the App Router handles all rendering concerns: SSR for dynamic pages (news, parent portal), SSG for static content (about, facilities, achievements), and ISR for frequently updated content (schedules, staff profiles). The Laravel 10 backend exposes a versioned REST API consumed by the frontend via SWR for client-side caching and revalidation.
 
-- **Galeri & Dokumentasi Kegiatan**  
-  Fitur galeri foto dan video kegiatan sekolah dengan lazy loading dan infinite scroll untuk performa optimal.
+**Authentication and Authorization**
+Laravel Sanctum for API token management. JWT stored in HTTP-only cookies (HttpOnly, Secure, SameSite) for the parent portal authentication flow. Spatie Laravel Permission manages granular RBAC for 5+ roles across both admin dashboard and parent portal. All API endpoints protected with rate limiting and middleware-level authorization checks.
 
-- **Fasilitas Sekolah**  
-  Menampilkan daftar sarana dan prasarana sekolah lengkap dengan foto dan deskripsi detail.
+**Automated Billing and Notifications**
+Laravel Scheduler generates monthly invoices automatically: creates unique Virtual Accounts per student, sends QR-code payment links via Midtrans Snap, and dispatches WhatsApp notifications via Meta WhatsApp Business API. Failed notifications are queued via Laravel Queue for retry. The system maintains approximately 100% invoice generation accuracy with idempotency guards preventing duplicate invoices.
 
-### 🏆 Akademik & Prestasi
+**Performance Architecture**
+Edge caching via Cloudflare CDN (200+ locations). Image optimization via Next.js built-in optimizer (WebP, responsive breakpoints, lazy loading). Code splitting and dynamic imports for non-critical components. API response caching with SWR. Database-level optimization via indexed queries and eager loading to eliminate N+1 patterns. Achieved 90+ Lighthouse Score across all four categories.
 
-- **Prestasi Siswa**  
-  Modul khusus untuk mencatat dan menampilkan prestasi siswa baik akademik maupun non-akademik dengan kategori dan filter.
+**Security Implementation**
+Cloudflare WAF with custom ruleset, DDoS protection, and bot management. Content Security Policy headers, CORS policy configuration, security headers (X-Frame-Options, X-Content-Type-Options, Referrer-Policy). SSL/TLS enforcement with HSTS. Bcrypt password hashing, CSRF protection on all mutation endpoints, XSS prevention via output encoding. Result: Security Rating Grade A+, zero security incidents post-launch.
 
-- **Prestasi Sekolah (Awards)**  
-  Menampilkan penghargaan yang pernah diraih:
-  - Sekolah Penggerak (Kemendikbud)
-  - Akreditasi Unggul (A)
-  - Sekolah Ramah Anak
-  - Adiwiyata
-
-- **Ekstrakurikuler**  
-  Informasi kegiatan ekskul lengkap dengan jadwal, pembina ekskul, dan dokumentasi kegiatan.
-
-- **Jadwal Pelajaran**  
-  Sistem pengelolaan jadwal belajar siswa per kelas dengan akses untuk orang tua melalui portal khusus.
-
-- **Rapot Siswa Online**  
-  Portal akses nilai dan rapor digital untuk siswa dan orang tua dengan sistem autentikasi aman.
-
-- **Kalender Akademik**  
-  Timeline kegiatan sekolah tahunan yang dapat diakses oleh semua stakeholder.
-
-### 📰 Content Management
-
-- **Berita & Artikel**  
-  Modul artikel dan berita sekolah dengan fitur:
-  - CMS lengkap dengan rich text editor
-  - Kategori dan tags untuk organisasi konten
-  - **Komentar interaktif** untuk engagement siswa/orang tua
-  - Search dan filter advanced
-
-- **Task Scheduler Otomatis**  
-  Fitur otomatisasi menggunakan Laravel Task Scheduler untuk:
-  - Pembuatan tagihan siswa otomatis setiap bulan
-  - Generate Virtual Account unik per siswa
-  - Auto-reminder pembayaran
-
-- **Notifikasi Pembayaran via WhatsApp**  
-  Integrasi WhatsApp Business API untuk:
-  - Notifikasi otomatis status pembayaran
-  - Reminder tagihan jatuh tempo
-  - Konfirmasi pembayaran berhasil
-
-- **Riwayat Pembayaran & Invoice**  
-  Dashboard lengkap untuk tracking pembayaran dengan download invoice digital.
-
-### 👨‍💼 Dashboard Admin & Management
-
-- **Dashboard Admin Lengkap (CRUD)**  
-  Panel admin untuk mengelola:
-  - Data siswa dan akademik
-  - Data guru dan staff
-  - Galeri foto/video
-  - Artikel dan berita
-  - Fasilitas sekolah
-  - Tagihan dan pembayaran
-  - Hero slider dan konten dinamis
-  - User management dengan role-based access
-
-- **Fitur Kenaikan Kelas**  
-  Otomatisasi proses kenaikan kelas siswa setiap akhir tahun ajaran dengan backup data otomatis.
-
-- **Analytics Dashboard**  
-  Monitoring performa website dengan:
-  - Visitor statistics dari Google Analytics
-  - Payment reports dan revenue tracking
-  - SEO performance tracking (167 clicks, 4,471 impressions)
-
-### 👨‍👩‍👧 Parent Portal
-
-- **Parent Dashboard**  
-  Portal khusus orang tua untuk:
-  - Melihat data akademik anak
-  - Melihat Jadwal Sekolah
-  - Akses rapor online
-
-### 🔒 Keamanan & Performance
-
-- **Security A Rating**  
-  - Proteksi CSRF dan XSS pada setiap form input
-  - SQL Injection prevention dengan prepared statements
-  - Validasi backend & frontend berlapis untuk mencegah data invalid
-  - Enkripsi password menggunakan **bcrypt**
-  - Penerapan **rate limiting** pada API untuk mencegah brute force
-  - SSL/TLS enforcement dengan HTTPS
-  - Cloudflare DDoS Protection & WAF (Web Application Firewall)
-  - Content Security Policy (CSP) headers
-  - Secure HTTP cookies (HttpOnly, SameSite, Secure flags)
-
-- **Performance Optimization**  
-  - **90+ Lighthouse Score** (Performance, Accessibility, SEO, Best Practices)
-  - Server-Side Rendering (SSR) untuk fast initial page load
-  - Static Site Generation (SSG) untuk halaman statis
-  - Incremental Static Regeneration (ISR) untuk update konten
-  - Edge Caching dengan Cloudflare CDN (200+ lokasi global)
-  - Image Optimization otomatis (WebP, responsive images)
-  - Code Splitting dan lazy loading
-  - Client-side caching dengan localStorage
-  - API response caching
-  - Database query optimization (indexed, eager loading)
-
-- **SEO Optimized**  
-  - Meta tags optimization
-  - Structured data (Schema.org)
-  - Sitemap otomatis
-  - Robots.txt configuration
-  - Open Graph tags untuk social sharing
-  - **Proven Results**: 167 clicks, 4,471 impressions, 3.5% CTR, posisi rata-rata 5.9
+**SEO Architecture**
+Dynamic meta tag generation per page via Next.js metadata API. Schema.org structured data (Organization, Event, BreadcrumbList). Automatic XML sitemap generation. Open Graph and Twitter Card tags for social sharing. Robots.txt configuration. These implementations produced measurable results: 4,471 impressions and 167 clicks within the first 3 months, average position 5.9.
 
 ## Technologies Used
 
-### Frontend Stack
-- **Next.js 14+** – React framework dengan App Router (SSR/SSG/ISR)
-- **React 18** – UI library dengan Server Components
-- **TypeScript** – Type-safe development untuk mengurangi bugs
-- **Tailwind CSS** – Utility-first CSS framework untuk desain responsif
-- **Headless UI** – Accessible UI components
-- **React Hook Form** – Form validation dengan performa optimal
-- **Axios** – HTTP client untuk API calls
-- **SWR / React Query** – Data fetching, caching, dan revalidation
-- **Zustand** – Lightweight state management
+**Frontend Stack**
+Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, Headless UI, SWR, Zustand, React Hook Form, Axios
 
-### Backend Stack
-- **Laravel 10** – PHP framework untuk RESTful API backend
-- **MySQL/PostgreSQL** – Relational database management
-- **Laravel Sanctum** – API authentication dan token management
-- **Laravel Eloquent ORM** – Database abstraction layer
-- **Laravel Scheduler** – Task automation untuk cron jobs
-- **Laravel Queue** – Background job processing
-- **Spatie Laravel Permission** – Role & permission management
-- **Laravel Telescope** – Debugging dan monitoring (development)
+**Backend Stack**
+Laravel 10, PHP 8, MySQL, PostgreSQL, Laravel Sanctum, Spatie Laravel Permission, Laravel Scheduler, Laravel Queue, Laravel Telescope (development monitoring)
 
-### Third-party Integrations
-- **WhatsApp Business API** – Automated notifications
-- **Google Analytics** – Web analytics dan visitor tracking
-- **Google Search Console** – SEO monitoring dan performance
+**Infrastructure**
+Cloudflare Pages (frontend hosting), Cloudflare Workers (edge API routing), Cloudflare CDN and WAF, Ubuntu VPS (backend), Nginx, GitHub Actions CI/CD
 
-### DevOps & Infrastructure
-- **Cloudflare Pages** – Frontend hosting dengan edge network
-- **Cloudflare Workers** – Edge computing untuk API routing
-- **Cloudflare CDN** – Content delivery network global
-- **Nginx** – Web server untuk production backend
+**Integrations**
+Midtrans Payment Gateway, Meta WhatsApp Business API, Google Analytics 4, Google Search Console, Fingerspot Biometric API
 
-### Design & Development Tools
-- **VSCode** – Primary code editor
-- **Vite** – Build tool modern untuk asset bundling cepat
+## Technical Challenges
 
-## Challenges and Learnings
+**Zero-downtime Migration**
+Migrating from v1 to v2 without service interruption required a blue-green deployment strategy. The v1 Laravel application remained live during v2 development. Database schema changes were additive (no destructive migrations) to maintain backward compatibility until v2 was ready for cutover.
 
-### Technical Challenges
+**Rendering Strategy Selection**
+Choosing between SSR, SSG, and ISR per route required careful analysis of data freshness requirements versus performance. News articles and parent portal data use SSR (always fresh). Static pages (about, facilities) use SSG (built at deploy time). Teacher profiles and class schedules use ISR with a 1-hour revalidation window — balancing freshness with edge caching efficiency.
 
-**Migrasi Arsitektur v1 ke v2**  
-Tantangan terbesar adalah melakukan re-architecture dari monolithic Laravel ke headless architecture tanpa downtime. Solusi: implementasi blue-green deployment dan gradual migration strategy.
-
-**Performance Optimization**  
-Mencapai 90+ Lighthouse score dengan dataset besar membutuhkan optimasi multi-layer: SSR/SSG strategy, aggressive caching, image optimization, dan code splitting.
-
-**Real-time Notifications**  
-Implementasi WhatsApp Business API dengan queue system untuk handle high-volume notifications tanpa bottleneck.
-
-**Security Implementation**  
-Menerapkan multiple security layers (Cloudflare WAF, Laravel middleware, XSS/CSRF protection, rate limiting) untuk mencapai A+ security rating.
-
-**Data Synchronization**  
-Sinkronisasi data antara frontend cache (localStorage), backend database, dan third-party systems.
-
-### Key Learnings
-
-- **Headless Architecture Mastery**  
-  Memahami decoupled architecture, API-first approach, dan best practices untuk komunikasi frontend-backend yang efisien.
-
-- **Edge Computing Benefits**  
-  Memanfaatkan Cloudflare Workers dan CDN edge network untuk drastically reduce latency dan improve global performance.
-
-- **Client-side Optimization**  
-  Optimal penggunaan localStorage dan HTTP cookies untuk improve UX dengan smart caching strategy tanpa compromising security.
-
-- **API Design Patterns**  
-  RESTful API best practices, versioning strategy, error handling, dan response formatting yang konsisten.
-
-- **Automated Task Scheduling**  
-  Laravel cron jobs untuk automate repetitive tasks (invoice generation, notifications, data backup).
-
-- **SEO for Modern Web**  
-  Meta tags optimization, structured data implementation, sitemap generation, dan content strategy yang proven meningkatkan organic traffic.
-
-- **Database Query Optimization**  
-  Indexing strategy, eager loading, query caching untuk handle large dataset dengan performa optimal.
+**WhatsApp Notification Reliability**
+High-volume WhatsApp notifications during billing cycles required a queued architecture. Notifications are dispatched via Laravel Queue with exponential backoff retry logic, preventing API rate limit violations and ensuring reliable delivery even under load. Achieved 98% delivery rate in production.
 
 ## Outcome
 
-### Performance Metrics (v2)
+V2 represents a complete transformation of the platform's technical foundation while preserving and extending its operational capabilities. The measurable outcomes — sub-1-second load times, 90+ Lighthouse Score, first-page organic search results within 3 months, and zero security incidents — demonstrate that architectural decisions were validated by real-world production data.
 
-**Google Search Console (3 Months)**
-- **167 Total Clicks** – Organic search traffic
-- **4,471 Total Impressions** – Search visibility
-- **3.5% CTR** – Click-through rate (above industry average 2.5%)
-- **Position 5.9** – Average search ranking (first page)
-
-**Web Performance**
-- **Lighthouse Score: 90+** (Performance, Accessibility, SEO, Best Practices)
-- **Page Load Time: kurang dari 1 second** (70%+ improvement dari v1)
-- **Time to Interactive: kurang dari 2 seconds**
-- **First Contentful Paint: kurang dari 0.8 seconds**
-
-**Infrastructure**
-- **99.9% Uptime** dengan Cloudflare edge network
-- **200+ CDN locations** untuk global access
-- **Zero security incidents** sejak launch v2
-
-### Business Impact
-
-✅ **Efisiensi Administrasi**  
-Pengurangan beban kerja manual staf hingga **60%** melalui otomatisasi (pembayaran, tagihan, absensi).
-
-✅ **Adopsi Pembayaran Digital**  
-**70%+ orang tua** menggunakan pembayaran online, mengurangi antrian manual dan mempercepat proses administrasi keuangan.
-
-✅ **Transparansi Informasi**  
-Akses informasi sekolah **24/7** untuk semua stakeholder (guru, siswa, orang tua) dengan data real-time.
-
-✅ **Peningkatan Engagement**  
-**45% increase** dalam interaksi orang tua-sekolah melalui portal online, komentar artikel, dan notifikasi WhatsApp.
-
-✅ **Paperless Process**  
-**80% pengurangan** penggunaan kertas untuk administrasi, invoice, dan surat menyurat.
-
-✅ **Modern School Image**  
-Branding sekolah sebagai institusi modern dan tech-savvy, meningkatkan **daya tarik calon siswa baru**.
-
-✅ **Data-Driven Decision**  
-Dashboard analytics membantu manajemen sekolah membuat keputusan berbasis data untuk improve quality pendidikan.
-
-### User Experience Improvement
-
-**Parent Satisfaction**
-- 📱 **Mobile-First**: 60%+ traffic dari mobile devices dengan UX optimal
-- 🚀 **Fast & Responsive**: Average session duration meningkat 40%
-- 📢 **Timely Notifications**: 98% delivery rate WhatsApp notifications
-
-**Admin Efficiency**
-- ⚙️ **Automated Workflows**: 60% reduction dalam manual tasks
-- 📊 **Real-time Dashboard**: Instant access ke data dan reports
-- 🔒 **Secure Platform**: Zero data breach incidents
-
-**Student & Teacher Experience**
-- 📚 **Digital Learning Support**: Online rapor, jadwal, materi pembelajaran
-- 🏆 **Achievement Showcase**: Platform untuk display prestasi siswa
-
-Website versi 2.0 ini berhasil menghadirkan platform informasi sekolah yang **modern, performant, secure, dan mudah diakses** oleh semua stakeholder. Dengan kombinasi teknologi modern (Next.js, Laravel API, Cloudflare), sistem ini memberikan **pengalaman digital yang superior** dibandingkan v1.
-
-Hasilnya adalah **transformasi digital yang sukses** dengan peningkatan efisiensi operasional sekolah yang signifikan, user experience yang jauh lebih baik, dan posisi sekolah sebagai institusi pendidikan modern yang tech-savvy.
+The platform now serves as a scalable foundation that can accommodate future growth in student numbers, additional modules, and potential multi-school deployment without architectural changes.

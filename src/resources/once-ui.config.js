@@ -9,6 +9,7 @@ const routes = {
   "/work": true,
   "/blog": false,
   "/gallery": true,
+  "/plugin": true
 };
 
 const display = {
