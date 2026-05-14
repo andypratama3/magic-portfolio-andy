@@ -47,9 +47,9 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Andy Pratama — Fullstack Developer`,
+  title: `Andy Pratama — Senior Fullstack Developer (Laravel, Next.js, React)`,
   description:
-    "Portfolio of Andy Pratama — Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems for education, government, and commercial sectors.",
+    "Portfolio of Andy Pratama — Senior Fullstack Developer with 3+ years specializing in Laravel 10+, Next.js 14+, React.js. Building production-grade web systems for education, government, and commercial sectors. Expert in API design, database optimization, DevOps, and security.",
   headline: <>Andy Pratama</>,
   featured: {
     display: true,
@@ -76,8 +76,8 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About — ${person.name}`,
-  description: `Profile of ${person.name}, Fullstack Developer based in Samarinda, Indonesia. Open to full remote and relocation.`,
+  title: `About Andy Pratama — Senior Fullstack Developer & Tech Lead`,
+  description: `Senior Fullstack Developer based in Samarinda, Indonesia with 3+ years of professional experience. Specialized in Laravel 10+, Next.js 14+, React.js, REST API development, database design, cloud infrastructure (Cloudflare, AWS), and system architecture. Led multiple production projects for educational institutions and government agencies.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -616,22 +616,22 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing on Laravel, system architecture, and web development...",
-  description: `Technical writing by ${person.name} on Laravel, Next.js, system design, DevOps, and production web development.`,
+  title: "Technical Blog — Laravel, Next.js, System Design & Web Development",
+  description: `Technical articles and tutorials by ${person.name} on Laravel development, Next.js best practices, system architecture, database optimization, DevOps pipelines, cloud infrastructure, API design, security hardening, and production web applications.`,
 };
 
 const work = {
   path: "/work",
   label: "Portfolio",
-  title: `Projects — ${person.name}`,
-  description: `Production projects by ${person.name} — Fullstack Developer specializing in Laravel, Next.js, and enterprise web systems.`,
+  title: `Portfolio & Case Studies — Production Web Systems by Andy Pratama`,
+  description: `Production-grade projects and case studies by ${person.name}. Specializing in building scalable web systems with Laravel 10+, Next.js 14+, React.js. Projects include school management systems, government portals, e-commerce platforms, inventory management, and enterprise applications with focus on performance, security, and user experience.`,
 };
 
 const gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Gallery — ${person.name}`,
-  description: `Visual documentation and project moments by ${person.name}`,
+  title: `Gallery & Moments — Project Showcase by Andy Pratama`,
+  description: `Visual documentation, project screenshots, and memorable moments from ${person.name}'s professional journey as a fullstack developer. Features interface designs, dashboards, and project deliverables.`,
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",

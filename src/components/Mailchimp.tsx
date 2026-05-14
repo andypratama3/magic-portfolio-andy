@@ -1,7 +1,7 @@
 "use client";
 
 import { mailchimp } from "@/resources";
-import { Button, Flex, Heading, Input, Text, Background, Column } from "@once-ui-system/core";
+import { Button, Flex, Heading, Input, Text, Background, Column, Textarea, Checkbox } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
 
@@ -23,6 +23,19 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
+
+  // Contact form state
+  const [name, setName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [engagementTypes, setEngagementTypes] = useState<string[]>([]);
+  const [availability, setAvailability] = useState('UTC+7 — Available mornings & afternoons (09:00–17:00)');
+  const [subscribe, setSubscribe] = useState(true);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [sendError, setSendError] = useState('');
+
+  const engagementOptions = ['Full-time', 'Contract', 'Freelance', 'Consulting'];
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {
@@ -50,6 +63,48 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
     setTouched(true);
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
+    }
+  };
+
+  const toggleEngagement = (option: string) => {
+    setEngagementTypes(prev => prev.includes(option) ? prev.filter(p => p !== option) : [...prev, option]);
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    setSendError('');
+
+    const payload = {
+      name: name || 'Anonymous',
+      email: contactEmail || email,
+      message,
+      engagementTypes,
+      availability,
+      subscribe,
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const json = await res.json();
+      if (json.ok) {
+        setSent(true);
+        setName('');
+        setContactEmail('');
+        setMessage('');
+        setEngagementTypes([]);
+      } else {
+        setSendError(json.error || 'Failed to send message');
+      }
+    } catch (err: any) {
+      setSendError(err?.message || 'Network error');
+    } finally {
+      setSending(false);
     }
   };
 
@@ -121,6 +176,8 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
       >
         {newsletter.description}
       </Text>
+
+      {/* Existing Mailchimp subscribe form (unchanged) */}
       <form
         style={{
           width: "100%",
@@ -180,6 +237,42 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
               </Button>
             </Flex>
           </div>
+        </Flex>
+      </form>
+
+      {/* Contact form for direct messages */}
+      <form onSubmit={handleContactSubmit} style={{ width: '100%', marginTop: 24 }}>
+        <Flex fillWidth maxWidth={24} mobileDirection="column" gap="8">
+          <Input placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
+          <Input placeholder="Your email" value={contactEmail} onChange={(e) => setContactEmail(e.target.value)} required />
+          <Textarea placeholder="Brief message or scope" value={message} onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)} />
+
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {engagementOptions.map(opt => (
+              <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <Checkbox checked={engagementTypes.includes(opt)} onChange={() => toggleEngagement(opt)} />
+                <span>{opt}</span>
+              </label>
+            ))}
+          </div>
+
+          <Input placeholder="Availability (timezone/hours)" value={availability} onChange={(e) => setAvailability(e.target.value)} />
+
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Checkbox checked={subscribe} onChange={() => setSubscribe(s => !s)} />
+            <span>Subscribe to updates</span>
+          </label>
+
+          <div className="clear">
+            <Flex height="48" vertical="center">
+              <Button type="submit" size="m" fillWidth disabled={sending}>
+                {sending ? 'Sending...' : (sent ? 'Sent — Thank you' : 'Contact Me')}
+              </Button>
+            </Flex>
+          </div>
+
+          {sendError && <Text onBackground="danger-strong">{sendError}</Text>}
+          {sent && <Text onBackground="neutral-strong">Thanks — your message was received. I'll reply within 48 hours.</Text>}
         </Flex>
       </form>
     </Column>

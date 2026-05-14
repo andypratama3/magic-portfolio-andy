@@ -24,6 +24,15 @@ export async function generateMetadata() {
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(about.title)}`,
     path: about.path,
+    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    canonical: `${baseURL}${about.path}`,
+    keywords: "fullstack developer, Laravel, Next.js, React, TypeScript, software engineer, Indonesia, remote developer, technical lead",
+    openGraph: {
+      title: about.title,
+      description: about.description,
+      url: `${baseURL}${about.path}`,
+      type: "profile",
+    },
   });
 }
 
