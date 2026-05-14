@@ -10,15 +10,6 @@ export async function generateMetadata() {
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(blog.title)}`,
     path: blog.path,
-    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-    canonical: `${baseURL}${blog.path}`,
-    keywords: "technical blog, Laravel tutorials, Next.js tips, web development, system design, DevOps, API development",
-    openGraph: {
-      title: blog.title,
-      description: blog.description,
-      url: `${baseURL}${blog.path}`,
-      type: "website",
-    },
   });
 }
 

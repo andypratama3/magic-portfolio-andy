@@ -9,21 +9,6 @@ export async function generateMetadata() {
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(gallery.title)}`,
     path: gallery.path,
-    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-    canonical: `${baseURL}${gallery.path}`,
-    keywords: "portfolio gallery, project screenshots, UI design, dashboard, interface design, fullstack projects",
-    openGraph: {
-      title: gallery.title,
-      description: gallery.description,
-      url: `${baseURL}${gallery.path}`,
-      type: "website",
-      images: gallery.images.map((img: any) => ({
-        url: `${baseURL}${img.src}`,
-        width: img.width || 1200,
-        height: img.height || 630,
-        alt: img.alt,
-      })),
-    },
   });
 }
 

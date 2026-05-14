@@ -243,9 +243,9 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
       {/* Contact form for direct messages */}
       <form onSubmit={handleContactSubmit} style={{ width: '100%', marginTop: 24 }}>
         <Flex fillWidth maxWidth={24} mobileDirection="column" gap="8">
-          <Input placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
-          <Input placeholder="Your email" value={contactEmail} onChange={(e) => setContactEmail(e.target.value)} required />
-          <Textarea placeholder="Brief message or scope" value={message} onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)} />
+          <Input id="contact-name" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
+          <Input id="contact-email" placeholder="Your email" value={contactEmail} onChange={(e) => setContactEmail(e.target.value)} required />
+          <Textarea id="contact-message" placeholder="Brief message or scope" value={message} onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)} />
 
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {engagementOptions.map(opt => (
@@ -256,7 +256,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
             ))}
           </div>
 
-          <Input placeholder="Availability (timezone/hours)" value={availability} onChange={(e) => setAvailability(e.target.value)} />
+          <Input id="contact-availability" placeholder="Availability (timezone/hours)" value={availability} onChange={(e) => setAvailability(e.target.value)} />
 
           <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <Checkbox checked={subscribe} onChange={() => setSubscribe(s => !s)} />
