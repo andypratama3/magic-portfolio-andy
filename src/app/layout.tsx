@@ -38,6 +38,25 @@ export default async function RootLayout({
     >
       <head>
         <meta name="google-site-verification" content="4ycIf0n_hJhGXE5tc2Xv3OHLhUkIofJUSQkj0wsaUo8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="description" content="Portfolio of Andy Pratama — Senior Fullstack Developer with 3+ years specializing in Laravel 10+, Next.js 14+, React.js. Building production-grade web systems for education, government, and commercial sectors." />
+        <meta name="keywords" content="fullstack developer, Laravel, Next.js, React, PHP, TypeScript, web development, API design, Indonesia developer, remote developer" />
+        <meta name="author" content="Andy Pratama" />
+        <meta name="creator" content="Andy Pratama" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://andypratama.vercel.app/" />
+        <link rel="alternate" hrefLang="id" href="https://andypratama.vercel.app/" />
+        <link rel="alternate" hrefLang="en" href="https://andypratama.vercel.app/" />
+        <link rel="alternate" hrefLang="x-default" href="https://andypratama.vercel.app/" />
+        <link rel="profile" href="http://gmpg.org/xfn/11" />
+        <link rel="pingback" href="https://andypratama.vercel.app/xmlrpc.php" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -137,6 +156,137 @@ export default async function RootLayout({
               thickness: effects.lines.thickness,
               angle: effects.lines.angle,
               color: effects.lines.color,
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@graph': [
+                  {
+                    '@type': 'Person',
+                    '@id': 'https://andypratama.vercel.app/#person',
+                    name: 'Andy Pratama',
+                    givenName: 'Andy',
+                    familyName: 'Pratama',
+                    jobTitle: 'Senior Fullstack Developer & Tech Lead',
+                    description: 'Senior Fullstack Developer with 3+ years of professional experience specializing in Laravel 10+, Next.js 14+, React.js, and production-grade web systems.',
+                    url: 'https://andypratama.vercel.app',
+                    email: 'andypratama1211@gmail.com',
+                    sameAs: [
+                      'https://github.com/andypratama3',
+                      'https://www.linkedin.com/in/andypratama3',
+                    ],
+                    image: {
+                      '@type': 'ImageObject',
+                      url: 'https://andypratama.vercel.app/images/photo.jpg',
+                      width: 400,
+                      height: 400,
+                    },
+                    address: {
+                      '@type': 'PostalAddress',
+                      addressLocality: 'Samarinda',
+                      addressRegion: 'East Kalimantan',
+                      addressCountry: 'ID',
+                    },
+                    knowsAbout: [
+                      'Laravel 10+',
+                      'Next.js 14+',
+                      'React.js 18+',
+                      'PHP 8+',
+                      'TypeScript',
+                      'REST API Development',
+                      'Database Design & Optimization',
+                      'DevOps & Cloud Infrastructure',
+                      'Software Architecture',
+                      'Security Hardening',
+                      'Performance Optimization',
+                      'Fullstack Development',
+                      'Web Systems',
+                      'Education Technology',
+                      'Government Systems',
+                      'E-Commerce Solutions',
+                      'Cloudflare',
+                      'AWS',
+                      'Docker',
+                      'GitHub Actions CI/CD',
+                    ],
+                    hasOccupation: {
+                      '@type': 'Occupation',
+                      name: 'Software Developer',
+                      description: 'Building scalable web applications and systems',
+                      occupationLocation: {
+                        '@type': 'City',
+                        name: 'Samarinda, Indonesia',
+                      },
+                    },
+                  },
+                  {
+                    '@type': 'ProfessionalService',
+                    '@id': 'https://andypratama.vercel.app/#service',
+                    name: 'Andy Pratama - Fullstack Development Services',
+                    description: 'Professional fullstack development services specializing in Laravel and Next.js for web systems, APIs, and enterprise applications.',
+                    url: 'https://andypratama.vercel.app',
+                    email: 'andypratama1211@gmail.com',
+                    serviceType: [
+                      'Full-Stack Web Development',
+                      'Backend API Development',
+                      'Frontend Development',
+                      'REST API Design',
+                      'Database Architecture',
+                      'System Architecture & Design',
+                      'Performance Optimization',
+                      'Security Implementation',
+                      'DevOps & Cloud Solutions',
+                      'Technical Consulting',
+                    ],
+                    areaServed: [
+                      {
+                        '@type': 'Country',
+                        name: 'Indonesia',
+                      },
+                      {
+                        '@type': 'Country',
+                        name: 'International (Remote)',
+                      },
+                    ],
+                    availableLanguage: [
+                      {
+                        '@type': 'Language',
+                        name: 'Indonesian',
+                      },
+                      {
+                        '@type': 'Language',
+                        name: 'English',
+                      },
+                    ],
+                    founder: {
+                      '@type': 'Person',
+                      name: 'Andy Pratama',
+                      url: 'https://andypratama.vercel.app',
+                    },
+                  },
+                  {
+                    '@type': 'WebSite',
+                    '@id': 'https://andypratama.vercel.app/#website',
+                    url: 'https://andypratama.vercel.app',
+                    name: 'Andy Pratama — Senior Fullstack Developer',
+                    description: 'Professional portfolio, projects, and case studies of Andy Pratama, Senior Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems.',
+                    mainEntity: { '@id': 'https://andypratama.vercel.app/#person' },
+                    creator: { '@id': 'https://andypratama.vercel.app/#person' },
+                    inLanguage: 'en-US',
+                    potentialAction: {
+                      '@type': 'SearchAction',
+                      target: {
+                        '@type': 'EntryPoint',
+                        urlTemplate: 'https://andypratama.vercel.app/search?q={search_term_string}',
+                      },
+                      'query_input': 'required name=search_term_string',
+                    },
+                  },
+                ],
+              })
             }}
           />
           <Flex fillWidth minHeight="16" hide="s"/>
