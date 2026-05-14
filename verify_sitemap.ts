@@ -7,13 +7,13 @@ const routes = {
   "/blog": false,
   "/gallery": true,
   "/plugin": true
-};
+} as const;
 
 console.log("=== SITEMAP CONTENTS ===\n");
 
 // Static routes
 console.log("📍 STATIC ROUTES (Active):");
-const activeRoutes = Object.keys(routes).filter(route => routes[route]);
+const activeRoutes = Object.keys(routes).filter(route => routes[route as keyof typeof routes]);
 activeRoutes.forEach(route => {
   const url = route === "/" ? baseURL : `${baseURL}${route}`;
   console.log(`  ✓ ${url} (priority: ${route === "/" ? "1.0" : "0.9"})`);
