@@ -247,21 +247,21 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           <Input id="contact-email" placeholder="Your email" value={contactEmail} onChange={(e) => setContactEmail(e.target.value)} required />
           <Textarea id="contact-message" placeholder="Brief message or scope" value={message} onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)} />
 
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <Flex wrap gap="8" fillWidth>
             {engagementOptions.map(opt => (
-              <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Flex key={opt} gap="4" vertical="center" style={{ cursor: 'pointer' }} onClick={() => toggleEngagement(opt)}>
                 <Checkbox checked={engagementTypes.includes(opt)} onChange={() => toggleEngagement(opt)} />
-                <span>{opt}</span>
-              </label>
+                <Text variant="body-default-s">{opt}</Text>
+              </Flex>
             ))}
-          </div>
+          </Flex>
 
           <Input id="contact-availability" placeholder="Availability (timezone/hours)" value={availability} onChange={(e) => setAvailability(e.target.value)} />
 
-          <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Flex gap="8" vertical="center" style={{ cursor: 'pointer' }} onClick={() => setSubscribe(s => !s)}>
             <Checkbox checked={subscribe} onChange={() => setSubscribe(s => !s)} />
-            <span>Subscribe to updates</span>
-          </label>
+            <Text variant="body-default-s">Subscribe to updates</Text>
+          </Flex>
 
           <div className="clear">
             <Flex height="48" vertical="center">
