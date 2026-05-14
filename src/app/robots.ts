@@ -1,12 +1,15 @@
-import { baseURL } from "@/resources";
+import { MetadataRoute } from 'next'
 
-export default function robots() {
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: "*",
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/'],
       },
     ],
-    sitemap: `${baseURL}/sitemap.xml`,
-  };
+    sitemap: 'https://andypratama.vercel.app/sitemap.xml',
+    host: 'https://andypratama.vercel.app',
+  }
 }
