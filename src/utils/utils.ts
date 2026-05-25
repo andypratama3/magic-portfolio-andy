@@ -31,9 +31,9 @@ function getMDXFiles(dir: string) {
 }
 
 function readMDXFile(filePath: string) {
-    if (!fs.existsSync(filePath)) {
-        notFound();
-    }
+  if (!fs.existsSync(filePath)) {
+    notFound();
+  }
 
   const rawContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(rawContent);
@@ -58,10 +58,18 @@ function getMDXData(dir: string) {
     const { metadata, content } = readMDXFile(path.join(dir, file));
     const slug = path.basename(file, path.extname(file));
 
+    // Create a lightweight HTML representation from MDX plain text
+    const plain = mdxToPlainText(content);
+    const paragraphs = plain
+      .split(/\n\n+/)
+      .map((p) => `<p>${p.replace(/\n/g, " ")}</p>`)
+      .join("\n");
+
     return {
       metadata,
       slug,
       content,
+      contentHtml: paragraphs,
     };
   });
 }
@@ -69,4 +77,38 @@ function getMDXData(dir: string) {
 export function getPosts(customPath = ["", "", "", ""]) {
   const postsDir = path.join(process.cwd(), ...customPath);
   return getMDXData(postsDir);
+}
+
+// Convert MDX/raw markdown content to a simple plain-text representation
+export function mdxToPlainText(mdx: string) {
+  if (!mdx) return "";
+
+  let text = mdx;
+
+  // Remove fenced code blocks
+  text = text.replace(/```[\s\S]*?```/g, "");
+
+  // Remove HTML/JSX tags
+  text = text.replace(/<[^>]+>/g, "");
+
+  // Remove images
+  text = text.replace(/!\[[^\]]*\]\([^\)]+\)/g, "");
+
+  // Convert markdown links [text](url) -> text
+  text = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1");
+
+  // Inline code and emphasis markers
+  text = text.replace(/`([^`]+)`/g, "$1");
+  text = text.replace(/\*\*([^*]+)\*\*/g, "$1");
+  text = text.replace(/\*([^*]+)\*/g, "$1");
+  text = text.replace(/__([^_]+)__/g, "$1");
+  text = text.replace(/_([^_]+)_/g, "$1");
+
+  // Remove heading markers
+  text = text.replace(/^#{1,6}\s*/gm, "");
+
+  // Collapse multiple newlines
+  text = text.replace(/\n{2,}/g, "\n\n");
+
+  return text.trim();
 }

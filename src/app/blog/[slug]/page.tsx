@@ -3,7 +3,8 @@ import { CustomMDX, ScrollToHash } from "@/components";
 import { Meta, Schema, AvatarGroup, Button, Column, Heading, HeadingNav, Icon, Row, Text } from "@once-ui-system/core";
 import { baseURL, about, blog, person } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { getPosts } from "@/utils/utils";
+import { getPosts, mdxToPlainText } from "@/utils/utils";
+import SchemaScript from "@/components/SchemaScript";
 import { Metadata } from 'next';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
@@ -54,7 +55,7 @@ export default async function Blog({
 
   return (
     <Row fillWidth>
-      <Row maxWidth={12} hide="m"/>
+      <Row maxWidth={12} hide="m" />
       <Row fillWidth horizontal="center">
         <Column as="section" maxWidth="xs" gap="l">
           <Schema
@@ -72,6 +73,27 @@ export default async function Blog({
               image: `${baseURL}${person.avatar}`,
             }}
           />
+          <SchemaScript
+            schemas={{
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: post.metadata.title,
+              description: post.metadata.summary,
+              datePublished: post.metadata.publishedAt,
+              dateModified: post.metadata.publishedAt,
+              author: {
+                "@type": "Person",
+                name: person.name,
+                url: `${baseURL}${about.path}`,
+              },
+              image: post.metadata.image || `${baseURL}/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`,
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": `${baseURL}${blog.path}/${post.slug}`,
+              },
+              articleBody: mdxToPlainText(post.content),
+            }}
+          />
           <Button data-border="rounded" href="/blog" weight="default" variant="tertiary" size="s" prefixIcon="chevronLeft">
             Posts
           </Button>
@@ -83,24 +105,31 @@ export default async function Blog({
             </Text>
           </Row>
           <Column as="article" fillWidth>
+            {/* Pre-serialized HTML fallback to improve indexability for crawlers/AI */}
+            {post.contentHtml && (
+              <details>
+                <summary>Text version</summary>
+                <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+              </details>
+            )}
             <CustomMDX source={post.content} />
           </Column>
           <ScrollToHash />
         </Column>
-    </Row>
-    <Column maxWidth={12} paddingLeft="40" fitHeight position="sticky" top="80" gap="16" hide="m">
-      <Row
-        gap="12"
-        paddingLeft="2"
-        vertical="center"
-        onBackground="neutral-medium"
-        textVariant="label-default-s"
-      >
-        <Icon name="document" size="xs" />
-        On this page
       </Row>
-      <HeadingNav fitHeight/>
-    </Column>
+      <Column maxWidth={12} paddingLeft="40" fitHeight position="sticky" top="80" gap="16" hide="m">
+        <Row
+          gap="12"
+          paddingLeft="2"
+          vertical="center"
+          onBackground="neutral-medium"
+          textVariant="label-default-s"
+        >
+          <Icon name="document" size="xs" />
+          On this page
+        </Row>
+        <HeadingNav fitHeight />
+      </Column>
     </Row>
   );
 }

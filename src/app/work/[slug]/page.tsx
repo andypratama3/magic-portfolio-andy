@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
-import { getPosts } from "@/utils/utils";
+import { getPosts, mdxToPlainText } from "@/utils/utils";
 import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
+import SchemaScript from "@/components/SchemaScript";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -69,6 +70,28 @@ export default async function Project({
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      {/* JSON-LD with articleBody (plain-text extract) to help crawlers/AI index content */}
+      <SchemaScript
+        schemas={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.metadata.title,
+          description: post.metadata.summary,
+          datePublished: post.metadata.publishedAt,
+          dateModified: post.metadata.publishedAt,
+          author: {
+            "@type": "Person",
+            name: person.name,
+            url: `${baseURL}${about.path}`,
+          },
+          image: post.metadata.image || `${baseURL}/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`,
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${baseURL}${work.path}/${post.slug}`,
+          },
+          articleBody: mdxToPlainText(post.content),
+        }}
+      />
       <Column maxWidth="xs" gap="16">
         <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
           Projects
@@ -91,6 +114,13 @@ export default async function Project({
             {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
           </Text>
         </Flex>
+        {/* Pre-serialized HTML fallback to improve indexability for crawlers/AI */}
+        {post.contentHtml && (
+          <details>
+            <summary>Text version</summary>
+            <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+          </details>
+        )}
         <CustomMDX source={post.content} />
       </Column>
       <ScrollToHash />
