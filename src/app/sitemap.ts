@@ -5,15 +5,17 @@ import { baseURL, routes as routesConfig } from "@/resources";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all blog posts
   let blogs: MetadataRoute.Sitemap = [];
-  try {
-    blogs = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
-      url: `${baseURL}/blog/${post.slug}`,
-      lastModified: new Date(post.metadata.publishedAt),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    }));
-  } catch (error) {
-    console.warn("Failed to load blog posts:", error);
+  if (routesConfig["/blog"]) {
+    try {
+      blogs = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
+        url: `${baseURL}/blog/${post.slug}`,
+        lastModified: new Date(post.metadata.publishedAt),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      }));
+    } catch (error) {
+      console.warn("Failed to load blog posts:", error);
+    }
   }
 
   // Get all work projects

@@ -613,13 +613,6 @@ const about = {
   },
 };
 
-const blog = {
-  path: "/blog",
-  label: "Blog",
-  title: "Technical Blog — Laravel, Next.js, System Design & Web Development",
-  description: `Technical articles and tutorials by ${person.name} on Laravel development, Next.js best practices, system architecture, database optimization, DevOps pipelines, cloud infrastructure, API design, security hardening, and production web applications.`,
-};
-
 const work = {
   path: "/work",
   label: "Portfolio",
@@ -656,4 +649,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, work, gallery };
