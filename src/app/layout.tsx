@@ -57,7 +57,6 @@ export default async function RootLayout({
         <link rel="pingback" href="https://andypratama.vercel.app/xmlrpc.php" />
         <meta name="format-detection" content="telephone=no" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1396352334792851" crossOrigin="anonymous" />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
