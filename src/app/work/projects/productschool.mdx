@@ -1,0 +1,136 @@
+---
+title: "ProductSchool — All-in-One School Management System for Indonesia"
+publishedAt: "2026-06-01"
+summary: "Comprehensive school management platform built with Laravel 12, PHP 8.3, MySQL, Redis, and Tailwind CSS. Covers student lifecycle, academic grading, attendance, payroll, financial management, rapor PDF generation with QR verification, WhatsApp integration, and 52 production modules serving SD Kreatif Muhammadiyah 3 Samarinda since 2024."
+images:
+  - "/images/projects/products_shool/dashboard.png"
+  - "/images/projects/products_shool/siswa.png"
+  - "/images/projects/products_shool/rapot.png"
+  - "/images/projects/products_shool/analitik.png"
+team:
+  - name: "Andy Pratama"
+    role: "Founder & Fullstack Engineer"
+    avatar: "/images/photo.jpg"
+    linkedIn: "https://www.linkedin.com/in/andypratama3"
+---
+
+## Overview
+
+ProductSchool is a comprehensive school management system purpose-built for Indonesian K-12 schools. The platform covers the full spectrum of school operations — student lifecycle management, academic grading, attendance tracking, payroll processing, financial management, rapor/report card PDF generation with QR verification, WhatsApp communication, and digital payment integration — all within a unified web-based platform.
+
+Running in production at SD Kreatif Muhammadiyah 3 Samarinda since 2024, the system serves as both the daily operational backbone for the school and a technical showcase of enterprise-grade Laravel development practices.
+
+## Quantified Results
+
+- **52 production modules** covering student management, grading, attendance, payments, payroll, rapor, Canvas document templates, WhatsApp communication, PPDB admissions, and early warning analytics
+- **100+ controllers, 117 models, 92 services** — modular service-oriented architecture with clean separation of concerns
+- **351 web routes and 70 API endpoints** supporting both dashboard and mobile/third-party consumption
+- **DomPDF-powered rapor generation** with QR code verification — batch-generate entire classrooms in minutes
+- **Midtrans payment gateway** integration with 20+ Indonesian payment methods (Virtual Account, e-wallet, credit card)
+- **WhatsApp Cloud API** two-way chat with automated notifications, bot auto-reply, and message templates
+- **Laravel Reverb** real-time WebSocket for live dashboard updates and notification delivery
+- **7 role-based permission levels** via Spatie Laravel Permission — granular access per user scope
+- **DAPODIK format support** with bulk XLSX import/export for student and employee data
+- **Canvas document template system** with drag-and-drop editor and AI-assisted variable suggestions (Claude/DeepSeek)
+
+## Core Modules
+
+**Student Lifecycle Management** — Complete CRUD with NIS/NISN auto-generation, photo upload, document management, and DAPODIK-format bulk XLSX import with preview. Covers transfers (mutasi), grade retention (tinggal kelas), graduation, and alumni records with academic year tracking.
+
+**Teacher and Staff Management** — Centralized teacher and employee profiles with NIK, phone, staff position linking, document management, and bulk import. Subject and classroom assignment per teacher.
+
+**Classroom and Schedule Management** — Classroom CRUD with student rosters, homeroom and subject teacher assignments, and visual timetables. Teacher-scoped schedule views.
+
+**Comprehensive Grading and Assessment** — Inline AJAX grade entry with auto-save, group grade view, TP (Learning Objectives) scoring aligned with Kurikulum Merdeka, Sumatif assessment, and narrative comments. Configurable Formatif/Sumatif weight system with KKM and predicate thresholds. Cross-semester student transcripts with export.
+
+**Attendance Tracking** — Daily per-classroom attendance with multiple statuses (Hadir, Sakit, Izin, Alpa), bulk rekap input, monthly reports with automated percentage summaries, and employee GPS-based check-in with KML geo-fencing.
+
+**Payment and Billing** — Payment CRUD with configurable payment titles (SPP, building, etc.), monthly auto-billing via Laravel Task Scheduler, outstanding tracking, manual confirmation, and Midtrans payment gateway integration for online payments via Virtual Account, e-wallet, and credit card.
+
+**Payroll Processing** — Batch payroll with salary grades, education/structural/functional allowances, pay slip PDF generation with bulk ZIP export, and complete audit trail.
+
+**Report Card Generation** — Bulk rapor PDF generation per classroom with QR verification codes. Features a finalization workflow (draft to finalized) and public QR verification page. Supports both legacy report cards and the modern section-based rapor system with queue-based batch processing.
+
+**Canvas Document Template System** — Drag-and-drop visual document template editor with merge fields, AI-powered variable suggestions via Claude and DeepSeek, JSON template import/export, bulk document generation, and approval workflow (draft → submit → approve → reject).
+
+**WhatsApp Communication** — Two-way managed conversation system with message templates, reactions, read receipts, and admin assignment. Bot auto-reply with configurable work hours. Payment reminders (08:00) and attendance alerts (15:00) via WhatsApp automation.
+
+**PPDB Online Admissions** — Application management with document upload, review → approve → enroll workflow, and conversion to active student records.
+
+**Early Warning System** — Multi-factor at-risk student identification with bulk classroom assessment, risk scoring, and dashboard alerts for headmasters and homeroom teachers.
+
+**P5 Assessment** — Pancasila Profile assessment with configurable dimensions and dimensions, bulk input, and individual student P5 reports.
+
+**Inklusi (Inclusive Education)** — ABK student development tracking across physical, cognitive, emotional, and social dimensions with shadow teacher assignment.
+
+**CMS and School Profile** — Article/news publishing, school profile management (hero, achievements, gallery, cooperations), and public-facing content management.
+
+## Technical Architecture
+
+### Backend
+
+- **Laravel 12** with PHP 8.3+, MySQL, Redis — monolithic architecture with service-oriented module design
+- **Laravel Reverb** for WebSocket-based real-time features (dashboard updates, notifications)
+- **Laravel Sanctum** for API token management
+- **Laravel Queue** with database driver for background job processing (rapor generation, notifications, bulk imports)
+- **Laravel Scheduler** for cron-based billing generation and scheduled tasks
+- **Spatie Laravel Permission** for RBAC with 7 predefined role levels
+
+### Frontend
+
+- **Blade Components** with Tailwind CSS utility framework
+- **Alpine.js** for interactive UI behavior and dynamic DataTable filtering
+- **React 19 + react-konva** specifically for the Canvas document template drag-and-drop editor
+- **Yajra Laravel DataTables** for server-side paginated data tables
+- **SweetAlert2** for user-facing confirmations and notifications
+- **ApexCharts** for dashboard visualizations
+
+### Integrations
+
+- **Midtrans** — payment gateway (Virtual Account, Snap UI, webhook callbacks)
+- **WhatsApp Cloud API** (Meta) — two-way chat, notifications, rapor distribution
+- **DomPDF + Browsershot** — PDF generation with QR code rendering
+- **PhpSpreadsheet** — XLSX import/export with DAPODIK format support
+- **AWS S3** — file storage for uploaded documents and generated PDFs
+- **Sentry** — production error tracking and performance monitoring
+
+### Infrastructure
+
+- **Docker** (nginx + php-fpm 8.3 + MySQL 8 + Redis 7) containerized deployment
+- **Cloudflare** CDN, WAF, DNS management
+- **GitHub Actions** CI/CD with automated testing and deployment
+- **Kubernetes** configuration for production deployment
+
+## Security
+
+Implemented Spatie Laravel Permission RBAC with 7 predefined roles — superadmin bypasses all checks, admin/admin_akademik see all data, teacher sees only assigned classrooms and subjects. All mutation endpoints protected with middleware-level authorization checks. CSRF protection on all forms, input validation at form, service, and database levels. Audit logging on all critical actions. Sentry error tracking for production monitoring.
+
+## Technical Challenges
+
+**Domain Complexity at Scale** — The education domain spans 52 interconnected modules across student management, grading, attendance, payments, payroll, rapor, communications, admissions, and analytics. Each module has its own data model, business rules, and permission scoping. Designed a service-oriented architecture with 92 dedicated service classes that keep business logic decoupled from controllers, enabling each module to evolve independently.
+
+**Batch Rapor Generation Performance** — Generating rapor PDFs for hundreds of students simultaneously required a queue-based batch system. Each student's rapor is dispatched as an individual job via Laravel Queue with database driver, allowing parallel processing with configurable concurrency. The modern section-based rapor system uses queue-based batch processing with real-time progress tracking.
+
+**WhatsApp Integration Reliability** — Two-way WhatsApp messaging at school scale required careful handling of Meta's API rate limits, webhook idempotency, message status tracking, and retry logic. Implemented a robust conversation management system with template messages, bot auto-reply with configurable work hours, and delivery status tracking with automatic retries.
+
+**Teacher Data Scoping** — With 7 permission levels, ensuring each user sees only authorized data required a reusable scoping system. Implemented a TeacherScopedData trait that all controllers include, providing getScopedClassroomIds(), getScopedStudentIds(), and getScopedSubjectIds() methods that filter queries at the database level.
+
+## Key Learnings
+
+ProductSchool strengthened full-stack Laravel engineering skills including service-oriented architecture design, domain-driven module organization, batch job processing at scale, WebSocket real-time features, WhatsApp Business API integration, payment gateway integration, and production DevOps practices.
+
+The project demonstrates how a monolithic Laravel application, when properly organized with service classes, reusable traits, and clear module boundaries, can handle the complexity of an enterprise school management system serving hundreds of daily users across dozens of interconnected domains.
+
+## Technologies Used
+
+**Backend**
+Laravel 12, PHP 8.3+, MySQL, Redis, Laravel Reverb, Laravel Sanctum, Spatie Laravel Permission, Laravel Queue, Laravel Scheduler, DomPDF, Browsershot
+
+**Frontend**
+Blade Components, Tailwind CSS, Alpine.js, React 19 + react-konva (Canvas editor), Yajra DataTables, ApexCharts, SweetAlert2
+
+**Integrations**
+Midtrans Payment Gateway, WhatsApp Cloud API, AWS S3, PhpSpreadsheet, Sentry
+
+**Infrastructure**
+Docker (nginx, php-fpm, MySQL, Redis), Cloudflare CDN/WAF, GitHub Actions CI/CD, Kubernetes

@@ -57,11 +57,11 @@ const home = {
       <>
         Latest project:{" "}
         <strong className="ml-4">
-          School Management System v2 — Next.js 14 + Laravel 10 API
+          ProductSchool — Modern Education Management Platform
         </strong>
       </>
     ),
-    href: "/work/sdmuhammadiyah3new",
+    href: "/work/productschool",
   },
   subline: (
     <>
