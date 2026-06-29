@@ -14,7 +14,7 @@ const person = {
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Open to Work and Collaboration</>,
   description: (
     <>
@@ -55,9 +55,9 @@ const home = {
     display: true,
     title: (
       <>
-        Latest project:{" "}
+        Latest project (Jun 2025 – Jun 2026, Freelance):{" "}
         <strong className="ml-4">
-          ProductSchool — Modern Education Management Platform
+          ProductSchool — All-in-One School Management System
         </strong>
       </>
     ),
@@ -122,8 +122,8 @@ const about = {
     experiences: [
       {
         company: "SD Muhammadiyah 3 Samarinda",
-        timeframe: "06/2025 – Present",
-        role: "Tech Lead — Senior Fullstack Developer (v2 Headless Architecture)",
+        timeframe: "06/2025 – 06/2026",
+        role: "Tech Lead — Senior Fullstack Developer (v2 Headless Architecture) [Freelance]",
         achievements: [
           <>
             Led full re-architecture from monolithic Laravel 10 Blade (v1) to headless
@@ -286,7 +286,7 @@ const about = {
       },
       {
         company: "Bappeda — East Kalimantan Provincial Government",
-        timeframe: "12/2023 – 01/2024",
+        timeframe: "11/2024 – 12/2024",
         role: "Senior Fullstack Developer (Government Contract)",
         achievements: [
           <>
@@ -367,14 +367,13 @@ const about = {
         role: "Fullstack Developer (Internship)",
         achievements: [
           <>
-            Developed Ansor Membership Database System using Laravel with multi-sheet
-            Excel import, interactive Leaflet.js map visualization, and AWS S3 file
-            synchronization via Bitbucket Pipeline CI/CD.
+            Built BLK (Job Training Center) management system — Laravel 10 with Repository Pattern: RBAC (Spatie Permission, 108 permissions, 7 roles), participant management with multi-filter search, NIK validation, and Excel export, class management with curriculum/instructor assignment and certificate upload (Spatie MediaLibrary), interactive dashboards (Larapex Charts), CMS modules (agenda, pages, blog, gallery, files, tags, FAQ), and 41 repository classes.
           </>,
           <>
-            Built BLK Vocational Training Center Management System covering participant
-            management, instructor scheduling, class tracking, and an operational
-            monitoring dashboard.
+            Built Database Ansor Kaltim — 38-model organizational membership database for GP Ansor East Kalimantan: complete member management with multi-tab dynamic form (personal data, education, work, training, certificate history), QR-based attendance system (public scan + manual NIK, live count, Excel export), choropleth member map (Leaflet.js), hierarchical regional structure with cascading selects, 12 export sheets/3 importers with Excel templates, 7 roles/108 permissions, email verification, and dynamic organization structure.
+          </>,
+          <>
+            Stack: Laravel 10, Livewire 3, Spatie Permission/MediaLibrary/Tags, Maatwebsite Excel, endroid QR Code, Larapex Charts, NestedSet, Leaflet.js, AdminLTE.
           </>,
         ],
         images: [],

@@ -1,0 +1,35 @@
+---
+title: "BLK Information System — Vocational Training Center Management"
+publishedAt: "2025-10-01"
+summary: "Comprehensive management system for BLK (Balai Latihan Kerja) vocational training center built with Laravel 10. Features full RBAC with 108 permissions across 7 roles, participant management with multi-filter search, NIK validation, Excel export, class scheduling with instructor/curriculum assignment, certificate upload via Spatie Media Library, and interactive charts for training analytics."
+images: []
+team:
+  - name: "Andy Pratama"
+    role: "Fullstack Developer"
+    avatar: "/images/photo.jpg"
+    linkedIn: "https://www.linkedin.com/in/andypratama3"
+---
+
+## Overview
+
+Built a comprehensive BLK (Balai Latihan Kerja / Job Training Center) management system using Laravel 10 with Repository Pattern architecture. The system streamlines the entire training lifecycle — from participant enrollment and class management to instructor scheduling, certificate tracking, and operational analytics.
+
+## Key Features
+
+**Role-Based Access Control** — Implemented granular RBAC with Spatie Permission across all modules. Each module has separate view/manage permissions with middleware-level enforcement. 7 roles covering superadmin, admin, ketua, sekretaris, bendahara, staff, and member with 108 defined permissions.
+
+**Participant Management** — Advanced multi-filter search by skill category (kejuruan), curriculum, class, academic year, subdistrict (kecamatan), and village (kelurahan). NIK validation with duplicate checking. Full Excel export via Maatwebsite with comprehensive participant data.
+
+**Class & Curriculum Management** — Classes connected to curricula with instructor assignment, participant enrollment, and certificate upload via Spatie Media Library. Date range scheduling with Indonesian date format support.
+
+**Interactive Dashboard** — Real-time charts using Larapex Charts: participant distribution by curriculum (bar chart), participant breakdown by skill category (pie chart), and class analytics by curriculum. Key metrics displayed: total curricula, classes, instructors, participants, and users.
+
+**Supporting Modules** — Agenda management with categories, pages CMS for static content, blog with categories, gallery/media management, file management with categories, taggable system, FAQ categories with Q&A.
+
+## Technical Architecture
+
+Laravel 10 with Repository Pattern (41 repository classes), MySQL database with 29 models, Spatie packages for permission, media library, and slugs. InfyOm Laravel Generator for CRUD scaffolding. Larapex Charts for data visualization. Tailwind CSS for UI.
+
+## Technologies Used
+
+Laravel 10, PHP 8.1+, MySQL, Tailwind CSS, Spatie Permission/MediaLibrary/Sluggable, Larapex Charts, Maatwebsite Excel, InfyOm Laravel Generator, Laravel Breeze, Doctrine DBAL

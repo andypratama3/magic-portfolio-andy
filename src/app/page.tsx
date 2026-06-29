@@ -1,9 +1,15 @@
 import React from "react";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
-import { home, about, person, newsletter, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
+import { home, about, person, baseURL } from "@/resources";
 import { Projects } from "@/components/work/Projects";
+
+const metrics = [
+  { value: "70%+", label: "Performance Improvement" },
+  { value: "99.9%", label: "Uptime" },
+  { value: "52", label: "Production Modules" },
+  { value: "A+", label: "Security Rating" },
+];
 
 export default function Home() {
   return (
@@ -66,11 +72,28 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
+      <RevealFx translateY="12" delay={0.5}>
+        <Flex
+          fillWidth
+          gap="12"
+          wrap
+          horizontal="center"
+          paddingY="32"
+          paddingX="16"
+          style={{ borderTop: "1px solid var(--neutral-alpha-weak)", borderBottom: "1px solid var(--neutral-alpha-weak)" }}
+        >
+          {metrics.map((m) => (
+            <Flex key={m.label} direction="column" horizontal="center" flex={1} minWidth={120} padding="16" gap="4">
+              <Text variant="display-strong-l" onBackground="brand-strong">{m.value}</Text>
+              <Flex horizontal="center"><Text variant="body-default-s" onBackground="neutral-weak">{m.label}</Text></Flex>
+            </Flex>
+          ))}
+        </Flex>
+      </RevealFx>
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
       </RevealFx>
       <Projects range={[2]} />
-      {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );
 }

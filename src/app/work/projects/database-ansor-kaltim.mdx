@@ -1,0 +1,39 @@
+---
+title: "Database Ansor Kaltim — Organizational Membership System for GP Ansor East Kalimantan"
+publishedAt: "2025-09-01"
+summary: "Comprehensive organization membership database for GP Ansor East Kalimantan with 38 database models, complete member management with multi-tab dynamic form, QR-code based attendance, interactive choropleth member map, hierarchical regional structure, full import/export, role-based access with 7 roles and 108 permissions, email verification, and dynamic organization structure management."
+images: []
+team:
+  - name: "Andy Pratama"
+    role: "Fullstack Developer"
+    avatar: "/images/photo.jpg"
+    linkedIn: "https://www.linkedin.com/in/andypratama3"
+---
+
+## Overview
+
+Built a comprehensive organizational membership database system for GP Ansor East Kalimantan using Laravel 10 with Livewire 3. The system manages the full lifecycle of organization members with 38 database models, covering personal data, education history, work history, training records, certifications, organizational structure, activity management, and attendance tracking.
+
+## Key Features
+
+**Complete Member Management** — Multi-tab dynamic form covering 5 sections: personal data, education history (SD to S3), work history with company details, training history, and certificate history with PDF upload. Dynamic add/remove rows with auto-save relationships.
+
+**QR-Code Attendance System** — Dual-mode attendance: QR code scanning for events (public scan form + logged-in user processing) and manual NIK/Nomor Anggota entry. Each activity generates a unique QR code. Live attendance count display. Excel export for attendance records.
+
+**Interactive Choropleth Map** — Member distribution map per regency/city (kabupaten/kota) and per district (kecamatan) using Leaflet.js. Filter by organization structure level. API endpoints for map data with caching. Regional statistics.
+
+**Hierarchical Regional Structure** — Complete Indonesian administrative hierarchy: province → regency/city → district → village. Cascading select dropdowns with AJAX loading. Used for member addresses and organizational coverage.
+
+**Import/Export System** — 12 export sheets for comprehensive data export (members, education, work, training, certificates, organizational structure, regions). 3 importers with Excel template support: full member import with all history, and organizational structure import. Template download functionality.
+
+**Role-Based Access Control** — 7 roles with 108 permissions: superadmin (full access), admin (management without role/permission editing), ketua (member/activity/structure management), sekretaris (documents, posts, pages, agenda), bendahara (view & export), staff (basic viewing), member (minimal public access).
+
+**Content & Communication** — Pages CMS, blog with categories, agenda management, gallery, FAQ with categories, file management, panduan (guide) system, email verification for accounts. Profile management with avatar upload.
+
+## Technical Architecture
+
+Laravel 10 with Repository Pattern, Livewire 3 for dynamic UI, Spatie Permission for RBAC, Spatie MediaLibrary for file uploads, Spatie Tags for content tagging, Maatwebsite Excel for import/export, endroid QR Code for QR generation, NestedSet for hierarchical organization structure, Larapex Charts for analytics, SweetAlert for UX, Google reCAPTCHA for security, and Laravel Localization for multi-language support.
+
+## Technologies Used
+
+Laravel 10, PHP 8.1+, MySQL, Livewire 3, Spatie Permission/MediaLibrary/Tags, Maatwebsite Excel, endroid QR Code, Larapex Charts, SweetAlert, NestedSet, Captcha, Laravel Localization, Leaflet.js, AdminLTE

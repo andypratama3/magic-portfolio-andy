@@ -1,54 +1,121 @@
-/* :root {
-  /*
-  /* Example setup for custom colors */
-  /* Generate at: https://once-ui.com/customize */
-  /*
-  --scheme-brand-100: #08002f;
-  --scheme-brand-200:  #04025c;
-  --scheme-brand-300:  #1f398e;
-  --scheme-brand-400:  #3856ae;
-  --scheme-brand-500:  #5071cc;
-  --scheme-brand-600:  #6f94f1;
-  --scheme-brand-700:  #8db3ff;
-  --scheme-brand-800:  #b2dbff;
-  --scheme-brand-900:  #bfe8ff;
-  --scheme-brand-1000: #ccf6ff;
-  --scheme-brand-1100: #d2fcff;
-  --scheme-brand-1200: #d2fcff;
-  --scheme-brand-600-10: rgba(111,148,241,0.1);
-  --scheme-brand-600-30: rgba(111,148,241,0.3);
-  --scheme-brand-600-50: rgba(111,148,241,0.5);
+/* Custom brand palette — deep indigo/teal with warm amber accents */
+:root[data-theme="dark"],
+:root[data-theme="light"] {
+  --scheme-brand-100: #0a0a1a;
+  --scheme-brand-200: #0f0f2e;
+  --scheme-brand-300: #1a1a4e;
+  --scheme-brand-400: #2a2a6e;
+  --scheme-brand-500: #3b3b8e;
+  --scheme-brand-600: #4f4fb2;
+  --scheme-brand-700: #6b6bd6;
+  --scheme-brand-800: #8f8ff0;
+  --scheme-brand-900: #b0b0ff;
+  --scheme-brand-1000: #d0d0ff;
+  --scheme-brand-1100: #e0e0ff;
+  --scheme-brand-1200: #f0f0ff;
+  --scheme-brand-600-10: rgba(79, 79, 178, 0.1);
+  --scheme-brand-600-30: rgba(79, 79, 178, 0.3);
+  --scheme-brand-600-50: rgba(79, 79, 178, 0.5);
 
-  --scheme-accent-100:  #030b10;
-  --scheme-accent-200:  #0d181d;
-  --scheme-accent-300:  #364248;
-  --scheme-accent-400:  #505d64;
-  --scheme-accent-500:  #69777e;
-  --scheme-accent-600:  #8a989f;
-  --scheme-accent-700:  #a8b7bf;
-  --scheme-accent-800:  #c8d7df;
-  --scheme-accent-900:  #d5e4ec;
-  --scheme-accent-1000: #e2f1f9;
-  --scheme-accent-1100: #e9f8ff;
-  --scheme-accent-1200: #efffff;
-  --scheme-accent-600-10: rgba(138,152,159,0.1);
-  --scheme-accent-600-30: rgba(138,152,159,0.3);
-  --scheme-accent-600-50: rgba(138,152,159,0.5);
+  --scheme-accent-100: #1a0f00;
+  --scheme-accent-200: #2e1a00;
+  --scheme-accent-300: #4e2e00;
+  --scheme-accent-400: #6e4200;
+  --scheme-accent-500: #8e5600;
+  --scheme-accent-600: #b26e00;
+  --scheme-accent-700: #d68a00;
+  --scheme-accent-800: #f0a800;
+  --scheme-accent-900: #ffc04d;
+  --scheme-accent-1000: #ffd98a;
+  --scheme-accent-1100: #ffe8b3;
+  --scheme-accent-1200: #fff4d6;
+  --scheme-accent-600-10: rgba(178, 110, 0, 0.1);
+  --scheme-accent-600-30: rgba(178, 110, 0, 0.3);
+  --scheme-accent-600-50: rgba(178, 110, 0, 0.5);
+}
 
-  --scheme-neutral-100:  #020b10;
-  --scheme-neutral-200:  #0b181d;
-  --scheme-neutral-300:  #344248;
-  --scheme-neutral-400:  #4f5d64;
-  --scheme-neutral-500:  #68777e;
-  --scheme-neutral-600:  #89989f;
-  --scheme-neutral-700:  #a7b7be;
-  --scheme-neutral-800:  #c7d7df;
-  --scheme-neutral-900:  #d4e4ec;
-  --scheme-neutral-1000: #e1f2f9;
-  --scheme-neutral-1100: #e7f8ff;
-  --scheme-neutral-1200: #eeffff;
-  --scheme-neutral-600-10: rgba(137,152,159,0.1);
-  --scheme-neutral-600-30: rgba(137,152,159,0.3);
-  --scheme-neutral-600-50: rgba(137,152,159,0.5);
-  /*
-}*/
+/* Typography refinements */
+body {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom link hover effect */
+a:not([class]) {
+  text-decoration: none;
+  border-bottom: 1px solid var(--brand-on-background-weak);
+  transition: border-color 0.2s ease;
+}
+a:not([class]):hover {
+  border-bottom-color: var(--brand-on-background-strong);
+}
+
+/* Improve card appearance */
+article img {
+  border-radius: var(--radius-m);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+article img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Better list styling in articles */
+article ul,
+article ol {
+  padding-left: 1.5rem;
+}
+article li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+/* Table styling for case studies */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+article th,
+article td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--neutral-alpha-weak);
+}
+article th {
+  font-weight: 600;
+  background: var(--brand-alpha-weak);
+}
+
+/* Metrics highlight blocks */
+article blockquote {
+  border-left: 3px solid var(--accent-background-strong);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: var(--brand-alpha-weak);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Code block styling */
+pre {
+  border-radius: var(--radius-m);
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+code {
+  font-size: 0.85em;
+  padding: 0.15em 0.3em;
+  border-radius: 4px;
+  background: var(--brand-alpha-weak);
+}
+pre code {
+  background: none;
+  padding: 0;
+}
