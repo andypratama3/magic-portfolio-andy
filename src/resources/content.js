@@ -376,7 +376,20 @@ const about = {
             Stack: Laravel 10, Livewire 3, Spatie Permission/MediaLibrary/Tags, Maatwebsite Excel, endroid QR Code, Larapex Charts, NestedSet, Leaflet.js, AdminLTE.
           </>,
         ],
-        images: [],
+        images: [
+          {
+            src: "/images/projects/blk.jpeg",
+            alt: "BLK (Job Training Center) Management System — Participant, Class, and Instructor Management",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/db_ansor.jpeg",
+            alt: "Database Ansor Kaltim — Organizational Membership Database with QR Attendance",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
     ],
   },
