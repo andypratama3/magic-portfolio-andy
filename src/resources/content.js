@@ -634,30 +634,42 @@ const work = {
 
 const gallery = {
   path: "/gallery",
-  label: "Gallery",
-  title: `Gallery & Moments — Project Showcase by Andy Pratama`,
-  description: `Visual documentation, project screenshots, and memorable moments from ${person.name}'s professional journey as a fullstack developer. Features interface designs, dashboards, and project deliverables.`,
-  images: [
+  label: "Digital Products",
+  title: `Digital Products & Tools — Created by Andy Pratama`,
+  description: `Explore my premium digital products, including full-scale systems and tools ready to be deployed. Features comprehensive solutions like ProductSchool and ERP Systems.`,
+  items: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
+      src: "/images/projects/page-landing.png", // Or appropriate image
+      alt: "ProductSchool Management System",
       orientation: "horizontal",
+      title: "ProductSchool — Management System",
+      description: "An all-in-one school management system featuring student data management, automated billing, and a headless Next.js architecture.",
+      link: "/work/productschool"
     },
     {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
+      src: "/images/projects/karta1.png",
+      alt: "ERP System — Karta Spa",
       orientation: "horizontal",
+      title: "Enterprise Resource Planning (ERP)",
+      description: "Comprehensive ERP system designed for F&B and service industries. Includes real-time inventory management, RBAC, and automated payroll.",
+      link: "/work" // Link to the relevant project or live demo
     },
     {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
+      src: "/images/projects/sdmuhammadiyah3.jpeg",
+      alt: "School Billing System",
+      orientation: "horizontal",
+      title: "Automated Billing Module",
+      description: "Integrated Midtrans payment gateway for automated invoicing, QR-code generation, and payment tracking for educational institutions.",
+      link: "/work"
     },
     {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
+      src: "/images/projects/bappeda1.jpeg",
+      alt: "Government Portal Framework",
+      orientation: "horizontal",
+      title: "GovPortal CMS Framework",
+      description: "A secure, robust CMS framework built with Laravel 10, tailored for government agencies requiring strict security and data migration capabilities.",
+      link: "/work"
+    }
   ],
 };
 
