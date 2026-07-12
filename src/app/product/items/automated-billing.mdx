@@ -1,0 +1,75 @@
+---
+title: "School Management System — SD Muhammadiyah 3 Samarinda (v1)"
+publishedAt: "2025-01-01"
+summary: "Enterprise school management system serving 1,000+ students. Delivered 70% reduction in manual administrative workload, 40% faster page load times, 99.5% attendance system reliability, and Security Rating Grade A+ on two independent production environments."
+images:
+  - "/images/projects/sdmuhammadiyah3.jpeg"
+  - "/images/projects/sd3.png"
+  - "/images/projects/sd2.jpeg"
+  - "/images/projects/sd1.jpeg"
+team:
+  - name: "Andy Pratama"
+    role: "Tech Lead — Senior Fullstack Developer"
+    avatar: "/images/photo.jpg"
+    linkedIn: "https://www.linkedin.com/in/andypratama3"
+tech:
+  - "Laravel 10"
+  - "PHP 8.2"
+  - "MySQL"
+  - "Midtrans Gateway"
+  - "Tailwind CSS"
+  - "Blade Components"
+  - "Geofencing API"
+demo: "https://billing.demo.url"
+---
+
+## Overview
+
+Enterprise school management system built for SD Muhammadiyah 3 Samarinda using Laravel 10 as the full-stack framework with Blade Components and Tailwind CSS. The system handles academic management, digital payment processing, geofencing-based attendance, and a parent portal for 1,000+ students — replacing entirely manual administrative processes that previously consumed significant staff time each month.
+
+This version (v1) served as the production baseline before the full re-architecture to a headless Next.js 14 + Laravel 10 API stack in v2.
+
+## Quantified Results
+
+- **70% reduction** in manual administrative workload through automated monthly billing and invoice generation via Laravel Task Scheduler and Midtrans Payment Gateway
+- **40% improvement** in page load speed through N+1 query resolution, strategic API caching, and database indexing
+- **99.5% operational reliability** on the geofencing-based attendance system using Google Earth KML data across the full operational period
+- **70%+ parent adoption** of digital payment within the first month of launch
+- **Security Rating Grade A+** achieved through Nginx hardening, Cloudflare WAF configuration, and SSL/TLS optimization
+- **Zero critical bugs** reported in the production environment across the full operational period
+
+## Key Features
+
+**Authentication and Security**
+JWT authentication using HTTP-only cookies (HttpOnly, Secure, SameSite attributes) with granular Role-Based Access Control for 5+ user roles via Spatie Laravel Permission. CSRF and XSS protection on all form inputs, bcrypt password hashing, rate limiting on API endpoints, and multi-layer backend and frontend validation.
+
+**Automated Billing System**
+Monthly Virtual Account and QR-code invoice generation via Midtrans using Laravel Task Scheduler. Parents receive automated payment notifications and reminders via Meta WhatsApp Business API. The billing dashboard gives administrators real-time visibility into payment status across all students.
+
+**Geofencing Attendance**
+Location-based attendance system using Google Earth KML data to define allowed zones. Achieved 99.5% operational reliability. Integrates with the parent portal to provide real-time attendance visibility.
+
+**Parent Portal**
+NISN-based authentication with read-only access to student academic data, attendance records, payment history, and class schedules. Designed to improve school-parent communication without compromising data security.
+
+**Admin Dashboard**
+Comprehensive CRUD management for students, teachers, gallery, articles, facilities, payment tracking, and hero slider content. Automated grade promotion at end of academic year with data backup.
+
+## Technologies Used
+
+- **Backend:** Laravel 10, PHP 8, MySQL, Spatie Laravel Permission, Laravel Sanctum, Laravel Scheduler
+- **Frontend:** Blade Components, Tailwind CSS, Livewire, JavaScript, Vite
+- **Payments:** Midtrans Payment Gateway (Virtual Account and Snap UI)
+- **Integrations:** Meta WhatsApp Business API, Fingerspot Biometric, Google Earth KML
+- **Infrastructure:** Ubuntu VPS, Nginx, Cloudflare CDN and WAF, SSL/TLS, GitHub Actions
+- **Tools:** Git, GitHub, Figma, Postman
+
+## Technical Challenges
+
+The primary challenge was integrating multiple real-time systems — billing automation, attendance via geofencing, and WhatsApp notifications — into a single monolithic application that remained performant under concurrent load. N+1 query resolution and strategic API caching were critical to achieving acceptable page load times at scale.
+
+Implementing Midtrans Virtual Account generation as a scheduled task required careful handling of idempotency to prevent duplicate invoices in edge cases such as scheduler retries.
+
+## Outcome
+
+The system transformed a fully manual administrative process into a largely automated digital workflow. Staff time previously spent on billing, attendance recording, and parent communication was reduced significantly, allowing the school to redirect resources toward educational activities. The platform continues to operate in production and served as the foundation for the v2 re-architecture.

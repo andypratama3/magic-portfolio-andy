@@ -1,0 +1,93 @@
+---
+title: "Karta Spa — Integrated Spa and F&B Management System"
+publishedAt: "2024-11-01"
+summary: "Multi-tenant backend system for integrated Spa and Food & Beverage operations. Achieved 99% data accuracy across all modules. RBAC for 6 distinct user roles. Real-time inventory with recipe-based stock deduction. Automated payroll via Fingerspot biometric integration. Deployed to production."
+images:
+  - "/images/projects/karta2.png"
+  - "/images/projects/karta1.png"
+tech:
+  - "Laravel 11"
+  - "PHP 8.2"
+  - "MySQL"
+  - "Livewire"
+  - "Fingerspot Integration"
+  - "Tailwind CSS"
+  - "Bootstrap"
+demo: "https://erp.demo.url"
+---
+
+## Overview
+
+Enterprise management system built for Karta Spa covering fully integrated Spa service operations and Food & Beverage management. Designed as a multi-tenant backend using Laravel 11 with Livewire for real-time interactivity, the system digitizes all operational workflows — booking management, inventory tracking, financial reporting, biometric HR integration, and role-based access control — into a single platform deployed in a live production environment.
+
+The core engineering challenge was building a system accurate enough for financial reporting at 99% data integrity while remaining fast and usable by non-technical staff across six distinct operational roles.
+
+## Quantified Results
+
+- **99% data accuracy** across all financial and inventory modules through multi-layer validation and automated deduplication mechanisms
+- **6 distinct RBAC roles** with isolated dashboard views and access controls — admin, manager, cashier, GRO, kitchen staff, HRD
+- **Real-time inventory control** across multiple branches with automated low-stock alerts preventing stockouts
+- **Zero manual errors** on payroll calculation through automated integration with Fingerspot biometric attendance data
+- **Full audit trail** on all inventory movements — every stock change logged with timestamp, user, and transaction reference
+- **Deployed to production** and used in daily operations at Karta Spa
+
+## Key Features
+
+**Multi-Tenant Architecture**
+The backend supports branch-level operations with isolated inventory pools, separate financial reporting, and cross-branch analytics for management. Each branch operates independently while management has a unified view across all locations.
+
+**Spa Booking and Shift Management**
+Booking module manages service scheduling by shift, therapist availability, and room allocation. Status updates (booked, in-progress, completed, cancelled) trigger downstream processes — inventory deduction, therapist fee calculation, and financial ledger entries.
+
+**F&B Inventory with Recipe-Based Calculation**
+Food and beverage products are defined with ingredient recipes. When a product is sold, the system automatically deducts the corresponding quantities from raw material stock based on the recipe. This eliminates manual stock counting after every transaction and produces an accurate real-time picture of available ingredients.
+
+Low-stock alerts notify kitchen staff when any raw material falls below a configurable threshold, preventing service disruptions.
+
+**Comprehensive Financial Reporting**
+Daily and monthly reports covering:
+- Service revenue by therapist and category
+- Product sales by item and category
+- Therapist fee calculations (fixed and commission-based)
+- Operational cost tracking
+- Net revenue summaries
+
+All reports exportable for accounting integration.
+
+**RBAC for 6 Operational Roles**
+Built with Spatie Laravel Permission. Each role has a purpose-built dashboard view showing only the data and actions relevant to that role:
+- **Admin** — full system access, user management, configuration
+- **Manager** — reporting, staff oversight, inventory review
+- **Cashier** — transaction processing, payment handling
+- **GRO (Guest Relations Officer)** — booking management, guest communication
+- **Kitchen Staff** — F&B orders, ingredient availability
+- **HRD** — attendance records, payroll processing
+
+**Biometric HR Integration**
+Integration with Fingerspot biometric devices processes raw attendance data through a validation layer that handles edge cases (missed clock-in/out, overtime, shift boundaries) before feeding into the automated payroll calculation module. This eliminated the manual attendance reconciliation process that previously required significant HRD time each payroll cycle.
+
+**Payment Processing**
+Midtrans Snap integration for digital payment processing at point of sale. Supports multiple payment methods (credit card, bank transfer, e-wallet) with automatic transaction status synchronization.
+
+## Technologies Used
+
+- **Backend:** Laravel 11, PHP 8, MySQL, Spatie Laravel Permission, Laravel Eloquent ORM
+- **Frontend:** Livewire, Tailwind CSS, LarapexChart (data visualization)
+- **Payments:** Midtrans Snap
+- **Integrations:** Fingerspot Biometric API
+- **Tools:** Git, GitHub, Postman, MySQL Workbench
+
+## Technical Challenges
+
+**Recipe-Based Stock Deduction Accuracy**
+The F&B ingredient deduction system needed to handle partial quantities, unit conversions (grams to kilograms, pieces to packages), and concurrent transactions without race conditions. Implemented database-level transactions with pessimistic locking on inventory rows to ensure atomic stock updates under concurrent load.
+
+**Biometric Data Processing**
+Fingerspot devices output raw timestamp pairs that require interpretation — determining shift assignment, handling missed clock-out events, and calculating overtime correctly across shift boundaries. Built a configurable validation engine that processes raw biometric logs against shift schedules to produce clean attendance records before payroll calculation.
+
+**Multi-Layer Validation for 99% Data Accuracy**
+Achieving 99% data accuracy required validation at three layers: input validation at the form level, business rule validation at the service layer (e.g. cannot book a therapist already assigned to another session at the same time), and database-level constraints. Deduplication logic prevents duplicate transactions from network retries.
+
+## Outcome
+
+The system replaced a combination of spreadsheets and manual processes with an integrated digital platform that the Karta Spa team uses for daily operations. The 99% data accuracy metric is tracked internally through periodic reconciliation of system records against source transactions. The real-time inventory system eliminated several instances per week where service delivery was disrupted due to undetected stockouts.

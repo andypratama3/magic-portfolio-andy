@@ -644,7 +644,7 @@ const gallery = {
       orientation: "horizontal",
       title: "ProductSchool — Management System",
       description: "An all-in-one school management system featuring student data management, automated billing, and a headless Next.js architecture.",
-      link: "/work/productschool"
+      link: "/product/productschool"
     },
     {
       src: "/images/projects/karta1.png",
@@ -652,7 +652,7 @@ const gallery = {
       orientation: "horizontal",
       title: "Enterprise Resource Planning (ERP)",
       description: "Comprehensive ERP system designed for F&B and service industries. Includes real-time inventory management, RBAC, and automated payroll.",
-      link: "/work" // Link to the relevant project or live demo
+      link: "/product/erp-system" // Link to the relevant project or live demo
     },
     {
       src: "/images/projects/sdmuhammadiyah3.jpeg",
@@ -660,7 +660,7 @@ const gallery = {
       orientation: "horizontal",
       title: "Automated Billing Module",
       description: "Integrated Midtrans payment gateway for automated invoicing, QR-code generation, and payment tracking for educational institutions.",
-      link: "/work"
+      link: "/product/automated-billing"
     },
     {
       src: "/images/projects/bappeda1.jpeg",
@@ -668,7 +668,7 @@ const gallery = {
       orientation: "horizontal",
       title: "GovPortal CMS Framework",
       description: "A secure, robust CMS framework built with Laravel 10, tailored for government agencies requiring strict security and data migration capabilities.",
-      link: "/work"
+      link: "/product/govportal"
     }
   ],
 };

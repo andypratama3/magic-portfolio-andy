@@ -120,13 +120,13 @@ export const Header = () => {
                     prefixIcon="gallery"
                     href="/gallery"
                     label={gallery.label}
-                    selected={pathname.startsWith("/gallery")}
+                    selected={pathname.startsWith("/gallery") || pathname.startsWith("/product")}
                   />
                   <ToggleButton
                     className="s-flex-show"
                     prefixIcon="gallery"
                     href="/gallery"
-                    selected={pathname.startsWith("/gallery")}
+                    selected={pathname.startsWith("/gallery") || pathname.startsWith("/product")}
                   />
                 </>
               )}

@@ -1,0 +1,94 @@
+---
+title: "Bappeda East Kalimantan — Government Information System"
+publishedAt: "2024-12-01"
+summary: "Official information system for Bappeda Provinsi Kalimantan Timur. Delivered on time and within budget. Security Rating Grade A+ across two separate environments. Serving approximately 3,000 monthly visitors. Legacy database integrated with zero data loss. Full multilingual support without hardcoded translations."
+images:
+  - "/images/projects/bappeda1.jpeg"
+  - "/images/projects/bappeda2.jpeg"
+tech:
+  - "Laravel 10"
+  - "PHP 8.1"
+  - "PostgreSQL"
+  - "Tailwind CSS"
+  - "Cloudflare CDN/WAF"
+  - "Google Translate API"
+demo: "https://govportal.demo.url"
+---
+
+## Overview
+
+Official information system and public web portal for Bappeda Provinsi Kalimantan Timur (East Kalimantan Regional Development Planning Agency), the government body responsible for regional development planning across one of Indonesia's largest provinces.
+
+The project required integrating a complex legacy database, migrating historical data, building a dynamic content management system used by civil servants, and deploying with government-grade security — all within a tight contract timeline. The platform was delivered on time, within budget, and has served stable traffic since launch.
+
+## Quantified Results
+
+- **Delivered on time and within budget** — zero scope creep, active coordination with Department of Communication and Information Technology (Dinas Kominfo)
+- **Security Rating Grade A+** achieved on two separate environments through Nginx hardening, Cloudflare WAF, and SSL/TLS optimization
+- **Approximately 180 daily visitors, 3,000 monthly visitors, 11,000 annually** — stable traffic since launch
+- **Zero data loss** during legacy database integration and historical data migration via Laravel Seeders
+- **Multilingual content delivery** implemented without hardcoded translations — fully dynamic via Google Translate API
+- **Community Satisfaction Survey** module deployed and actively collecting public feedback
+
+## Key Features
+
+**Legacy Database Integration**
+The existing Bappeda database contained years of historical records in a schema incompatible with the new system. Mapped the legacy schema to the new data model, wrote Laravel Seeders for data migration, and validated migrated data against source records to ensure integrity. Zero data loss across the full migration.
+
+**Dynamic Content Management System**
+Multi-layer authorization system giving different civil servant roles different levels of CMS access. Content modules include:
+- Civil servant profiles (ASN) with organizational hierarchy
+- Resource directories (documents, publications, research)
+- Calendar-based event and agenda management
+- News and article publication with editorial workflow
+- Community Satisfaction Survey (SKM) — 10-question public survey with structured response collection and Excel export
+- Organizational structure: full unit profiles (Bidang, Subbidang) with key responsibilities and development agendas
+
+**Interactive Thematic Maps**
+Leaflet.js integration displays government planning data geographically:
+- Geological and land classification maps
+- Strategic development zone boundaries
+- Regional planning areas
+- Disaster mitigation and risk zones
+
+Maps are managed through the CMS — administrators can update map layers without developer involvement.
+
+**Multilingual Support**
+Google Translate API integration provides dynamic content translation across all CMS-managed content. Unlike hardcoded translation approaches, this system translates content at request time, meaning new content is immediately available in all supported languages without editorial overhead.
+
+**Security Implementation**
+Nginx security hardening including:
+- Security headers (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
+- CORS policy configuration restricting cross-origin requests
+- SSL/TLS optimization with HSTS enforcement
+- Rate limiting on form submission and API endpoints
+- Input validation and output encoding for XSS prevention
+
+Result: Security Rating Grade A+ on two separate environments (development and production).
+
+## Technologies Used
+
+- **Backend:** Laravel 11, PHP 8, MySQL, Spatie Laravel Permission
+- **Frontend:** Blade Components, Tailwind CSS, JavaScript
+- **Maps:** Leaflet.js (interactive geospatial visualization)
+- **Integrations:** Google Translate API (multilingual support)
+- **Design:** Figma (UI/UX design and stakeholder approval)
+- **Infrastructure:** Ubuntu VPS, Nginx, SSL/TLS, Cloudflare WAF
+- **Tools:** Git, GitHub, Postman, MySQL Workbench
+
+## Technical Challenges
+
+**Legacy Schema Complexity**
+The legacy database schema had evolved organically over many years with inconsistent naming conventions, denormalized structures, and missing referential integrity constraints. Mapping this to a clean normalized schema required extensive analysis before writing a single migration. Data validation scripts were run iteratively to identify and resolve inconsistencies before the final migration run.
+
+**Government Stakeholder Communication**
+Government contracts involve multiple approval layers. Features were demonstrated to Dinas Kominfo at defined milestones, with feedback incorporated between phases. Clear written change documentation was maintained throughout to prevent scope creep while accommodating legitimate requirement clarifications.
+
+**Balancing Public Access with CMS Security**
+The public-facing portal needed to be fast and accessible to all ages and technical abilities, while the CMS needed to be secure enough for government use. Achieved this through a strict separation of authentication contexts — unauthenticated public access for read-only content, multi-layer authenticated access for CMS functions — with no shared session state between the two.
+
+## Outcome
+
+The platform went live on schedule and has operated without significant incidents since launch. The Community Satisfaction Survey module is actively used for public feedback collection. The interactive map system gives the public and government planners a visual interface to regional planning data that was previously only available in document form.
+
+Delivering a government project on time and within scope — particularly one involving legacy data integration — requires disciplined project management as much as technical execution. This project demonstrated both.
