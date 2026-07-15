@@ -5,9 +5,9 @@ import { home, about, person, baseURL } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
 const metrics = [
-  { value: "70%+", label: "Performance Improvement" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "52", label: "Production Modules" },
+  { value: "70%+", label: "Admin Workload Reduction" },
+  { value: "4,400+", label: "Organic Impressions" },
+  { value: "99.9%", label: "System Uptime" },
   { value: "A+", label: "Security Rating" },
 ];
 

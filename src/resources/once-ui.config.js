@@ -1,7 +1,7 @@
 import { home } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://andypratama.vercel.app";
+const baseURL = "https://andypratama.studio";
 
 const routes = {
   "/": true,
@@ -186,6 +186,7 @@ const schema = {
 const sameAs = {
   github: "https://github.com/andypratama3",
   linkedin: "https://www.linkedin.com/in/andypratama3",
+  tiktok: "https://www.tiktok.com/@andypratama3_",
 };
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle };

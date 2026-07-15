@@ -49,12 +49,12 @@ export default async function RootLayout({
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://andypratama.vercel.app/" />
-        <link rel="alternate" hrefLang="id" href="https://andypratama.vercel.app/" />
-        <link rel="alternate" hrefLang="en" href="https://andypratama.vercel.app/" />
-        <link rel="alternate" hrefLang="x-default" href="https://andypratama.vercel.app/" />
+        <link rel="canonical" href="https://andypratama.studio/" />
+        <link rel="alternate" hrefLang="id" href="https://andypratama.studio/" />
+        <link rel="alternate" hrefLang="en" href="https://andypratama.studio/" />
+        <link rel="alternate" hrefLang="x-default" href="https://andypratama.studio/" />
         <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="pingback" href="https://andypratama.vercel.app/xmlrpc.php" />
+        <link rel="pingback" href="https://andypratama.studio/xmlrpc.php" />
         <meta name="format-detection" content="telephone=no" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <script
@@ -166,21 +166,22 @@ export default async function RootLayout({
                 '@graph': [
                   {
                     '@type': 'Person',
-                    '@id': 'https://andypratama.vercel.app/#person',
+                    '@id': 'https://andypratama.studio/#person',
                     name: 'Andy Pratama',
                     givenName: 'Andy',
                     familyName: 'Pratama',
-                    jobTitle: 'Senior Fullstack Developer & Tech Lead',
-                    description: 'Senior Fullstack Developer with 3+ years of professional experience specializing in Laravel 10+, Next.js 14+, React.js, and production-grade web systems.',
-                    url: 'https://andypratama.vercel.app',
+                    jobTitle: 'Software Engineer & SaaS Builder',
+                    description: 'Software Engineer & SaaS Builder specializing in automating businesses with Laravel, Next.js, and AI integrations.',
+                    url: 'https://andypratama.studio',
                     email: 'andypratama1211@gmail.com',
                     sameAs: [
                       'https://github.com/andypratama3',
                       'https://www.linkedin.com/in/andypratama3',
+                      'https://www.tiktok.com/@andypratama3_',
                     ],
                     image: {
                       '@type': 'ImageObject',
-                      url: 'https://andypratama.vercel.app/images/photo.jpg',
+                      url: 'https://andypratama.studio/images/photo.jpg',
                       width: 400,
                       height: 400,
                     },
@@ -224,10 +225,10 @@ export default async function RootLayout({
                   },
                   {
                     '@type': 'ProfessionalService',
-                    '@id': 'https://andypratama.vercel.app/#service',
+                    '@id': 'https://andypratama.studio/#service',
                     name: 'Andy Pratama - Fullstack Development Services',
                     description: 'Professional fullstack development services specializing in Laravel and Next.js for web systems, APIs, and enterprise applications.',
-                    url: 'https://andypratama.vercel.app',
+                    url: 'https://andypratama.studio',
                     email: 'andypratama1211@gmail.com',
                     serviceType: [
                       'Full-Stack Web Development',
@@ -264,23 +265,23 @@ export default async function RootLayout({
                     founder: {
                       '@type': 'Person',
                       name: 'Andy Pratama',
-                      url: 'https://andypratama.vercel.app',
+                      url: 'https://andypratama.studio',
                     },
                   },
                   {
                     '@type': 'WebSite',
-                    '@id': 'https://andypratama.vercel.app/#website',
-                    url: 'https://andypratama.vercel.app',
-                    name: 'Andy Pratama — Senior Fullstack Developer',
+                    '@id': 'https://andypratama.studio/#website',
+                    url: 'https://andypratama.studio',
+                    name: 'Andy Pratama — Software Engineer & SaaS Builder',
                     description: 'Professional portfolio, projects, and case studies of Andy Pratama, Senior Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems.',
-                    mainEntity: { '@id': 'https://andypratama.vercel.app/#person' },
-                    creator: { '@id': 'https://andypratama.vercel.app/#person' },
+                    mainEntity: { '@id': 'https://andypratama.studio/#person' },
+                    creator: { '@id': 'https://andypratama.studio/#person' },
                     inLanguage: 'en-US',
                     potentialAction: {
                       '@type': 'SearchAction',
                       target: {
                         '@type': 'EntryPoint',
-                        urlTemplate: 'https://andypratama.vercel.app/search?q={search_term_string}',
+                        urlTemplate: 'https://andypratama.studio/search?q={search_term_string}',
                       },
                       'query_input': 'required name=search_term_string',
                     },

@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Fullstack Developer — Laravel · Next.js · React.js · PHP 8",
+  role: "Software Engineer & SaaS Builder — Helping businesses automate with Laravel & Next.js",
   avatar: "/images/photo.jpg",
   email: "andypratama1211@gmail.com",
   location: "Asia/Jakarta",
@@ -37,6 +37,11 @@ const social = [
     link: "https://www.linkedin.com/in/andypratama3",
   },
   {
+    name: "TikTok",
+    icon: "tiktok",
+    link: "https://www.tiktok.com/@andypratama3_",
+  },
+  {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,
@@ -47,9 +52,9 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Andy Pratama — Senior Fullstack Developer (Laravel, Next.js, React)`,
+  title: `Andy Pratama — Software Engineer & SaaS Builder`,
   description:
-    "Portfolio of Andy Pratama — Senior Fullstack Developer with 3+ years specializing in Laravel 10+, Next.js 14+, React.js. Building production-grade web systems for education, government, and commercial sectors. Expert in API design, database optimization, DevOps, and security.",
+    "Andy Pratama is a Software Engineer and SaaS Builder specializing in automating businesses with Laravel, Next.js, and AI integrations. Over 3 years of experience building production-grade systems for education and government sectors.",
   headline: <>Andy Pratama</>,
   featured: {
     display: true,
@@ -65,10 +70,9 @@ const home = {
   },
   subline: (
     <>
-      Fullstack Developer with 3+ years of professional client work delivering
-      production-grade systems across education, government, and commercial sectors.
+      Software Engineer & SaaS Builder helping businesses automate operations and scale with modern web technology.
       <br />
-      I build systems that reduce manual work, stay secure, and perform at scale.
+      Specializing in Laravel, Next.js, and building production-grade systems that deliver measurable results.
     </>
   ),
 };
