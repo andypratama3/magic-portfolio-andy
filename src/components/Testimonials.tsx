@@ -23,13 +23,12 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
   return (
     <Column fillWidth gap="xl" marginY="xl">
       <Column fillWidth gap="m" horizontal="center" maxWidth="m">
-        <Heading variant="display-strong-m" horizontal="center">
+        <Heading variant="display-strong-m">
           {title}
         </Heading>
         <Text
           variant="body-default-l"
           onBackground="neutral-weak"
-          horizontal="center"
         >
           {description}
         </Text>
