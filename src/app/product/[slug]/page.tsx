@@ -45,8 +45,6 @@ export default async function Project({
   let posts = getPosts(["src", "app", "product", "items"]);
   let post = posts.find((post) => post.slug === slugPath);
 
-  console.log("DEBUG PRODUCT ROUTE - slugPath:", slugPath, "available:", posts.map(p => p.slug), "found:", !!post);
-
   if (!post) {
     notFound();
   }
@@ -123,7 +121,7 @@ export default async function Project({
         <Column flex={7} as="article" gap="16">
           {/* Pre-serialized HTML fallback to improve indexability for crawlers/AI */}
           {post.contentHtml && (
-            <details style={{ opacity: 0.5, fontSize: "0.85rem", marginBottom: "16px" }}>
+            <details style={{ opacity: 0.6, fontSize: "0.85rem", marginBottom: "16px" }}>
               <summary>Text version</summary>
               <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
             </details>
@@ -134,7 +132,7 @@ export default async function Project({
         {/* Sidebar Info Area */}
         <Column flex={4} gap="24" style={{ height: "fit-content", position: "sticky", top: "80px" }}>
           {/* Actions Card */}
-          <Column padding="24" radius="l" style={{ background: "rgba(255, 255, 255, 0.03)", border: "1px solid rgba(255, 255, 255, 0.08)", backdropFilter: "blur(8px)" }} gap="16">
+          <Column padding="24" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", backdropFilter: "blur(8px)" }} gap="16">
             <Text variant="heading-strong-xs">Get this Product</Text>
             <Text variant="body-default-s" onBackground="neutral-weak">
               Purchase a lifetime license or request custom implementation for this system.
@@ -167,7 +165,7 @@ export default async function Project({
 
           {/* Tech Stack Card */}
           {post.metadata.tech && post.metadata.tech.length > 0 && (
-            <Column padding="24" radius="l" style={{ background: "rgba(255, 255, 255, 0.03)", border: "1px solid rgba(255, 255, 255, 0.08)" }} gap="16">
+            <Column padding="24" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)" }} gap="16">
               <Text variant="heading-strong-xs">Technologies Used</Text>
               <Flex gap="8" wrap>
                 {post.metadata.tech.map((t, idx) => (
@@ -178,9 +176,9 @@ export default async function Project({
                       fontSize: "0.75rem", 
                       fontWeight: 600, 
                       padding: "6px 12px",
-                      background: "rgba(255,255,255,0.06)", 
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      color: "rgba(255,255,255,0.9)"
+                      background: "var(--brand-alpha-weak)", 
+                      border: "1px solid var(--brand-alpha-medium)",
+                      color: "var(--brand-on-background-strong)"
                     }}
                   >
                     {t}
@@ -191,7 +189,7 @@ export default async function Project({
           )}
 
           {/* Creator Info */}
-          <Column padding="24" radius="l" style={{ background: "rgba(255, 255, 255, 0.03)", border: "1px solid rgba(255, 255, 255, 0.08)" }} gap="12">
+          <Column padding="24" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)" }} gap="12">
             <Text variant="heading-strong-xs">Developer</Text>
             <Flex gap="12" vertical="center">
               {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
