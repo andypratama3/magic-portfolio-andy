@@ -33,13 +33,12 @@ export const CTASection: React.FC<CTASectionProps> = ({
       maxWidth="m"
     >
       <Column gap="m" horizontal="center">
-        <Heading variant="display-strong-m" horizontal="center">
+        <Heading variant="display-strong-m">
           {title}
         </Heading>
         <Text
           variant="body-default-l"
           onBackground="neutral-weak"
-          horizontal="center"
         >
           {description}
         </Text>
