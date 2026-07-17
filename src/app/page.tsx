@@ -87,7 +87,7 @@ export default function Home() {
               </Flex>
             </RevealFx>
           </Column>
-          <Column flex={1} horizontal="center" vertical="center" minWidth="200px">
+          <Column fitWidth horizontal="center" vertical="center" minWidth="200px">
             <Flex
               minWidth="280px"
               minHeight="280px"
