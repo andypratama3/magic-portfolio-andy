@@ -41,7 +41,7 @@ export default function Home() {
           )}
         </Column>
         <Flex fillWidth gap="l" horizontal="center" vertical="center" mobileDirection="column" paddingY="m">
-          <Column flex={1} gap="m" minWidth="200px">
+          <Column flex={1} gap="m" style={{ minWidth: '200px' }}>
             <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
               <Heading wrap="balance" variant="display-strong-l">
                 {home.headline}
@@ -87,23 +87,23 @@ export default function Home() {
               </Flex>
             </RevealFx>
           </Column>
-          <Column fitWidth horizontal="center" vertical="center" minWidth="200px">
+          <Column fitWidth horizontal="center" vertical="center" style={{ minWidth: '200px' }}>
             <Flex
-              minWidth="280px"
-              minHeight="280px"
-              maxWidth="320px"
-              maxHeight="320px"
               radius="xl"
               border="neutral-medium"
               overflow="hidden"
               style={{
+                minWidth: '280px',
+                minHeight: '280px',
+                maxWidth: '320px',
+                maxHeight: '320px',
                 boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
               }}
             >
               <Media
                 src={person.avatar}
                 alt={person.name}
-                sizes="320"
+                sizes="320px"
               />
             </Flex>
           </Column>
@@ -120,7 +120,7 @@ export default function Home() {
           style={{ borderTop: "1px solid var(--neutral-alpha-weak)", borderBottom: "1px solid var(--neutral-alpha-weak)" }}
         >
           {metrics.map((m) => (
-            <Flex key={m.label} direction="column" horizontal="center" flex={1} minWidth="120px" padding="16" gap="4">
+            <Flex key={m.label} direction="column" horizontal="center" flex={1} padding="16" gap="4" style={{ minWidth: '120px' }}>
               <Text variant="display-strong-l" onBackground="brand-strong">{m.value}</Text>
               <Flex horizontal="center"><Text variant="body-default-s" onBackground="neutral-weak">{m.label}</Text></Flex>
             </Flex>

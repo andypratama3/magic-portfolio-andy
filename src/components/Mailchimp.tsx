@@ -215,8 +215,8 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
                 onClick={() => toggleEngagement(opt)}
               >
                 <Checkbox 
-                  checked={engagementTypes.includes(opt)} 
-                  onChange={() => toggleEngagement(opt)} 
+                  isChecked={engagementTypes.includes(opt)} 
+                  onToggle={() => toggleEngagement(opt)} 
                 />
                 <Text variant="body-default-s">{opt}</Text>
               </Flex>
@@ -232,8 +232,8 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
 
           <Flex gap="8" horizontal="center" vertical="center" paddingTop="4" style={{ cursor: 'pointer' }} onClick={() => setSubscribe(s => !s)}>
             <Checkbox 
-              checked={subscribe} 
-              onChange={() => setSubscribe(s => !s)} 
+              isChecked={subscribe} 
+              onToggle={() => setSubscribe(s => !s)} 
             />
             <Text variant="body-default-s">Subscribe to updates</Text>
           </Flex>

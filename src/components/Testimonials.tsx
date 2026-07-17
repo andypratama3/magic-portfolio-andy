@@ -46,13 +46,12 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             key={index}
             className={styles.testimonialCard}
             flex={1}
-            minWidth="280px"
-            maxWidth="380px"
             padding="l"
             border="neutral-medium"
             radius="m"
             gap="m"
             background="surface"
+            style={{ minWidth: '280px', maxWidth: '380px' }}
           >
             {/* Quote */}
             <Text
@@ -76,11 +75,10 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             <Flex gap="m" vertical="center">
               {testimonial.image && (
                 <Flex
-                  minWidth="48px"
-                  minHeight="48px"
                   radius="m"
                   border="neutral-medium"
                   overflow="hidden"
+                  style={{ minWidth: '48px', minHeight: '48px' }}
                 >
                   <Media
                     src={testimonial.image}
