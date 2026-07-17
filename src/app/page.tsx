@@ -1,8 +1,10 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
-import { home, about, person, baseURL } from "@/resources";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema, Media } from "@once-ui-system/core";
+import { home, about, person, baseURL, testimonials } from "@/resources";
 import { Projects } from "@/components/work/Projects";
+import { Testimonials } from "@/components/Testimonials";
+import { CTASection } from "@/components/CTASection";
 
 const metrics = [
   { value: "70%+", label: "Admin Workload Reduction" },
@@ -28,7 +30,7 @@ export default function Home() {
         }}
       />
       <Column fillWidth paddingY="24" gap="m">
-        <Column maxWidth="s">
+      <Column maxWidth="s">
           {home.featured.display && (
           <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
             <Badge background="brand-alpha-weak" paddingX="12" paddingY="4" onBackground="neutral-strong" textVariant="label-default-s" arrow={false}
@@ -37,40 +39,75 @@ export default function Home() {
             </Badge>
           </RevealFx>
           )}
-          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
-            </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
-          </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Flex gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Flex>
-            </Button>
-          </RevealFx>
         </Column>
+        <Flex fillWidth gap="l" horizontal="center" vertical="center" mobileDirection="column" paddingY="m">
+          <Column flex={1} gap="m" minWidth={200}>
+            <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
+              <Heading wrap="balance" variant="display-strong-l">
+                {home.headline}
+              </Heading>
+            </RevealFx>
+            <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
+              <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+                {home.subline}
+              </Text>
+            </RevealFx>
+            <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
+              <Flex gap="m" wrap>
+                <Button
+                  id="about"
+                  data-border="rounded"
+                  href={about.path}
+                  variant="secondary"
+                  size="m"
+                  weight="default"
+                  arrowIcon
+                >
+                  <Flex gap="8" vertical="center" paddingRight="4">
+                    {about.avatar.display && (
+                      <Avatar
+                        marginRight="8"
+                        style={{ marginLeft: "-0.75rem" }}
+                        src={person.avatar}
+                        size="m"
+                      />
+                    )}
+                    {about.title}
+                  </Flex>
+                </Button>
+                <Button
+                  href="https://cal.com/andypratama"
+                  variant="primary"
+                  size="m"
+                  weight="default"
+                  arrowIcon
+                >
+                  Let's Build Together
+                </Button>
+              </Flex>
+            </RevealFx>
+          </Column>
+          <Column flex={1} horizontal="center" vertical="center" minWidth={200}>
+            <Flex
+              minWidth={280}
+              minHeight={280}
+              maxWidth={320}
+              maxHeight={320}
+              radius="xl"
+              border="neutral-medium"
+              overflow="hidden"
+              style={{
+                boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
+              }}
+            >
+              <Media
+                src={person.avatar}
+                alt={person.name}
+                sizes="320"
+              />
+            </Flex>
+          </Column>
+        </Flex>
       </Column>
       <RevealFx translateY="12" delay={0.5}>
         <Flex
@@ -93,7 +130,24 @@ export default function Home() {
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
       </RevealFx>
+      {testimonials.display && (
+        <Testimonials
+          title={testimonials.title}
+          description={testimonials.description}
+          items={testimonials.items}
+        />
+      )}
       <Projects range={[2]} />
+      <RevealFx translateY="20" delay={0.8}>
+        <CTASection
+          title="Ready to Transform Your Business?"
+          description="Let's discuss how I can help you build scalable systems that automate operations and drive growth."
+          primaryButtonText="Schedule a Consultation"
+          primaryButtonHref="https://cal.com/andypratama"
+          secondaryButtonText="View My Work"
+          secondaryButtonHref="/work"
+        />
+      </RevealFx>
     </Column>
   );
 }

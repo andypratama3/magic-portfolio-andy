@@ -80,8 +80,8 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About Andy Pratama — Senior Fullstack Developer & Tech Lead`,
-  description: `Senior Fullstack Developer based in Samarinda, Indonesia with 3+ years of professional experience. Specialized in Laravel 10+, Next.js 14+, React.js, REST API development, database design, cloud infrastructure (Cloudflare, AWS), and system architecture. Led multiple production projects for educational institutions and government agencies.`,
+  title: `About Andy Pratama — Software Engineer & SaaS Builder`,
+  description: `Software Engineer & SaaS Builder based in Samarinda, Indonesia with 3+ years of professional experience. Specializing in Laravel 10+, Next.js 14+, React.js, REST API development, and building scalable systems that automate business operations.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -98,25 +98,14 @@ const about = {
     title: "About",
     description: (
       <>
-        I am a Fullstack Developer based in Samarinda, Indonesia, with 3+ years of
-        professional client work building production-grade web applications across
-        education, government, e-commerce, and service management sectors. My coding
-        foundation was built through formal vocational training (SMK TI Airlangga,
-        2019–2022) and has been developed continuously through real-world client
-        engagements since 2023.
+        I'm a Software Engineer & SaaS Builder based in Samarinda, Indonesia, with 3+ years of
+        professional experience building production-grade web systems that help businesses automate operations and scale.
         <br />
         <br />
-        My core stack is Laravel 10 on the backend and Next.js 14 with React.js on
-        the frontend, deployed on Cloudflare edge infrastructure with full DevOps
-        pipelines. I have delivered measurable results across every project I have
-        worked on: 70% reduction in administrative workload, 40% faster page load
-        times, Security Rating Grade A+ on two independent production environments,
-        and 99.9% uptime on Cloudflare edge infrastructure.
+        My expertise spans full-stack development with Laravel 10, Next.js 14, and React.js, deployed on Cloudflare edge infrastructure with complete DevOps pipelines. I've consistently delivered measurable results: 70% reduction in administrative workload, 40% faster page load times, Security Rating Grade A+, and 99.9% uptime across production environments.
         <br />
         <br />
-        I am open to full-time remote roles, contract engagements, and freelance
-        projects. I work well asynchronously and am available for overlap with EU
-        (CET) and US (EST, PST) teams from UTC+7.
+        I'm available for full-time remote roles, contract engagements, and freelance projects. I work well asynchronously and am available for overlap with EU (CET) and US (EST, PST) teams from UTC+7.
       </>
     ),
   },
@@ -677,4 +666,30 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, work, gallery };
+const testimonials = {
+  display: true,
+  title: "What Clients Say",
+  description: "Trusted by educational institutions, government agencies, and businesses to deliver production-grade systems.",
+  items: [
+    {
+      name: "SD Muhammadiyah 3 Samarinda",
+      role: "School Administration",
+      content: "Andy transformed our school management system with a modern architecture. The new system reduced our administrative workload by 70% and improved student data accuracy significantly.",
+      image: "/images/projects/sdmuhammadiyah3.jpeg",
+    },
+    {
+      name: "Bappeda East Kalimantan",
+      role: "Government Agency",
+      content: "Professional development and on-time delivery. The security implementation and multilingual support exceeded our expectations. Highly recommended for government projects.",
+      image: "/images/projects/bappeda1.jpeg",
+    },
+    {
+      name: "Karta Spa Management",
+      role: "Business Operations",
+      content: "The ERP system Andy built streamlined our entire operation. Real-time inventory management and automated payroll saved us countless hours every month.",
+      image: "/images/projects/karta1.png",
+    },
+  ],
+};
+
+export { person, social, newsletter, home, about, work, gallery, testimonials };

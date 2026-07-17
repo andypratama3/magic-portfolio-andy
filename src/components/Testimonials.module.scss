@@ -1,0 +1,26 @@
+.testimonialCard {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-background-strong), var(--accent-background-strong));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-alpha-medium);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
