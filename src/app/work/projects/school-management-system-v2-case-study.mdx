@@ -102,13 +102,13 @@ I led a complete re-architecture to a **headless Next.js 14 + Laravel 10 API** s
 
 ### Frontend Stack
 
-```typescript
-// Next.js 14 with TypeScript
-- React 18 Server Components
-- Tailwind CSS for responsive design
-- SWR for client-side data fetching and caching
-- React Hook Form for form management
-- Zustand for state management
+```text
+Next.js 14 with TypeScript
+React 18 Server Components
+Tailwind CSS for responsive design
+SWR for client-side data fetching and caching
+React Hook Form for form management
+Zustand for state management
 ```
 
 **Performance Optimizations**
@@ -120,17 +120,17 @@ I led a complete re-architecture to a **headless Next.js 14 + Laravel 10 API** s
 
 ### Backend Stack
 
-```php
-// Laravel 10 REST API
-- PHP 8.3 with strict types
-- MySQL for primary data store
-- Redis for caching and queues
-- Sanctum for API authentication
-- Spatie Permission for RBAC
+```text
+Laravel 10 REST API
+PHP 8.3 with strict types
+MySQL for primary data store
+Redis for caching and queues
+Sanctum for API authentication
+Spatie Permission for RBAC
 ```
 
 **API Endpoints** (Sample)
-```
+```text
 GET    /api/v1/students
 POST   /api/v1/invoices
 GET    /api/v1/schedules
@@ -140,7 +140,7 @@ POST   /api/v1/notifications/whatsapp
 ### Infrastructure
 
 **Deployment Pipeline**
-```
+```text
 GitHub → GitHub Actions → Build & Test → Deploy to Cloudflare Pages
                                        ↓
                           Deploy Backend to VPS
@@ -249,7 +249,7 @@ $students = Student::with('invoices', 'attendance')
 ### 3. Security Implementation
 
 **Authentication Flow**
-```
+```text
 1. User logs in → Laravel API validates credentials
 2. API returns JWT token
 3. Token stored in HTTP-only cookie (HttpOnly, Secure, SameSite)
