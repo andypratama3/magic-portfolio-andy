@@ -188,12 +188,12 @@ GitHub → GitHub Actions → Build & Test → Deploy to Cloudflare Pages
 
 ## Technical Deep Dives
 
-### 1. Automated Billing System
+### Automated Billing System
 
 **Problem**: Manual invoice generation for 1,000+ students every month
 
 **Solution**:
-```php
+```text
 // Laravel Scheduler (runs daily at 2 AM)
 Schedule::call(function () {
     BillingService::generateMonthlyInvoices();
@@ -210,10 +210,10 @@ Schedule::call(function () {
 
 **Result**: 98% WhatsApp delivery rate, zero manual billing errors
 
-### 2. Performance Optimization
+### Performance Optimization
 
 **Image Optimization**
-```typescript
+```text
 // Next.js Image Component
 <Image
   src="/images/student.jpg"
@@ -230,7 +230,7 @@ Schedule::call(function () {
 - ~60% file size reduction
 
 **Code Splitting**
-```typescript
+```text
 // Dynamic imports for non-critical components
 const AdminPanel = dynamic(() => import('./AdminPanel'), {
   loading: () => <Skeleton />,
@@ -239,14 +239,14 @@ const AdminPanel = dynamic(() => import('./AdminPanel'), {
 ```
 
 **Database Optimization**
-```php
+```text
 // Eager loading to eliminate N+1 queries
 $students = Student::with('invoices', 'attendance')
     ->where('school_id', $schoolId)
     ->get();
 ```
 
-### 3. Security Implementation
+### Security Implementation
 
 **Authentication Flow**
 ```text
@@ -268,7 +268,7 @@ Strict-Transport-Security: max-age=31536000
 
 **Result**: Security Rating Grade A+ (Cloudflare WAF + custom ruleset)
 
-### 4. SEO Architecture
+### SEO Architecture
 
 **Schema.org Structured Data**
 ```json
@@ -287,7 +287,7 @@ Strict-Transport-Security: max-age=31536000
 ```
 
 **Dynamic Meta Tags**
-```typescript
+```text
 export const metadata = {
   title: `${page.title} | SD Muhammadiyah 3`,
   description: page.description,
@@ -331,7 +331,7 @@ export const metadata = {
 **Problem**: 1,000+ notifications during billing cycle → API rate limits
 
 **Solution**:
-```php
+```text
 // Queue-based notification dispatch
 WhatsAppNotification::dispatch($student)
     ->onQueue('notifications')
