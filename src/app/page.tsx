@@ -7,10 +7,10 @@ import { Testimonials } from "@/components/Testimonials";
 import { CTASection } from "@/components/CTASection";
 
 const metrics = [
-  { value: "70%+", label: "Admin Workload Reduction" },
-  { value: "4,400+", label: "Organic Impressions" },
-  { value: "99.9%", label: "System Uptime" },
+  { value: "70%+", label: "Faster Page Loads" },
+  { value: "90+", label: "Lighthouse Score" },
   { value: "A+", label: "Security Rating" },
+  { value: "52", label: "Production Modules" },
 ];
 
 export default function Home() {

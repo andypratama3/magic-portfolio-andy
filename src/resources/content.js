@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Software Engineer & SaaS Builder — Helping businesses automate with Laravel & Next.js",
+  role: "Fullstack Developer — Laravel & Next.js Specialist",
   avatar: "/images/photo.jpg",
   email: "andypratama1211@gmail.com",
   location: "Asia/Jakarta",
@@ -52,9 +52,9 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Andy Pratama — Software Engineer & SaaS Builder`,
+  title: `Andy Pratama — Fullstack Developer`,
   description:
-    "Andy Pratama is a Software Engineer and SaaS Builder specializing in automating businesses with Laravel, Next.js, and AI integrations. Over 3 years of experience building production-grade systems for education and government sectors.",
+    "Andy Pratama is a Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems. 3+ years building scalable applications for education, government, and commercial sectors.",
   headline: <>Andy Pratama</>,
   featured: {
     display: true,
@@ -70,9 +70,9 @@ const home = {
   },
   subline: (
     <>
-      Software Engineer & SaaS Builder helping businesses automate operations and scale with modern web technology.
+      Fullstack Developer specializing in Laravel & Next.js, building production-grade systems that deliver measurable results.
       <br />
-      Specializing in Laravel, Next.js, and building production-grade systems that deliver measurable results.
+      3+ years of experience across education, government, and commercial sectors.
     </>
   ),
 };
@@ -80,8 +80,8 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About Andy Pratama — Software Engineer & SaaS Builder`,
-  description: `Software Engineer & SaaS Builder based in Samarinda, Indonesia with 3+ years of professional experience. Specializing in Laravel 10+, Next.js 14+, React.js, REST API development, and building scalable systems that automate business operations.`,
+  title: `About Andy Pratama — Fullstack Developer`,
+  description: `Fullstack Developer based in Samarinda, Indonesia with 3+ years of hands-on experience building production-grade web systems. Specializing in Laravel 10+, Next.js 14+, React.js, REST API development, and scalable architectures.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -98,14 +98,14 @@ const about = {
     title: "About",
     description: (
       <>
-        I'm a Software Engineer & SaaS Builder based in Samarinda, Indonesia, with 3+ years of
-        professional experience building production-grade web systems that help businesses automate operations and scale.
+        I'm a Fullstack Developer based in Samarinda, Indonesia, with 3+ years of
+        hands-on experience building production-grade web systems across education, government, and commercial sectors.
         <br />
         <br />
-        My expertise spans full-stack development with Laravel 10, Next.js 14, and React.js, deployed on Cloudflare edge infrastructure with complete DevOps pipelines. I've consistently delivered measurable results: 70% reduction in administrative workload, 40% faster page load times, Security Rating Grade A+, and 99.9% uptime across production environments.
+        My expertise spans full-stack development with Laravel 10-12, Next.js 14, and React.js, deployed on Cloudflare edge infrastructure with CI/CD pipelines. I've delivered measurable results: 70%+ faster page loads, Security Grade A+, and RBAC systems with 380+ permissions.
         <br />
         <br />
-        I'm available for full-time remote roles, contract engagements, and freelance projects. I work well asynchronously and am available for overlap with EU (CET) and US (EST, PST) teams from UTC+7.
+        I'm available for full-time remote roles, contract engagements, and freelance projects.
       </>
     ),
   },
@@ -116,35 +116,20 @@ const about = {
       {
         company: "SD Muhammadiyah 3 Samarinda",
         timeframe: "06/2025 – 06/2026",
-        role: "Tech Lead — Senior Fullstack Developer (v2 Headless Architecture) [Freelance]",
+        role: "Fullstack Developer (Freelance)",
         achievements: [
           <>
-            Led full re-architecture from monolithic Laravel 10 Blade (v1) to headless
-            Next.js 14 + Laravel 10 REST API (v2), reducing page load time from 3–5
-            seconds to under 1 second — a 70%+ improvement.
+            Led full re-architecture from monolithic Laravel Blade to headless
+            Next.js 14 + Laravel REST API — 52 modules, ~79K LOC, page load from 3-5s to under 1s (70%+ improvement).
           </>,
           <>
-            Achieved 90+ Lighthouse Score across Performance, Accessibility, SEO, and
-            Best Practices. Deployed on Cloudflare Pages with 200+ global CDN locations
-            and 99.9% uptime.
+            Designed RBAC with 16 user roles, ~380 permissions, and data-level scoping (TeacherScopedData trait).
           </>,
           <>
-            Implemented SEO architecture (Schema.org, SSG/ISR, sitemap, Open Graph)
-            generating 4,471 organic search impressions, 167 clicks, 3.5% CTR, and
-            average position 5.9 within 3 months post-launch.
+            Integrated Claude API for automated report card narratives and Meta WhatsApp Cloud API for real-time notifications — 98% delivery rate.
           </>,
           <>
-            Integrated Meta WhatsApp Business API for automated payment notifications
-            with 98% delivery rate and monthly billing reminders via Laravel Queue.
-          </>,
-          <>
-            Achieved Security Rating Grade A+ through Cloudflare WAF, Content Security
-            Policy headers, CSRF/XSS protection, rate limiting, and SSL/TLS hardening.
-            Zero security incidents since launch.
-          </>,
-          <>
-            Increased digital payment adoption to 70%+ and reduced manual administrative
-            workload by 60% through automated billing, attendance, and scheduling workflows.
+            Achieved 90+ Lighthouse scores, Security Grade A+, CI/CD via GitHub Actions (Pint, PHPStan, Paratest, Sentry).
           </>,
         ],
         images: [
@@ -175,103 +160,27 @@ const about = {
         ],
       },
       {
-        company: "SD Muhammadiyah 3 Samarinda",
-        timeframe: "11/2023 – 05/2025",
-        role: "Tech Lead — Senior Fullstack Developer (v1 Laravel Monolithic)",
+        company: "CV Beesoft Research & Technology (Britech)",
+        timeframe: "07/2025 – 10/2025",
+        role: "Fullstack Developer (Internship — Freelance Contract)",
         achievements: [
           <>
-            Designed and built the initial school management system using Laravel 10 Blade
-            and Tailwind CSS, serving 1,000+ students. Reduced manual administrative
-            workload by 70% through automated monthly billing via Laravel Task Scheduler
-            and Midtrans Payment Gateway.
+            Delivered 2 production systems: Ansor Kaltim membership database (38 models, QR attendance, Leaflet.js choropleth map) and BLK training center management.
           </>,
           <>
-            Automated school billing: generated Virtual Account and QR-code invoices per
-            student monthly with approximately 100% processing accuracy. Integrated Midtrans
-            Snap UI for parent-facing payment flow.
-          </>,
-          <>
-            Deployed geofencing-based attendance system using Google Earth KML data,
-            achieving 99.5% operational reliability across the full operational period.
-          </>,
-          <>
-            Optimized application performance via N+1 query resolution, strategic API
-            caching, and database indexing — 40% improvement in page load speed.
-          </>,
-          <>
-            Built JWT authentication using HTTP-only cookies (HttpOnly, Secure, SameSite)
-            with granular RBAC for 5+ user roles via Spatie Laravel Permission. Achieved
-            Security Rating Grade A+ through Nginx hardening and Cloudflare WAF.
-          </>,
-          <>
-            Mentored junior developers on security practices, code review standards, SOLID
-            principles, and architectural design patterns.
+            Built RBAC with 7 roles, 108 permissions, multi-tab forms, Excel import/export, and full CMS.
           </>,
         ],
         images: [
           {
-            src: "/images/projects/sdmuhammadiyah3.jpeg",
-            alt: "School Management System v1 — Main Dashboard",
+            src: "/images/projects/blk.jpeg",
+            alt: "BLK (Job Training Center) Management System",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/sd1.jpeg",
-            alt: "Student Billing and Payment List",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/sd2.jpeg",
-            alt: "Complete Student Data Management",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/sd3.png",
-            alt: "School News and Article Module",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Karta Spa",
-        timeframe: "06/2024 – 11/2024",
-        role: "Backend Solution Architect (Freelance)",
-        achievements: [
-          <>
-            Designed scalable multi-tenant backend for integrated Spa and F&B operations
-            using Laravel 11 with Repository Pattern and SOLID principles, supporting
-            branch-level operations across multiple locations.
-          </>,
-          <>
-            Built real-time inventory management with recipe-based ingredient deduction
-            per F&B transaction, automated stock alerts when materials fall below threshold,
-            and branch-level inventory control. Achieved 99% data accuracy through
-            multi-layer validation and deduplication.
-          </>,
-          <>
-            Implemented RBAC for 6 distinct operational roles — admin, manager, cashier,
-            GRO, kitchen staff, HRD — using Spatie Laravel Permission, each with a
-            purpose-built dashboard view.
-          </>,
-          <>
-            Integrated Fingerspot biometric HR system: processed raw attendance data
-            through a validation engine for shift assignment, overtime calculation, and
-            automated payroll — eliminating manual HRD reconciliation each pay cycle.
-          </>,
-        ],
-        images: [
-          {
-            src: "/images/projects/karta1.png",
-            alt: "Karta Spa — Management Dashboard",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/karta2.png",
-            alt: "Karta Spa — Inventory and F&B Module",
+            src: "/images/projects/db_ansor.jpeg",
+            alt: "Database Ansor Kaltim — Organizational Membership Database",
             width: 16,
             height: 9,
           },
@@ -280,27 +189,16 @@ const about = {
       {
         company: "Bappeda — East Kalimantan Provincial Government",
         timeframe: "11/2024 – 12/2024",
-        role: "Senior Fullstack Developer (Government Contract)",
+        role: "Fullstack Developer (Freelance — Government Contract)",
         achievements: [
           <>
-            Led technical development of the official Bappeda government portal using
-            Laravel 10, including legacy database integration and zero-loss historical
-            data migration via Laravel Seeders. Delivered on time and within budget.
+            Built official provincial government web portal with zero-loss legacy database migration via Laravel Seeders.
           </>,
           <>
-            Built multilingual content delivery system using Google Translate API —
-            fully dynamic, no hardcoded translations — enabling content internationalization
-            without developer intervention.
+            Dynamic multilingual CMS using Google Translate API — no hardcoded translations, multi-layer authorization.
           </>,
           <>
-            Achieved Security Rating Grade A+ on two independent environments through
-            Nginx security hardening, CORS policy, Content Security Policy headers,
-            and SSL/TLS optimization.
-          </>,
-          <>
-            Platform serves approximately 180 daily visitors and 3,000 monthly visitors
-            with stable performance since launch. Community Satisfaction Survey (SKM)
-            module actively collecting public feedback.
+            Security Grade A+ via Nginx hardening, CORS policy, SSL/TLS optimization; serves ~3,000 monthly visitors.
           </>,
         ],
         images: [
@@ -319,70 +217,48 @@ const about = {
         ],
       },
       {
+        company: "Karta Spa",
+        timeframe: "06/2024 – 11/2024",
+        role: "Backend Developer (Freelance)",
+        achievements: [
+          <>
+            Designed scalable multi-tenant backend for Spa & F&B across 3 branches — Laravel 10, Repository Pattern, SOLID.
+          </>,
+          <>
+            Real-time inventory with recipe-based ingredient deduction, RBAC for 6 operational roles, Fingerspot biometric HR integration.
+          </>,
+          <>
+            Achieved 99% data accuracy through multi-layer validation and automated stock reconciliation.
+          </>,
+        ],
+        images: [
+          {
+            src: "/images/projects/karta1.png",
+            alt: "Karta Spa — Management Dashboard",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/projects/karta2.png",
+            alt: "Karta Spa — Inventory and F&B Module",
+            width: 16,
+            height: 9,
+          },
+        ],
+      },
+      {
         company: "Koetai Mahkota Soundline",
         timeframe: "07/2023 – 08/2023",
         role: "Fullstack Developer (Freelance)",
         achievements: [
           <>
-            Built a complete event management and ticket sales platform using Laravel 10
-            within a 2-month timeline. Integrated Midtrans Payment Gateway with secure
-            transaction processing and admin dashboard with Excel export.
+            Built complete event management and ticket sales platform with Midtrans Payment Gateway (2-month timeline).
           </>,
           <>
-            Optimized checkout flow through UX improvements, resulting in a 45% increase
-            in online ticket sales. Delivered ahead of deadline with zero critical bugs
-            in the production environment.
+            UX optimization of checkout flow — 45% increase in online ticket sales, zero critical bugs in production.
           </>,
         ],
         images: [],
-      },
-      {
-        company: "Database Relawan MHF",
-        timeframe: "08/2023 – 10/2023",
-        role: "Fullstack Developer (Freelance)",
-        achievements: [
-          <>
-            Built a centralized volunteer database system using Laravel, reducing
-            duplicate data entries by 90% through NIK validation and TPS deduplication
-            logic applied at input level.
-          </>,
-          <>
-            Implemented real-time vote tally visualization by district with PDF and
-            Excel export. Supported data entry for thousands of volunteers across
-            multiple sub-districts.
-          </>,
-        ],
-        images: [],
-      },
-      {
-        company: "CV. Britech Samarinda",
-        timeframe: "07/2025 – 10/2025",
-        role: "Fullstack Developer (Internship)",
-        achievements: [
-          <>
-            Built BLK (Job Training Center) management system — Laravel 10 with Repository Pattern: RBAC (Spatie Permission, 108 permissions, 7 roles), participant management with multi-filter search, NIK validation, and Excel export, class management with curriculum/instructor assignment and certificate upload (Spatie MediaLibrary), interactive dashboards (Larapex Charts), CMS modules (agenda, pages, blog, gallery, files, tags, FAQ), and 41 repository classes.
-          </>,
-          <>
-            Built Database Ansor Kaltim — 38-model organizational membership database for GP Ansor East Kalimantan: complete member management with multi-tab dynamic form (personal data, education, work, training, certificate history), QR-based attendance system (public scan + manual NIK, live count, Excel export), choropleth member map (Leaflet.js), hierarchical regional structure with cascading selects, 12 export sheets/3 importers with Excel templates, 7 roles/108 permissions, email verification, and dynamic organization structure.
-          </>,
-          <>
-            Stack: Laravel 10, Livewire 3, Spatie Permission/MediaLibrary/Tags, Maatwebsite Excel, endroid QR Code, Larapex Charts, NestedSet, Leaflet.js, AdminLTE.
-          </>,
-        ],
-        images: [
-          {
-            src: "/images/projects/blk.jpeg",
-            alt: "BLK (Job Training Center) Management System — Participant, Class, and Instructor Management",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/db_ansor.jpeg",
-            alt: "Database Ansor Kaltim — Organizational Membership Database with QR Attendance",
-            width: 16,
-            height: 9,
-          },
-        ],
       },
     ],
   },
@@ -418,9 +294,9 @@ const about = {
         title: "Backend",
         description: (
           <>
-            Laravel 10/11, PHP 8, REST API, JWT Authentication, SOLID Principles,
-            Repository Pattern, MVC Architecture, RBAC, Laravel Sanctum, Laravel Queue,
-            Laravel Scheduler, Spatie Laravel Permission, Service Layer, API Versioning.
+            Laravel 10/11/12, PHP 8, REST API, JWT Authentication, SOLID Principles,
+            Repository Pattern, MVC Architecture, RBAC, Spatie Laravel Permission, Laravel Queue,
+            Laravel Scheduler, Service Layer, API Versioning.
           </>
         ),
         images: [
@@ -455,8 +331,7 @@ const about = {
         description: (
           <>
             Next.js 14 (App Router, SSR/SSG/ISR), React.js 18, TypeScript, JavaScript ES6+,
-            Tailwind CSS, Headless UI, SWR, Zustand, React Hook Form, Axios,
-            Vue.js, Alpine.js, Server Components.
+            Tailwind CSS, Headless UI, SWR, Zustand, Vue.js, Alpine.js, Server Components.
           </>
         ),
         images: [
@@ -509,8 +384,7 @@ const about = {
         description: (
           <>
             MySQL, PostgreSQL, Database Design, Query Optimization, Indexing Strategy,
-            N+1 Resolution, Eloquent ORM, Query Performance Tuning, Database Migration,
-            Eager Loading, Redis.
+            N+1 Resolution, Eloquent ORM, Database Migration, Redis.
           </>
         ),
         images: [
@@ -538,9 +412,8 @@ const about = {
         title: "DevOps and Cloud",
         description: (
           <>
-            Ubuntu VPS, Nginx, Docker, GitHub Actions, CI/CD Pipeline, AWS S3,
-            Cloudflare Pages, Cloudflare Workers, Cloudflare CDN and WAF,
-            Bitbucket Pipelines, Linux Server Administration, SSH.
+            Ubuntu VPS, Nginx, Docker, GitHub Actions CI/CD, AWS S3,
+            Cloudflare Pages/Workers/CDN/WAF, Linux Server Administration.
           </>
         ),
         images: [
@@ -574,23 +447,16 @@ const about = {
             width: 9,
             height: 9,
           },
-          {
-            src: "https://vitejs.dev/logo.svg",
-            alt: "Vite",
-            width: 9,
-            height: 9,
-          },
         ],
       },
       {
         title: "Security and Integrations",
         description: (
           <>
-            SSL/TLS Hardening, HTTP Cookie Security (HttpOnly, Secure, SameSite),
-            Content Security Policy, CORS Policy, Security Headers, Rate Limiting,
-            XSS and CSRF Protection. Integrations: Midtrans Payment Gateway,
-            Meta WhatsApp Business API, Google Translate API, Google Analytics,
-            Google Search Console, Fingerspot Biometric API, Leaflet.js.
+            SSL/TLS Hardening, HTTP Cookie Security, Content Security Policy,
+            CORS Policy, Security Headers, Rate Limiting, XSS and CSRF Protection.
+            Integrations: Midtrans Payment Gateway, Meta WhatsApp Business API,
+            Google Translate API, Claude AI, Fingerspot Biometric API, Leaflet.js.
           </>
         ),
         images: [

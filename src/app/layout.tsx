@@ -39,7 +39,7 @@ export default async function RootLayout({
       <head>
         <meta name="google-site-verification" content="4ycIf0n_hJhGXE5tc2Xv3OHLhUkIofJUSQkj0wsaUo8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="description" content="Portfolio of Andy Pratama — Senior Fullstack Developer with 3+ years specializing in Laravel 10+, Next.js 14+, React.js. Building production-grade web systems for education, government, and commercial sectors." />
+        <meta name="description" content="Portfolio of Andy Pratama — Fullstack Developer specializing in Laravel 10+, Next.js 14+, React.js. Building production-grade web systems for education, government, and commercial sectors." />
         <meta name="keywords" content="fullstack developer, Laravel, Next.js, React, PHP, TypeScript, web development, API design, Indonesia developer, remote developer" />
         <meta name="author" content="Andy Pratama" />
         <meta name="creator" content="Andy Pratama" />
@@ -170,8 +170,8 @@ export default async function RootLayout({
                     name: 'Andy Pratama',
                     givenName: 'Andy',
                     familyName: 'Pratama',
-                    jobTitle: 'Software Engineer & SaaS Builder',
-                    description: 'Software Engineer & SaaS Builder specializing in automating businesses with Laravel, Next.js, and AI integrations.',
+                    jobTitle: 'Fullstack Developer',
+                    description: 'Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems for education, government, and commercial sectors.',
                     url: 'https://andypratama.studio',
                     email: 'andypratama1211@gmail.com',
                     sameAs: [
@@ -272,8 +272,8 @@ export default async function RootLayout({
                     '@type': 'WebSite',
                     '@id': 'https://andypratama.studio/#website',
                     url: 'https://andypratama.studio',
-                    name: 'Andy Pratama — Software Engineer & SaaS Builder',
-                    description: 'Professional portfolio, projects, and case studies of Andy Pratama, Senior Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems.',
+                    name: 'Andy Pratama — Fullstack Developer',
+                    description: 'Professional portfolio, projects, and case studies of Andy Pratama, Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems.',
                     mainEntity: { '@id': 'https://andypratama.studio/#person' },
                     creator: { '@id': 'https://andypratama.studio/#person' },
                     inLanguage: 'en-US',
