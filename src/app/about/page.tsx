@@ -14,6 +14,7 @@ import {
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
+import { AboutClient } from "@/components/AboutClient";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -68,167 +69,200 @@ export default function About() {
       {about.tableOfContent.display && (
         <TableOfContents structure={structure} about={about} />
       )}
-      <Flex fillWidth mobileDirection="column" horizontal="center">
-        {about.avatar.display && (
-          <Column
-            className={styles.avatar}
-            position="sticky"
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="xl"
-            gap="m"
-            flex={3}
-            horizontal="center"
-          >
-            <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
-            </Flex>
-            {person.languages.length > 0 && (
-              <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag key={language} size="l">
-                    {language}
-                  </Tag>
-                ))}
-              </Flex>
-            )}
-          </Column>
-        )}
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
-          <Column
-            id={about.intro.title}
-            fillWidth
-            minHeight="160"
-            vertical="center"
-            marginBottom="32"
-          >
-            {about.calendar.display && (
-              <Flex
-                fitWidth
-                border="brand-alpha-medium"
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                vertical="center"
-              >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
-              </Flex>
-            )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
-              {person.name}
-            </Heading>
-            <Text
-              className={styles.textAlign}
-              variant="display-default-xs"
-              onBackground="neutral-weak"
+      <AboutClient>
+        <Flex fillWidth mobileDirection="column" horizontal="center">
+          {about.avatar.display && (
+            <Column
+              className={`${styles.avatar} animate-on-scroll`}
+              position="sticky"
+              minWidth="160"
+              paddingX="l"
+              paddingBottom="xl"
+              gap="m"
+              flex={3}
+              horizontal="center"
+              style={{
+                transition: 'all 0.6s cubic-bezier(0.32, 0.72, 0, 1)',
+              }}
             >
-              {person.role}
-            </Text>
-            {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
-                {social.map(
-                  (item) =>
-                    item.link && (
-                        <React.Fragment key={item.name}>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                weight="default"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </React.Fragment>
-                    ),
-                )}
+              <Avatar 
+                src={person.avatar} 
+                size="xl" 
+                style={{
+                  transition: 'transform 0.6s cubic-bezier(0.32, 0.72, 0, 1)',
+                }}
+                className="hover:scale-105"
+              />
+              <Flex gap="8" vertical="center">
+                <Icon onBackground="accent-weak" name="globe" />
+                {person.location}
               </Flex>
-            )}
-          </Column>
-
-          {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
+              {person.languages.length > 0 && (
+                <Flex wrap gap="8">
+                  {person.languages.map((language, index) => (
+                    <Tag 
+                      key={language} 
+                      size="l"
+                      style={{
+                        transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
+                      }}
+                      className="hover:scale-110 hover:bg-brand-alpha-medium"
+                    >
+                      {language}
+                    </Tag>
+                  ))}
+                </Flex>
+              )}
             </Column>
           )}
-
-          {about.work.display && (
-            <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
-                {about.work.title}
+          <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+            <Column
+              id={about.intro.title}
+              fillWidth
+              minHeight="160"
+              vertical="center"
+              marginBottom="32"
+            >
+              {about.calendar.display && (
+                <Flex
+                  fitWidth
+                  border="brand-alpha-medium"
+                  className={`${styles.blockAlign} animate-on-scroll hover:scale-105 hover:shadow-lg`}
+                  style={{
+                    backdropFilter: "blur(var(--static-space-1))",
+                    transition: 'all 0.6s cubic-bezier(0.32, 0.72, 0, 1)',
+                  }}
+                  background="brand-alpha-weak"
+                  radius="full"
+                  padding="4"
+                  gap="8"
+                  marginBottom="m"
+                  vertical="center"
+                >
+                  <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
+                  <Flex paddingX="8">Schedule a call</Flex>
+                  <IconButton
+                    href={about.calendar.link}
+                    data-border="rounded"
+                    variant="secondary"
+                    icon="chevronRight"
+                  />
+                </Flex>
+              )}
+              <Heading className={`${styles.textAlign} animate-on-scroll`} variant="display-strong-xl">
+                {person.name}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
-                      </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
-                      </Text>
-                    </Flex>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                      {experience.role}
-                    </Text>
-                    <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
-                        <Text
-                          as="li"
-                          variant="body-default-m"
-                          key={`${experience.company}-${index}`}
-                        >
-                          {achievement}
+              <Text
+                className={`${styles.textAlign} animate-on-scroll`}
+                variant="display-default-xs"
+                onBackground="neutral-weak"
+              >
+                {person.role}
+              </Text>
+              {social.length > 0 && (
+                <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
+                  {social.map(
+                    (item) =>
+                      item.link && (
+                          <React.Fragment key={item.name}>
+                              <Button
+                                  className="s-flex-hide hover:scale-105"
+                                  key={item.name}
+                                  href={item.link}
+                                  prefixIcon={item.icon}
+                                  label={item.name}
+                                  size="s"
+                                  weight="default"
+                                  variant="secondary"
+                                  style={{
+                                    transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
+                                  }}
+                              />
+                              <IconButton
+                                  className="s-flex-show hover:scale-110"
+                                  size="l"
+                                  key={`${item.name}-icon`}
+                                  href={item.link}
+                                  icon={item.icon}
+                                  variant="secondary"
+                                  style={{
+                                    transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
+                                  }}
+                              />
+                          </React.Fragment>
+                      ),
+                  )}
+                </Flex>
+              )}
+            </Column>
+
+            {about.intro.display && (
+              <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl" className="animate-on-scroll">
+                {about.intro.description}
+              </Column>
+            )}
+
+            {about.work.display && (
+              <>
+                <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m" className="animate-on-scroll">
+                  {about.work.title}
+                </Heading>
+                <Column fillWidth gap="l" marginBottom="40">
+                  {about.work.experiences.map((experience, index) => (
+                    <Column 
+                      key={`${experience.company}-${experience.role}-${index}`} 
+                      fillWidth
+                      className={`${styles.rowHover} animate-on-scroll`}
+                    >
+                      <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
+                        <Text id={experience.company} variant="heading-strong-l">
+                          {experience.company}
                         </Text>
-                      ))}
-                    </Column>
-                    {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
-                        {experience.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
+                        <Text variant="heading-default-xs" onBackground="neutral-weak">
+                          {experience.timeframe}
+                        </Text>
+                      </Flex>
+                      <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                        {experience.role}
+                      </Text>
+                      <Column as="ul" gap="16">
+                        {experience.achievements.map((achievement: JSX.Element, index: number) => (
+                          <Text
+                            as="li"
+                            variant="body-default-m"
+                            key={`${experience.company}-${index}`}
                           >
-                            <Media
-                              enlarge
+                            {achievement}
+                          </Text>
+                        ))}
+                      </Column>
+                      {experience.images.length > 0 && (
+                        <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
+                          {experience.images.map((image, index) => (
+                            <Flex
+                              key={index}
+                              border="neutral-medium"
                               radius="m"
                               //@ts-ignore
-                              sizes={image.width.toString()}
+                              minWidth={image.width}
                               //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
+                              height={image.height}
+                              style={{
+                                transition: 'all 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+                              }}
+                              className="hover:scale-105 hover:shadow-xl"
+                            >
+                              <Media
+                                enlarge
+                                radius="m"
+                                //@ts-ignore
+                                sizes={image.width.toString()}
+                                //@ts-ignore
+                                alt={image.alt}
+                                //@ts-ignore
+                                src={image.src}
+                              />
+                            </Flex>
                         ))}
                       </Flex>
                     )}
@@ -240,12 +274,17 @@ export default function About() {
 
           {about.studies.display && (
             <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m" className="animate-on-scroll">
                 {about.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
                 {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
+                  <Column 
+                    key={`${institution.name}-${index}`} 
+                    fillWidth 
+                    gap="4"
+                    className={`${styles.rowHover} animate-on-scroll`}
+                  >
                     <Text id={institution.name} variant="heading-strong-l">
                       {institution.name}
                     </Text>
@@ -265,12 +304,18 @@ export default function About() {
                 id={about.technical.title}
                 variant="display-strong-s"
                 marginBottom="40"
+                className="animate-on-scroll"
               >
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
                 {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                  <Column 
+                    key={`${skill}-${index}`} 
+                    fillWidth 
+                    gap="4"
+                    className={`${styles.rowHover} animate-on-scroll`}
+                  >
                     <Text variant="heading-strong-l">{skill.title}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
@@ -286,6 +331,10 @@ export default function About() {
                             minWidth={image.width}
                             //@ts-ignore
                             height={image.height}
+                            style={{
+                              transition: 'all 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+                            }}
+                            className="hover:scale-105 hover:shadow-xl"
                           >
                             <Media
                               enlarge
@@ -308,6 +357,7 @@ export default function About() {
           )}
         </Column>
       </Flex>
-    </Column>
+    </AboutClient>
+  </Column>
   );
 }

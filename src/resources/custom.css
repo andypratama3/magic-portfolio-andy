@@ -37,13 +37,22 @@
 /* Typography refinements */
 body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium cubic-bezier transitions */
+:root {
+  --ease-premium: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Custom link hover effect */
 a:not([class]) {
   text-decoration: none;
   border-bottom: 1px solid var(--brand-on-background-weak);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s var(--ease-smooth);
 }
 a:not([class]):hover {
   border-bottom-color: var(--brand-on-background-strong);
@@ -52,10 +61,10 @@ a:not([class]):hover {
 /* Improve card appearance */
 article img {
   border-radius: var(--radius-m);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.7s var(--ease-premium), box-shadow 0.7s var(--ease-premium);
 }
 article img:hover {
-  transform: scale(1.01);
+  transform: scale(1.02);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
@@ -118,4 +127,101 @@ code {
 pre code {
   background: none;
   padding: 0;
+}
+
+/* Premium GSAP animation support */
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.gsap-scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Magnetic button effect support */
+.magnetic-button {
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+/* Ambient background effects */
+.ambient-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(79, 79, 178, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(178, 110, 0, 0.02) 0%, transparent 50%);
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Improved focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--brand-background-strong);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Premium scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral-alpha-weak);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-alpha-medium);
+  border-radius: 4px;
+  transition: background 0.3s var(--ease-smooth);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-alpha-strong);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--brand-alpha-medium);
+  color: var(--brand-on-background-strong);
+}
+
+::-moz-selection {
+  background: var(--brand-alpha-medium);
+  color: var(--brand-on-background-strong);
 }

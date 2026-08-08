@@ -1,7 +1,7 @@
 import { home } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://andypratama.studio";
+const baseURL = "https://www.andypratama.studio";
 
 const routes = {
   "/": true,
@@ -10,7 +10,7 @@ const routes = {
   "/blog": false,
   "/gallery": true,
   "/product": true,
-  "/plugin": true
+  "/plugin": false
 };
 
 const display = {
@@ -96,21 +96,21 @@ const effects = {
     radius: 100,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 60,
     x: 50,
-    y: 60,
-    width: 100,
-    height: 50,
-    tilt: 0,
-    colorStart: "accent-background-strong",
+    y: 40,
+    width: 80,
+    height: 60,
+    tilt: 15,
+    colorStart: "brand-background-strong",
     colorEnd: "page-background",
   },
   dots: {
     display: true,
-    opacity: 40,
-    size: "2",
-    color: "brand-background-strong",
+    opacity: 30,
+    size: "1",
+    color: "brand-background-medium",
   },
   grid: {
     display: false,
@@ -186,7 +186,6 @@ const schema = {
 const sameAs = {
   github: "https://github.com/andypratama3",
   linkedin: "https://www.linkedin.com/in/andypratama3",
-  tiktok: "https://www.tiktok.com/@andypratama3_",
 };
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle };

@@ -6,6 +6,8 @@ import classNames from "classnames";
 
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from '@/components';
+import { GSAPProvider } from '@/components/GSAPProvider';
+import { ParallaxBackground } from '@/components/ParallaxBackground';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -118,7 +120,7 @@ export default async function RootLayout({
       </head>
       <Providers>
         <SpeedInsights />
-        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" suppressHydrationWarning>
           <Background
             position="fixed"
             mask={{
@@ -292,6 +294,7 @@ export default async function RootLayout({
               })
             }}
           />
+          <ParallaxBackground />
           <Flex fillWidth minHeight="16" hide="s"/>
           <Header />
           <Flex
@@ -300,10 +303,13 @@ export default async function RootLayout({
             padding="l"
             horizontal="center"
             flex={1}
+            style={{ minHeight: '100vh' }}
           >
-            <Flex horizontal="center" fillWidth minHeight="0">
+            <Flex horizontal="center" fillWidth style={{ minHeight: '0' }}>
               <RouteGuard>
-                {children}
+                <GSAPProvider>
+                  {children}
+                </GSAPProvider>
               </RouteGuard>
             </Flex>
           </Flex>

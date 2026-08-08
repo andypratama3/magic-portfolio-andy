@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://andypratama.studio/sitemap.xml',
-    host: 'https://andypratama.studio',
+    sitemap: 'https://www.andypratama.studio/sitemap.xml',
+    host: 'https://www.andypratama.studio',
   }
 }

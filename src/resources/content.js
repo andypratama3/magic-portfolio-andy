@@ -6,7 +6,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Fullstack Developer — Laravel & Next.js Specialist",
+  role: "Software Engineer",
   avatar: "/images/photo.jpg",
   email: "andypratama1211@gmail.com",
   location: "Asia/Jakarta",
@@ -37,11 +37,6 @@ const social = [
     link: "https://www.linkedin.com/in/andypratama3",
   },
   {
-    name: "TikTok",
-    icon: "tiktok",
-    link: "https://www.tiktok.com/@andypratama3_",
-  },
-  {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,
@@ -52,17 +47,17 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Andy Pratama — Fullstack Developer`,
+  title: `Andy Pratama — Software Engineer`,
   description:
-    "Andy Pratama is a Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems. 3+ years building scalable applications for education, government, and commercial sectors.",
+    "Andy Pratama is a Software Engineer specializing in Laravel, Next.js, and production-grade web systems. 3+ years building scalable applications for education, government, and commercial sectors.",
   headline: <>Andy Pratama</>,
   featured: {
     display: true,
     title: (
       <>
-        Latest project (Jun 2025 – Jun 2026, Freelance):{" "}
+        Latest project:{" "}
         <strong className="ml-4">
-          ProductSchool — All-in-One School Management System
+          ProductSchool — School Management System
         </strong>
       </>
     ),
@@ -70,9 +65,9 @@ const home = {
   },
   subline: (
     <>
-      Fullstack Developer specializing in Laravel & Next.js, building production-grade systems that deliver measurable results.
+      Software Engineer building production-grade systems with Laravel & Next.js.
       <br />
-      3+ years of experience across education, government, and commercial sectors.
+      3+ years shipping scalable applications across education, government, and commercial sectors.
     </>
   ),
 };
@@ -80,8 +75,8 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About Andy Pratama — Fullstack Developer`,
-  description: `Fullstack Developer based in Samarinda, Indonesia with 3+ years of hands-on experience building production-grade web systems. Specializing in Laravel 10+, Next.js 14+, React.js, REST API development, and scalable architectures.`,
+  title: `About Andy Pratama — Software Engineer`,
+  description: `Software Engineer based in Samarinda, Indonesia with 3+ years of hands-on experience building production-grade web systems. Specializing in Laravel 10+, Next.js 14+, React.js, REST API development, and scalable architectures.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -98,14 +93,14 @@ const about = {
     title: "About",
     description: (
       <>
-        I'm a Fullstack Developer based in Samarinda, Indonesia, with 3+ years of
+        I'm a Software Engineer based in Samarinda, Indonesia, with 3+ years of
         hands-on experience building production-grade web systems across education, government, and commercial sectors.
         <br />
         <br />
-        My expertise spans full-stack development with Laravel 10-12, Next.js 14, and React.js, deployed on Cloudflare edge infrastructure with CI/CD pipelines. I've delivered measurable results: 70%+ faster page loads, Security Grade A+, and RBAC systems with 380+ permissions.
+        My expertise spans full-stack development with Laravel 10-12, Next.js 14, and React.js, deployed on Cloudflare edge infrastructure with CI/CD pipelines.
         <br />
         <br />
-        I'm available for full-time remote roles, contract engagements, and freelance projects.
+        I'm actively seeking full-time remote Software Engineer roles at international companies.
       </>
     ),
   },
@@ -116,11 +111,11 @@ const about = {
       {
         company: "SD Muhammadiyah 3 Samarinda",
         timeframe: "06/2025 – 06/2026",
-        role: "Fullstack Developer (Freelance)",
+        role: "Fullstack Engineer (Contract)",
         achievements: [
           <>
             Led full re-architecture from monolithic Laravel Blade to headless
-            Next.js 14 + Laravel REST API — 52 modules, ~79K LOC, page load from 3-5s to under 1s (70%+ improvement).
+            Next.js 14 + Laravel REST API — 52 modules, page load from 3-5s to under 1s (70%+ improvement).
           </>,
           <>
             Designed RBAC with 16 user roles, ~380 permissions, and data-level scoping (TeacherScopedData trait).
@@ -162,7 +157,7 @@ const about = {
       {
         company: "CV Beesoft Research & Technology (Britech)",
         timeframe: "07/2025 – 10/2025",
-        role: "Fullstack Developer (Internship — Freelance Contract)",
+        role: "Software Engineer (Internship — Contract)",
         achievements: [
           <>
             Delivered 2 production systems: Ansor Kaltim membership database (38 models, QR attendance, Leaflet.js choropleth map) and BLK training center management.
@@ -189,7 +184,7 @@ const about = {
       {
         company: "Bappeda — East Kalimantan Provincial Government",
         timeframe: "11/2024 – 12/2024",
-        role: "Fullstack Developer (Freelance — Government Contract)",
+        role: "Fullstack Engineer (Government Contract)",
         achievements: [
           <>
             Built official provincial government web portal with zero-loss legacy database migration via Laravel Seeders.
@@ -219,7 +214,7 @@ const about = {
       {
         company: "Karta Spa",
         timeframe: "06/2024 – 11/2024",
-        role: "Backend Developer (Freelance)",
+        role: "Backend Engineer (Contract)",
         achievements: [
           <>
             Designed scalable multi-tenant backend for Spa & F&B across 3 branches — Laravel 10, Repository Pattern, SOLID.
@@ -249,7 +244,7 @@ const about = {
       {
         company: "Koetai Mahkota Soundline",
         timeframe: "07/2023 – 08/2023",
-        role: "Fullstack Developer (Freelance)",
+        role: "Fullstack Engineer (Contract)",
         achievements: [
           <>
             Built complete event management and ticket sales platform with Midtrans Payment Gateway (2-month timeline).
@@ -271,7 +266,7 @@ const about = {
         description: (
           <>
             Bachelor of Applied Science (D4) — Software Engineering.
-            Expected graduation September 2026.
+            Graduation September 2026.
           </>
         ),
       },

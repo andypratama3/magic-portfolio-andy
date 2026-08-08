@@ -1,21 +1,16 @@
 import React from "react";
-
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema, Media } from "@once-ui-system/core";
+import { Column, Schema } from "@once-ui-system/core";
 import { home, about, person, baseURL, testimonials } from "@/resources";
-import { Projects } from "@/components/work/Projects";
+import { ProjectsWrapper } from "@/components/work/ProjectsWrapper";
 import { Testimonials } from "@/components/Testimonials";
 import { CTASection } from "@/components/CTASection";
-
-const metrics = [
-  { value: "70%+", label: "Faster Page Loads" },
-  { value: "90+", label: "Lighthouse Score" },
-  { value: "A+", label: "Security Rating" },
-  { value: "52", label: "Production Modules" },
-];
+import { HeroSection } from "@/components/HeroSection";
+import { MetricsSection } from "@/components/MetricsSection";
+import { SectionTitle } from "@/components/SectionTitle";
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <Column maxWidth="m" gap="xl" horizontal="center" style={{ padding: 'clamp(2rem, 5vw, 6rem) 0' }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -29,116 +24,53 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth paddingY="24" gap="m">
-      <Column maxWidth="s">
-          {home.featured.display && (
-          <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
-            <Badge background="brand-alpha-weak" paddingX="12" paddingY="4" onBackground="neutral-strong" textVariant="label-default-s" arrow={false}
-              href={home.featured.href}>
-              <Row paddingY="2">{home.featured.title}</Row>
-            </Badge>
-          </RevealFx>
-          )}
-        </Column>
-        <Flex fillWidth gap="l" horizontal="center" vertical="center" mobileDirection="column" paddingY="m">
-          <Column flex={1} gap="m" style={{ minWidth: '200px' }}>
-            <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-              <Heading wrap="balance" variant="display-strong-l">
-                {home.headline}
-              </Heading>
-            </RevealFx>
-            <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-              <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-                {home.subline}
-              </Text>
-            </RevealFx>
-            <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
-              <Flex gap="m" wrap>
-                <Button
-                  id="about"
-                  data-border="rounded"
-                  href={about.path}
-                  variant="secondary"
-                  size="m"
-                  weight="default"
-                  arrowIcon
-                >
-                  <Flex gap="8" vertical="center" paddingRight="4">
-                    {about.avatar.display && (
-                      <Avatar
-                        marginRight="8"
-                        style={{ marginLeft: "-0.75rem" }}
-                        src={person.avatar}
-                        size="m"
-                      />
-                    )}
-                    {about.title}
-                  </Flex>
-                </Button>
-                <Button
-                  href="https://cal.com/andypratama"
-                  variant="primary"
-                  size="m"
-                  weight="default"
-                  arrowIcon
-                >
-                  Let's Build Together
-                </Button>
-              </Flex>
-            </RevealFx>
-          </Column>
-          <Column fitWidth horizontal="center" vertical="center" style={{ minWidth: '200px' }}>
-            <Flex
-              radius="xl"
-              border="neutral-medium"
-              overflow="hidden"
-              style={{
-                minWidth: '280px',
-                minHeight: '280px',
-                maxWidth: '320px',
-                maxHeight: '320px',
-                boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
-              }}
-            >
-              <Media
-                src={person.avatar}
-                alt={person.name}
-                sizes="320px"
-              />
-            </Flex>
-          </Column>
-        </Flex>
-      </Column>
-      <RevealFx translateY="12" delay={0.5}>
-        <Flex
-          fillWidth
-          gap="12"
-          wrap
-          horizontal="center"
-          paddingY="32"
-          paddingX="16"
-          style={{ borderTop: "1px solid var(--neutral-alpha-weak)", borderBottom: "1px solid var(--neutral-alpha-weak)" }}
-        >
-          {metrics.map((m) => (
-            <Flex key={m.label} direction="column" horizontal="center" flex={1} padding="16" gap="4" style={{ minWidth: '120px' }}>
-              <Text variant="display-strong-l" onBackground="brand-strong">{m.value}</Text>
-              <Flex horizontal="center"><Text variant="body-default-s" onBackground="neutral-weak">{m.label}</Text></Flex>
-            </Flex>
-          ))}
-        </Flex>
-      </RevealFx>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
-      {testimonials.display && (
-        <Testimonials
-          title={testimonials.title}
-          description={testimonials.description}
-          items={testimonials.items}
+      
+      {/* Cinematic Hero Section */}
+      <HeroSection 
+        headline={home.headline}
+        subline={home.subline}
+        aboutPath={about.path}
+        aboutTitle={about.title}
+        aboutAvatarDisplay={about.avatar.display}
+        personAvatar={person.avatar}
+      />
+
+      {/* Metrics Section */}
+      <MetricsSection />
+
+      {/* Featured Project */}
+      <Column fillWidth style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
+        <SectionTitle 
+          title="Featured Project"
+          description="A showcase of my latest work and technical achievements"
+          align="center"
         />
+        <ProjectsWrapper range={[1, 1]} />
+      </Column>
+
+      {/* Testimonials */}
+      {testimonials.display && (
+        <Column fillWidth style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
+          <Testimonials
+            title={testimonials.title}
+            description={testimonials.description}
+            items={testimonials.items}
+          />
+        </Column>
       )}
-      <Projects range={[2]} />
-      <RevealFx translateY="20" delay={0.8}>
+
+      {/* More Projects */}
+      <Column fillWidth style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
+        <SectionTitle 
+          title="More Projects"
+          description="Explore additional work and creative solutions"
+          align="center"
+        />
+        <ProjectsWrapper range={[2]} />
+      </Column>
+
+      {/* CTA Section */}
+      <Column fillWidth style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
         <CTASection
           title="Ready to Transform Your Business?"
           description="Let's discuss how I can help you build scalable systems that automate operations and drive growth."
@@ -147,7 +79,7 @@ export default function Home() {
           secondaryButtonText="View My Work"
           secondaryButtonHref="/work"
         />
-      </RevealFx>
+      </Column>
     </Column>
   );
 }
