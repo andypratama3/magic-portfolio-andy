@@ -54,7 +54,7 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <Column as="section" maxWidth="m" horizontal="center" gap="l" style={{ padding: 'clamp(2rem, 5vw, 6rem) 0' }}>
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -92,11 +92,11 @@ export default async function Project({
           articleBody: mdxToPlainText(post.content),
         }}
       />
-      <Column maxWidth="xs" gap="16">
+      <Column maxWidth="xs" gap="s" style={{ maxWidth: '800px' }}>
         <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
           Projects
         </Button>
-        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
+        <Heading variant="display-strong-xl" style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', letterSpacing: '-0.015em', lineHeight: '1.2' }}>{post.metadata.title}</Heading>
       </Column>
       {post.metadata.images.length > 0 && (
         <Media
@@ -105,10 +105,11 @@ export default async function Project({
           radius="m"
           alt="image"
           src={post.metadata.images[0]}
+          style={{ boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)' }}
         />
       )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
-        <Flex gap="12" marginBottom="24" vertical="center">
+      <Column style={{ margin: "auto" }} as="article" maxWidth="xs" gap="m">
+        <Flex gap="s" marginBottom="m" vertical="center">
           {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
           <Text variant="body-default-s" onBackground="neutral-weak">
             {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
@@ -116,7 +117,7 @@ export default async function Project({
         </Flex>
         {/* Pre-serialized HTML fallback to improve indexability for crawlers/AI */}
         {post.contentHtml && (
-          <details>
+          <details style={{ opacity: 0.6, fontSize: "0.85rem", marginBottom: "16px" }}>
             <summary>Text version</summary>
             <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
           </details>

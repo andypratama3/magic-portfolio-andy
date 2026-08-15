@@ -42,8 +42,8 @@ export default async function RootLayout({
       <head>
         <meta name="google-site-verification" content="4ycIf0n_hJhGXE5tc2Xv3OHLhUkIofJUSQkj0wsaUo8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="description" content="Portfolio of Andy Pratama — Fullstack Developer specializing in Laravel 10+, Next.js 14+, React.js. Building production-grade web systems for education, government, and commercial sectors." />
-        <meta name="keywords" content="fullstack developer, Laravel, Next.js, React, PHP, TypeScript, web development, API design, Indonesia developer, remote developer" />
+        <meta name="description" content="Andy Pratama is a Software Engineer with 3+ years of hands-on experience building production-oriented full-stack applications, specializing in Laravel/PHP backend engineering with practical experience across Next.js, React, Vue, TypeScript, databases, APIs, DevOps, mobile, third-party integrations, automation, and AI-enabled systems." />
+        <meta name="keywords" content="Software Engineer, Backend Engineer, Laravel Developer, PHP Developer, Full Stack Software Engineer, Next.js Developer, TypeScript Developer, REST API, Database Design, DevOps, Indonesia Software Engineer, Remote Software Engineer" />
         <meta name="author" content="Andy Pratama" />
         <meta name="creator" content="Andy Pratama" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -174,8 +174,8 @@ export default async function RootLayout({
                     name: 'Andy Pratama',
                     givenName: 'Andy',
                     familyName: 'Pratama',
-                    jobTitle: 'Fullstack Developer',
-                    description: 'Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems for education, government, and commercial sectors.',
+                    jobTitle: 'Software Engineer',
+                    description: 'Software Engineer with 3+ years of hands-on experience building production-oriented full-stack applications, specializing in Laravel/PHP backend engineering with practical experience across Next.js, React, Vue, TypeScript, databases, APIs, DevOps, mobile, third-party integrations, automation, and AI-enabled systems.',
                     url: 'https://andypratama.studio',
                     email: 'andypratama1211@gmail.com',
                     sameAs: [
@@ -196,26 +196,29 @@ export default async function RootLayout({
                       addressCountry: 'ID',
                     },
                     knowsAbout: [
-                      'Laravel 10+',
-                      'Next.js 14+',
-                      'React.js 18+',
-                      'PHP 8+',
-                      'TypeScript',
-                      'REST API Development',
+                      'Laravel Backend Engineering',
+                      'PHP Development',
+                      'REST API Design',
                       'Database Design & Optimization',
-                      'DevOps & Cloud Infrastructure',
-                      'Software Architecture',
-                      'Security Hardening',
-                      'Performance Optimization',
-                      'Fullstack Development',
-                      'Web Systems',
-                      'Education Technology',
-                      'Government Systems',
-                      'E-Commerce Solutions',
-                      'Cloudflare',
-                      'AWS',
+                      'Next.js Full Stack Development',
+                      'React.js',
+                      'TypeScript',
+                      'Vue.js',
+                      'DevOps & Infrastructure',
                       'Docker',
+                      'Linux Server Administration',
+                      'Cloudflare CDN & WAF',
                       'GitHub Actions CI/CD',
+                      'Security Implementation',
+                      'Performance Optimization',
+                      'Third-Party Integrations',
+                      'Midtrans Payment Gateway',
+                      'WhatsApp Business API',
+                      'Firebase Integration',
+                      'Mobile Development',
+                      'Kotlin & Android',
+                      'AI Integration',
+                      'System Architecture',
                     ],
                     hasOccupation: {
                       '@type': 'Occupation',
@@ -230,21 +233,22 @@ export default async function RootLayout({
                   {
                     '@type': 'ProfessionalService',
                     '@id': 'https://andypratama.studio/#service',
-                    name: 'Andy Pratama - Fullstack Development Services',
-                    description: 'Professional fullstack development services specializing in Laravel and Next.js for web systems, APIs, and enterprise applications.',
+                    name: 'Andy Pratama - Software Engineering Services',
+                    description: 'Professional software engineering services specializing in Laravel/PHP backend development, full-stack applications, system architecture, and production infrastructure for web systems, APIs, and enterprise applications.',
                     url: 'https://andypratama.studio',
                     email: 'andypratama1211@gmail.com',
                     serviceType: [
+                      'Backend Software Engineering',
+                      'Laravel/PHP Development',
                       'Full-Stack Web Development',
-                      'Backend API Development',
-                      'Frontend Development',
-                      'REST API Design',
-                      'Database Architecture',
+                      'REST API Design & Development',
+                      'Database Architecture & Optimization',
                       'System Architecture & Design',
                       'Performance Optimization',
                       'Security Implementation',
-                      'DevOps & Cloud Solutions',
-                      'Technical Consulting',
+                      'DevOps & Cloud Infrastructure',
+                      'Third-Party Integration',
+                      'Production Deployment',
                     ],
                     areaServed: [
                       {
@@ -276,8 +280,8 @@ export default async function RootLayout({
                     '@type': 'WebSite',
                     '@id': 'https://andypratama.studio/#website',
                     url: 'https://andypratama.studio',
-                    name: 'Andy Pratama — Fullstack Developer',
-                    description: 'Professional portfolio, projects, and case studies of Andy Pratama, Fullstack Developer specializing in Laravel, Next.js, and production-grade web systems.',
+                    name: 'Andy Pratama — Software Engineer',
+                    description: 'Professional engineering portfolio, projects, and case studies of Andy Pratama, Software Engineer specializing in Laravel/PHP backend engineering, full-stack development, system architecture, and production-oriented web systems.',
                     mainEntity: { '@id': 'https://andypratama.studio/#person' },
                     creator: { '@id': 'https://andypratama.studio/#person' },
                     inLanguage: 'en-US',

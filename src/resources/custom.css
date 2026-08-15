@@ -225,3 +225,267 @@ a:focus-visible {
   background: var(--brand-alpha-medium);
   color: var(--brand-on-background-strong);
 }
+
+/* Enhanced tech stack fixes */
+.tech-stack-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.tech-badge-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--brand-alpha-medium);
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--brand-on-background-strong);
+  position: relative;
+  z-index: 1;
+}
+
+.tech-technology-pill {
+  position: relative;
+  overflow: visible;
+}
+
+.tech-technology-pill img {
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+/* Profile section fixes */
+.profile-avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-online-status {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 3px solid var(--surface);
+  animation: pulse 2s infinite;
+  z-index: 10;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Social button fixes */
+.social-button {
+  text-decoration: none !important;
+  border: none !important;
+  position: relative;
+  overflow: visible;
+}
+
+/* Ensure button icons are visible */
+button,
+.button {
+  position: relative;
+  overflow: visible;
+}
+
+button img,
+.button img,
+button svg,
+.button svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+/* Fix for any flex containers that might clip icons */
+.flex img,
+.flex svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure flex containers don't clip content */
+.flex,
+.column {
+  overflow: visible;
+}
+
+/* Ensure Column components don't clip */
+.column img,
+.column svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure Column containers don't clip content */
+[class*="column"] {
+  overflow: visible;
+}
+
+[class*="column"] img,
+[class*="column"] svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* Global icon visibility fixes */
+img,
+svg {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Fix for buttons with icons */
+button img,
+button svg,
+a img,
+a svg {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Fix for avatar and media */
+.avatar img,
+.media img {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+/* Ensure badges don't clip content */
+.badge,
+.tag {
+  overflow: visible;
+  position: relative;
+}
+
+.badge img,
+.badge svg,
+.tag img,
+.tag svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+/* Icon fallback styles */
+.icon-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--brand-alpha-medium);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--brand-on-background-strong);
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .profile-section {
+    padding: 1.5rem !important;
+  }
+  
+  .tech-stack-section {
+    padding: 2rem 0 !important;
+  }
+  
+  .tech-stack-card {
+    padding: 1.25rem !important;
+  }
+  
+  .tech-technology-pill {
+    font-size: 0.8125rem !important;
+    padding: 0.5rem 0.875rem !important;
+  }
+}
+
+/* ICON VISIBILITY GUARANTEES - Prevents CSS clipping */
+/* Target specific components that might clip icons */
+.tech-technology-pill,
+.tech-stack-badge,
+.profile-avatar-container,
+.social-button,
+.badge,
+.tag,
+button,
+.button {
+  overflow: visible !important;
+}
+
+/* Special case: Only allow scrolling where needed */
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Page-level improvements */
+article {
+  max-width: 100%;
+  line-height: 1.7;
+}
+
+section {
+  margin: 0;
+}
+
+/* Consistent section padding across all pages */
+section,
+.column[max-width="m"],
+.column[max-width="l"] {
+  padding: 0;
+}
+
+/* Better typography for all headings */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+/* Better paragraph spacing */
+p {
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+/* Better button spacing */
+button, .button {
+  letter-spacing: 0.01em;
+}
+
+/* Refined card spacing */
+.column,
+.flex {
+  gap: inherit;
+}
+
+/* Better typography rendering */
+text {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

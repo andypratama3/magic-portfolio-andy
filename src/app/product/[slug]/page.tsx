@@ -55,7 +55,7 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <Column as="section" maxWidth="m" horizontal="center" gap="l" style={{ padding: 'clamp(2rem, 5vw, 6rem) 0' }}>
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -93,18 +93,18 @@ export default async function Project({
           articleBody: mdxToPlainText(post.content),
         }}
       />
-      <Column maxWidth="m" gap="24" fillWidth>
+      <Column maxWidth="m" gap="s" fillWidth style={{ maxWidth: '800px' }}>
         <Button data-border="rounded" href="/gallery" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft" style={{ width: "fit-content" }}>
           Digital Products
         </Button>
-        <Heading variant="display-strong-s">{post.metadata.title}</Heading>
-        <Text variant="body-default-m" onBackground="neutral-weak" style={{ maxWidth: "700px" }}>
+        <Heading variant="display-strong-xl" style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', letterSpacing: '-0.015em', lineHeight: '1.2' }}>{post.metadata.title}</Heading>
+        <Text variant="body-default-l" onBackground="neutral-weak" style={{ maxWidth: "700px", lineHeight: '1.65' }}>
           {post.metadata.summary}
         </Text>
       </Column>
 
       {post.metadata.images.length > 0 && (
-        <Flex fillWidth>
+        <Flex fillWidth style={{ margin: 'm 0' }}>
           <Carousel
             sizes="(max-width: 960px) 100vw, 960px"
             items={post.metadata.images.map((image) => ({
@@ -116,9 +116,9 @@ export default async function Project({
       )}
 
       {/* Two column detail page */}
-      <Flex fillWidth gap="xl" mobileDirection="column" style={{ marginTop: "24px" }}>
+      <Flex fillWidth gap="xl" mobileDirection="column" style={{ marginTop: "m" }}>
         {/* Main Content Area */}
-        <Column flex={7} as="article" gap="16">
+        <Column flex={7} as="article" gap="m">
           {/* Pre-serialized HTML fallback to improve indexability for crawlers/AI */}
           {post.contentHtml && (
             <details style={{ opacity: 0.6, fontSize: "0.85rem", marginBottom: "16px" }}>
@@ -130,11 +130,11 @@ export default async function Project({
         </Column>
 
         {/* Sidebar Info Area */}
-        <Column flex={4} gap="24" style={{ height: "fit-content", position: "sticky", top: "80px" }}>
+        <Column flex={4} gap="m" style={{ height: "fit-content", position: "sticky", top: "80px" }}>
           {/* Actions Card */}
-          <Column padding="24" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", backdropFilter: "blur(8px)" }} gap="16">
-            <Text variant="heading-strong-xs">Get this Product</Text>
-            <Text variant="body-default-s" onBackground="neutral-weak">
+          <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", backdropFilter: "blur(8px)", boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)' }} gap="s">
+            <Text variant="heading-strong-s" style={{ fontSize: 'clamp(1.0625rem, 1.5vw, 1.25rem)' }}>Get this Product</Text>
+            <Text variant="body-default-m" onBackground="neutral-weak" style={{ lineHeight: '1.5' }}>
               Purchase a lifetime license or request custom implementation for this system.
             </Text>
             
@@ -145,6 +145,7 @@ export default async function Project({
               weight="default" 
               size="m" 
               suffixIcon="chevronRight"
+              style={{ borderRadius: '9999px' }}
             >
               Order & Inquire
             </Button>
@@ -157,6 +158,7 @@ export default async function Project({
                 weight="default" 
                 size="m" 
                 suffixIcon="openLink"
+                style={{ borderRadius: '9999px' }}
               >
                 Live Demo
               </Button>
@@ -165,20 +167,21 @@ export default async function Project({
 
           {/* Tech Stack Card */}
           {post.metadata.tech && post.metadata.tech.length > 0 && (
-            <Column padding="24" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)" }} gap="16">
-              <Text variant="heading-strong-xs">Technologies Used</Text>
-              <Flex gap="8" wrap>
+            <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)' }} gap="s">
+              <Text variant="heading-strong-s" style={{ fontSize: 'clamp(1.0625rem, 1.5vw, 1.25rem)' }}>Technologies Used</Text>
+              <Flex gap="s" wrap>
                 {post.metadata.tech.map((t, idx) => (
                   <Flex 
                     key={idx} 
                     radius="m" 
                     style={{ 
-                      fontSize: "0.75rem", 
-                      fontWeight: 600, 
-                      padding: "6px 12px",
+                      fontSize: "0.8125rem", 
+                      fontWeight: 500, 
+                      padding: "0.5rem 0.875rem",
                       background: "var(--brand-alpha-weak)", 
                       border: "1px solid var(--brand-alpha-medium)",
-                      color: "var(--brand-on-background-strong)"
+                      color: "var(--brand-on-background-strong)",
+                      borderRadius: '9999px'
                     }}
                   >
                     {t}
@@ -189,9 +192,9 @@ export default async function Project({
           )}
 
           {/* Creator Info */}
-          <Column padding="24" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)" }} gap="12">
-            <Text variant="heading-strong-xs">Developer</Text>
-            <Flex gap="12" vertical="center">
+          <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)' }} gap="s">
+            <Text variant="heading-strong-s" style={{ fontSize: 'clamp(1.0625rem, 1.5vw, 1.25rem)' }}>Developer</Text>
+            <Flex gap="s" vertical="center">
               {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
               <Column>
                 <Text variant="body-default-s" style={{ fontWeight: 600 }}>{person.name}</Text>

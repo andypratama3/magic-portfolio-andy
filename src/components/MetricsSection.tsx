@@ -6,10 +6,10 @@ import { gsap } from "gsap";
 import { staggeredReveal } from "@/utils/gsap";
 
 const metrics = [
-  { value: "70%+", label: "Faster Page Loads" },
+  { value: "3+", label: "Years Hands-on Experience" },
+  { value: "52+", label: "Production Modules" },
+  { value: "100+", label: "Controllers" },
   { value: "90+", label: "Lighthouse Score" },
-  { value: "A+", label: "Security Rating" },
-  { value: "52", label: "Production Modules" },
 ];
 
 export function MetricsSection() {
@@ -46,7 +46,7 @@ export function MetricsSection() {
             textAlign: 'center',
           }}
         >
-          Performance Metrics
+          Engineering Scale
         </Heading>
         <Text
           variant="body-default-l"
@@ -58,7 +58,7 @@ export function MetricsSection() {
             lineHeight: '1.6',
           }}
         >
-          Key indicators of system performance and optimization achievements
+          Quantified evidence of production system complexity and hands-on experience
         </Text>
       </Column>
       

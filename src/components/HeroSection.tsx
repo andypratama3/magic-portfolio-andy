@@ -5,6 +5,7 @@ import { Heading, Flex, Text, Button, Avatar, Media, Column } from "@once-ui-sys
 import { animateHero, premiumEase } from "@/utils/gsap";
 
 interface HeroSectionProps {
+  eyebrow?: ReactNode;
   headline: ReactNode;
   subline: ReactNode;
   aboutPath: string;
@@ -14,6 +15,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({
+  eyebrow,
   headline,
   subline,
   aboutPath,
@@ -21,6 +23,7 @@ export function HeroSection({
   aboutAvatarDisplay,
   personAvatar,
 }: HeroSectionProps) {
+  const eyebrowRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const sublineRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
@@ -28,14 +31,26 @@ export function HeroSection({
 
   useEffect(() => {
     if (headingRef.current && sublineRef.current && buttonsRef.current && imageRef.current) {
-      animateHero({
+      const elements: {
+        eyebrow?: HTMLElement;
+        heading: HTMLElement;
+        subline: HTMLElement;
+        buttons: HTMLElement;
+        image: HTMLElement;
+      } = {
         heading: headingRef.current,
         subline: sublineRef.current,
         buttons: buttonsRef.current,
         image: imageRef.current,
-      });
+      };
+
+      if (eyebrow && eyebrowRef.current) {
+        elements.eyebrow = eyebrowRef.current;
+      }
+
+      animateHero(elements);
     }
-  }, []);
+  }, [eyebrow]);
 
   return (
     <Column fillWidth gap="m" style={{ minHeight: 'min(80vh, 800px)', alignItems: 'center', justifyContent: 'center' }}>
@@ -48,6 +63,22 @@ export function HeroSection({
         style={{ padding: 'clamp(2rem, 8vw, 6rem) 0' }}
       >
         <Column flex={1} gap="m" style={{ minWidth: '300px', maxWidth: 'clamp(600px, 80vw, 900px)' }}>
+          {eyebrow && (
+            <div ref={eyebrowRef}>
+              <Text 
+                variant="label-default-l"
+                onBackground="brand-weak"
+                style={{
+                  fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  marginBottom: '1rem',
+                }}
+              >
+                {eyebrow}
+              </Text>
+            </div>
+          )}
           <div ref={headingRef}>
             <Heading 
               wrap="balance" 
@@ -107,7 +138,7 @@ export function HeroSection({
                 </Flex>
               </Button>
               <Button
-                href="https://cal.com/andypratama"
+                href="/work"
                 variant="primary"
                 size="l"
                 weight="default"
@@ -119,7 +150,7 @@ export function HeroSection({
                 }}
                 className="group"
               >
-                Let's Build Together
+                View Projects
               </Button>
             </Flex>
           </div>

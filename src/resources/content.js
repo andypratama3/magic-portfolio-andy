@@ -7,6 +7,7 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Software Engineer",
+  positioning: "Backend-Focused Full Stack Software Engineer building production systems from idea to deployment",
   avatar: "/images/photo.jpg",
   email: "andypratama1211@gmail.com",
   location: "Asia/Jakarta",
@@ -49,8 +50,9 @@ const home = {
   label: "Home",
   title: `Andy Pratama — Software Engineer`,
   description:
-    "Andy Pratama is a Software Engineer specializing in Laravel, Next.js, and production-grade web systems. 3+ years building scalable applications for education, government, and commercial sectors.",
-  headline: <>Andy Pratama</>,
+    "Andy Pratama is a Software Engineer with 3+ years of hands-on experience building production-oriented full-stack applications, specializing in Laravel/PHP backend engineering with practical experience across Next.js, React, Vue, TypeScript, databases, APIs, DevOps, mobile, third-party integrations, automation, and AI-enabled systems.",
+  eyebrow: "Software Engineer",
+  headline: <>Building software systems from idea to production.</>,
   featured: {
     display: true,
     title: (
@@ -65,9 +67,10 @@ const home = {
   },
   subline: (
     <>
-      Software Engineer building production-grade systems with Laravel & Next.js.
+      I'm Andy Pratama, a Software Engineer focused on backend engineering and full-stack product development. I build production-oriented systems using Laravel, PHP, Next.js, TypeScript, and modern infrastructure.
       <br />
-      3+ years shipping scalable applications across education, government, and commercial sectors.
+      <br />
+      3+ years hands-on experience building scalable applications across education, government, and commercial sectors.
     </>
   ),
 };
@@ -76,7 +79,7 @@ const about = {
   path: "/about",
   label: "About",
   title: `About Andy Pratama — Software Engineer`,
-  description: `Software Engineer based in Samarinda, Indonesia with 3+ years of hands-on experience building production-grade web systems. Specializing in Laravel 10+, Next.js 14+, React.js, REST API development, and scalable architectures.`,
+  description: `Software Engineer based in Samarinda, Indonesia. Fresh graduate by education with 3+ years of hands-on software engineering experience building production-oriented full-stack applications with Laravel, Next.js, TypeScript, databases, APIs, DevOps, and third-party integrations.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -93,14 +96,16 @@ const about = {
     title: "About",
     description: (
       <>
-        I'm a Software Engineer based in Samarinda, Indonesia, with 3+ years of
-        hands-on experience building production-grade web systems across education, government, and commercial sectors.
+        I'm a Software Engineer based in Samarinda, Indonesia, focused on backend engineering and full-stack product development.
         <br />
         <br />
-        My expertise spans full-stack development with Laravel 10-12, Next.js 14, and React.js, deployed on Cloudflare edge infrastructure with CI/CD pipelines.
+        Although I am a fresh graduate academically, I have more than three years of hands-on experience building web applications through freelance work, professional projects, and independent product development.
         <br />
         <br />
-        I'm actively seeking full-time remote Software Engineer roles at international companies.
+        My expertise spans Laravel/PHP backend engineering, Next.js, React, Vue, TypeScript, REST APIs, databases, Docker, CI/CD, infrastructure, mobile development, third-party integrations, and AI/automation.
+        <br />
+        <br />
+        I build software systems from idea to production, with a strong focus on backend engineering, full-stack development, system architecture, integrations, and reliable infrastructure.
       </>
     ),
   },
@@ -286,193 +291,77 @@ const about = {
     title: "Technical Skills",
     skills: [
       {
-        title: "Backend",
-        description: (
-          <>
-            Laravel 10/11/12, PHP 8, REST API, JWT Authentication, SOLID Principles,
-            Repository Pattern, MVC Architecture, RBAC, Spatie Laravel Permission, Laravel Queue,
-            Laravel Scheduler, Service Layer, API Versioning.
-          </>
-        ),
-        images: [
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
-            alt: "Laravel",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
-            alt: "PHP 8",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "/images/tech/spatie.png",
-            alt: "Spatie",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/livewire/livewire-original-wordmark.svg",
-            alt: "Livewire",
-            width: 9,
-            height: 9,
-          },
+        title: "Backend Engineering",
+        level: "Core",
+        description: "Production-grade backend development with Laravel ecosystem and PHP architecture",
+        technologies: [
+          { name: "Laravel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg", proficiency: "Expert" },
+          { name: "PHP 8", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg", proficiency: "Expert" },
+          { name: "REST API", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", proficiency: "Strong" },
+          { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", proficiency: "Strong" },
+          { name: "Spatie", icon: "/images/tech/spatie.png", proficiency: "Strong" },
+          { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg", proficiency: "Working" },
         ],
       },
       {
-        title: "Frontend",
-        description: (
-          <>
-            Next.js 14 (App Router, SSR/SSG/ISR), React.js 18, TypeScript, JavaScript ES6+,
-            Tailwind CSS, Headless UI, SWR, Zustand, Vue.js, Alpine.js, Server Components.
-          </>
-        ),
-        images: [
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
-            alt: "Next.js 14",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-            alt: "React.js 18",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-            alt: "TypeScript",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg",
-            alt: "Tailwind CSS",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
-            alt: "Vue.js",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/alpinejs/alpinejs-original.svg",
-            alt: "Alpine.js",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-            alt: "JavaScript ES6+",
-            width: 9,
-            height: 9,
-          },
+        title: "Full Stack Development",
+        level: "Strong",
+        description: "Modern frontend frameworks with TypeScript and production-ready UI implementation",
+        technologies: [
+          { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", proficiency: "Strong" },
+          { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", proficiency: "Strong" },
+          { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", proficiency: "Strong" },
+          { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg", proficiency: "Strong" },
+          { name: "Vue.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg", proficiency: "Working" },
+          { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", proficiency: "Strong" },
         ],
       },
       {
-        title: "Database",
-        description: (
-          <>
-            MySQL, PostgreSQL, Database Design, Query Optimization, Indexing Strategy,
-            N+1 Resolution, Eloquent ORM, Database Migration, Redis.
-          </>
-        ),
-        images: [
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-            alt: "MySQL",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
-            alt: "PostgreSQL",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
-            alt: "Redis",
-            width: 9,
-            height: 9,
-          },
+        title: "Database & Data Engineering",
+        level: "Strong",
+        description: "Database design, optimization, and data management for production systems",
+        technologies: [
+          { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", proficiency: "Strong" },
+          { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", proficiency: "Working" },
+          { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg", proficiency: "Working" },
+          { name: "Eloquent ORM", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg", proficiency: "Strong" },
+          { name: "Query Optimization", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", proficiency: "Working" },
         ],
       },
       {
-        title: "DevOps and Cloud",
-        description: (
-          <>
-            Ubuntu VPS, Nginx, Docker, GitHub Actions CI/CD, AWS S3,
-            Cloudflare Pages/Workers/CDN/WAF, Linux Server Administration.
-          </>
-        ),
-        images: [
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
-            alt: "Docker",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
-            alt: "GitHub Actions",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-            alt: "AWS S3",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
-            alt: "Nginx",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
-            alt: "Linux",
-            width: 9,
-            height: 9,
-          },
+        title: "DevOps & Infrastructure",
+        level: "Working",
+        description: "Production deployment, CI/CD pipelines, and infrastructure management",
+        technologies: [
+          { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", proficiency: "Working" },
+          { name: "GitHub Actions", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg", proficiency: "Working" },
+          { name: "Linux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg", proficiency: "Working" },
+          { name: "Nginx", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg", proficiency: "Working" },
+          { name: "Cloudflare", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg", proficiency: "Working" },
         ],
       },
       {
-        title: "Security and Integrations",
-        description: (
-          <>
-            SSL/TLS Hardening, HTTP Cookie Security, Content Security Policy,
-            CORS Policy, Security Headers, Rate Limiting, XSS and CSRF Protection.
-            Integrations: Midtrans Payment Gateway, Meta WhatsApp Business API,
-            Google Translate API, Claude AI, Fingerspot Biometric API, Leaflet.js.
-          </>
-        ),
-        images: [
-          {
-            src: "/images/tech/midtrans.jpeg",
-            alt: "Midtrans",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg",
-            alt: "Google APIs",
-            width: 9,
-            height: 9,
-          },
-          {
-            src: "/images/tech/github.png",
-            alt: "GitHub",
-            width: 9,
-            height: 9,
-          },
+        title: "Third-Party Integrations",
+        level: "Working",
+        description: "Payment gateways, communication APIs, and external service integrations",
+        technologies: [
+          { name: "Midtrans", icon: "/images/tech/midtrans.jpeg", proficiency: "Working" },
+          { name: "WhatsApp", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/whatsapp/whatsapp-original.svg", proficiency: "Working" },
+          { name: "Google APIs", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg", proficiency: "Working" },
+          { name: "Firebase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg", proficiency: "Working" },
+          { name: "Stripe", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/stripe/stripe-original.svg", proficiency: "Exposure" },
+        ],
+      },
+      {
+        title: "Mobile & Additional Engineering",
+        level: "Exposure",
+        description: "Mobile development, AI integration, and hardware experimentation",
+        technologies: [
+          { name: "Kotlin", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg", proficiency: "Exposure" },
+          { name: "Android", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg", proficiency: "Exposure" },
+          { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", proficiency: "Exposure" },
+          { name: "Arduino", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg", proficiency: "Exposure" },
+          { name: "IoT", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", proficiency: "Exposure" },
         ],
       },
     ],
@@ -481,9 +370,9 @@ const about = {
 
 const work = {
   path: "/work",
-  label: "Portfolio",
-  title: `Portfolio & Case Studies — Production Web Systems by Andy Pratama`,
-  description: `Production-grade projects and case studies by ${person.name}. Specializing in building scalable web systems with Laravel 10+, Next.js 14+, React.js. Projects include school management systems, government portals, e-commerce platforms, inventory management, and enterprise applications with focus on performance, security, and user experience.`,
+  label: "Projects",
+  title: `Engineering Projects & Case Studies — Production Systems by Andy Pratama`,
+  description: `Production-oriented engineering projects and case studies by ${person.name}. Backend-focused full stack systems built with Laravel, Next.js, TypeScript, databases, APIs, DevOps, and third-party integrations. Projects include school management systems, government portals, payment systems, and enterprise applications with focus on architecture, performance, security, and scalability.`,
 };
 
 const gallery = {

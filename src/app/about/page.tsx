@@ -15,6 +15,9 @@ import {
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import { AboutClient } from "@/components/AboutClient";
+import { EngineeringPhilosophy } from "@/components/EngineeringPhilosophy";
+import { EnhancedProfileSection } from "@/components/EnhancedProfileSection";
+import { EnhancedTechStack } from "@/components/EnhancedTechStack";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -29,7 +32,37 @@ export async function generateMetadata() {
 }
 
 export default function About() {
+  const engineeringPhilosophy = {
+    display: true,
+    title: "Engineering Philosophy",
+    description: (
+      <>
+        I approach software development as an end-to-end engineering problem. Technology exists to solve real business problems, not to be an end in itself.
+        <br />
+        <br />
+        <strong>Solve the business problem:</strong> I focus on understanding requirements first, then choosing the right tools to solve them effectively.
+        <br />
+        <br />
+        <strong>Design for maintainability:</strong> I prefer clear boundaries, understandable architecture, and separation of concerns over clever code.
+        <br />
+        <br />
+        <strong>Build for production:</strong> I think about security, deployment, monitoring, and maintenance from the start, not as an afterthought.
+        <br />
+        <br />
+        <strong>Automate repetitive work:</strong> I use queues, jobs, integrations, and automation to reduce manual overhead and improve reliability.
+        <br />
+        <br />
+        <strong>Measure improvements:</strong> I use measurable results whenever possible — performance metrics, security scores, and user outcomes.
+      </>
+    ),
+  };
+
   const structure = [
+    {
+      title: "Profile",
+      display: true,
+      items: [],
+    },
     {
       title: about.intro.title,
       display: about.intro.display,
@@ -49,6 +82,11 @@ export default function About() {
       title: about.technical.title,
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
+    },
+    {
+      title: engineeringPhilosophy.title,
+      display: engineeringPhilosophy.display,
+      items: [],
     },
   ];
   return (
@@ -70,259 +108,81 @@ export default function About() {
         <TableOfContents structure={structure} about={about} />
       )}
       <AboutClient>
-        <Flex fillWidth mobileDirection="column" horizontal="center">
-          {about.avatar.display && (
+        <Column fillWidth gap="l">
+          {/* Enhanced Profile Section */}
+          <EnhancedProfileSection
+            person={person}
+            social={social}
+            calendar={about.calendar}
+          />
+
+          {/* Introduction */}
+          {about.intro.display && (
             <Column
-              className={`${styles.avatar} animate-on-scroll`}
-              position="sticky"
-              minWidth="160"
-              paddingX="l"
-              paddingBottom="xl"
-              gap="m"
-              flex={3}
-              horizontal="center"
+              fillWidth
+              gap="s"
               style={{
-                transition: 'all 0.6s cubic-bezier(0.32, 0.72, 0, 1)',
+                padding: 'clamp(1.25rem, 2.5vw, 2rem)',
+                background: 'var(--surface)',
+                borderRadius: '1.25rem',
+                border: '1px solid var(--neutral-alpha-weak)',
+                boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)',
               }}
             >
-              <Avatar 
-                src={person.avatar} 
-                size="xl" 
-                style={{
-                  transition: 'transform 0.6s cubic-bezier(0.32, 0.72, 0, 1)',
-                }}
-                className="hover:scale-105"
-              />
-              <Flex gap="8" vertical="center">
-                <Icon onBackground="accent-weak" name="globe" />
-                {person.location}
-              </Flex>
-              {person.languages.length > 0 && (
-                <Flex wrap gap="8">
-                  {person.languages.map((language, index) => (
-                    <Tag 
-                      key={language} 
-                      size="l"
-                      style={{
-                        transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
-                      }}
-                      className="hover:scale-110 hover:bg-brand-alpha-medium"
-                    >
-                      {language}
-                    </Tag>
-                  ))}
-                </Flex>
-              )}
-            </Column>
-          )}
-          <Column className={styles.blockAlign} flex={9} maxWidth={40}>
-            <Column
-              id={about.intro.title}
-              fillWidth
-              minHeight="160"
-              vertical="center"
-              marginBottom="32"
-            >
-              {about.calendar.display && (
-                <Flex
-                  fitWidth
-                  border="brand-alpha-medium"
-                  className={`${styles.blockAlign} animate-on-scroll hover:scale-105 hover:shadow-lg`}
-                  style={{
-                    backdropFilter: "blur(var(--static-space-1))",
-                    transition: 'all 0.6s cubic-bezier(0.32, 0.72, 0, 1)',
-                  }}
-                  background="brand-alpha-weak"
-                  radius="full"
-                  padding="4"
-                  gap="8"
-                  marginBottom="m"
-                  vertical="center"
-                >
-                  <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                  <Flex paddingX="8">Schedule a call</Flex>
-                  <IconButton
-                    href={about.calendar.link}
-                    data-border="rounded"
-                    variant="secondary"
-                    icon="chevronRight"
-                  />
-                </Flex>
-              )}
-              <Heading className={`${styles.textAlign} animate-on-scroll`} variant="display-strong-xl">
-                {person.name}
+              <Heading variant="display-strong-s" marginBottom="s" style={{ fontSize: 'clamp(1.375rem, 2.25vw, 1.75rem)' }}>
+                {about.intro.title}
               </Heading>
-              <Text
-                className={`${styles.textAlign} animate-on-scroll`}
-                variant="display-default-xs"
-                onBackground="neutral-weak"
-              >
-                {person.role}
-              </Text>
-              {social.length > 0 && (
-                <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
-                  {social.map(
-                    (item) =>
-                      item.link && (
-                          <React.Fragment key={item.name}>
-                              <Button
-                                  className="s-flex-hide hover:scale-105"
-                                  key={item.name}
-                                  href={item.link}
-                                  prefixIcon={item.icon}
-                                  label={item.name}
-                                  size="s"
-                                  weight="default"
-                                  variant="secondary"
-                                  style={{
-                                    transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
-                                  }}
-                              />
-                              <IconButton
-                                  className="s-flex-show hover:scale-110"
-                                  size="l"
-                                  key={`${item.name}-icon`}
-                                  href={item.link}
-                                  icon={item.icon}
-                                  variant="secondary"
-                                  style={{
-                                    transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
-                                  }}
-                              />
-                          </React.Fragment>
-                      ),
-                  )}
-                </Flex>
-              )}
-            </Column>
-
-            {about.intro.display && (
-              <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl" className="animate-on-scroll">
+              <Text variant="body-default-l" onBackground="neutral-weak" style={{ lineHeight: '1.7' }}>
                 {about.intro.description}
-              </Column>
-            )}
+              </Text>
+            </Column>
+          )}
 
-            {about.work.display && (
-              <>
-                <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m" className="animate-on-scroll">
-                  {about.work.title}
-                </Heading>
-                <Column fillWidth gap="l" marginBottom="40">
-                  {about.work.experiences.map((experience, index) => (
-                    <Column 
-                      key={`${experience.company}-${experience.role}-${index}`} 
-                      fillWidth
-                      className={`${styles.rowHover} animate-on-scroll`}
-                    >
-                      <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
-                        <Text id={experience.company} variant="heading-strong-l">
-                          {experience.company}
-                        </Text>
-                        <Text variant="heading-default-xs" onBackground="neutral-weak">
-                          {experience.timeframe}
-                        </Text>
-                      </Flex>
-                      <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                        {experience.role}
+          {about.work.display && (
+            <>
+              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m" className="animate-on-scroll" style={{ fontSize: 'clamp(1.375rem, 2.25vw, 1.75rem)' }}>
+                {about.work.title}
+              </Heading>
+              <Column fillWidth gap="m" marginBottom="xl">
+                {about.work.experiences.map((experience, index) => (
+                  <Column 
+                    key={`${experience.company}-${experience.role}-${index}`} 
+                    fillWidth
+                    gap="s"
+                    className={`${styles.rowHover} animate-on-scroll`}
+                    style={{
+                      padding: 'clamp(1rem, 2vw, 1.5rem)',
+                      background: 'var(--surface)',
+                      borderRadius: '1rem',
+                      border: '1px solid var(--neutral-alpha-weak)',
+                    }}
+                  >
+                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="2">
+                      <Text id={experience.company} variant="heading-strong-l" style={{ fontSize: 'clamp(1.0625rem, 1.5vw, 1.25rem)' }}>
+                        {experience.company}
                       </Text>
-                      <Column as="ul" gap="16">
-                        {experience.achievements.map((achievement: JSX.Element, index: number) => (
-                          <Text
-                            as="li"
-                            variant="body-default-m"
-                            key={`${experience.company}-${index}`}
-                          >
-                            {achievement}
-                          </Text>
-                        ))}
-                      </Column>
-                      {experience.images.length > 0 && (
-                        <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
-                          {experience.images.map((image, index) => (
-                            <Flex
-                              key={index}
-                              border="neutral-medium"
-                              radius="m"
-                              //@ts-ignore
-                              minWidth={image.width}
-                              //@ts-ignore
-                              height={image.height}
-                              style={{
-                                transition: 'all 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
-                              }}
-                              className="hover:scale-105 hover:shadow-xl"
-                            >
-                              <Media
-                                enlarge
-                                radius="m"
-                                //@ts-ignore
-                                sizes={image.width.toString()}
-                                //@ts-ignore
-                                alt={image.alt}
-                                //@ts-ignore
-                                src={image.src}
-                              />
-                            </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.studies.display && (
-            <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m" className="animate-on-scroll">
-                {about.studies.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column 
-                    key={`${institution.name}-${index}`} 
-                    fillWidth 
-                    gap="4"
-                    className={`${styles.rowHover} animate-on-scroll`}
-                  >
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
+                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                        {experience.timeframe}
+                      </Text>
+                    </Flex>
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="s" style={{ fontWeight: 500 }}>
+                      {experience.role}
                     </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
-                    </Text>
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.technical.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.technical.title}
-                variant="display-strong-s"
-                marginBottom="40"
-                className="animate-on-scroll"
-              >
-                {about.technical.title}
-              </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column 
-                    key={`${skill}-${index}`} 
-                    fillWidth 
-                    gap="4"
-                    className={`${styles.rowHover} animate-on-scroll`}
-                  >
-                    <Text variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
+                    <Column as="ul" gap="12">
+                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
+                        <Text
+                          as="li"
+                          variant="body-default-m"
+                          key={`${experience.company}-${index}`}
+                          style={{ lineHeight: '1.6' }}
+                        >
+                          {achievement}
+                        </Text>
+                      ))}
+                    </Column>
+                    {experience.images.length > 0 && (
+                      <Flex fillWidth paddingTop="s" paddingLeft="xl" gap="s" wrap>
+                        {experience.images.map((image, index) => (
                           <Flex
                             key={index}
                             border="neutral-medium"
@@ -332,9 +192,9 @@ export default function About() {
                             //@ts-ignore
                             height={image.height}
                             style={{
-                              transition: 'all 0.4s cubic-bezier(0.32, 0.72, 0, 1)',
+                              transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
                             }}
-                            className="hover:scale-105 hover:shadow-xl"
+                            className="hover:scale-105 hover:shadow-lg"
                           >
                             <Media
                               enlarge
@@ -355,9 +215,74 @@ export default function About() {
               </Column>
             </>
           )}
+
+          {about.studies.display && (
+            <>
+              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m" className="animate-on-scroll" style={{ fontSize: 'clamp(1.375rem, 2.25vw, 1.75rem)' }}>
+                {about.studies.title}
+              </Heading>
+              <Column fillWidth gap="m" marginBottom="xl">
+                {about.studies.institutions.map((institution, index) => (
+                  <Column 
+                    key={`${institution.name}-${index}`} 
+                    fillWidth 
+                    gap="xs"
+                    className={`${styles.rowHover} animate-on-scroll`}
+                    style={{
+                      padding: 'clamp(1rem, 2vw, 1.5rem)',
+                      background: 'var(--surface)',
+                      borderRadius: '1rem',
+                      border: '1px solid var(--neutral-alpha-weak)',
+                    }}
+                  >
+                    <Text id={institution.name} variant="heading-strong-l" style={{ fontSize: 'clamp(1.0625rem, 1.5vw, 1.25rem)' }}>
+                      {institution.name}
+                    </Text>
+                    <Text variant="heading-default-xs" onBackground="neutral-weak" style={{ lineHeight: '1.5' }}>
+                      {institution.description}
+                    </Text>
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.technical.display && (
+            <EnhancedTechStack skills={about.technical.skills} />
+          )}
+
+          {engineeringPhilosophy.display && (
+            <>
+              <Heading
+                as="h2"
+                id="engineering-philosophy"
+                variant="display-strong-s"
+                marginBottom="m"
+                className="animate-on-scroll"
+                style={{ fontSize: 'clamp(1.375rem, 2.25vw, 1.75rem)' }}
+              >
+                {engineeringPhilosophy.title}
+              </Heading>
+              <Column 
+                fillWidth 
+                gap="s" 
+                className="animate-on-scroll"
+                style={{
+                  padding: 'clamp(1.25rem, 2.5vw, 2rem)',
+                  background: 'var(--surface)',
+                  borderRadius: '1.25rem',
+                  border: '1px solid var(--neutral-alpha-weak)',
+                  boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)',
+                }}
+              >
+                <Text variant="body-default-l" onBackground="neutral-weak" style={{ lineHeight: '1.7' }}>
+                  {engineeringPhilosophy.description}
+                </Text>
+              </Column>
+            </>
+          )}
         </Column>
-      </Flex>
-    </AboutClient>
+      </AboutClient>
   </Column>
   );
 }

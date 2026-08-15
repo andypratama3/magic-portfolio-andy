@@ -1,7 +1,7 @@
 ---
-title: "ProductSchool — All-in-One School Management System for Indonesia"
+title: "ProductSchool — School ERP & Education Management Platform"
 publishedAt: "2026-06-01"
-summary: "Comprehensive school management platform built with Laravel 12, PHP 8.3, MySQL, Redis, and Tailwind CSS. Covers student lifecycle, academic grading, attendance, payroll, financial management, rapor PDF generation with QR verification, WhatsApp integration, and 52 production modules serving SD Kreatif Muhammadiyah 3 Samarinda since 2024."
+summary: "Production-oriented school management platform designed to centralize academic, financial, HR, inventory, communication, and operational workflows for schools. Built with Laravel 12, PHP 8.3, MySQL, Redis, featuring 52+ modules, service-oriented architecture, payment integration, WhatsApp automation, and enterprise-grade security."
 images:
   - "/images/projects/products_shool/dashboard.png"
   - "/images/projects/products_shool/siswa.png"
@@ -14,7 +14,7 @@ images:
   - "/images/projects/productschool-4.png"
 team:
   - name: "Andy Pratama"
-    role: "Founder & Fullstack Engineer (Freelance Contract)"
+    role: "Backend-Focused Full Stack Engineer (Freelance Contract)"
     avatar: "/images/photo.jpg"
     linkedIn: "https://www.linkedin.com/in/andypratama3"
 tech:
@@ -27,9 +27,9 @@ tech:
 
 ## Overview
 
-ProductSchool is a comprehensive school management system purpose-built for Indonesian K-12 schools. The platform covers the full spectrum of school operations — student lifecycle management, academic grading, attendance tracking, payroll processing, financial management, rapor/report card PDF generation with QR verification, WhatsApp communication, and digital payment integration — all within a unified web-based platform.
+ProductSchool is a production-oriented school management platform designed to centralize academic, financial, HR, inventory, communication, and operational workflows for schools. Running in production at SD Kreatif Muhammadiyah 3 Samarinda since 2024, the system demonstrates backend-focused full stack engineering at scale with service-oriented architecture, enterprise-grade security, and third-party integrations.
 
-Running in production at SD Kreatif Muhammadiyah 3 Samarinda since 2024, the system serves as both the daily operational backbone for the school and a technical showcase of enterprise-grade Laravel development practices.
+The platform handles complex business domains including student lifecycle management, academic assessment, attendance tracking, payroll processing, financial management, automated report generation, WhatsApp communication, and payment gateway integration — all within a unified Laravel-based system designed for production reliability and maintainability.
 
 ## Quantified Results
 
@@ -116,21 +116,25 @@ Running in production at SD Kreatif Muhammadiyah 3 Samarinda since 2024, the sys
 
 Implemented Spatie Laravel Permission RBAC with 7 predefined roles — superadmin bypasses all checks, admin/admin_akademik see all data, teacher sees only assigned classrooms and subjects. All mutation endpoints protected with middleware-level authorization checks. CSRF protection on all forms, input validation at form, service, and database levels. Audit logging on all critical actions. Sentry error tracking for production monitoring.
 
-## Technical Challenges
+## Engineering Decisions
 
-**Domain Complexity at Scale** — The education domain spans 52 interconnected modules across student management, grading, attendance, payments, payroll, rapor, communications, admissions, and analytics. Each module has its own data model, business rules, and permission scoping. Designed a service-oriented architecture with 92 dedicated service classes that keep business logic decoupled from controllers, enabling each module to evolve independently.
+**Service-Oriented Architecture** — With 52 interconnected modules across multiple business domains, I chose a service-oriented architecture to decouple business logic from controllers. Each module has dedicated service classes (92 total) that handle business rules, data transformation, and external integrations. This decision enables independent module evolution, easier testing, and better maintainability as the system grows.
 
-**Batch Rapor Generation Performance** — Generating rapor PDFs for hundreds of students simultaneously required a queue-based batch system. Each student's rapor is dispatched as an individual job via Laravel Queue with database driver, allowing parallel processing with configurable concurrency. The modern section-based rapor system uses queue-based batch processing with real-time progress tracking.
+**Queue-Based Batch Processing** — For bulk report card generation and automated notifications, I implemented Laravel Queue with database driver instead of synchronous processing. Each student's report card is dispatched as an individual job, allowing parallel processing with configurable concurrency. This prevents timeout issues during bulk operations and provides real-time progress tracking for users.
 
-**WhatsApp Integration Reliability** — Two-way WhatsApp messaging at school scale required careful handling of Meta's API rate limits, webhook idempotency, message status tracking, and retry logic. Implemented a robust conversation management system with template messages, bot auto-reply with configurable work hours, and delivery status tracking with automatic retries.
+**RBAC with Data-Level Scoping** — Rather than simple role checks, I implemented data-level access control using a TeacherScopedData trait. This ensures teachers only see their assigned classrooms, students, and subjects at the database query level, not just at the UI level. The trait provides reusable methods like getScopedClassroomIds() and getScopedStudentIds() that all controllers can use, maintaining consistency across the application.
 
-**Teacher Data Scoping** — With 7 permission levels, ensuring each user sees only authorized data required a reusable scoping system. Implemented a TeacherScopedData trait that all controllers include, providing getScopedClassroomIds(), getScopedStudentIds(), and getScopedSubjectIds() methods that filter queries at the database level.
+**WhatsApp Business API Integration** — For school communication, I integrated Meta's WhatsApp Cloud API instead of SMS due to higher engagement rates and lower costs. The implementation includes two-way chat, message templates, bot auto-reply with configurable work hours, and payment reminders. The system handles API rate limits, webhook idempotency, and delivery status tracking with automatic retries for reliability.
 
-## Key Learnings
+**Payment Gateway Integration** — I chose Midtrans payment gateway for its comprehensive Indonesian payment method support (Virtual Account, e-wallet, credit card). The integration handles payment status webhooks, automated billing via Laravel Scheduler, and reconciliation workflows. This reduced manual payment processing time and improved cash flow visibility for the school.
 
-ProductSchool strengthened full-stack Laravel engineering skills including service-oriented architecture design, domain-driven module organization, batch job processing at scale, WebSocket real-time features, WhatsApp Business API integration, payment gateway integration, and production DevOps practices.
+## Engineering Impact
 
-The project demonstrates how a monolithic Laravel application, when properly organized with service classes, reusable traits, and clear module boundaries, can handle the complexity of an enterprise school management system serving hundreds of daily users across dozens of interconnected domains.
+This project demonstrates that a well-architected monolithic Laravel application can handle enterprise-level complexity when organized with proper separation of concerns. The service-oriented architecture, combined with Laravel's queue system and Redis caching, enables the system to process bulk operations (report card generation, notifications, imports) without blocking user interactions.
+
+The data-level RBAC implementation shows how backend engineering decisions directly impact security and user experience — teachers see only their data without requiring complex frontend filtering logic. The WhatsApp and payment integrations demonstrate practical experience with third-party APIs, webhook handling, and production error handling.
+
+The system serves as evidence of backend-focused full stack capability: database design for complex domains, API architecture for mobile/third-party consumption, background job processing for performance, and production deployment with Docker, Cloudflare, and CI/CD pipelines.
 
 ## Technologies Used
 

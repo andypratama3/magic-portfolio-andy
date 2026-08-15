@@ -12,6 +12,7 @@ export const smoothEase = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
 // Hero animation - cinematic reveal
 export const animateHero = (elements: {
+  eyebrow?: HTMLElement;
   heading: HTMLElement;
   subline: HTMLElement;
   buttons: HTMLElement;
@@ -19,9 +20,17 @@ export const animateHero = (elements: {
 }) => {
   const tl = gsap.timeline();
 
+  if (elements.eyebrow) {
+    tl.fromTo(elements.eyebrow,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: premiumEase }
+    );
+  }
+
   tl.fromTo(elements.heading,
     { y: 60, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1.2, ease: premiumEase }
+    { y: 0, opacity: 1, duration: 1.2, ease: premiumEase },
+    elements.eyebrow ? '-=0.4' : undefined
   )
   .fromTo(elements.subline,
     { y: 40, opacity: 0 },
