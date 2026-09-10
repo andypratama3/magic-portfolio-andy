@@ -109,10 +109,10 @@ export default function Home() {
       <Column fillWidth style={{ padding: 'clamp(2.5rem, 5vw, 5rem) 0' }}>
         <SectionTitle 
           title="Technical Stack"
-          description="Backend-focused full stack engineering with production experience"
+          description="Fullstack software engineering with production experience across modern frontend and backend technologies"
           align="center"
         />
-        <EnhancedTechStack skills={about.technical.skills} />
+        <EnhancedTechStack skills={about.technical.skills} showHeader={false} />
       </Column>
 
       {/* CTA Section */}

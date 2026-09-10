@@ -6,8 +6,8 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Software Engineer",
-  positioning: "Backend-Focused Full Stack Software Engineer building production systems from idea to deployment",
+  role: "Fullstack Software Engineer",
+  positioning: "Fullstack Software Engineer building production web applications from idea to deployment",
   avatar: "/images/photo.jpg",
   email: "andypratama1211@gmail.com",
   location: "Samarinda, Indonesia",
@@ -48,10 +48,10 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Andy Pratama — Software Engineer`,
+  title: `Andy Pratama — Fullstack Software Engineer`,
   description:
-    "Andy Pratama is a Software Engineer with 3+ years of hands-on experience building production-oriented full-stack applications, specializing in Laravel/PHP backend engineering with practical experience across Next.js, React, Vue, TypeScript, databases, APIs, DevOps, mobile, third-party integrations, automation, and AI-enabled systems.",
-  eyebrow: "Software Engineer",
+    "Andy Pratama is a Fullstack Software Engineer with 3+ years of hands-on experience building production-oriented web applications across Next.js, React, Vue, TypeScript, Laravel, PHP, databases, APIs, DevOps, mobile, third-party integrations, automation, and AI-enabled systems.",
+  eyebrow: "Fullstack Software Engineer",
   headline: <>Building software systems from idea to production.</>,
   featured: {
     display: true,
@@ -67,7 +67,7 @@ const home = {
   },
   subline: (
     <>
-      I'm Andy Pratama, a Software Engineer focused on backend engineering and full-stack product development. I build production-oriented systems using Laravel, PHP, Next.js, TypeScript, and modern infrastructure.
+      I'm Andy Pratama, a Fullstack Software Engineer building modern web applications and scalable products with Next.js, React, TypeScript, Laravel, PHP, and modern infrastructure.
       <br />
       <br />
       3+ years hands-on experience building scalable applications across education, government, and commercial sectors.
@@ -78,8 +78,8 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About Andy Pratama — Software Engineer`,
-  description: `Software Engineer based in Samarinda, Indonesia. Fresh graduate by education with 3+ years of hands-on software engineering experience building production-oriented full-stack applications with Laravel, Next.js, TypeScript, databases, APIs, DevOps, and third-party integrations.`,
+  title: `About Andy Pratama — Fullstack Software Engineer`,
+  description: `Fullstack Software Engineer based in Samarinda, Indonesia with 3+ years of hands-on software engineering experience building production-oriented full-stack applications with Next.js, React, TypeScript, Laravel, databases, APIs, DevOps, and third-party integrations.`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -96,16 +96,16 @@ const about = {
     title: "About",
     description: (
       <>
-        I'm a Software Engineer based in Samarinda, Indonesia, focused on backend engineering and full-stack product development.
+        I'm a Fullstack Software Engineer based in Samarinda, Indonesia, building modern web applications and scalable digital products.
         <br />
         <br />
         Although I am a fresh graduate academically, I have more than three years of hands-on experience building web applications through freelance work, professional projects, and independent product development.
         <br />
         <br />
-        My expertise spans Laravel/PHP backend engineering, Next.js, React, Vue, TypeScript, REST APIs, databases, Docker, CI/CD, infrastructure, mobile development, third-party integrations, and AI/automation.
+        My expertise spans Next.js, React, Vue, TypeScript, Laravel, PHP, REST APIs, databases, Docker, CI/CD, infrastructure, mobile development, third-party integrations, and AI/automation.
         <br />
         <br />
-        I build software systems from idea to production, with a strong focus on backend engineering, full-stack development, system architecture, integrations, and reliable infrastructure.
+        I build software systems from idea to production, with a strong focus on fullstack development, modern user interfaces, system architecture, integrations, and reliable infrastructure.
       </>
     ),
   },
@@ -325,11 +325,11 @@ const about = {
         level: "Strong",
         description: "Database design, optimization, and data management for production systems",
         technologies: [
-          { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", proficiency: "Strong" },
           { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", proficiency: "Working" },
-          { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg", proficiency: "Working" },
           { name: "Eloquent ORM", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg", proficiency: "Strong" },
           { name: "Query Optimization", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", proficiency: "Working" },
+          { name: "Schema Design", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", proficiency: "Strong" },
+          { name: "Database Indexing", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", proficiency: "Working" },
         ],
       },
       {
@@ -376,7 +376,7 @@ const work = {
   path: "/work",
   label: "Projects",
   title: `Engineering Projects & Case Studies — Production Systems by Andy Pratama`,
-  description: `Production-oriented engineering projects and case studies by ${person.name}. Backend-focused full stack systems built with Laravel, Next.js, TypeScript, databases, APIs, DevOps, and third-party integrations. Projects include school management systems, government portals, payment systems, and enterprise applications with focus on architecture, performance, security, and scalability.`,
+  description: `Production-oriented engineering projects and case studies by ${person.name}. Fullstack web systems built with Next.js, React, TypeScript, Laravel, databases, APIs, DevOps, and third-party integrations. Projects include school management systems, government portals, payment systems, and enterprise applications with focus on architecture, performance, security, and scalability.`,
 };
 
 const gallery = {
