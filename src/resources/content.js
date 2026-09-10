@@ -119,17 +119,21 @@ const about = {
         role: "Fullstack Engineer (Contract)",
         achievements: [
           <>
-            Led full re-architecture from monolithic Laravel Blade to headless
-            Next.js 14 + Laravel REST API — 52 modules, page load from 3-5s to under 1s (70%+ improvement).
+            Designed & built ProductSchool — a 52-module school management platform (Laravel 12, PHP 8.3,
+            MySQL, Redis) serving 480+ students, 42 classrooms, and 100+ employees in production.
           </>,
           <>
-            Designed RBAC with 16 user roles, ~380 permissions, and data-level scoping (TeacherScopedData trait).
+            Engineered 893 routes, 132 models, 111 services, 18 RBAC roles with 272 permissions,
+            and data-level scoping (TeacherScopedData trait) enforced at the database query level.
           </>,
           <>
-            Integrated Claude API for automated report card narratives and Meta WhatsApp Cloud API for real-time notifications — 98% delivery rate.
+            Built an AI-powered WhatsApp bot (Ollama + function-calling, 16 tools) with NLP intent detection
+            and OCR — parents get bills, grades, schedules via chat without installing an app.
           </>,
           <>
-            Achieved 90+ Lighthouse scores, Security Grade A+, CI/CD via GitHub Actions (Pint, PHPStan, Paratest, Sentry).
+            Automated report cards via headless Chrome PDF generation with QR verification, Midtrans
+            payment gateway integration, GPS geofencing attendance, and Laravel Reverb real-time WebSockets
+            (27 events, 21 listeners).
           </>,
         ],
         images: [
@@ -386,7 +390,7 @@ const gallery = {
       alt: "ProductSchool Management System",
       orientation: "horizontal",
       title: "ProductSchool — Management System",
-      description: "An all-in-one school management system featuring student data management, automated billing, and a headless Next.js architecture.",
+      description: "An all-in-one school management system built with Laravel 12. Features an AI-powered WhatsApp assistant for parents, automated report cards with QR verification, Midtrans payments, GPS attendance, and 52 production modules.",
       link: "/product/productschool"
     },
     {

@@ -1,17 +1,24 @@
 ---
-title: "ProductSchool — School ERP & Education Management Platform"
+title: "ProductSchool — Enterprise School Management System with AI-Powered WhatsApp Bot"
 publishedAt: "2026-06-01"
-summary: "Production-oriented school management platform designed to centralize academic, financial, HR, inventory, communication, and operational workflows for schools. Built with Laravel 12, PHP 8.3, MySQL, Redis, featuring 52+ modules, service-oriented architecture, payment integration, WhatsApp automation, and enterprise-grade security."
+summary: "Full-scale school management platform serving 480+ students and 100+ employees at SD Muhammadiyah 3 Samarinda. Built with Laravel 12, PHP 8.3, MySQL, Redis. Features 893 routes, 18-role RBAC, AI-powered WhatsApp bot with function-calling, headless Chrome rapor generation, Midtrans payment gateway, GPS geofencing attendance, real-time WebSocket architecture, and 157+ test files."
 images:
   - "/images/projects/products_shool/dashboard.png"
   - "/images/projects/products_shool/siswa.png"
   - "/images/projects/products_shool/rapot.png"
   - "/images/projects/products_shool/analitik.png"
   - "/images/projects/products_shool/nilai.png"
-  - "/images/projects/productschool-1.png"
-  - "/images/projects/productschool-2.png"
-  - "/images/projects/productschool-3.png"
-  - "/images/projects/productschool-4.png"
+  - "/images/projects/products_shool/ss-01.png"
+  - "/images/projects/products_shool/ss-02.png"
+  - "/images/projects/products_shool/ss-03.png"
+  - "/images/projects/products_shool/ss-04.png"
+  - "/images/projects/products_shool/ss-05.png"
+  - "/images/projects/products_shool/ss-06.png"
+  - "/images/projects/products_shool/ss-07.png"
+  - "/images/projects/products_shool/ss-08.png"
+  - "/images/projects/products_shool/ss-09.png"
+  - "/images/projects/products_shool/ss-10.png"
+  - "/images/projects/products_shool/ss-11.png"
 team:
   - name: "Andy Pratama"
     role: "Backend-Focused Full Stack Engineer (Freelance Contract)"
@@ -22,130 +29,284 @@ tech:
   - "PHP 8.3"
   - "MySQL"
   - "Redis"
+  - "Ollama AI"
+  - "Laravel Reverb"
+  - "Midtrans"
+  - "WhatsApp Cloud API"
+  - "React 19"
   - "Tailwind CSS"
 ---
 
 ## Overview
 
-ProductSchool is a production-oriented school management platform designed to centralize academic, financial, HR, inventory, communication, and operational workflows for schools. Running in production at SD Kreatif Muhammadiyah 3 Samarinda since 2024, the system demonstrates backend-focused full stack engineering at scale with service-oriented architecture, enterprise-grade security, and third-party integrations.
+ProductSchool is an enterprise-grade school management system (Sistem Informasi Manajemen Sekolah) built to centralize every operational workflow of an Indonesian K-12 school into a single platform. Running in production at SD Muhammadiyah 3 Samarinda since 2024, it serves approximately 480 students across 42 classrooms and 100+ employees — handling academic management, automated report cards, financial processing, payroll, GPS-based attendance, WhatsApp communication with AI-powered chatbot, and real-time operations.
 
-The platform handles complex business domains including student lifecycle management, academic assessment, attendance tracking, payroll processing, financial management, automated report generation, WhatsApp communication, and payment gateway integration — all within a unified Laravel-based system designed for production reliability and maintainability.
+This project represents the most technically complex system I have engineered end-to-end: 132 Eloquent models, 146 controllers, 111 service classes, 893 routes, 18 distinct user roles with 272 granular permissions, and integrations with 8 external services. The codebase has been developed over 58+ intensive sessions with continuous production deployment.
+
+## Screenshots
+
+![ProductSchool Dashboard](/images/projects/products_shool/dashboard.png)
+
+![ProductSchool Student Management](/images/projects/products_shool/siswa.png)
+
+![ProductSchool Report Cards (Rapor)](/images/projects/products_shool/rapot.png)
+
+![ProductSchool Analytics](/images/projects/products_shool/analitik.png)
+
+![ProductSchool Grading (Nilai)](/images/projects/products_shool/nilai.png)
+
+![ProductSchool Screenshot 1](/images/projects/products_shool/ss-01.png)
+
+![ProductSchool Screenshot 2](/images/projects/products_shool/ss-02.png)
+
+![ProductSchool Screenshot 3](/images/projects/products_shool/ss-03.png)
+
+![ProductSchool Screenshot 4](/images/projects/products_shool/ss-04.png)
+
+![ProductSchool Screenshot 5](/images/projects/products_shool/ss-05.png)
+
+![ProductSchool Screenshot 6](/images/projects/products_shool/ss-06.png)
+
+![ProductSchool Screenshot 7](/images/projects/products_shool/ss-07.png)
+
+![ProductSchool Screenshot 8](/images/projects/products_shool/ss-08.png)
+
+![ProductSchool Screenshot 9](/images/projects/products_shool/ss-09.png)
+
+![ProductSchool Screenshot 10](/images/projects/products_shool/ss-10.png)
+
+![ProductSchool Screenshot 11](/images/projects/products_shool/ss-11.png)
 
 ## Quantified Results
 
-- **52 production modules** covering student management, grading, attendance, payments, payroll, rapor, Canvas document templates, WhatsApp communication, PPDB admissions, and early warning analytics
-- **100+ controllers, 117 models, 92 services** — modular service-oriented architecture with clean separation of concerns
-- **351 web routes and 70 API endpoints** supporting both dashboard and mobile/third-party consumption
-- **DomPDF-powered rapor generation** with QR code verification — batch-generate entire classrooms in minutes
-- **Midtrans payment gateway** integration with 20+ Indonesian payment methods (Virtual Account, e-wallet, credit card)
-- **WhatsApp Cloud API** two-way chat with automated notifications, bot auto-reply, and message templates
-- **Laravel Reverb** real-time WebSocket for live dashboard updates and notification delivery
-- **7 role-based permission levels** via Spatie Laravel Permission — granular access per user scope
-- **DAPODIK format support** with bulk XLSX import/export for student and employee data
-- **Canvas document template system** with drag-and-drop editor and AI-assisted variable suggestions (Claude/DeepSeek)
+- **893 routes** (708 web + 185 API) serving dashboard, mobile apps, WhatsApp bot, and public landing simultaneously
+- **132 models, 146 controllers, 111 services** — service-oriented architecture with domain-driven module separation
+- **18 user roles with 272 permissions** via Spatie Laravel Permission, with data-level scoping per teacher and per parent
+- **157+ test files with 1,233 test methods** and ~3,000 assertions, running in parallel via CI
+- **24 artisan console commands** for automation, monitoring, and operational workflows
+- **27 broadcast events and 21 listeners** powering real-time WebSocket updates across 12 channels
+- **16 AI tools** for the WhatsApp bot with function-calling, NLP intent detection, and OCR document analysis
+- **Headless Chrome PDF generation** for report cards with QR verification, digital signatures, and batch processing
+- **Midtrans payment gateway** with Virtual Account, QRIS, webhook reconciliation, and automated billing
+- **43 mobile API endpoints** for the parent application with Sanctum authentication
 
-## Core Modules
+## Architecture
 
-**Student Lifecycle Management** — Complete CRUD with NIS/NISN auto-generation, photo upload, document management, and DAPODIK-format bulk XLSX import with preview. Covers transfers (mutasi), grade retention (tinggal kelas), graduation, and alumni records with academic year tracking.
+### Service-Oriented Monolith
 
-**Teacher and Staff Management** — Centralized teacher and employee profiles with NIK, phone, staff position linking, document management, and bulk import. Subject and classroom assignment per teacher.
+Rather than distributing across microservices, I organized the system as a service-oriented monolith — 111 dedicated service classes handle business logic while controllers remain thin route handlers. Each of the 52 production modules has its own controller, service, form requests, policies, and events. This approach gave us the operational simplicity of a single deployment while maintaining clean domain boundaries.
 
-**Classroom and Schedule Management** — Classroom CRUD with student rosters, homeroom and subject teacher assignments, and visual timetables. Teacher-scoped schedule views.
+The architecture follows a consistent pattern across all modules: Routes → Middleware (permission strings) → Controller → Form Request validation → Service → Model → Policy. Form Requests isolate validation per action. Services encapsulate business rules. Policies enforce authorization at the model level. Events and listeners decouple side effects (notifications, broadcasts, audit logging).
 
-**Comprehensive Grading and Assessment** — Inline AJAX grade entry with auto-save, group grade view, TP (Learning Objectives) scoring aligned with Kurikulum Merdeka, Sumatif assessment, and narrative comments. Configurable Formatif/Sumatif weight system with KKM and predicate thresholds. Cross-semester student transcripts with export.
+### Data-Level Security (RBAC + Scoping)
 
-**Attendance Tracking** — Daily per-classroom attendance with multiple statuses (Hadir, Sakit, Izin, Alpa), bulk rekap input, monthly reports with automated percentage summaries, and employee GPS-based check-in with KML geo-fencing.
+The permission system operates at three layers:
 
-**Payment and Billing** — Payment CRUD with configurable payment titles (SPP, building, etc.), monthly auto-billing via Laravel Task Scheduler, outstanding tracking, manual confirmation, and Midtrans payment gateway integration for online payments via Virtual Account, e-wallet, and credit card.
+1. **Route middleware** — 277 unique permission strings check access before controller execution
+2. **Model policies** — 34 policies enforce authorization at the data level (e.g., `PaymentPolicy` checks `view-payments` permission, not role names)
+3. **Query scoping** — `TeacherScopedData` trait restricts database queries to only the classrooms, students, and subjects assigned to each teacher. Parents see only their own children's data via `getParentStudentIds()`.
 
-**Payroll Processing** — Batch payroll with salary grades, education/structural/functional allowances, pay slip PDF generation with bulk ZIP export, and complete audit trail.
+The `FULL_SCOPE_ROLES` constant defines roles that bypass teacher-level scoping (kepala_sekolah, keuangan, tenaga_pendidikan, guru_bk) while still respecting parent-level scoping. This three-layer approach means a teacher literally cannot query data outside their assigned classrooms — the restriction exists at the database level, not just the UI.
 
-**Report Card Generation** — Bulk rapor PDF generation per classroom with QR verification codes. Features a finalization workflow (draft to finalized) and public QR verification page. Supports both legacy report cards and the modern section-based rapor system with queue-based batch processing.
+### Real-Time Architecture
 
-**Canvas Document Template System** — Drag-and-drop visual document template editor with merge fields, AI-powered variable suggestions via Claude and DeepSeek, JSON template import/export, bulk document generation, and approval workflow (draft → submit → approve → reject).
+Laravel Reverb (Pusher-compatible WebSocket server) broadcasts events across 12 channels:
 
-**WhatsApp Communication** — Two-way managed conversation system with message templates, reactions, read receipts, and admin assignment. Bot auto-reply with configurable work hours. Payment reminders (08:00) and attendance alerts (15:00) via WhatsApp automation.
+- `whatsapp-conversations` — live chat sidebar and message delivery
+- `payment-updates` — payment completion triggers matrix refresh
+- `attendance-updates` — check-in/check-out reflected immediately
+- `grade-updates` — grade entry triggers live index refresh
+- `data-updated` — generic channel for DataTable auto-refresh across transfer, graduation, retention, and promotion workflows
 
-**PPDB Online Admissions** — Application management with document upload, review → approve → enroll workflow, and conversion to active student records.
+The frontend implements a smart client architecture: WebSocket connection when available, polling fallback with `!window.Echo` guard to prevent duplicate requests, exponential backoff reconnection, and activity-based timeout (30s idle disconnect).
 
-**Early Warning System** — Multi-factor at-risk student identification with bulk classroom assessment, risk scoring, and dashboard alerts for headmasters and homeroom teachers.
+## Core Features
 
-**P5 Assessment** — Pancasila Profile assessment with configurable dimensions and dimensions, bulk input, and individual student P5 reports.
+### AI-Powered WhatsApp Bot
 
-**Inklusi (Inclusive Education)** — ABK student development tracking across physical, cognitive, emotional, and social dimensions with shadow teacher assignment.
+The most technically distinctive feature — parents can retrieve verified school information by chatting the school's WhatsApp number. No app installation required.
 
-**CMS and School Profile** — Article/news publishing, school profile management (hero, achievements, gallery, cooperations), and public-facing content management.
+**How it works:**
+- Meta WhatsApp Cloud API receives incoming messages via webhook (HMAC-SHA256 verified)
+- NLP pipeline processes intent: menu number selection → NISN lookup → keyword matching → fuzzy/levenshtein scoring → abbreviation expansion → composite intent detection → negation penalty
+- Ollama LLM (qwen2.5:3b, running locally) performs function-calling with 16 read-only tools against verified school data
+- Bot cannot fabricate numbers — it must call tools; results are formatted for WhatsApp delivery
+
+**16 AI tools:** `get_student_payments`, `get_student_attendance`, `get_student_grades`, `get_student_schedule`, `get_student_profile`, `get_student_summary`, `get_student_extracurriculars`, `get_wali_kelas`, `get_school_info`, `get_academic_calendar`, `get_school_news`, `get_registration_info`, `get_payment_methods`, `get_leave_instructions`, and more.
+
+**Conversation state machine:** `IDLE → AWAITING_STUDENT_ID → AWAITING_STUDENT_SELECTION → IDLE (verified)` with branches for leave requests, payment confirmation, and human handoff. Students verified via NISN (10-digit) + phone match. 3 failed attempts → blocked. Multiple children → selection dialog.
+
+**OCR integration:** Parents can photograph payment receipts or sick letters. Tesseract OCR extracts text, LLM validates the document, and verified information is recorded automatically. OCR names are scoped to the verified parent's own children to prevent misattribution.
+
+**Human handoff:** When confidence is low or the parent is urgent/complaining, the conversation escalates to admin staff. When an admin replies from the dashboard, the bot auto-holds — a single acknowledgment message is sent, then the bot stays silent until the parent returns to the menu.
+
+### Automated Report Cards (Rapor)
+
+**Visual template builder:** Canvas-based drag-and-drop section editor (React 19 + react-konva) with 16 section types: student info, grade tables, descriptions, P5 assessment, inclusion (ABK), signatures, and more. Templates support page breaks, custom paper sizes, fonts, school letterhead, watermarks, and QR codes.
+
+**PDF generation pipeline:**
+```
+CanvasHtmlRenderer → paginated HTML (96 DPI, A4/Letter)
+DynamicTableResolver → resolve DataSourceRegistry (8 data sources)
+Browsershot (headless Chrome) → print-quality PDF
+QR code → GD pixel rendering with school logo overlay
+Digital signature → white-background removal via GD threshold
+```
+
+Each student's rapor is dispatched as an individual job via Laravel Queue with `Bus::batch` for progress tracking. The entire pipeline renders variable expressions (`{{=round(grade_score * 100) / 100}}` via Symfony ExpressionLanguage), resolves dynamic data sources (grades, attendance, extracurriculars, P5, inclusion), and generates print-quality PDFs.
+
+**Verification:** Public `/verify/{code}` endpoint displays the rapor + PDF when scanned via QR code. Rate-limited to 120 requests/minute.
+
+### Payment & Financial System
+
+**Midtrans integration** handles Virtual Account and QRIS payments. The system includes:
+- Automatic monthly bill generation (configurable via scheduler)
+- Webhook-driven status synchronization with SHA-512 signature verification
+- Payment reconciliation job running every 6 hours (queries Midtrans API for pending charges ≥24 hours old)
+- Anti-downgrade guard: prevents webhook from reverting a `completed` payment to `pending`
+- Anti-duplicate bill creation: `DB::transaction` + `lockForUpdate` on PaymentTitle as mutex
+
+**Payment matrix view:** Admin sees a student × month grid with bulk edit capabilities — mark paid, send reminders, or delete. WhatsApp reminders use H-3/H-1/H+1 cadence with once-per-day throttling.
+
+### GPS Geofencing Attendance
+
+Employee attendance uses device-based check-in with KML polygon geofencing:
+- Polygon boundaries defined via Google Earth KML files uploaded to the system
+- Check-in validated against polygon (point-in-polygon algorithm)
+- National holiday API sync (SKB 3 Menteri) — holidays are not scored as absent
+- Role-based work hours (`RoleWorkHour`) with configurable check-in deadlines
+- Late penalties and early arrival incentives per role
+- Auto-alpha job at 16:00 WIB marks absent employees (skips holidays, approved leave, non-working shifts)
+- Prayer attendance tracking (Dhuha/Dzuhur) with separate geofence zone
+
+### Payroll & HR
+
+- Monthly payroll processing with salary components (base salary, tenure, functional, structural, education, allowances, deductions, bonus)
+- Attendance-based calculations using published attendance records
+- Anti-negative salary: `clampFinalSalary()` applied at preparation and processing stages
+- PDF salary slips with employee digital signatures (draw/upload fallback)
+- Bulk Excel export and ZIP download
+- Self-service "My Payroll" portal for employees
+- Role-based access: only keuangan, Penggajian, and superadmin can process payroll
+
+### Mobile API (Parent & Teacher)
+
+**43 parent endpoints** covering: authentication (OTP login), dashboard, children list, profile, bills + Midtrans Snap token payment, grades + transcripts, attendance summaries, rapor PDF streaming, extracurriculars, push notifications (FCM), and news. All data scoped to verified parent-child relationships.
+
+**9 teacher endpoints** covering: class roster, bulk attendance, my-attendance with geofence, check-in/out, and prayer attendance.
+
+**REST API architecture:** Laravel Sanctum token authentication, standardized JSON envelope (`{success, message, data, meta, links}`), audit logging on all sensitive endpoints via `LogSensitiveRequests` middleware, and explicit numeric formatting (`(float)`, ISO8601 dates).
+
+### CMS & Multi-Channel Publishing
+
+Article management with Quill editor, cover photos, multi-image galleries, and document attachments. **Publish simultaneously to:**
+- Website (filtered for parent API)
+- Instagram (carousel via Instagram Graph API, max 10 images)
+- Facebook (Page feed via Graph API)
+- WhatsApp (broadcast template to targeted classrooms)
+- Push notifications (FCM to parent devices)
 
 ## Technical Architecture
 
 ### Backend
 
-- **Laravel 12** with PHP 8.3+, MySQL, Redis — monolithic architecture with service-oriented module design
-- **Laravel Reverb** for WebSocket-based real-time features (dashboard updates, notifications)
-- **Laravel Sanctum** for API token management
-- **Laravel Queue** with database driver for background job processing (rapor generation, notifications, bulk imports)
-- **Laravel Scheduler** for cron-based billing generation and scheduled tasks
-- **Spatie Laravel Permission** for RBAC with 7 predefined role levels
+- **Laravel 12** with PHP 8.3+, MySQL 8, Redis 7
+- **Laravel Reverb** for WebSocket (Supervisor-managed)
+- **Laravel Sanctum** for API token authentication
+- **Laravel Queue** with database driver (batch jobs for rapor, imports)
+- **Laravel Scheduler** for cron-based automation
+- **Spatie Laravel Permission** for RBAC
+- **Headless Chrome (Browsershot)** for print-quality PDF rendering
+- **Tesseract OCR** for document analysis
+- **Ollama** (qwen2.5:3b) for AI function-calling
 
 ### Frontend
 
-- **Blade Components** with Tailwind CSS utility framework
-- **Alpine.js** for interactive UI behavior and dynamic DataTable filtering
-- **React 19 + react-konva** specifically for the Canvas document template drag-and-drop editor
+- **Blade Components** with Bootstrap 5 and Tailwind CSS
+- **React 19 + react-konva 19 + Zustand** for the Canvas document template editor
 - **Yajra Laravel DataTables** for server-side paginated data tables
-- **SweetAlert2** for user-facing confirmations and notifications
-- **ApexCharts** for dashboard visualizations
+- **SweetAlert2** for confirmations and notifications
+- **Chart.js / ApexCharts** for dashboard visualizations
+- **GSAP** animations for landing page
 
 ### Integrations
 
-- **Midtrans** — payment gateway (Virtual Account, Snap UI, webhook callbacks)
-- **WhatsApp Cloud API** (Meta) — two-way chat, notifications, rapor distribution
-- **DomPDF + Browsershot** — PDF generation with QR code rendering
-- **PhpSpreadsheet** — XLSX import/export with DAPODIK format support
-- **AWS S3** — file storage for uploaded documents and generated PDFs
-- **Sentry** — production error tracking and performance monitoring
+- **Meta WhatsApp Cloud API** — two-way chat, templates, media, OCR
+- **Meta Graph API** — Facebook page publishing
+- **Instagram Graph API** — carousel publishing
+- **Midtrans** — Virtual Account, QRIS, Snap UI, webhook reconciliation
+- **Ollama** — local LLM for AI chatbot
+- **Tesseract** — OCR for payment receipts and sick letters
+- **Firebase Cloud Messaging** — push notifications to mobile
+- **Twilio** — OTP SMS (optional)
+- **National Holiday API** — SKB 3 Menteri sync
 
 ### Infrastructure
 
-- **Docker** (nginx + php-fpm 8.3 + MySQL 8 + Redis 7) containerized deployment
-- **Cloudflare** CDN, WAF, DNS management
-- **GitHub Actions** CI/CD with automated testing and deployment
-- **Kubernetes** configuration for production deployment
+- **Nginx + PHP-FPM 8.3** serving
+- **Cloudflare** CDN and WAF
+- **GitHub Actions** CI/CD (Pint + PHPStan + Paratest + build)
+- **Supervisor** for queue workers and Reverb
+- **MySQL 8** production, SQLite in-memory for tests
 
 ## Security
 
-Implemented Spatie Laravel Permission RBAC with 7 predefined roles — superadmin bypasses all checks, admin/admin_akademik see all data, teacher sees only assigned classrooms and subjects. All mutation endpoints protected with middleware-level authorization checks. CSRF protection on all forms, input validation at form, service, and database levels. Audit logging on all critical actions. Sentry error tracking for production monitoring.
+**18 user roles** with 272 granular permissions, managed via Spatie Laravel Permission:
+
+| Role | Description |
+|---|---|
+| `superadmin` | System owner, bypasses all checks (270 permissions) |
+| `admin_sekolah` | Full admin access to all modules (241 permissions) |
+| `admin_akademik` | Curriculum and academic administration (127 permissions) |
+| `kepala_sekolah` | Headmaster — view-heavy with approval authority (61 permissions) |
+| `guru` / `wali_kelas` | Teacher / homeroom teacher (67 permissions) |
+| `guru_mapel` | Subject teacher — grade input only (35 permissions) |
+| `guru_bk` | Guidance counselor (36 permissions) |
+| `keuangan` / `Penggajian` | Finance / payroll (58/23 permissions) |
+| `kepegawaian` | HRD (53 permissions) |
+| `orang_tua` | Parent — mobile app, own children only (12 permissions) |
+| `siswa` | Student — limited view (6 permissions) |
+
+**Defense-in-depth layers:**
+1. Route middleware with 277 unique permission strings
+2. 34 model policies enforcing authorization at the data level
+3. `TeacherScopedData` trait restricting queries at the database level
+4. Parent-scoped access via `getParentStudentIds()`
+5. Audit logging on all critical actions (IP, user agent, old/new values)
+6. CSRF protection, HMAC webhook verification (Midtrans SHA-512, WhatsApp/Instagram HMAC)
+7. Nginx security headers: CSP (no unsafe-eval), HSTS, Referrer-Policy, COOP/CORP
+8. Rate limiting on API endpoints, OTP, and webhook ingestion
 
 ## Engineering Decisions
 
-**Service-Oriented Architecture** — With 52 interconnected modules across multiple business domains, I chose a service-oriented architecture to decouple business logic from controllers. Each module has dedicated service classes (92 total) that handle business rules, data transformation, and external integrations. This decision enables independent module evolution, easier testing, and better maintainability as the system grows.
+**Service-Oriented Monolith over Microservices** — With 52 interconnected modules sharing database transactions and domain models, microservices would have introduced distributed transaction complexity without proportional benefit. The service-oriented monolith gives us domain isolation via 111 service classes while maintaining ACID guarantees across modules like payments, payroll, and attendance.
 
-**Queue-Based Batch Processing** — For bulk report card generation and automated notifications, I implemented Laravel Queue with database driver instead of synchronous processing. Each student's report card is dispatched as an individual job, allowing parallel processing with configurable concurrency. This prevents timeout issues during bulk operations and provides real-time progress tracking for users.
+**Ollama (Local LLM) over Cloud AI** — Running qwen2.5:3b locally via Ollama eliminates API costs, removes external dependency for the WhatsApp bot, and keeps student data on-premise. The OpenAI-compatible tool-calling interface made function-calling integration straightforward. Fallback to plain chat ensures parents always get a response even if the LLM is under load.
 
-**RBAC with Data-Level Scoping** — Rather than simple role checks, I implemented data-level access control using a TeacherScopedData trait. This ensures teachers only see their assigned classrooms, students, and subjects at the database query level, not just at the UI level. The trait provides reusable methods like getScopedClassroomIds() and getScopedStudentIds() that all controllers can use, maintaining consistency across the application.
+**Headless Chrome over DomPDF for Rapor** — Report cards require print-quality rendering with complex layouts, QR codes, digital signatures with transparency, and school letterhead watermarks. DomPDF's CSS support limitations made it unsuitable for the visual template builder's output. Browsershot (headless Chrome) renders the exact same HTML/CSS the template builder produces, ensuring WYSIWYG fidelity.
 
-**WhatsApp Business API Integration** — For school communication, I integrated Meta's WhatsApp Cloud API instead of SMS due to higher engagement rates and lower costs. The implementation includes two-way chat, message templates, bot auto-reply with configurable work hours, and payment reminders. The system handles API rate limits, webhook idempotency, and delivery status tracking with automatic retries for reliability.
+**Data-Level Scoping over UI-Level Filtering** — The `TeacherScopedData` trait applies WHERE clauses at the Eloquent query level rather than filtering results after retrieval. This means a teacher accessing the system through the API, dashboard, WhatsApp bot, or any other interface gets the same data restrictions. The scoping cannot be bypassed by manipulating frontend controls.
 
-**Payment Gateway Integration** — I chose Midtrans payment gateway for its comprehensive Indonesian payment method support (Virtual Account, e-wallet, credit card). The integration handles payment status webhooks, automated billing via Laravel Scheduler, and reconciliation workflows. This reduced manual payment processing time and improved cash flow visibility for the school.
+**Queue-Based Batch Processing for Rapor** — Generating 480+ report cards synchronously would timeout any HTTP request. Each rapor is dispatched as an individual queued job within a `Bus::batch`, enabling parallel processing with real-time progress tracking. The batch system handles job failures gracefully — a single student's rapor failure doesn't block the rest.
 
 ## Engineering Impact
 
-This project demonstrates that a well-architected monolithic Laravel application can handle enterprise-level complexity when organized with proper separation of concerns. The service-oriented architecture, combined with Laravel's queue system and Redis caching, enables the system to process bulk operations (report card generation, notifications, imports) without blocking user interactions.
+ProductSchool demonstrates that a monolithic Laravel application, when organized with service classes, data-level scoping, and domain-driven module boundaries, can handle enterprise-level complexity across 52 interconnected modules. The system processes thousands of daily operations — attendance check-ins, payment transactions, grade entries, WhatsApp conversations, rapor generation — without architectural compromises.
 
-The data-level RBAC implementation shows how backend engineering decisions directly impact security and user experience — teachers see only their data without requiring complex frontend filtering logic. The WhatsApp and payment integrations demonstrate practical experience with third-party APIs, webhook handling, and production error handling.
+The AI-powered WhatsApp bot shows how local LLMs can be production-ready for domain-specific tasks when combined with function-calling and proper data access controls. Parents interact with verified school data through natural language without installing an app or learning a new interface.
 
-The system serves as evidence of backend-focused full stack capability: database design for complex domains, API architecture for mobile/third-party consumption, background job processing for performance, and production deployment with Docker, Cloudflare, and CI/CD pipelines.
+The data-level RBAC implementation (18 roles, 272 permissions, query-level scoping) demonstrates how backend engineering decisions directly impact security posture — authorization is enforced uniformly regardless of access path (web, API, bot, mobile).
 
 ## Technologies Used
 
 **Backend**
-Laravel 12, PHP 8.3+, MySQL, Redis, Laravel Reverb, Laravel Sanctum, Spatie Laravel Permission, Laravel Queue, Laravel Scheduler, DomPDF, Browsershot
+Laravel 12, PHP 8.3+, MySQL 8, Redis 7, Laravel Reverb, Laravel Sanctum, Spatie Laravel Permission, Laravel Queue, Laravel Scheduler, Browsershot (Headless Chrome), Tesseract OCR, Ollama (qwen2.5:3b)
 
 **Frontend**
-Blade Components, Tailwind CSS, Alpine.js, React 19 + react-konva (Canvas editor), Yajra DataTables, ApexCharts, SweetAlert2
+Blade Components, Bootstrap 5, Tailwind CSS, React 19 + react-konva 19 (Canvas editor), Yajra DataTables, Chart.js, SweetAlert2, GSAP
 
 **Integrations**
-Midtrans Payment Gateway, WhatsApp Cloud API, AWS S3, PhpSpreadsheet, Sentry
+Midtrans Payment Gateway (VA/QRIS), Meta WhatsApp Cloud API, Meta Graph API (Facebook), Instagram Graph API, Firebase Cloud Messaging, Ollama AI, Tesseract OCR, Twilio (optional)
 
 **Infrastructure**
-Docker (nginx, php-fpm, MySQL, Redis), Cloudflare CDN/WAF, GitHub Actions CI/CD, Kubernetes
+Nginx + PHP-FPM 8.3, MySQL 8, Redis 7, Cloudflare CDN/WAF, GitHub Actions CI/CD, Supervisor

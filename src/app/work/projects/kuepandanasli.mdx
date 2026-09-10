@@ -1,0 +1,127 @@
+---
+title: "Kue Pandan Asli — WhatsApp-Commerce Order & Delivery Management"
+publishedAt: "2026-09-10"
+summary: "Order management and delivery tracking platform for Kue Pandan Asli, a traditional pandan cake business with 3 branches (Surabaya, Malang, Denpasar). Built with Livewire 3 and Tailwind CSS. Core differentiator: a 14-state WhatsApp chatbot (Meta Graph API v24.0) that takes orders end-to-end — from category selection to QRIS payment proof — with multi-branch routing, ongkir estimation, and admin chat monitoring."
+images:
+  - "/images/projects/kuepandanasli.com/ss-01.png"
+  - "/images/projects/kuepandanasli.com/ss-02.png"
+team:
+  - name: "Andy Pratama"
+    role: "Software Engineer — Full-Stack (Contract)"
+    avatar: "/images/photo.jpg"
+    linkedIn: "https://www.linkedin.com/in/andypratama3"
+tech:
+  - "Laravel 10"
+  - "PHP 8.1"
+  - "Livewire 3"
+  - "Tailwind CSS"
+  - "Alpine.js"
+  - "WhatsApp Business API"
+  - "Laravel Jetstream"
+  - "MySQL"
+link: "https://kuepandanasli.com"
+---
+
+## Overview
+
+Kue Pandan Asli is a web-based order management and delivery tracking application for a traditional pandan-flavored cake business operating across three branches: **Surabaya, Malang, and Denpasar**. The platform unifies order intake, delivery scheduling, courier management, and payment proof handling for three user roles — **Admin**, **Kurir** (courier), and **Customer/Reseller**.
+
+The most distinctive engineering challenge was **selling through WhatsApp itself**. Rather than sending customers to a website checkout flow, the platform embeds a complete order conversation directly inside WhatsApp — leveraging the Meta WhatsApp Business API (Graph API v24.0) to run a 14-state chatbot that carries customers from "I want to order" all the way to "order confirmed with payment proof uploaded."
+
+The application was deployed to **cloud shared hosting** — no Node runtime, no VPS, no Docker — which imposed significant build and deployment constraints that shaped the entire delivery workflow.
+
+## Screenshots
+
+![Kue Pandan Asli — WhatsApp Chatbot & Order](/images/projects/kuepandanasli.com/ss-01.png)
+
+![Kue Pandan Asli — Dashboard](/images/projects/kuepandanasli.com/ss-02.png)
+
+## Key Features
+
+### WhatsApp Chatbot Order Flow (OrderBotService)
+
+A full state machine that conducts the entire order conversation inside WhatsApp:
+
+1. `INIT` → greeting + branch info
+2. `WELCOME_SENT` → customer types `PESAN` (choose category) or `PRODUK` (browse catalog)
+3. `MENU_SELECTION` → interactive list message with categories
+4. `PRODUCT_BROWSING` → keyword product search, `pesan`/`menu` commands
+5. `AWAITING_ORDER_FORM` → collects product, recipient, address, date, time
+6. `AWAITING_DELIVERY_METHOD` → 1 = Pick-up · 2 = Grab/GoSend · 3 = Internal Courier
+7. `AWAITING_LOCATION_OR_ADDRESS` → ongkir calculation via `DeliveryZoneService`
+8. `AWAITING_DELIVERY_SLOT` → delivery time slot selection
+9. `ORDER_SUMMARY` → summary + total → `FIX` / `BATAL`
+10. `AWAITING_PAYMENT_PROOF` → **receives QRIS payment proof image** (SKIP/lewati/nanti allowed)
+11. `ORDER_CONFIRMED` → automatic admin notification → `CLOSED`
+
+Interactive button captions are normalized (e.g. `cat_tumpeng` → `tumpeng`, `delivery_2` → `2`, `slot_am` → `AM`) so the bot tolerates inconsistent platform payloads.
+
+### Multi-Branch WhatsApp Architecture
+
+Each branch owns its **own WhatsApp number** (`regions.meta_phone_number_id`, nullable additive column). The webhook resolves incoming conversations to the correct branch by `metadata.phone_number_id` — unknown numbers return HTTP 403. `WhatsappMetaService` auto-derives the outbound number from the conversation's region, with an optional `?string $phoneNumberId` override on every send/typing/mark-as-read method.
+
+### Delivery Zone & Ongkir Calculation
+
+`DeliveryZoneService` estimates distance (Haversine formula) between the branch and delivery address, then calculates shipping cost from a per-region `delivery_zones` table. Deliveries beyond 14 km are escalated to a human admin (`ESCALATED_TO_HUMAN` state).
+
+### Payment Proof Media Handling
+
+`IncomingMediaHandler` downloads payment receipts (QRIS) and return evidence via the Graph API, compresses images to 60% quality, and stores them under `whatsapp-media/payment/` and `whatsapp-media/return/`. Payment proof handling reuses an existing `media_path` when available — preventing duplicate downloads for the same message.
+
+### Admin Chat Monitor & Notifications
+
+- **Admin Chat Monitor** (`/admin/chat`) — Livewire conversation list, 1:1 manual replies (admin ↔ customer), and per-message delivery status (sent/delivered/read) tracked in `whatsapp_message_statuses`.
+- **Admin Notifications** — order creation and status changes routed to the relevant branch's admin via `AdminNotificationRouterService` and the `admin_notifications` table.
+- **Archived conversations** — webhook `archived` tag events archive chats in the admin monitor.
+
+### Auth & RBAC
+
+Laravel Jetstream 4 + Fortify + Sanctum handles authentication (including 2FA). Spatie Laravel Permission enforces two primary roles: **admin** and **kurir** (courier). Courier-facing pages expose delivery tasks and route management; admin pages cover catalogs, orders, chat, and branch configuration.
+
+### Dark Mode UI Overhaul
+
+A full dark-mode remediation pass across the Argon Dashboard interface:
+
+- Replaced invalid custom Tailwind classes (`dark:bg-slate-850` → `dark:bg-slate-800`, `dark:shadow-dark-xl` → `dark:shadow-xl`) that were keeping sidebars and forms white in dark mode
+- Fixed the root "black text on dark mode" bug: `dark:text-black` / `dark:text-bluedark` → `dark:text-white` across page titles and wrappers
+- Normalized `bg-gray-50`/`text-gray-900` inputs to dark-mode variants with correct placeholder colors
+- Removed dead CDN assets (403s) — Tailwind, FontAwesome, duplicate Alpine (already bundled by Livewire) — and began building Tailwind locally
+- Consolidated theme into a single `localStorage['theme']` key (reading legacy `color-theme`), applied pre-paint on `<html>`
+
+## Notifications & Analytics
+
+Google Tag Manager (`GTM-PRXFHTTN`) and Google Analytics (`G-6GHRM0X2ZS`) track public landing-page behavior. Transactional PDFs (invoices, order recaps, courier/customer performance exports) are generated with barryvdh/laravel-dompdf.
+
+## Testing
+
+```
+Tests: 76 passed, 7 skipped (148 assertions)
+```
+
+WhatsApp feature coverage includes `WebhookVerificationTest`, `WebhookMessageProcessingTest`, `OrderBotStateTransitionTest`, `MultiBranchWebhookTest`, `AdminChatReplyTest`, `AdminNotificationsTest`, `ChatConversationActionsTest`, `CustomerQuotaTest`, and `DeliveryZoneServiceTest` (unit) — plus standard Jetstream auth tests.
+
+## Engineering Decisions
+
+**Why WhatsApp is the checkout, not just the channel** — Indonesia's SME customers already live in WhatsApp. Building the order flow as a conversational state machine inside WhatsApp (with interactive list messages and image-based payment proof) removed the adoption barrier of a separate checkout funnel while keeping the business's actual payment rail (QRIS) intact.
+
+**Per-branch phone numbers over a single number** — each branch keeping its own WhatsApp number preserves local customer relationships and lets order routing be inferred directly from `metadata.phone_number_id`, rather than forcing every sender to fill in branch context.
+
+**State machine over free-form NLP for orders** — for high-stakes order capture (product, address, date, total), a structured 14-state conversation guarantees completeness; a human-served escalated fallback covers anything outside the happy path. This is a deliberate contrast to the free-text NLP approach used in my ProductSchool WhatsApp bot — the right tool for each domain.
+
+## Impact
+
+The chatbot and admin chat monitor removed the manual back-and-forth of order intake — customers complete the full journey in-chat, admins receive structured order notifications per branch, and couriers work from explicit delivery slots with zone-based ongkir pre-calculated.
+
+## Technologies Used
+
+**Backend**
+Laravel 10, PHP 8.1+, Laravel Jetstream 4 (Fortify, Sanctum), Spatie Laravel Permission, Laravel Queue, Laravel DomPDF, Guzzle 7
+
+**Frontend**
+Livewire 3, Alpine.js, Tailwind CSS 3 (dark mode), jQuery, Argon Dashboard 2, Vite 6 (build committed)
+
+**Integrations**
+Meta WhatsApp Business API (Graph API v24.0), QRIS payment proof ingestion, Google Analytics 4, Google Tag Manager
+
+**Infrastructure**
+Cloud shared hosting (no Node/VPS), MySQL/MariaDB, Git-based deployment (branch `Main-V-1-0-0`)
