@@ -121,10 +121,10 @@ export async function POST(request: NextRequest) {
       { ok: true, message: 'Message received successfully' },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Contact form error:', error);
     return NextResponse.json(
-      { ok: false, error: error.message || 'Failed to process request' },
+      { ok: false, error: error instanceof Error ? error.message : 'Failed to process request' },
       { status: 500 }
     );
   }

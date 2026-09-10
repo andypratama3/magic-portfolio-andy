@@ -1,6 +1,7 @@
 import { Column, Meta, Schema, Heading, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { ProjectsWrapper } from "@/components/work/ProjectsWrapper";
+import { typography } from "@/utils/typography";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -14,7 +15,7 @@ export async function generateMetadata() {
 
 export default function Work() {
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center" style={{ padding: 'clamp(2rem, 5vw, 6rem) 0' }}>
+    <Column maxWidth="m" gap="xl" horizontal="center" style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -29,10 +30,10 @@ export default function Work() {
         }}
       />
       <Column fillWidth gap="s" horizontal="center" style={{ maxWidth: '720px', textAlign: 'center' }}>
-        <Heading variant="display-strong-xl" style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', letterSpacing: '-0.015em', lineHeight: '1.2' }}>
+        <Heading variant="display-strong-xl" style={{ fontSize: typography.heading.xl, letterSpacing: typography.letterSpacing.normal, lineHeight: typography.lineHeight.normal }}>
           {work.title}
         </Heading>
-        <Text variant="body-default-l" onBackground="neutral-weak" style={{ fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)', lineHeight: '1.65', maxWidth: '540px' }}>
+        <Text variant="body-default-l" onBackground="neutral-weak" style={{ fontSize: typography.body.m, lineHeight: typography.lineHeight.loose, letterSpacing: typography.letterSpacing.wide, maxWidth: '540px' }}>
           {work.description}
         </Text>
       </Column>

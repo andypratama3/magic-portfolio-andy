@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center" style={{ padding: 'clamp(2.5rem, 5vw, 6rem) 0' }}>
+    <Column maxWidth="m" gap="xl" horizontal="center" style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
       <Schema
         as="webPage"
         baseURL={baseURL}

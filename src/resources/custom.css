@@ -32,6 +32,41 @@
   --scheme-accent-600-10: rgba(178, 110, 0, 0.1);
   --scheme-accent-600-30: rgba(178, 110, 0, 0.3);
   --scheme-accent-600-50: rgba(178, 110, 0, 0.5);
+
+  /* Semantic color tokens */
+  --success-background-strong: #22c55e;
+  --success-background-medium: #16a34a;
+  --success-background-weak: #15803d;
+  --warning-background-strong: #f59e0b;
+  --warning-background-medium: #d97706;
+  --warning-background-weak: #b45309;
+  --error-background-strong: #ef4444;
+  --error-background-medium: #dc2626;
+  --error-background-weak: #b91c1c;
+
+  /* Shadow scale system */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+  /* Border radius scale */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+
+  /* Spacing scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
 }
 
 /* Typography refinements */

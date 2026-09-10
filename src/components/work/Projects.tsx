@@ -5,9 +5,28 @@ import { Column } from "@once-ui-system/core";
 import { ProjectCard } from "@/components";
 import { staggeredReveal } from "@/utils/gsap";
 
+interface ProjectTeamMember {
+  avatar: string;
+}
+
+interface ProjectMetadata {
+  publishedAt: string;
+  images: string[];
+  title: string;
+  summary: string;
+  team?: ProjectTeamMember[];
+  link?: string;
+}
+
+interface Project {
+  slug: string;
+  metadata: ProjectMetadata;
+  content: string;
+}
+
 interface ProjectsProps {
   range?: [number, number?];
-  projects: any[];
+  projects: Project[];
 }
 
 export function Projects({ range, projects }: ProjectsProps) {
@@ -51,7 +70,7 @@ export function Projects({ range, projects }: ProjectsProps) {
           title={post.metadata.title}
           description={post.metadata.summary}
           content={post.content}
-          avatars={post.metadata.team?.map((member: any) => ({ src: member.avatar })) || []}
+          avatars={post.metadata.team?.map((member: ProjectTeamMember) => ({ src: member.avatar })) || []}
           link={post.metadata.link || ""}
           index={index}
         />

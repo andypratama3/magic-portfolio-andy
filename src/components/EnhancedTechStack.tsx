@@ -110,9 +110,9 @@ export function EnhancedTechStack({ skills }: EnhancedTechStackProps) {
               style={{
                 padding: 'clamp(1.25rem, 2.5vw, 2rem)',
                 background: 'var(--surface)',
-                borderRadius: '1.25rem',
+                borderRadius: 'var(--radius-xl)',
                 border: '1px solid var(--neutral-alpha-weak)',
-                boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)',
+                boxShadow: 'var(--shadow-md)',
                 transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
               }}
               className="hover:shadow-lg hover:border-brand-alpha-weak"

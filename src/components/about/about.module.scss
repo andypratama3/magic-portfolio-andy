@@ -9,10 +9,12 @@
 }
 
 .rowHover {
-    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.3s cubic-bezier(0.32, 0.72, 0, 1), border-color 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 
     &:hover {
         transform: translateX(var(--static-space-8));
+        box-shadow: var(--shadow-lg);
+        border-color: var(--brand-alpha-medium);
     }
 }
 

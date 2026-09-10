@@ -149,7 +149,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                       variant="body-default-s"
                       style={{ fontWeight: 500 }}
                     >
-                      Lihat
+                      View
                     </Text>
                   </SmartLink>
                 )}
@@ -172,7 +172,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                       variant="body-default-s"
                       style={{ fontWeight: 500 }}
                     >
-                      Lihat Project
+                      View Project
                     </Text>
                   </SmartLink>
                 )}

@@ -21,6 +21,13 @@ import { EnhancedTechStack } from "@/components/EnhancedTechStack";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
+interface ExperienceImage {
+  src: string;
+  alt: string;
+  width?: string | number;
+  height?: string | number;
+}
+
 export async function generateMetadata() {
   return Meta.generate({
     title: about.title,
@@ -105,10 +112,12 @@ export default function About() {
         }}
       />
       {about.tableOfContent.display && (
-        <TableOfContents structure={structure} about={about} />
+        <nav aria-label="Table of Contents">
+          <TableOfContents structure={structure} about={about} />
+        </nav>
       )}
       <AboutClient>
-        <Column fillWidth gap="l">
+        <Column as="main" id="main-content" fillWidth gap="l">
           {/* Enhanced Profile Section */}
           <EnhancedProfileSection
             person={person}
@@ -122,11 +131,11 @@ export default function About() {
               fillWidth
               gap="s"
               style={{
-                padding: 'clamp(1.25rem, 2.5vw, 2rem)',
+                padding: 'clamp(1.5rem, 3vw, 2rem)',
                 background: 'var(--surface)',
-                borderRadius: '1.25rem',
+                borderRadius: 'var(--radius-xl)',
                 border: '1px solid var(--neutral-alpha-weak)',
-                boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)',
+                boxShadow: 'var(--shadow-md)',
               }}
             >
               <Heading variant="display-strong-s" marginBottom="s" style={{ fontSize: 'clamp(1.375rem, 2.25vw, 1.75rem)' }}>
@@ -151,9 +160,9 @@ export default function About() {
                     gap="s"
                     className={`${styles.rowHover} animate-on-scroll`}
                     style={{
-                      padding: 'clamp(1rem, 2vw, 1.5rem)',
+                      padding: 'clamp(1.5rem, 3vw, 2rem)',
                       background: 'var(--surface)',
-                      borderRadius: '1rem',
+                      borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--neutral-alpha-weak)',
                     }}
                   >
@@ -187,24 +196,19 @@ export default function About() {
                             key={index}
                             border="neutral-medium"
                             radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
                             style={{
-                              transition: 'all 0.3s cubic-bezier(0.32, 0.72, 0, 1)',
+                              minWidth: typeof (image as ExperienceImage).width === 'number' ? `${(image as ExperienceImage).width}px` : (image as ExperienceImage).width || 'auto',
+                              height: typeof (image as ExperienceImage).height === 'number' ? `${(image as ExperienceImage).height}px` : (image as ExperienceImage).height || 'auto',
+                              transition: 'transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.25s cubic-bezier(0.32, 0.72, 0, 1)',
                             }}
-                            className="hover:scale-105 hover:shadow-lg"
+                            className="hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]"
                           >
                             <Media
                               enlarge
                               radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
+                              sizes={typeof (image as ExperienceImage).width === 'number' ? `${(image as ExperienceImage).width}px` : (image as ExperienceImage).width?.toString() || '100vw'}
+                              alt={(image as ExperienceImage).alt}
+                              src={(image as ExperienceImage).src}
                             />
                           </Flex>
                         ))}
@@ -229,9 +233,9 @@ export default function About() {
                     gap="xs"
                     className={`${styles.rowHover} animate-on-scroll`}
                     style={{
-                      padding: 'clamp(1rem, 2vw, 1.5rem)',
+                      padding: 'clamp(1.5rem, 3vw, 2rem)',
                       background: 'var(--surface)',
-                      borderRadius: '1rem',
+                      borderRadius: 'var(--radius-lg)',
                       border: '1px solid var(--neutral-alpha-weak)',
                     }}
                   >

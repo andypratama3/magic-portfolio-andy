@@ -304,7 +304,7 @@ export class SEOUtils {
   /**
    * Combine multiple schemas into one graph
    */
-  static combineSchemas(...schemas: any[]) {
+  static combineSchemas(...schemas: Record<string, unknown>[]) {
     return {
       "@context": "https://schema.org",
       "@graph": schemas.filter(Boolean),
@@ -314,7 +314,7 @@ export class SEOUtils {
   /**
    * Format schema for rendering in HTML script tag
    */
-  static formatSchemaForHTML(schema: any): string {
+  static formatSchemaForHTML(schema: Record<string, unknown>): string {
     return JSON.stringify(schema, null, 2);
   }
 

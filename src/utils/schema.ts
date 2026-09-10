@@ -293,7 +293,7 @@ export function generateSkillsSchema(
 /**
  * Combine multiple schemas into one
  */
-export function combineSchemas(...schemas: any[]) {
+export function combineSchemas(...schemas: Record<string, unknown>[]) {
   return {
     "@context": "https://schema.org",
     "@graph": schemas
@@ -303,6 +303,6 @@ export function combineSchemas(...schemas: any[]) {
 /**
  * Format schema for rendering in <script> tag
  */
-export function formatSchemaForHTML(schema: any): string {
+export function formatSchemaForHTML(schema: Record<string, unknown>): string {
   return JSON.stringify(schema, null, 2);
 }

@@ -4,7 +4,7 @@
  */
 
 interface SchemaScriptProps {
-  schemas: any | any[];
+  schemas: Record<string, unknown> | Record<string, unknown>[];
   priority?: boolean;
 }
 

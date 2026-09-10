@@ -6,6 +6,7 @@ import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import SchemaScript from "@/components/SchemaScript";
+import { typography } from "@/utils/typography";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -54,7 +55,7 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l" style={{ padding: 'clamp(2rem, 5vw, 6rem) 0' }}>
+    <Column as="main" id="main-content" maxWidth="m" horizontal="center" gap="l" style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -96,7 +97,7 @@ export default async function Project({
         <Button data-border="rounded" href="/work" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft">
           Projects
         </Button>
-        <Heading variant="display-strong-xl" style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', letterSpacing: '-0.015em', lineHeight: '1.2' }}>{post.metadata.title}</Heading>
+        <Heading variant="display-strong-xl" style={{ fontSize: typography.heading.xl, letterSpacing: typography.letterSpacing.normal, lineHeight: typography.lineHeight.normal }}>{post.metadata.title}</Heading>
       </Column>
       {post.metadata.images.length > 0 && (
         <Media
@@ -105,7 +106,7 @@ export default async function Project({
           radius="m"
           alt="image"
           src={post.metadata.images[0]}
-          style={{ boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)' }}
+          style={{ boxShadow: 'var(--shadow-lg)' }}
         />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs" gap="m">

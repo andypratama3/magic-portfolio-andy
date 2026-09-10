@@ -6,6 +6,7 @@ import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import SchemaScript from "@/components/SchemaScript";
+import { typography } from "@/utils/typography";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "product", "items"]);
@@ -55,7 +56,7 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l" style={{ padding: 'clamp(2rem, 5vw, 6rem) 0' }}>
+    <Column as="main" id="main-content" maxWidth="m" horizontal="center" gap="l" style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -97,8 +98,8 @@ export default async function Project({
         <Button data-border="rounded" href="/gallery" variant="tertiary" weight="default" size="s" prefixIcon="chevronLeft" style={{ width: "fit-content" }}>
           Digital Products
         </Button>
-        <Heading variant="display-strong-xl" style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', letterSpacing: '-0.015em', lineHeight: '1.2' }}>{post.metadata.title}</Heading>
-        <Text variant="body-default-l" onBackground="neutral-weak" style={{ maxWidth: "700px", lineHeight: '1.65' }}>
+        <Heading variant="display-strong-xl" style={{ fontSize: typography.heading.xl, letterSpacing: typography.letterSpacing.normal, lineHeight: typography.lineHeight.normal }}>{post.metadata.title}</Heading>
+        <Text variant="body-default-l" onBackground="neutral-weak" style={{ maxWidth: "700px", lineHeight: typography.lineHeight.loose, letterSpacing: typography.letterSpacing.wide }}>
           {post.metadata.summary}
         </Text>
       </Column>
@@ -132,9 +133,9 @@ export default async function Project({
         {/* Sidebar Info Area */}
         <Column flex={4} gap="m" style={{ height: "fit-content", position: "sticky", top: "80px" }}>
           {/* Actions Card */}
-          <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", backdropFilter: "blur(8px)", boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)' }} gap="s">
-            <Text variant="heading-strong-s" style={{ fontSize: 'clamp(1.0625rem, 1.5vw, 1.25rem)' }}>Get this Product</Text>
-            <Text variant="body-default-m" onBackground="neutral-weak" style={{ lineHeight: '1.5' }}>
+          <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", backdropFilter: "blur(8px)", boxShadow: 'var(--shadow-md)' }} gap="s">
+            <Text variant="heading-strong-s" style={{ fontSize: typography.heading.m, letterSpacing: typography.letterSpacing.normal, lineHeight: typography.lineHeight.normal }}>Get this Product</Text>
+            <Text variant="body-default-m" onBackground="neutral-weak" style={{ lineHeight: typography.lineHeight.relaxed, letterSpacing: typography.letterSpacing.wide }}>
               Purchase a lifetime license or request custom implementation for this system.
             </Text>
             
@@ -167,21 +168,22 @@ export default async function Project({
 
           {/* Tech Stack Card */}
           {post.metadata.tech && post.metadata.tech.length > 0 && (
-            <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)' }} gap="s">
-              <Text variant="heading-strong-s" style={{ fontSize: 'clamp(1.0625rem, 1.5vw, 1.25rem)' }}>Technologies Used</Text>
+            <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", boxShadow: 'var(--shadow-md)' }} gap="s">
+              <Text variant="heading-strong-s" style={{ fontSize: typography.heading.m, letterSpacing: typography.letterSpacing.normal, lineHeight: typography.lineHeight.normal }}>Technologies Used</Text>
               <Flex gap="s" wrap>
                 {post.metadata.tech.map((t, idx) => (
                   <Flex 
                     key={idx} 
                     radius="m" 
                     style={{ 
-                      fontSize: "0.8125rem", 
+                      fontSize: typography.label.s,
                       fontWeight: 500, 
                       padding: "0.5rem 0.875rem",
                       background: "var(--brand-alpha-weak)", 
                       border: "1px solid var(--brand-alpha-medium)",
                       color: "var(--brand-on-background-strong)",
-                      borderRadius: '9999px'
+                      borderRadius: 'var(--radius-full)',
+                      letterSpacing: typography.letterSpacing.wide,
                     }}
                   >
                     {t}
@@ -192,13 +194,13 @@ export default async function Project({
           )}
 
           {/* Creator Info */}
-          <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", boxShadow: '0 2px 16px rgba(0, 0, 0, 0.04)' }} gap="s">
-            <Text variant="heading-strong-s" style={{ fontSize: 'clamp(1.0625rem, 1.5vw, 1.25rem)' }}>Developer</Text>
+          <Column padding="20" radius="l" style={{ background: "var(--surface-background, var(--page-background))", border: "1px solid var(--neutral-alpha-weak)", boxShadow: 'var(--shadow-md)' }} gap="s">
+            <Text variant="heading-strong-s" style={{ fontSize: typography.heading.m, letterSpacing: typography.letterSpacing.normal, lineHeight: typography.lineHeight.normal }}>Developer</Text>
             <Flex gap="s" vertical="center">
               {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="m" />}
               <Column>
                 <Text variant="body-default-s" style={{ fontWeight: 600 }}>{person.name}</Text>
-                <Text variant="body-default-xs" onBackground="neutral-weak">Samarinda, Indonesia</Text>
+                <Text variant="body-default-xs" onBackground="neutral-weak">{person.location}</Text>
               </Column>
             </Flex>
           </Column>

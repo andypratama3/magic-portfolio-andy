@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { Flex, Text, Column, Heading, Avatar, Tag, Button } from "@once-ui-system/core";
+import { useEffect, useRef, useState } from "react";
+import { Flex, Text, Column, Heading, Avatar, Tag, Button, Icon } from "@once-ui-system/core";
 import { gsap } from "gsap";
 import { premiumEase } from "@/utils/gsap";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 interface EnhancedProfileSectionProps {
   person: {
@@ -30,32 +31,46 @@ export function EnhancedProfileSection({ person, social, calendar }: EnhancedPro
   const avatarRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleCalendarClick = () => {
+    setIsLoading(true);
+    // Simulate loading - in real app, this would be an async operation
+    setTimeout(() => {
+      setIsLoading(false);
+      if (calendar?.link) {
+        window.open(calendar.link, '_blank', 'noopener,noreferrer');
+      }
+    }, 1000);
+  };
 
   useEffect(() => {
+    const animations: gsap.core.Tween[] = [];
+
     if (containerRef.current) {
-      gsap.fromTo(containerRef.current,
+      animations.push(gsap.fromTo(containerRef.current,
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: premiumEase }
-      );
+      ));
     }
 
     if (avatarRef.current) {
-      gsap.fromTo(avatarRef.current,
+      animations.push(gsap.fromTo(avatarRef.current,
         { scale: 0.8, opacity: 0 },
         { scale: 1, opacity: 1, duration: 1.2, ease: premiumEase, delay: 0.2 }
-      );
+      ));
     }
 
     if (textRef.current) {
-      gsap.fromTo(textRef.current,
+      animations.push(gsap.fromTo(textRef.current,
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: premiumEase, delay: 0.4 }
-      );
+      ));
     }
 
     if (socialRef.current) {
       const buttons = socialRef.current.querySelectorAll('button, a');
-      gsap.fromTo(buttons,
+      animations.push(gsap.fromTo(buttons,
         { y: 15, opacity: 0 },
         { 
           y: 0, 
@@ -65,8 +80,12 @@ export function EnhancedProfileSection({ person, social, calendar }: EnhancedPro
           ease: premiumEase,
           delay: 0.6
         }
-      );
+      ));
     }
+
+    return () => {
+      animations.forEach(animation => animation.kill());
+    };
   }, []);
 
   return (
@@ -77,9 +96,9 @@ export function EnhancedProfileSection({ person, social, calendar }: EnhancedPro
       style={{
         padding: 'clamp(2.5rem, 5vw, 5rem)',
         background: 'var(--surface)',
-        borderRadius: '1.25rem',
+        borderRadius: 'var(--radius-xl)',
         border: '1px solid var(--neutral-alpha-weak)',
-        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.04)',
+        boxShadow: 'var(--shadow-lg)',
       }}
     >
       <Flex
@@ -114,7 +133,7 @@ export function EnhancedProfileSection({ person, social, calendar }: EnhancedPro
                 right: '6px',
                 width: '14px',
                 height: '14px',
-                background: '#22c55e',
+                background: 'var(--success-background-strong)',
                 borderRadius: '50%',
                 border: '2px solid var(--surface)',
                 boxShadow: '0 2px 8px rgba(34, 197, 94, 0.4)',
@@ -179,7 +198,7 @@ export function EnhancedProfileSection({ person, social, calendar }: EnhancedPro
                 borderRadius: '9999px',
               }}
             >
-              <Text variant="body-default-s">📍</Text>
+              <Icon name="mapPin" onBackground="brand-weak" style={{ fontSize: '14px' }} />
               <Text variant="body-default-s">{person.location}</Text>
             </Flex>
 
@@ -218,9 +237,9 @@ export function EnhancedProfileSection({ person, social, calendar }: EnhancedPro
               style={{
                 borderRadius: '9999px',
                 padding: '0.625rem 1.25rem',
-                transition: `all 0.25s ${premiumEase}`,
+                transition: 'transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.25s cubic-bezier(0.32, 0.72, 0, 1)',
               }}
-              className="hover:scale-105 hover:shadow-lg"
+              className="hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]"
               target="_blank"
               rel="noopener noreferrer"
             />
@@ -232,20 +251,25 @@ export function EnhancedProfileSection({ person, social, calendar }: EnhancedPro
       {calendar?.display && (
         <Flex horizontal="center" style={{ paddingTop: '1.25rem' }}>
           <Button
-            href={calendar.link}
+            onClick={handleCalendarClick}
             variant="primary"
             size="l"
             arrowIcon
+            disabled={isLoading}
             style={{
               borderRadius: '9999px',
               padding: '0.875rem 1.75rem',
-              transition: `all 0.25s ${premiumEase}`,
+              transition: 'transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.25s cubic-bezier(0.32, 0.72, 0, 1)',
+              position: 'relative',
+              overflow: 'hidden',
             }}
-            className="hover:scale-105 hover:shadow-xl"
-            target="_blank"
-            rel="noopener noreferrer"
+            className="hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]"
           >
-            Schedule a Consultation
+            {isLoading ? (
+              <LoadingSpinner size="s" />
+            ) : (
+              'Schedule a Consultation'
+            )}
           </Button>
         </Flex>
       )}

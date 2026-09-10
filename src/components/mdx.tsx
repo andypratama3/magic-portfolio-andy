@@ -122,14 +122,17 @@ function createInlineCode({ children }: { children: ReactNode }) {
   return <InlineCode>{children}</InlineCode>;
 }
 
-function createCodeBlock(props: any) {
+function createCodeBlock(props: { children?: ReactNode; className?: string; [key: string]: unknown }) {
   // For pre tags that contain code blocks
-  if (props.children && props.children.props && props.children.props.className) {
-    const { className, children } = props.children.props;
+  if (props.children && typeof props.children === 'object' && 'props' in props.children && props.children.props && props.children.props.className) {
+    const { className, children } = props.children.props as { className: string; children: ReactNode };
     
     // Extract language from className (format: language-xxx)
     const language = className.replace('language-', '');
     const label = language.charAt(0).toUpperCase() + language.slice(1);
+    
+    // Convert ReactNode to string
+    const codeString = String(children || '');
     
     return (
       <CodeBlock
@@ -137,7 +140,7 @@ function createCodeBlock(props: any) {
         marginBottom="16"
         codes={[
           {
-            code: children,
+            code: codeString,
             language,
             label
           }

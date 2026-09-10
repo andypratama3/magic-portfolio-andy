@@ -8,7 +8,7 @@ if (typeof window !== 'undefined') {
 
 export const useGSAP = (
   callback: () => void,
-  deps: any[] = []
+  deps: unknown[] = []
 ) => {
   const callbackRef = useRef(callback);
 

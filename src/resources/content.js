@@ -10,7 +10,7 @@ const person = {
   positioning: "Backend-Focused Full Stack Software Engineer building production systems from idea to deployment",
   avatar: "/images/photo.jpg",
   email: "andypratama1211@gmail.com",
-  location: "Asia/Jakarta",
+  location: "Samarinda, Indonesia",
   languages: ["Indonesian", "English"],
 };
 

@@ -8,6 +8,7 @@ import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-
 import { Footer, Header, RouteGuard, Providers } from '@/components';
 import { GSAPProvider } from '@/components/GSAPProvider';
 import { ParallaxBackground } from '@/components/ParallaxBackground';
+import { SkipLink } from '@/components/SkipLink';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -121,6 +122,7 @@ export default async function RootLayout({
       <Providers>
         <SpeedInsights />
         <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center" suppressHydrationWarning>
+          <SkipLink />
           <Background
             position="fixed"
             mask={{
@@ -302,6 +304,8 @@ export default async function RootLayout({
           <Flex fillWidth minHeight="16" hide="s"/>
           <Header />
           <Flex
+            id="main-content"
+            role="main"
             zIndex={0}
             fillWidth
             padding="l"

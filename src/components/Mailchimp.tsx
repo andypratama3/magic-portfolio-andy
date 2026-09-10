@@ -5,12 +5,12 @@ import { Button, Flex, Heading, Input, Text, Background, Column, Textarea, Check
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
 
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
+function debounce<T extends (...args: unknown[]) => void>(func: T, delay: number): (...args: Parameters<T>) => void {
   let timeout: ReturnType<typeof setTimeout>;
-  return ((...args: Parameters<T>) => {
+  return (...args: Parameters<T>) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), delay);
-  }) as T;
+  };
 }
 
 type NewsletterProps = {
@@ -57,8 +57,6 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
     }
   };
 
-  const debouncedHandleChange = debounce(handleChange, 2000);
-
   const handleBlur = () => {
     setTouched(true);
     if (!validateEmail(email)) {
@@ -101,8 +99,8 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
       } else {
         setSendError(json.error || 'Failed to send message');
       }
-    } catch (err: any) {
-      setSendError(err?.message || 'Network error');
+    } catch (err: unknown) {
+      setSendError(err instanceof Error ? err.message : 'Network error');
     } finally {
       setSending(false);
     }

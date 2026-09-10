@@ -4,10 +4,22 @@ import { Column, Flex, Heading, Media, SmartLink, Tag, Text } from '@once-ui-sys
 import styles from './Posts.module.scss';
 import { formatDate } from '@/utils/formatDate';
 
+interface PostMetadata {
+  title: string;
+  publishedAt: string;
+  image?: string;
+  tag?: string;
+}
+
+interface Post {
+  slug: string;
+  metadata: PostMetadata;
+}
+
 interface PostProps {
-    post: any;
-    thumbnail: boolean;
-    direction?: "row" | "column";
+  post: Post;
+  thumbnail: boolean;
+  direction?: "row" | "column";
 }
 
 export default function Post({ post, thumbnail, direction }: PostProps) {

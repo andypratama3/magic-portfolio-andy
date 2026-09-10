@@ -3,6 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { Heading, Flex, Text, Button, Avatar, Media, Column } from "@once-ui-system/core";
 import { animateHero, premiumEase } from "@/utils/gsap";
+import { typography } from "@/utils/typography";
 
 interface HeroSectionProps {
   eyebrow?: ReactNode;
@@ -84,9 +85,9 @@ export function HeroSection({
               wrap="balance" 
               variant="display-strong-l"
               style={{ 
-                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                lineHeight: '1.1',
-                letterSpacing: '-0.02em',
+                fontSize: typography.display.xl,
+                lineHeight: typography.lineHeight.tight,
+                letterSpacing: typography.letterSpacing.tight,
               }}
             >
               {headline}
@@ -99,8 +100,9 @@ export function HeroSection({
               onBackground="neutral-weak" 
               variant="heading-default-xl"
               style={{ 
-                fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
-                lineHeight: '1.5',
+                fontSize: typography.body.l,
+                lineHeight: typography.lineHeight.relaxed,
+                letterSpacing: typography.letterSpacing.wide,
                 maxWidth: '600px',
               }}
             >
