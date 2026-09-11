@@ -58,7 +58,7 @@ export default function Home() {
         headline={home.headline}
         subline={home.subline}
         aboutPath={about.path}
-        aboutTitle={about.title}
+        aboutTitle="About Me"
         aboutAvatarDisplay={about.avatar.display}
         personAvatar={person.avatar}
       />

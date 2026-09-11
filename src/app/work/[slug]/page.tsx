@@ -3,7 +3,7 @@ import { getPosts, mdxToPlainText } from "@/utils/utils";
 import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ScrollToHash, CustomMDX, ImageGallery } from "@/components";
 import { Metadata } from "next";
 import SchemaScript from "@/components/SchemaScript";
 import { typography } from "@/utils/typography";
@@ -100,13 +100,10 @@ export default async function Project({
         <Heading variant="display-strong-xl" style={{ fontSize: typography.heading.xl, letterSpacing: typography.letterSpacing.normal, lineHeight: typography.lineHeight.normal }}>{post.metadata.title}</Heading>
       </Column>
       {post.metadata.images.length > 0 && (
-        <Media
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={post.metadata.images[0]}
-          style={{ boxShadow: 'var(--shadow-lg)' }}
+        <ImageGallery
+          images={post.metadata.images}
+          title="Project Gallery"
+          columns={2}
         />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs" gap="m">

@@ -262,7 +262,14 @@ const about = {
             UX optimization of checkout flow — 45% increase in online ticket sales, zero critical bugs in production.
           </>,
         ],
-        images: [],
+        images: [
+          {
+            src: "/images/projects/koetai-mahkota.jpg",
+            alt: "Koetai Mahkota Soundline — Event Management & Ticket Sales Platform",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
     ],
   },
@@ -386,7 +393,7 @@ const gallery = {
   description: `Explore my premium digital products, including full-scale systems and tools ready to be deployed. Features comprehensive solutions like ProductSchool and ERP Systems.`,
   items: [
     {
-      src: "/images/projects/page-landing.png", // Or appropriate image
+      src: "/images/projects/products_shool/dashboard.png",
       alt: "ProductSchool Management System",
       orientation: "horizontal",
       title: "ProductSchool — Management System",

@@ -1,5 +1,6 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
+import { ImageGallery } from "@/components/ImageGallery";
 
 import { 
   Heading,
@@ -182,6 +183,7 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  ImageGallery,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

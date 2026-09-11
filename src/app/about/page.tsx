@@ -190,25 +190,28 @@ export default function About() {
                       ))}
                     </Column>
                     {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="s" paddingLeft="xl" gap="s" wrap>
+                      <Flex fillWidth paddingTop="m" gap="m" wrap>
                         {experience.images.map((image, index) => (
                           <Flex
                             key={index}
                             border="neutral-medium"
                             radius="m"
                             style={{
-                              minWidth: typeof (image as ExperienceImage).width === 'number' ? `${(image as ExperienceImage).width}px` : (image as ExperienceImage).width || 'auto',
-                              height: typeof (image as ExperienceImage).height === 'number' ? `${(image as ExperienceImage).height}px` : (image as ExperienceImage).height || 'auto',
-                              transition: 'transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.25s cubic-bezier(0.32, 0.72, 0, 1)',
+                              width: 'clamp(200px, 45%, 280px)',
+                              aspectRatio: '16 / 9',
+                              overflow: 'hidden',
+                              transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                              boxShadow: 'var(--shadow-sm)',
                             }}
-                            className="hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]"
+                            className="hover:scale-[1.03] hover:shadow-xl active:scale-[0.98]"
                           >
                             <Media
                               enlarge
                               radius="m"
-                              sizes={typeof (image as ExperienceImage).width === 'number' ? `${(image as ExperienceImage).width}px` : (image as ExperienceImage).width?.toString() || '100vw'}
+                              sizes="(max-width: 768px) 100vw, 280px"
                               alt={(image as ExperienceImage).alt}
                               src={(image as ExperienceImage).src}
+                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
                           </Flex>
                         ))}

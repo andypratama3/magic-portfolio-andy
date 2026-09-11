@@ -53,10 +53,10 @@ export default async function RootLayout({
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://andypratama.studio/" />
-        <link rel="alternate" hrefLang="id" href="https://andypratama.studio/" />
-        <link rel="alternate" hrefLang="en" href="https://andypratama.studio/" />
-        <link rel="alternate" hrefLang="x-default" href="https://andypratama.studio/" />
+        <link rel="canonical" href={`${baseURL}/`} />
+        <link rel="alternate" hrefLang="id" href={`${baseURL}/`} />
+        <link rel="alternate" hrefLang="en" href={`${baseURL}/`} />
+        <link rel="alternate" hrefLang="x-default" href={`${baseURL}/`} />
         <link rel="profile" href="http://gmpg.org/xfn/11" />
         <link rel="pingback" href="https://andypratama.studio/xmlrpc.php" />
         <meta name="format-detection" content="telephone=no" />
@@ -172,13 +172,13 @@ export default async function RootLayout({
                 '@graph': [
                   {
                     '@type': 'Person',
-                    '@id': 'https://andypratama.studio/#person',
+                    '@id': `${baseURL}/#person`,
                     name: 'Andy Pratama',
                     givenName: 'Andy',
                     familyName: 'Pratama',
                     jobTitle: 'Software Engineer',
                     description: 'Software Engineer with 3+ years of hands-on experience building production-oriented full-stack applications, specializing in Laravel/PHP backend engineering with practical experience across Next.js, React, Vue, TypeScript, databases, APIs, DevOps, mobile, third-party integrations, automation, and AI-enabled systems.',
-                    url: 'https://andypratama.studio',
+                    url: baseURL,
                     email: 'andypratama1211@gmail.com',
                     sameAs: [
                       'https://github.com/andypratama3',
@@ -187,7 +187,7 @@ export default async function RootLayout({
                     ],
                     image: {
                       '@type': 'ImageObject',
-                      url: 'https://andypratama.studio/images/photo.jpg',
+                      url: `${baseURL}/images/photo.jpg`,
                       width: 400,
                       height: 400,
                     },
@@ -234,10 +234,10 @@ export default async function RootLayout({
                   },
                   {
                     '@type': 'ProfessionalService',
-                    '@id': 'https://andypratama.studio/#service',
+                    '@id': `${baseURL}/#service`,
                     name: 'Andy Pratama - Software Engineering Services',
                     description: 'Professional software engineering services specializing in Laravel/PHP backend development, full-stack applications, system architecture, and production infrastructure for web systems, APIs, and enterprise applications.',
-                    url: 'https://andypratama.studio',
+                    url: baseURL,
                     email: 'andypratama1211@gmail.com',
                     serviceType: [
                       'Backend Software Engineering',
@@ -275,23 +275,23 @@ export default async function RootLayout({
                     founder: {
                       '@type': 'Person',
                       name: 'Andy Pratama',
-                      url: 'https://andypratama.studio',
+                      url: baseURL,
                     },
                   },
                   {
                     '@type': 'WebSite',
-                    '@id': 'https://andypratama.studio/#website',
-                    url: 'https://andypratama.studio',
+                    '@id': `${baseURL}/#website`,
+                    url: baseURL,
                     name: 'Andy Pratama — Software Engineer',
                     description: 'Professional engineering portfolio, projects, and case studies of Andy Pratama, Software Engineer specializing in Laravel/PHP backend engineering, full-stack development, system architecture, and production-oriented web systems.',
-                    mainEntity: { '@id': 'https://andypratama.studio/#person' },
-                    creator: { '@id': 'https://andypratama.studio/#person' },
+                    mainEntity: { '@id': `${baseURL}/#person` },
+                    creator: { '@id': `${baseURL}/#person` },
                     inLanguage: 'en-US',
                     potentialAction: {
                       '@type': 'SearchAction',
                       target: {
                         '@type': 'EntryPoint',
-                        urlTemplate: 'https://andypratama.studio/search?q={search_term_string}',
+                        urlTemplate: `${baseURL}/search?q={search_term_string}`,
                       },
                       'query_input': 'required name=search_term_string',
                     },

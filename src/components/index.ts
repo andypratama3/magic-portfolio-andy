@@ -16,3 +16,4 @@ export { GSAPProvider } from "@/components/GSAPProvider";
 export { ParallaxBackground } from "@/components/ParallaxBackground";
 export { AboutClient } from "@/components/AboutClient";
 export { SectionTitle } from "@/components/SectionTitle";
+export { ImageGallery } from "@/components/ImageGallery";

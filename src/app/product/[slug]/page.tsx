@@ -3,7 +3,7 @@ import { getPosts, mdxToPlainText } from "@/utils/utils";
 import { Meta, Schema, AvatarGroup, Button, Column, Flex, Heading, Media, Text, Carousel } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ScrollToHash, CustomMDX, ImageGallery } from "@/components";
 import { Metadata } from "next";
 import SchemaScript from "@/components/SchemaScript";
 import { typography } from "@/utils/typography";
@@ -105,15 +105,11 @@ export default async function Project({
       </Column>
 
       {post.metadata.images.length > 0 && (
-        <Flex fillWidth style={{ margin: 'm 0' }}>
-          <Carousel
-            sizes="(max-width: 960px) 100vw, 960px"
-            items={post.metadata.images.map((image) => ({
-              slide: image,
-              alt: post.metadata.title,
-            }))}
-          />
-        </Flex>
+        <ImageGallery 
+          images={post.metadata.images} 
+          title="Product Showcase Gallery"
+          columns={3}
+        />
       )}
 
       {/* Two column detail page */}
