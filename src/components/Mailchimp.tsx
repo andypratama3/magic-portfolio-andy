@@ -29,7 +29,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
   const [contactEmail, setContactEmail] = useState('');
   const [message, setMessage] = useState('');
   const [engagementTypes, setEngagementTypes] = useState<string[]>([]);
-  const [availability, setAvailability] = useState('UTC+7 — Available mornings & afternoons (09:00–17:00)');
+  const [availability, setAvailability] = useState('UTC+7: available mornings & afternoons (09:00–17:00)');
   const [subscribe, setSubscribe] = useState(true);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
@@ -238,12 +238,12 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
 
           <Flex height="48" vertical="center" paddingTop="4">
             <Button type="submit" size="m" fillWidth disabled={sending}>
-              {sending ? 'Sending...' : (sent ? 'Sent — Thank you' : 'Contact Me')}
+              {sending ? 'Sending...' : (sent ? 'Sent. Thank you' : 'Contact Me')}
             </Button>
           </Flex>
 
           {sendError && <Text onBackground="danger-strong">{sendError}</Text>}
-          {sent && <Text onBackground="neutral-strong">Thanks — your message was received. I'll reply within 48 hours.</Text>}
+          {sent && <Text onBackground="neutral-strong">Thanks. Your message was received. I'll reply within 48 hours.</Text>}
         </Flex>
       </form>
     </Column>

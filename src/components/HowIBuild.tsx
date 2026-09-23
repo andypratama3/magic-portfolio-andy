@@ -26,7 +26,7 @@ const stages = [
     step: "04",
     title: "Test the scary parts",
     description:
-      "ProductSchool ships with 157+ test files — 1,233 methods, about 3,000 assertions — so deploys are boring. That's the point.",
+      "ProductSchool ships with 157+ test files (1,233 methods, about 3,000 assertions), so deploys are boring. That's the point.",
   },
   {
     step: "05",

@@ -76,9 +76,9 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
                     <span
                       style={{
                         display: "block",
-                        fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+                        fontFamily: "var(--font-heading)",
                         fontSize: "1.25rem",
-                        fontWeight: 500,
+                        fontWeight: 600,
                       }}
                     >
                       {exp.company}
@@ -95,6 +95,7 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
 
                 {isOpen && (
                   <ul
+                    className="timeline-panel"
                     style={{
                       margin: "0 0 1.35rem",
                       paddingLeft: "1.2rem",

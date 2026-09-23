@@ -152,6 +152,7 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
       {/* Lightbox Modal */}
       {selectedIndex !== null && (
         <div
+          className="lightbox-overlay"
           onClick={closeLightbox}
           style={{
             position: "fixed",
@@ -212,6 +213,7 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
 
           {/* Main Image View */}
           <div
+            className="lightbox-media"
             onClick={(e) => e.stopPropagation()}
             style={{
               position: "relative",

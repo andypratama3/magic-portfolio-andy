@@ -20,7 +20,7 @@ const newsletter = {
     <>
       I am available for full-time remote roles, contract engagements, and freelance projects.
       If you have a system to build, a performance problem to solve, or a codebase that needs
-      a senior pair of hands — get in touch.
+      a senior pair of hands, get in touch.
     </>
   ),
 };
@@ -57,7 +57,7 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `Andy Pratama — Fullstack Software Engineer`,
+  title: `Andy Pratama: Fullstack Software Engineer`,
   description:
     "Andy Pratama is a Fullstack Software Engineer with 3+ years of hands-on experience building production-oriented web applications across Next.js, React, Vue, TypeScript, Laravel, PHP, databases, APIs, DevOps, mobile, third-party integrations, automation, and AI-enabled systems.",
   eyebrow: "Fullstack Software Engineer",
@@ -68,7 +68,7 @@ const home = {
       <>
         Latest project:{" "}
         <strong className="ml-4">
-          ProductSchool — School Management System
+          ProductSchool: School Management System
         </strong>
       </>
     ),
@@ -87,7 +87,7 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `About Andy Pratama — Fullstack Software Engineer`,
+  title: `About Andy Pratama: Fullstack Software Engineer`,
   description: `Fullstack Software Engineer based in Samarinda, Indonesia with 3+ years of hands-on software engineering experience building production-oriented full-stack applications with Next.js, React, TypeScript, Laravel, databases, APIs, DevOps, and third-party integrations.`,
   tableOfContent: {
     display: true,
@@ -128,7 +128,7 @@ const about = {
         role: "Fullstack Engineer (Contract)",
         achievements: [
           <>
-            Designed & built ProductSchool — a 52-module school management platform (Laravel 12, PHP 8.3,
+            Designed & built ProductSchool, a 52-module school management platform (Laravel 12, PHP 8.3,
             MySQL, Redis) serving 480+ students, 42 classrooms, and 100+ employees in production.
           </>,
           <>
@@ -137,7 +137,7 @@ const about = {
           </>,
           <>
             Built an AI-powered WhatsApp bot (Ollama + function-calling, 16 tools) with NLP intent detection
-            and OCR — parents get bills, grades, schedules via chat without installing an app.
+            and OCR, so parents get bills, grades, schedules via chat without installing an app.
           </>,
           <>
             Automated report cards via headless Chrome PDF generation with QR verification, Midtrans
@@ -148,7 +148,7 @@ const about = {
         images: [
           {
             src: "/images/projects/page-landing.png",
-            alt: "School Management System v2 — Landing Page (Next.js 14)",
+            alt: "School Management System v2: Landing Page (Next.js 14)",
             width: 16,
             height: 9,
           },
@@ -175,7 +175,7 @@ const about = {
       {
         company: "CV Beesoft Research & Technology (Britech)",
         timeframe: "07/2025 – 10/2025",
-        role: "Software Engineer (Internship — Contract)",
+        role: "Software Engineer (Internship + Contract)",
         achievements: [
           <>
             Delivered 2 production systems: Ansor Kaltim membership database (38 models, QR attendance, Leaflet.js choropleth map) and BLK training center management.
@@ -193,14 +193,14 @@ const about = {
           },
           {
             src: "/images/projects/db_ansor.jpeg",
-            alt: "Database Ansor Kaltim — Organizational Membership Database",
+            alt: "Database Ansor Kaltim: Organizational Membership Database",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Bappeda — East Kalimantan Provincial Government",
+        company: "Bappeda: East Kalimantan Provincial Government",
         timeframe: "11/2024 – 12/2024",
         role: "Fullstack Engineer (Government Contract)",
         achievements: [
@@ -208,7 +208,7 @@ const about = {
             Built official provincial government web portal with zero-loss legacy database migration via Laravel Seeders.
           </>,
           <>
-            Dynamic multilingual CMS using Google Translate API — no hardcoded translations, multi-layer authorization.
+            Dynamic multilingual CMS using Google Translate API, with no hardcoded translations and multi-layer authorization.
           </>,
           <>
             Security Grade A+ via Nginx hardening, CORS policy, SSL/TLS optimization; serves ~3,000 monthly visitors.
@@ -217,13 +217,13 @@ const about = {
         images: [
           {
             src: "/images/projects/bappeda1.jpeg",
-            alt: "Bappeda East Kalimantan — Government Portal",
+            alt: "Bappeda East Kalimantan: Government Portal",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/bappeda2.jpeg",
-            alt: "Bappeda East Kalimantan — News and Content Module",
+            alt: "Bappeda East Kalimantan: News and Content Module",
             width: 16,
             height: 9,
           },
@@ -235,7 +235,7 @@ const about = {
         role: "Backend Engineer (Contract)",
         achievements: [
           <>
-            Designed scalable multi-tenant backend for Spa & F&B across 3 branches — Laravel 10, Repository Pattern, SOLID.
+            Designed scalable multi-tenant backend for Spa & F&B across 3 branches with Laravel 10, Repository Pattern, and SOLID.
           </>,
           <>
             Real-time inventory with recipe-based ingredient deduction, RBAC for 6 operational roles, Fingerspot biometric HR integration.
@@ -247,13 +247,13 @@ const about = {
         images: [
           {
             src: "/images/projects/karta1.png",
-            alt: "Karta Spa — Management Dashboard",
+            alt: "Karta Spa: Management Dashboard",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/karta2.png",
-            alt: "Karta Spa — Inventory and F&B Module",
+            alt: "Karta Spa: Inventory and F&B Module",
             width: 16,
             height: 9,
           },
@@ -268,13 +268,13 @@ const about = {
             Built complete event management and ticket sales platform with Midtrans Payment Gateway (2-month timeline).
           </>,
           <>
-            UX optimization of checkout flow — 45% increase in online ticket sales, zero critical bugs in production.
+            UX optimization of checkout flow led to a 45% increase in online ticket sales with zero critical bugs in production.
           </>,
         ],
         images: [
           {
             src: "/images/projects/koetai-mahkota.jpg",
-            alt: "Koetai Mahkota Soundline — Event Management & Ticket Sales Platform",
+            alt: "Koetai Mahkota Soundline: Event Management & Ticket Sales Platform",
             width: 16,
             height: 9,
           },
@@ -290,7 +290,7 @@ const about = {
         name: "Politeknik Negeri Samarinda",
         description: (
           <>
-            Bachelor of Applied Science (D4) — Software Engineering.
+            Bachelor of Applied Science (D4) in Software Engineering.
             Graduation September 2026.
           </>
         ),
@@ -299,7 +299,7 @@ const about = {
         name: "SMK TI Airlangga Samarinda",
         description: (
           <>
-            Diploma — Software Engineering, 2019–2022.
+            Diploma in Software Engineering, 2019–2022.
             Formal coding foundation: HTML, CSS, PHP, JavaScript, MySQL.
           </>
         ),
@@ -391,27 +391,27 @@ const about = {
 const work = {
   path: "/work",
   label: "Projects",
-  title: `Engineering Projects & Case Studies — Production Systems by Andy Pratama`,
+  title: `Engineering Projects & Case Studies by Andy Pratama`,
   description: `Production-oriented engineering projects and case studies by ${person.name}. Fullstack web systems built with Next.js, React, TypeScript, Laravel, databases, APIs, DevOps, and third-party integrations. Projects include school management systems, government portals, payment systems, and enterprise applications with focus on architecture, performance, security, and scalability.`,
 };
 
 const gallery = {
   path: "/gallery",
   label: "Digital Products",
-  title: `Digital Products & Tools — Created by Andy Pratama`,
+  title: `Digital Products & Tools by Andy Pratama`,
   description: `Explore my premium digital products, including full-scale systems and tools ready to be deployed. Features comprehensive solutions like ProductSchool and ERP Systems.`,
   items: [
     {
       src: "/images/projects/products_shool/dashboard.png",
       alt: "ProductSchool Management System",
       orientation: "horizontal",
-      title: "ProductSchool — Management System",
+      title: "ProductSchool: Management System",
       description: "An all-in-one school management system built with Laravel 12. Features an AI-powered WhatsApp assistant for parents, automated report cards with QR verification, Midtrans payments, GPS attendance, and 52 production modules.",
       link: "/product/productschool"
     },
     {
       src: "/images/projects/karta1.png",
-      alt: "ERP System — Karta Spa",
+      alt: "ERP System: Karta Spa",
       orientation: "horizontal",
       title: "Enterprise Resource Planning (ERP)",
       description: "Comprehensive ERP system designed for F&B and service industries. Includes real-time inventory management, RBAC, and automated payroll.",

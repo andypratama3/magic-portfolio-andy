@@ -1,4 +1,5 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
+import { baseURL } from '@/resources'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://www.andypratama.studio/sitemap.xml',
-    host: 'https://www.andypratama.studio',
+    sitemap: `${baseURL}/sitemap.xml`,
+    host: baseURL,
   }
 }

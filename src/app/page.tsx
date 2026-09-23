@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { home, about, person, baseURL } from "@/resources";
 import { ProjectsWrapper } from "@/components/work/ProjectsWrapper";
 import { CTASection } from "@/components/CTASection";
@@ -8,6 +9,22 @@ import { MetricsSection } from "@/components/MetricsSection";
 import { HowIBuild } from "@/components/HowIBuild";
 import { EnhancedTechStack } from "@/components/EnhancedTechStack";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: baseURL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 export default function Home() {
   return (
@@ -52,7 +69,7 @@ export default function Home() {
                 Systems still running after the launch party.
               </h2>
               <p className="text-body-large">
-                Architecture, data, permissions, and the messy integrations — written up as case studies,
+                Architecture, data, permissions, and the messy integrations, written up as case studies,
                 not marketing pages.
               </p>
             </div>

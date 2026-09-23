@@ -1,9 +1,15 @@
 /* ==========================================================================
-   Andy Pratama — Engineering Portfolio
-   Type: Newsreader (display) + Source Sans 3 (body) + IBM Plex Mono (code)
+   Andy Pratama - Engineering Portfolio
+   Antislop Dials: ENERGY 1 (Calm) | RHYTHM 2 (Balanced) | MOTION 2 (Smooth)
+   Typography: Geist (Unified site-wide) + Geist Mono (Code)
    ========================================================================== */
 
 :root {
+  --font-heading: var(--font-primary), "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: var(--font-primary), "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-label: var(--font-primary), "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-code: var(--font-geist-mono), "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
   --bg-page: #F3F1EA;
   --bg-surface: #FFFdf8;
   --bg-surface-subtle: #E8E5DC;
@@ -141,7 +147,7 @@ html {
 body {
   background-color: var(--bg-page) !important;
   color: var(--text-primary) !important;
-  font-family: var(--font-body), "Source Sans 3", system-ui, sans-serif;
+  font-family: var(--font-body), "Geist", system-ui, sans-serif;
   font-size: var(--font-body);
   line-height: 1.6;
   margin: 0;
@@ -153,9 +159,8 @@ h1, h2, h3, h4,
 .text-display,
 .text-h1,
 .text-h2 {
-  font-family: var(--font-heading), Newsreader, Georgia, serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 600;
   color: var(--text-primary);
   overflow-wrap: anywhere;
   text-wrap: balance;
@@ -401,17 +406,16 @@ h1, h2, h3, h4,
 }
 
 .kicker {
-  font-family: var(--font-heading), Newsreader, Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-weight: 500;
   font-size: 1.0625rem;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
   text-transform: none;
   color: var(--text-muted);
 }
 
 .text-mono-label {
-  font-family: var(--font-code), "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
   font-size: var(--font-mono);
   letter-spacing: 0.01em;
   text-transform: none;
@@ -442,7 +446,7 @@ h1, h2, h3, h4,
   gap: 8px;
   padding: 0.8rem 1.45rem;
   border-radius: var(--radius-md);
-  font-family: var(--font-body), "Source Sans 3", sans-serif;
+  font-family: var(--font-body), "Geist", sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
   text-decoration: none;
@@ -591,6 +595,67 @@ textarea:focus-visible {
     opacity: 1;
     transform: none;
   }
+}
+
+/* Expand / open interactions (MOTION 2: smooth, short, non-decorative) */
+@keyframes timeline-panel-in {
+  from {
+    opacity: 0.01;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.timeline-panel {
+  animation: timeline-panel-in 0.35s var(--ease-editorial);
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0.01;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lightbox-media-in {
+  from {
+    opacity: 0.01;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lightbox-overlay {
+  animation: lightbox-in 0.28s var(--ease-editorial);
+}
+
+.lightbox-media {
+  animation: lightbox-media-in 0.38s var(--ease-editorial);
+}
+
+@keyframes form-status-in {
+  from {
+    opacity: 0.01;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.form-status {
+  animation: form-status-in 0.4s var(--ease-editorial);
 }
 
 @media (prefers-reduced-motion: reduce) {

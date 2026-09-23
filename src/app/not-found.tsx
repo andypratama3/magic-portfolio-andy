@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description: "This page could not be found. Return to the Andy Pratama engineering portfolio home page.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function NotFound() {
   return (
@@ -16,10 +26,9 @@ export default function NotFound() {
     >
       <div
         style={{
-          fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
-          fontStyle: "italic",
+          fontFamily: "var(--font-heading)",
           fontSize: "clamp(4rem, 10vw, 7rem)",
-          fontWeight: 500,
+          fontWeight: 700,
           letterSpacing: "-0.03em",
           lineHeight: 1,
           color: "var(--border-medium)",

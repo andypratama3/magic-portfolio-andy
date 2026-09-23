@@ -49,8 +49,8 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
           className="text-body-large hero-rise hero-rise-delay-2"
           style={{ maxWidth: "38rem", marginBottom: "2.25rem" }}
         >
-          I&apos;m Andy. For three years I&apos;ve been the engineer behind live systems — a
-          52-module school platform, a provincial government portal, multi-branch ERP — not
+          I&apos;m Andy. For three years I&apos;ve been the engineer behind live systems: a
+          52-module school platform, a provincial government portal, and multi-branch ERP, not
           mockups sitting in a folder.
         </p>
 
@@ -105,7 +105,6 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
           </Link>
           <Link ref={secondaryBtnRef} href="/#contact" className="btn-secondary">
             <span>Write to me</span>
-            <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

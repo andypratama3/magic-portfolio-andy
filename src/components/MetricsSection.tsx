@@ -8,7 +8,7 @@ const metrics = [
     value: 893,
     suffix: "",
     label: "Production routes",
-    sub: "ProductSchool — 708 web, 185 API",
+    sub: "ProductSchool: 708 web, 185 API",
   },
   {
     value: 52,
@@ -64,9 +64,9 @@ export function MetricsSection() {
             <div key={metric.label} className="metric-card" style={{ padding: "0.25rem 0" }}>
               <div
                 style={{
-                  fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+                  fontFamily: "var(--font-heading)",
                   fontSize: "clamp(2.35rem, 4vw, 3.25rem)",
-                  fontWeight: 500,
+                  fontWeight: 600,
                   letterSpacing: "-0.02em",
                   lineHeight: 1,
                   color: "var(--text-primary)",

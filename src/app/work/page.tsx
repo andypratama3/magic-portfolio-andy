@@ -3,20 +3,47 @@ import { baseURL, about, person, work } from "@/resources";
 import { ProjectsWrapper } from "@/components/work/ProjectsWrapper";
 
 export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = `${baseURL}${work.path}`;
   return {
     title: work.title,
     description: work.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       title: work.title,
       description: work.description,
-      url: `${baseURL}${work.path}`,
+      url: canonicalUrl,
+      siteName: "Andy Pratama",
+      countryName: "Indonesia",
       images: [
         {
           url: `/api/og/generate?title=${encodeURIComponent(work.title)}`,
-          width: 1200,
-          height: 630,
+          width: 1280,
+          height: 720,
+          alt: work.title,
         },
       ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@andypratama3",
+      creator: "@andypratama3",
+      title: work.title,
+      description: work.description,
+      images: [`/api/og/generate?title=${encodeURIComponent(work.title)}`],
     },
   };
 }
@@ -61,7 +88,7 @@ export default function Work() {
           </h1>
 
           <p className="text-body-large" style={{ maxWidth: "36rem" }}>
-            Architecture notes, data decisions, and the integrations that made the product usable —
+            Architecture notes, data decisions, and the integrations that made the product usable,
             not a gallery of pretty screenshots.
           </p>
         </div>

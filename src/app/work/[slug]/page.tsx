@@ -28,21 +28,51 @@ export async function generateMetadata({
   if (!post) return {};
 
   const ogImage = post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`;
+  const canonicalUrl = `${baseURL}${work.path}/${post.slug}`;
 
   return {
-    title: `${post.metadata.title} — Andy Pratama`,
+    title: `${post.metadata.title} | Andy Pratama`,
     description: post.metadata.summary,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
-      title: `${post.metadata.title} — Andy Pratama`,
+      title: `${post.metadata.title} | Andy Pratama`,
       description: post.metadata.summary,
-      url: `${baseURL}${work.path}/${post.slug}`,
+      url: canonicalUrl,
+      siteName: "Andy Pratama",
+      countryName: "Indonesia",
       images: [
         {
           url: ogImage,
-          width: 1200,
-          height: 630,
+          width: 1280,
+          height: 720,
+          alt: post.metadata.title,
         },
       ],
+      locale: "en_US",
+      type: "article",
+      authors: [person.name],
+      publishedTime: post.metadata.publishedAt,
+      tags: post.metadata.tech || [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@andypratama3",
+      creator: "@andypratama3",
+      title: `${post.metadata.title} | Andy Pratama`,
+      description: post.metadata.summary,
+      images: [ogImage],
     },
   };
 }
@@ -211,9 +241,9 @@ export default async function Project({
               >
                 <div
                   style={{
-                    fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+                    fontFamily: "var(--font-heading)",
                     fontSize: "1.25rem",
-                    fontWeight: 500,
+                    fontWeight: 600,
                     marginBottom: "0.35rem",
                   }}
                 >

@@ -27,7 +27,7 @@ const techGroups: TechGroup[] = [
   {
     category: "Frontend",
     note: "When the product needs a face",
-    description: "Typed React and Next.js interfaces — fast enough, accessible enough, no chrome for chrome's sake.",
+    description: "Typed React and Next.js interfaces: fast, accessible, with no chrome for chrome's sake.",
     items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Vue.js"],
   },
   {
@@ -74,7 +74,7 @@ export function EnhancedTechStack({ showHeader = true }: { skills?: unknown; sho
                 A stack with scars, not a wishlist.
               </h2>
               <p className="text-body-large">
-                These showed up in shipped systems — schools, government, and commercial ops — not in a
+                These showed up in shipped systems (schools, government, and commercial ops), not in a
                 tutorial weekend.
               </p>
             </div>
@@ -98,9 +98,9 @@ export function EnhancedTechStack({ showHeader = true }: { skills?: unknown; sho
               <div>
                 <h3
                   style={{
-                    fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+                    fontFamily: "var(--font-heading)",
                     fontSize: "1.35rem",
-                    fontWeight: 500,
+                    fontWeight: 600,
                     margin: "0 0 0.4rem",
                   }}
                 >

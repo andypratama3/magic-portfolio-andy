@@ -38,12 +38,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <span className="kicker">{indexFormatted} — Flagship, still in production</span>
+          <span className="kicker">{indexFormatted} · Flagship, still in production</span>
           <h3
             style={{
-              fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+              fontFamily: "var(--font-heading)",
               fontSize: "clamp(1.7rem, 3vw, 2.2rem)",
-              fontWeight: 500,
+              fontWeight: 600,
               letterSpacing: "-0.018em",
               lineHeight: 1.15,
               margin: 0,
@@ -139,9 +139,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <span className="text-mono-label">{indexFormatted}</span>
           <h3
             style={{
-              fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+              fontFamily: "var(--font-heading)",
               fontSize: "1.35rem",
-              fontWeight: 500,
+              fontWeight: 600,
               letterSpacing: "-0.015em",
               lineHeight: 1.25,
               margin: 0,

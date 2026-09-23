@@ -25,39 +25,27 @@ const protectedRoutes = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": false,
 };
 
-// Human editorial pairing — not the default Geist/Inter AI look
-import { Newsreader, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
+// Unified font system: Geist across heading, body, and label
+import { Geist, Geist_Mono } from "next/font/google";
 
-const heading = Newsreader({
-  variable: "--font-heading",
+const primary = Geist({
+  variable: "--font-primary",
   subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
-});
-
-const body = Source_Sans_3({
-  variable: "--font-body",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const label = Source_Sans_3({
-  variable: "--font-label",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const code = IBM_Plex_Mono({
-  variable: "--font-code",
+const code = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
 });
 
 const fonts = {
-  heading: heading,
-  body: body,
-  label: label,
+  heading: primary,
+  body: primary,
+  label: primary,
   code: code,
 };
 

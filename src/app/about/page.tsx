@@ -8,14 +8,43 @@ import { TiltMedia } from "@/components/TiltMedia";
 import { LiveClock } from "@/components/LiveClock";
 
 export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = `${baseURL}/about`;
   return {
-    title: `About ${person.name} — Software Engineer`,
+    title: `About ${person.name} | Software Engineer`,
     description: about.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
-      title: `About ${person.name} — Software Engineer`,
+      title: `About ${person.name} | Software Engineer`,
       description: about.description,
-      url: `${baseURL}/about`,
-      images: [{ url: person.avatar, width: 800, height: 800, alt: person.name }],
+      url: canonicalUrl,
+      siteName: "Andy Pratama",
+      countryName: "Indonesia",
+      images: [{ url: `${baseURL}${person.avatar}`, width: 1200, height: 1600, alt: person.name }],
+      locale: "en_US",
+      type: "profile",
+      firstName: "Andy",
+      lastName: "Pratama",
+      username: "andypratama3",
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@andypratama3",
+      creator: "@andypratama3",
+      title: `About ${person.name} | Software Engineer`,
+      description: about.description,
+      images: [`${baseURL}${person.avatar}`],
     },
   };
 }
@@ -43,7 +72,7 @@ export default function About() {
               <p className="text-body-large" style={{ marginBottom: "1.5rem" }}>
                 I&apos;m based in Samarinda. On paper I&apos;m a recent graduate. In practice I&apos;ve
                 spent three years shipping backends that schools, provincial offices, and small
-                businesses depend on — permissions, payments, reports, the unglamorous glue.
+                businesses depend on: permissions, payments, reports, the unglamorous glue.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.55rem", marginBottom: "1.5rem" }}>
                 <div className="fact-row">
@@ -132,9 +161,9 @@ export default function About() {
               <div key={`${inst.name}-${index}`} className="editorial-card" style={{ padding: "1.4rem" }}>
                 <h3
                   style={{
-                    fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+                    fontFamily: "var(--font-heading)",
                     fontSize: "1.2rem",
-                    fontWeight: 500,
+                    fontWeight: 600,
                     margin: "0 0 0.5rem",
                   }}
                 >

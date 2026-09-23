@@ -38,12 +38,12 @@ export function ContactForm() {
   if (status === "sent") {
     return (
       <div
-        className="editorial-card"
+        className="editorial-card form-status"
         style={{ padding: "1.5rem", maxWidth: "32rem" }}
         role="status"
       >
         <p style={{ margin: 0, fontSize: "1.05rem", lineHeight: 1.6 }}>
-          Got it — I&apos;ll write back. If it&apos;s urgent, email{" "}
+          Got it, I&apos;ll write back soon. If it&apos;s urgent, email{" "}
           <a className="text-link" href="mailto:andypratama1211@gmail.com">
             andypratama1211@gmail.com
           </a>
@@ -76,7 +76,7 @@ export function ContactForm() {
           id="contact-message"
           name="message"
           required
-          placeholder="A short note is enough. Role, stack, timeline — whatever helps."
+          placeholder="A short note is enough. Role, stack, timeline, or whatever helps."
         />
       </div>
       {status === "error" && (

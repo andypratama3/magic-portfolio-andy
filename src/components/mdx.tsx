@@ -114,9 +114,9 @@ function createHeading(level: 1 | 2 | 3 | 4) {
       <HeadingTag
         id={slug}
         style={{
-          fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+          fontFamily: "var(--font-heading)",
           fontSize: fontSizes[level],
-          fontWeight: 500,
+          fontWeight: 600,
           letterSpacing: "-0.015em",
           lineHeight: 1.28,
           color: "var(--text-primary)",

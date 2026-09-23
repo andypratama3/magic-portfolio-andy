@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { getPosts } from "@/utils/utils";
 import { baseURL, routes as routesConfig } from "@/resources";
 
@@ -26,6 +26,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(post.metadata.publishedAt),
       changeFrequency: "monthly" as const,
       priority: 0.8,
+      images: post.metadata.images
+        ? post.metadata.images.map((image) => `${baseURL}${image}`)
+        : undefined,
+      alternates: {
+        languages: {
+          "x-default": `${baseURL}/work/${post.slug}`,
+        },
+      },
     }));
   } catch (error) {
     console.warn("Failed to load work projects:", error);
@@ -43,6 +51,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: isHomepage ? ("weekly" as const) : ("monthly" as const),
       priority: isHomepage ? 1.0 : 0.9,
+      alternates: {
+        languages: {
+          "x-default": `${baseURL}${isHomepage ? "" : route}`,
+        },
+      },
     };
   });
 

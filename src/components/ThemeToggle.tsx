@@ -27,8 +27,8 @@ export const ThemeToggle: React.FC = () => {
     return (
       <div
         style={{
-          width: "38px",
-          height: "38px",
+          width: "44px",
+          height: "44px",
           borderRadius: "var(--radius-pill)",
           border: "1px solid var(--border-subtle)",
         }}
@@ -42,8 +42,8 @@ export const ThemeToggle: React.FC = () => {
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       style={{
-        width: "38px",
-        height: "38px",
+        width: "44px",
+        height: "44px",
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
