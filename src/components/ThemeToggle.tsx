@@ -65,6 +65,8 @@ export const ThemeToggle: React.FC = () => {
       {theme === "dark" ? (
         // Sun icon for switching to light
         <svg
+          key="sun"
+          className="theme-icon"
           width="16"
           height="16"
           viewBox="0 0 24 24"
@@ -87,6 +89,8 @@ export const ThemeToggle: React.FC = () => {
       ) : (
         // Moon icon for switching to dark
         <svg
+          key="moon"
+          className="theme-icon"
           width="16"
           height="16"
           viewBox="0 0 24 24"

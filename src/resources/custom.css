@@ -6,7 +6,7 @@
 
 :root {
   --font-heading: var(--font-primary), "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: var(--font-primary), "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-body: var(--font-primary), "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-label: var(--font-primary), "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-code: var(--font-geist-mono), "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -147,7 +147,7 @@ html {
 body {
   background-color: var(--bg-page) !important;
   color: var(--text-primary) !important;
-  font-family: var(--font-body), "Geist", system-ui, sans-serif;
+  font-family: var(--font-family-body), "Geist", system-ui, sans-serif;
   font-size: var(--font-body);
   line-height: 1.6;
   margin: 0;
@@ -446,7 +446,7 @@ h1, h2, h3, h4,
   gap: 8px;
   padding: 0.8rem 1.45rem;
   border-radius: var(--radius-md);
-  font-family: var(--font-body), "Geist", sans-serif;
+  font-family: var(--font-family-body), "Geist", sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
   text-decoration: none;
@@ -656,6 +656,25 @@ textarea:focus-visible {
 
 .form-status {
   animation: form-status-in 0.4s var(--ease-editorial);
+}
+
+.form-error {
+  animation: form-status-in 0.3s var(--ease-editorial);
+}
+
+@keyframes icon-swap-in {
+  from {
+    opacity: 0.01;
+    transform: rotate(-30deg) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+.theme-icon {
+  animation: icon-swap-in 0.35s var(--ease-editorial);
 }
 
 @media (prefers-reduced-motion: reduce) {

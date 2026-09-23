@@ -80,8 +80,8 @@ export function ContactForm() {
         />
       </div>
       {status === "error" && (
-        <p role="alert" style={{ margin: 0, color: "#B42318", fontSize: "0.9rem" }}>
-          {error} You can also email me directly.
+        <p role="alert" className="form-error" style={{ margin: 0, color: "#B42318", fontSize: "0.9rem" }}>
+          {error}
         </p>
       )}
       <div>
