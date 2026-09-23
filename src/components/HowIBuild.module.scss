@@ -1,7 +1,7 @@
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   align-items: stretch;
 }
 
@@ -20,7 +20,7 @@
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--border-subtle);
-  padding: 1rem 0.35rem;
+  padding: 0.85rem 0;
   cursor: pointer;
   color: var(--text-muted);
   font-family: inherit;
@@ -42,20 +42,22 @@
 }
 
 .stepTitle {
-  font-size: 1.05rem;
+  font-size: 0.975rem;
   font-weight: 600;
+  min-width: 0;
 }
 
 .detail {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  min-height: 280px;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.85rem;
+  order: -1;
 }
 
 .detailKicker {
@@ -70,6 +72,7 @@
   font-weight: 500;
   letter-spacing: -0.015em;
   margin: 0;
+  animation: detail-in 0.45s var(--ease-editorial);
 }
 
 .detailBody {
@@ -78,6 +81,18 @@
   color: var(--text-secondary);
   margin: 0;
   max-width: 36rem;
+  animation: detail-in 0.55s var(--ease-editorial);
+}
+
+@keyframes detail-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .progress {
@@ -87,6 +102,7 @@
 }
 
 .progressDot {
+  position: relative;
   height: 4px;
   flex: 1;
   border-radius: 99px;
@@ -94,19 +110,53 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  overflow: hidden;
+}
+
+.progressDotDone {
+  background: var(--text-muted);
 }
 
 .progressDotActive {
-  background: var(--text-primary);
+  background: var(--border-subtle);
 }
 
-@media (max-width: 800px) {
+.progressFill {
+  position: absolute;
+  inset: 0;
+  background: var(--text-primary);
+  transform-origin: left center;
+  animation: fill-bar 5.2s linear forwards;
+}
+
+@keyframes fill-bar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressFill {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+@media (min-width: 960px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
   }
 
   .detail {
-    min-height: 0;
-    order: -1;
+    min-height: 280px;
+    order: 0;
+  }
+
+  .step {
+    padding: 1rem 0.35rem;
+  }
+
+  .stepTitle {
+    font-size: 1.05rem;
   }
 }

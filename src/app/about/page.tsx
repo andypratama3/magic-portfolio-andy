@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { baseURL, about, person } from "@/resources";
 import { EnhancedTechStack } from "@/components/EnhancedTechStack";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
+import { TiltMedia } from "@/components/TiltMedia";
+import { LiveClock } from "@/components/LiveClock";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -33,14 +35,7 @@ export default function About() {
           <div style={{ marginBottom: "0.75rem" }}>
             <span className="kicker">About</span>
           </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: "2.5rem",
-              alignItems: "center",
-            }}
-          >
+          <div className="about-split">
             <div>
               <h1 className="text-h1" style={{ marginBottom: "1.15rem", maxWidth: "22ch" }}>
                 I like software that still works on a Monday morning.
@@ -50,27 +45,21 @@ export default function About() {
                 spent three years shipping backends that schools, provincial offices, and small
                 businesses depend on — permissions, payments, reports, the unglamorous glue.
               </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem", marginBottom: "1.5rem" }}>
-                <div>
-                  <span className="text-mono-label" style={{ display: "inline-block", width: "7.5rem" }}>
-                    Location
-                  </span>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.55rem", marginBottom: "1.5rem" }}>
+                <div className="fact-row">
+                  <span className="text-mono-label">Location</span>
                   <span style={{ fontWeight: 600 }}>{person.location}</span>
                 </div>
-                <div>
-                  <span className="text-mono-label" style={{ display: "inline-block", width: "7.5rem" }}>
-                    Languages
-                  </span>
+                <div className="fact-row">
+                  <span className="text-mono-label">Languages</span>
                   <span style={{ fontWeight: 600 }}>Indonesian, English</span>
                 </div>
-                <div>
-                  <span className="text-mono-label" style={{ display: "inline-block", width: "7.5rem" }}>
-                    Comfort zone
-                  </span>
+                <div className="fact-row">
+                  <span className="text-mono-label">Comfort zone</span>
                   <span style={{ fontWeight: 600 }}>Laravel, PHP 8.3, MySQL, Next.js</span>
                 </div>
               </div>
-              <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+              <div className="stack-actions">
                 <a href="https://cal.com/andypratama" target="_blank" rel="noopener noreferrer" className="btn-primary">
                   Book a call
                 </a>
@@ -81,25 +70,31 @@ export default function About() {
             </div>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  maxWidth: "380px",
-                  aspectRatio: "1/1",
-                  borderRadius: "var(--radius-lg)",
-                  overflow: "hidden",
-                  border: "1px solid var(--border-subtle)",
-                }}
-              >
-                <Image
-                  src={person.avatar}
-                  alt={person.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 380px"
-                  style={{ objectFit: "cover" }}
-                  priority
-                />
+              <div style={{ width: "100%", maxWidth: "380px" }}>
+                <TiltMedia>
+                  <div
+                    style={{
+                      position: "relative",
+                      width: "100%",
+                      aspectRatio: "1/1",
+                      borderRadius: "var(--radius-lg)",
+                      overflow: "hidden",
+                      border: "1px solid var(--border-subtle)",
+                    }}
+                  >
+                    <Image
+                      src={person.avatar}
+                      alt={person.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 380px"
+                      style={{ objectFit: "cover", objectPosition: "center top" }}
+                      priority
+                    />
+                  </div>
+                </TiltMedia>
+                <p className="kicker" style={{ marginTop: "0.75rem" }}>
+                  Right now: <LiveClock variant="long" />
+                </p>
               </div>
             </div>
           </div>

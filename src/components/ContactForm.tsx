@@ -54,7 +54,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} style={{ display: "grid", gap: "1rem", maxWidth: "32rem" }}>
+    <form onSubmit={onSubmit} className="contact-form" style={{ display: "grid", gap: "1rem" }}>
       <div className="field">
         <label htmlFor="contact-name">Name</label>
         <input id="contact-name" name="name" type="text" autoComplete="name" placeholder="Your name" />

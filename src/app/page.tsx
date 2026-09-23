@@ -46,16 +46,7 @@ export default function Home() {
           <div style={{ marginBottom: "0.65rem" }}>
             <span className="kicker">Selected work</span>
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "1.25rem",
-              marginBottom: "2.25rem",
-            }}
-          >
+          <div className="section-head">
             <div style={{ maxWidth: "36rem" }}>
               <h2 className="text-h1" style={{ marginBottom: "0.7rem" }}>
                 Systems still running after the launch party.

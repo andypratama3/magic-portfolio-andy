@@ -69,15 +69,7 @@ export function Projects({ range, projects, featuredSlug }: ProjectsProps) {
   }
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        width: "100%",
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
-        gap: "2rem",
-      }}
-    >
+    <div ref={containerRef} className="project-grid">
       {displayedProjects.map((post, index) => (
         <ProjectCard
           key={post.slug}

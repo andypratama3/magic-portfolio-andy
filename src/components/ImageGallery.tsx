@@ -101,7 +101,16 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
         {formattedImages.map((img, index) => (
           <div
             key={index}
+            className="gallery-tile"
             onClick={() => openLightbox(index)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openLightbox(index);
+              }
+            }}
+            role="button"
+            tabIndex={0}
             style={{
               position: "relative",
               borderRadius: "var(--radius-md)",
@@ -110,37 +119,31 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
               aspectRatio: "16 / 10",
               background: "var(--bg-surface)",
               border: "1px solid var(--border-subtle)",
-              transition: "transform 0.3s ease, border-color 0.3s ease",
             }}
-            className="hover:scale-[1.02]"
           >
             <Image
               src={img.src}
               alt={img.alt || "Screenshot"}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="media-zoom"
               style={{ objectFit: "cover" }}
             />
-            {/* Hover overlay hint */}
             <div
+              className="gallery-overlay"
               style={{
                 position: "absolute",
                 inset: 0,
-                background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%)",
-                opacity: 0,
-                transition: "opacity 0.2s ease",
+                background: "linear-gradient(to top, rgba(14,13,11,0.72) 0%, rgba(14,13,11,0) 55%)",
+                transition: "opacity 0.25s ease",
                 display: "flex",
                 alignItems: "flex-end",
                 padding: "0.875rem",
               }}
-              className="hover:!opacity-100"
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#ffffff", fontSize: "0.8125rem", fontWeight: 500 }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                </svg>
-                <span>Enlarge preview ({index + 1}/{formattedImages.length})</span>
-              </div>
+              <span style={{ color: "#f3f0e8", fontSize: "0.8125rem", fontWeight: 500 }}>
+                Look closer · {index + 1}/{formattedImages.length}
+              </span>
             </div>
           </div>
         ))}

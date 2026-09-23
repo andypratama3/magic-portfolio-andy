@@ -196,7 +196,7 @@ export default async function Project({
       {related.length > 0 && (
         <div className="layout-container" style={{ marginTop: "4rem", paddingTop: "2rem", borderTop: "1px solid var(--border-subtle)" }}>
           <p className="kicker" style={{ marginBottom: "1.25rem" }}>Keep reading</p>
-          <div style={{ display: "grid", gap: "1rem" }}>
+          <div className="related-grid">
             {related.map((item) => (
               <Link
                 key={item.slug}
@@ -219,7 +219,7 @@ export default async function Project({
                 >
                   {item.metadata.title}
                 </div>
-                <div style={{ color: "var(--text-secondary)", fontSize: "0.95rem" }}>
+                <div className="line-clamp-3" style={{ color: "var(--text-secondary)", fontSize: "0.95rem" }}>
                   {item.metadata.summary}
                 </div>
               </Link>

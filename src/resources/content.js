@@ -37,6 +37,16 @@ const social = [
     link: "https://www.linkedin.com/in/andypratama3",
   },
   {
+    name: "Instagram",
+    icon: "instagram",
+    link: "https://www.instagram.com/andypratama3",
+  },
+  {
+    name: "X",
+    icon: "x",
+    link: "https://x.com/andypratama3",
+  },
+  {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,

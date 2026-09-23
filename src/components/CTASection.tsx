@@ -1,7 +1,8 @@
 "use client";
 
-import { person, social } from "@/resources";
+import { person } from "@/resources";
 import { ContactForm } from "./ContactForm";
+import { SocialLinks } from "./SocialLinks";
 
 export function CTASection() {
   return (
@@ -15,42 +16,20 @@ export function CTASection() {
       }}
     >
       <div className="layout-container">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-            gap: "clamp(2rem, 5vw, 4rem)",
-            alignItems: "start",
-          }}
-        >
+        <div className="contact-grid">
           <div>
             <div style={{ marginBottom: "0.65rem" }}>
               <span className="kicker">Say hello</span>
             </div>
-            <h2 className="text-display" style={{ maxWidth: "14ch", marginBottom: "1rem" }}>
+            <h2 className="text-h1" style={{ maxWidth: "16ch", marginBottom: "1rem" }}>
               If you&apos;re hiring an engineer, not a pitch deck.
             </h2>
             <p className="text-body-large" style={{ maxWidth: "32rem", marginBottom: "1.5rem" }}>
               I&apos;m open to remote roles, contracts, and the kind of backend work where
               uptime actually matters. A short note is enough.
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem 1.35rem" }}>
-              <a className="text-link" href={`mailto:${person.email}`}>
-                {person.email}
-              </a>
-              {social
-                .filter((item) => item.name !== "Email")
-                .map((item) => (
-                  <a
-                    key={item.name}
-                    className="text-link"
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {item.name}
-                  </a>
-                ))}
+            <SocialLinks includeEmail />
+            <div style={{ marginTop: "1rem" }}>
               <a
                 className="text-link"
                 href="https://cal.com/andypratama"

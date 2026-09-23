@@ -42,20 +42,34 @@ const stages = [
   },
 ];
 
+const CYCLE_MS = 5200;
+
 export function HowIBuild() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const current = stages[active];
+
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || paused) return;
+    const id = window.setInterval(() => {
+      setActive((prev) => (prev + 1) % stages.length);
+    }, CYCLE_MS);
+    return () => window.clearInterval(id);
+  }, [paused]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (!listRef.current?.contains(document.activeElement)) return;
       if (event.key === "ArrowDown" || event.key === "ArrowRight") {
         event.preventDefault();
+        setPaused(true);
         setActive((prev) => (prev + 1) % stages.length);
       }
       if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
         event.preventDefault();
+        setPaused(true);
         setActive((prev) => (prev - 1 + stages.length) % stages.length);
       }
     };
@@ -63,9 +77,16 @@ export function HowIBuild() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  const choose = (index: number) => {
+    setPaused(true);
+    setActive(index);
+  };
+
   return (
     <section
       id="how-i-build"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       style={{
         width: "100%",
         paddingTop: "clamp(3.25rem, 6vw, 5.5rem)",
@@ -82,8 +103,7 @@ export function HowIBuild() {
             A quiet, repeatable way to ship.
           </h2>
           <p className="text-body-large">
-            Click through the steps — this is the same loop I use on school platforms,
-            government sites, and commercial backends.
+            The loop keeps moving. Hover or click a step if you want to stay there.
           </p>
         </div>
 
@@ -97,8 +117,7 @@ export function HowIBuild() {
                   role="option"
                   aria-selected={index === active}
                   className={`${styles.step} ${index === active ? styles.stepActive : ""}`}
-                  onClick={() => setActive(index)}
-                  onMouseEnter={() => setActive(index)}
+                  onClick={() => choose(index)}
                 >
                   <span className={styles.stepIndex}>{stage.step}</span>
                   <span className={styles.stepTitle}>{stage.title}</span>
@@ -109,17 +128,19 @@ export function HowIBuild() {
 
           <div className={styles.detail} aria-live="polite">
             <span className={styles.detailKicker}>Stage {current.step} of 06</span>
-            <h3 className={styles.detailTitle}>{current.title}</h3>
-            <p className={styles.detailBody}>{current.description}</p>
+            <h3 key={current.step} className={styles.detailTitle}>{current.title}</h3>
+            <p key={`${current.step}-body`} className={styles.detailBody}>{current.description}</p>
             <div className={styles.progress} aria-hidden="true">
               {stages.map((stage, index) => (
                 <button
                   key={stage.step}
                   type="button"
-                  className={`${styles.progressDot} ${index === active ? styles.progressDotActive : ""}`}
-                  onClick={() => setActive(index)}
+                  className={`${styles.progressDot} ${index === active ? styles.progressDotActive : ""} ${index < active ? styles.progressDotDone : ""}`}
+                  onClick={() => choose(index)}
                   tabIndex={-1}
-                />
+                >
+                  {index === active && !paused ? <span className={styles.progressFill} /> : null}
+                </button>
               ))}
             </div>
           </div>

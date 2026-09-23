@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { person, social } from "@/resources";
+import { person } from "@/resources";
+import { LiveClock } from "./LiveClock";
+import { SocialLinks } from "./SocialLinks";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,36 +15,22 @@ export const Footer = () => {
         padding: "1.75rem 0",
       }}
     >
-      <div
-        className="layout-container"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "1rem",
-        }}
-      >
+      <div className="layout-container site-footer-inner">
         <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--text-secondary)" }}>
           © {currentYear} {person.name}
-          <span style={{ color: "var(--text-muted)" }}> · Samarinda</span>
         </p>
-        <div style={{ display: "flex", alignItems: "center", gap: "1.15rem", flexWrap: "wrap" }}>
-          {social.map((item) => (
-            <a
-              key={item.name}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ fontSize: "0.875rem", color: "var(--text-secondary)", textDecoration: "none" }}
-            >
-              {item.name}
-            </a>
-          ))}
-          <Link href="/about" style={{ fontSize: "0.875rem", color: "var(--text-secondary)", textDecoration: "none" }}>
-            About
-          </Link>
-        </div>
+        <p
+          className="site-footer-clock"
+          style={{
+            margin: 0,
+            fontSize: "0.875rem",
+            color: "var(--text-muted)",
+            fontVariantNumeric: "tabular-nums",
+          }}
+        >
+          <LiveClock variant="long" />
+        </p>
+        <SocialLinks includeEmail />
       </div>
     </footer>
   );

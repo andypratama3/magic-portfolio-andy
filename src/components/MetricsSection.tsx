@@ -58,11 +58,7 @@ export function MetricsSection() {
         </div>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
-            gap: "1.25rem",
-          }}
+          className="metrics-grid"
         >
           {metrics.map((metric) => (
             <div key={metric.label} className="metric-card" style={{ padding: "0.25rem 0" }}>

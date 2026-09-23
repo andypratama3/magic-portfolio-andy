@@ -71,7 +71,7 @@ function CustomLink({ href, children, ...props }: CustomLinkProps) {
   );
 }
 
-function createImage({ alt, src }: { alt?: string; src: string }) {
+function createImage({ alt, src, ...rest }: React.ImgHTMLAttributes<HTMLImageElement>) {
   if (!src) return null;
 
   return (
@@ -134,7 +134,7 @@ function createHeading(level: 1 | 2 | 3 | 4) {
   return HeadingComponent;
 }
 
-function CustomParagraph({ children }: { children: ReactNode }) {
+function CustomParagraph(props: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
       style={{
@@ -144,13 +144,12 @@ function CustomParagraph({ children }: { children: ReactNode }) {
         marginTop: "0.5rem",
         marginBottom: "1.25rem",
       }}
-    >
-      {children}
-    </p>
+      {...props}
+    />
   );
 }
 
-function CustomCode({ children }: { children: ReactNode }) {
+function CustomCode(props: React.HTMLAttributes<HTMLElement>) {
   return (
     <code
       style={{
@@ -162,9 +161,8 @@ function CustomCode({ children }: { children: ReactNode }) {
         border: "1px solid var(--border-subtle)",
         color: "var(--text-primary)",
       }}
-    >
-      {children}
-    </code>
+      {...props}
+    />
   );
 }
 
@@ -268,7 +266,7 @@ type CustomMDXProps = MDXRemoteProps & {
 
 export function CustomMDX(props: CustomMDXProps) {
   return (
-    <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
+    <MDXRemote {...props} components={{ ...components, ...(props.components || {}) } as any} />
   );
 }
 

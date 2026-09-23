@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { GSAPProvider } from "@/components/GSAPProvider";
 import { SkipLink } from "@/components/SkipLink";
+import { SiteAtmosphere } from "@/components/SiteAtmosphere";
 import { baseURL, fonts, home } from "@/resources";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -89,6 +90,7 @@ export default async function RootLayout({
         <Providers>
           <SpeedInsights />
           <SkipLink />
+          <SiteAtmosphere />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -109,6 +111,8 @@ export default async function RootLayout({
                     sameAs: [
                       "https://github.com/andypratama3",
                       "https://www.linkedin.com/in/andypratama3",
+                      "https://www.instagram.com/andypratama3_",
+                      "https://x.com/andypratama3",
                     ],
                     image: {
                       "@type": "ImageObject",
@@ -167,20 +171,15 @@ export default async function RootLayout({
           <Header />
           <main
             id="main-content"
+            className="page-shell"
             style={{
-              width: "100%",
               minHeight: "100vh",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
               paddingTop: "64px",
             }}
           >
-            <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-              <RouteGuard>
-                <GSAPProvider>{children}</GSAPProvider>
-              </RouteGuard>
-            </div>
+            <RouteGuard>
+              <GSAPProvider>{children}</GSAPProvider>
+            </RouteGuard>
           </main>
           <Footer />
         </Providers>

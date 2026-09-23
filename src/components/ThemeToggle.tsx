@@ -27,8 +27,8 @@ export const ThemeToggle: React.FC = () => {
     return (
       <div
         style={{
-          width: "36px",
-          height: "36px",
+          width: "38px",
+          height: "38px",
           borderRadius: "var(--radius-pill)",
           border: "1px solid var(--border-subtle)",
         }}
@@ -42,8 +42,8 @@ export const ThemeToggle: React.FC = () => {
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       style={{
-        width: "36px",
-        height: "36px",
+        width: "38px",
+        height: "38px",
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
@@ -52,7 +52,14 @@ export const ThemeToggle: React.FC = () => {
         border: "1px solid var(--border-subtle)",
         color: "var(--text-primary)",
         cursor: "pointer",
-        transition: "border-color 0.2s ease, background-color 0.2s ease",
+        touchAction: "manipulation",
+        transition: "border-color 0.2s ease, background-color 0.2s ease, transform 0.25s ease",
+      }}
+      onMouseEnter={(event) => {
+        event.currentTarget.style.transform = "rotate(-12deg)";
+      }}
+      onMouseLeave={(event) => {
+        event.currentTarget.style.transform = "rotate(0deg)";
       }}
     >
       {theme === "dark" ? (

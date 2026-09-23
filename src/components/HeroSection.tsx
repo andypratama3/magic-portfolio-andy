@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { setupMagneticButton } from "@/lib/gsap/animations";
+import { LiveClock } from "./LiveClock";
 
 interface HeroSectionProps {
   personAvatar?: string;
@@ -32,7 +33,9 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
     >
       <div className="layout-container">
         <div className="hero-rise" style={{ marginBottom: "1.35rem" }}>
-          <span className="kicker">Software engineer · Samarinda, Indonesia</span>
+          <span className="kicker">
+            Software engineer · Samarinda · <LiveClock />
+          </span>
         </div>
 
         <h1
@@ -51,19 +54,7 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
           mockups sitting in a folder.
         </p>
 
-        <div
-          className="hero-rise hero-rise-delay-3"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 180px), 1fr))",
-            gap: "1.15rem",
-            padding: "1.15rem 0",
-            borderTop: "1px solid var(--border-subtle)",
-            borderBottom: "1px solid var(--border-subtle)",
-            marginBottom: "2.25rem",
-            maxWidth: "52rem",
-          }}
-        >
+        <div className="hero-meta hero-rise hero-rise-delay-3">
           <div>
             <div className="text-mono-label" style={{ marginBottom: "4px" }}>Based in</div>
             <div style={{ fontSize: "0.975rem", fontWeight: 600 }}>Samarinda</div>
@@ -107,10 +98,7 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
           </div>
         </div>
 
-        <div
-          className="hero-rise hero-rise-delay-4"
-          style={{ display: "flex", alignItems: "center", gap: "0.85rem", flexWrap: "wrap" }}
-        >
+        <div className="stack-actions hero-rise hero-rise-delay-4">
           <Link ref={primaryBtnRef} href="#selected-work" className="btn-primary">
             <span>See selected work</span>
             <span aria-hidden="true">↓</span>
