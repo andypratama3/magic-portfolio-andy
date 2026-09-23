@@ -1,0 +1,112 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: stretch;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.step {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1rem 0.35rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: inherit;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.step:hover {
+  color: var(--text-primary);
+}
+
+.stepActive {
+  color: var(--text-primary);
+}
+
+.stepIndex {
+  font-family: var(--font-code), ui-monospace, monospace;
+  font-size: 0.8rem;
+  min-width: 1.6rem;
+}
+
+.stepTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.detail {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+.detailKicker {
+  font-family: var(--font-heading), Newsreader, Georgia, serif;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.detailTitle {
+  font-family: var(--font-heading), Newsreader, Georgia, serif;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.detailBody {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 36rem;
+}
+
+.progress {
+  display: flex;
+  gap: 6px;
+  margin-top: 0.5rem;
+}
+
+.progressDot {
+  height: 4px;
+  flex: 1;
+  border-radius: 99px;
+  background: var(--border-subtle);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.progressDotActive {
+  background: var(--text-primary);
+}
+
+@media (max-width: 800px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .detail {
+    min-height: 0;
+    order: -1;
+  }
+}

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { Flex, Text, Icon } from "@once-ui-system/core";
 
 interface ImageItem {
   src: string;
@@ -23,12 +22,12 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
     if (typeof img === "string") {
       return {
         src: img,
-        alt: title ? `${title} screenshot ${idx + 1}` : `Project screenshot ${idx + 1}`,
+        alt: title ? `${title} screenshot ${idx + 1}` : `System screenshot ${idx + 1}`,
       };
     }
     return {
       src: img.src,
-      alt: img.alt || `Project screenshot ${idx + 1}`,
+      alt: img.alt || `System screenshot ${idx + 1}`,
       caption: img.caption,
     };
   });
@@ -75,14 +74,17 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
   if (!formattedImages || formattedImages.length === 0) return null;
 
   return (
-    <div style={{ width: "100%", margin: "2rem 0" }}>
+    <div style={{ width: "100%", margin: "2.5rem 0" }}>
       {title && (
-        <Text
-          variant="heading-strong-m"
-          style={{ marginBottom: "1rem", letterSpacing: "-0.01em" }}
+        <h3
+          className="kicker"
+          style={{
+            display: "block",
+            marginBottom: "1rem",
+          }}
         >
           {title}
-        </Text>
+        </h3>
       )}
 
       {/* Grid Layout */}
@@ -90,7 +92,7 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(auto-fill, minmax(min(100%, ${
-            columns === 2 ? "320px" : "240px"
+            columns === 2 ? "380px" : "280px"
           }), 1fr))`,
           gap: "1.25rem",
           width: "100%",
@@ -102,52 +104,43 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
             onClick={() => openLightbox(index)}
             style={{
               position: "relative",
-              borderRadius: "1rem",
+              borderRadius: "var(--radius-md)",
               overflow: "hidden",
               cursor: "pointer",
               aspectRatio: "16 / 10",
-              background: "var(--surface-background, var(--page-background))",
-              border: "1px solid var(--neutral-alpha-medium)",
-              boxShadow: "var(--shadow-sm)",
-              transition: `all 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border-subtle)",
+              transition: "transform 0.3s ease, border-color 0.3s ease",
             }}
-            className="group hover:scale-[1.03] hover:shadow-xl"
+            className="hover:scale-[1.02]"
           >
             <Image
               src={img.src}
               alt={img.alt || "Screenshot"}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              style={{
-                objectFit: "cover",
-                transition: `transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)`,
-              }}
-              className="group-hover:scale-105"
+              style={{ objectFit: "cover" }}
             />
-            {/* Overlay badge */}
+            {/* Hover overlay hint */}
             <div
               style={{
                 position: "absolute",
                 inset: 0,
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 60%)",
+                background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%)",
                 opacity: 0,
-                transition: "opacity 0.3s ease",
+                transition: "opacity 0.2s ease",
                 display: "flex",
                 alignItems: "flex-end",
                 padding: "0.875rem",
               }}
-              className="group-hover:!opacity-100"
+              className="hover:!opacity-100"
             >
-              <Flex vertical="center" gap="s">
-                <Icon name="openLink" size="s" style={{ color: "#ffffff" }} />
-                <Text
-                  variant="body-default-xs"
-                  style={{ color: "#ffffff", fontWeight: 500 }}
-                >
-                  Click to enlarge ({index + 1}/{formattedImages.length})
-                </Text>
-              </Flex>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#ffffff", fontSize: "0.8125rem", fontWeight: 500 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                </svg>
+                <span>Enlarge preview ({index + 1}/{formattedImages.length})</span>
+              </div>
             </div>
           </div>
         ))}
@@ -161,14 +154,16 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
             position: "fixed",
             inset: 0,
             zIndex: 99999,
-            background: "rgba(0, 0, 0, 0.88)",
-            backdropFilter: "blur(16px)",
+            background: "rgba(0, 0, 0, 0.92)",
+            backdropFilter: "blur(20px)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             padding: "1.5rem",
           }}
+          role="dialog"
+          aria-modal="true"
         >
           {/* Top Bar */}
           <div
@@ -184,16 +179,17 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
               zIndex: 100000,
             }}
           >
-            <Text variant="body-default-m" style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>
+            <div style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.9375rem", fontWeight: 500 }}>
               {formattedImages[selectedIndex]?.alt || "Image Preview"}{" "}
-              <span style={{ opacity: 0.6, marginLeft: "0.5rem" }}>
+              <span style={{ opacity: 0.5, marginLeft: "0.5rem" }}>
                 ({selectedIndex + 1} / {formattedImages.length})
               </span>
-            </Text>
+            </div>
             <button
+              type="button"
               onClick={closeLightbox}
               style={{
-                background: "rgba(255, 255, 255, 0.12)",
+                background: "rgba(255, 255, 255, 0.15)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
                 color: "#ffffff",
                 borderRadius: "9999px",
@@ -204,10 +200,8 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
                 justifyContent: "center",
                 cursor: "pointer",
                 fontSize: "1.25rem",
-                transition: "all 0.2s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.12)")}
+              aria-label="Close lightbox"
             >
               ✕
             </button>
@@ -219,12 +213,12 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
             style={{
               position: "relative",
               maxWidth: "92vw",
-              maxHeight: "80vh",
-              width: "1200px",
-              height: "750px",
-              borderRadius: "1rem",
+              maxHeight: "82vh",
+              width: "1240px",
+              height: "760px",
+              borderRadius: "var(--radius-lg)",
               overflow: "hidden",
-              boxShadow: "0 25px 80px rgba(0,0,0,0.5)",
+              boxShadow: "0 25px 80px rgba(0,0,0,0.6)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -242,6 +236,7 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
 
           {/* Navigation Arrows */}
           <button
+            type="button"
             onClick={(e) => {
               e.stopPropagation();
               showPrev();
@@ -251,7 +246,7 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
               left: "1.5rem",
               top: "50%",
               transform: "translateY(-50%)",
-              background: "rgba(255, 255, 255, 0.12)",
+              background: "rgba(255, 255, 255, 0.15)",
               border: "1px solid rgba(255, 255, 255, 0.2)",
               color: "#ffffff",
               borderRadius: "9999px",
@@ -263,15 +258,13 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
               cursor: "pointer",
               fontSize: "1.5rem",
               zIndex: 100000,
-              backdropFilter: "blur(8px)",
-              transition: "all 0.2s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.28)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.12)")}
+            aria-label="Previous image"
           >
             ‹
           </button>
           <button
+            type="button"
             onClick={(e) => {
               e.stopPropagation();
               showNext();
@@ -281,7 +274,7 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
               right: "1.5rem",
               top: "50%",
               transform: "translateY(-50%)",
-              background: "rgba(255, 255, 255, 0.12)",
+              background: "rgba(255, 255, 255, 0.15)",
               border: "1px solid rgba(255, 255, 255, 0.2)",
               color: "#ffffff",
               borderRadius: "9999px",
@@ -293,57 +286,15 @@ export function ImageGallery({ images = [], title, columns = 3 }: ImageGalleryPr
               cursor: "pointer",
               fontSize: "1.5rem",
               zIndex: 100000,
-              backdropFilter: "blur(8px)",
-              transition: "all 0.2s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.28)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.12)")}
+            aria-label="Next image"
           >
             ›
           </button>
-
-          {/* Bottom Thumbnails Navigation */}
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              display: "flex",
-              gap: "0.5rem",
-              marginTop: "1.25rem",
-              maxWidth: "90vw",
-              overflowX: "auto",
-              padding: "0.5rem",
-              background: "rgba(255,255,255,0.06)",
-              borderRadius: "9999px",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
-          >
-            {formattedImages.map((thumb, idx) => (
-              <div
-                key={idx}
-                onClick={() => setSelectedIndex(idx)}
-                style={{
-                  width: "56px",
-                  height: "36px",
-                  position: "relative",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  cursor: "pointer",
-                  opacity: idx === selectedIndex ? 1 : 0.45,
-                  border:
-                    idx === selectedIndex
-                      ? "2px solid #ffffff"
-                      : "1px solid transparent",
-                  transition: "all 0.2s ease",
-                  flexShrink: 0,
-                }}
-              >
-                <Image src={thumb.src} alt="thumbnail" fill style={{ objectFit: "cover" }} />
-              </div>
-            ))}
-          </div>
         </div>
       )}
     </div>
   );
 }
+
+export default ImageGallery;

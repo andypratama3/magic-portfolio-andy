@@ -1,186 +1,128 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
-import { Heading, Flex, Text, Button, Avatar, Media, Column } from "@once-ui-system/core";
-import { animateHero, premiumEase } from "@/utils/gsap";
-import { typography } from "@/utils/typography";
+import { useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { setupMagneticButton } from "@/lib/gsap/animations";
 
 interface HeroSectionProps {
-  eyebrow?: ReactNode;
-  headline: ReactNode;
-  subline: ReactNode;
-  aboutPath: string;
-  aboutTitle: string;
-  aboutAvatarDisplay: boolean;
-  personAvatar: string;
+  personAvatar?: string;
 }
 
-export function HeroSection({
-  eyebrow,
-  headline,
-  subline,
-  aboutPath,
-  aboutTitle,
-  aboutAvatarDisplay,
-  personAvatar,
-}: HeroSectionProps) {
-  const eyebrowRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const sublineRef = useRef<HTMLDivElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionProps) {
+  const primaryBtnRef = useRef<HTMLAnchorElement>(null);
+  const secondaryBtnRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    if (headingRef.current && sublineRef.current && buttonsRef.current && imageRef.current) {
-      const elements: {
-        eyebrow?: HTMLElement;
-        heading: HTMLElement;
-        subline: HTMLElement;
-        buttons: HTMLElement;
-        image: HTMLElement;
-      } = {
-        heading: headingRef.current,
-        subline: sublineRef.current,
-        buttons: buttonsRef.current,
-        image: imageRef.current,
-      };
-
-      if (eyebrow && eyebrowRef.current) {
-        elements.eyebrow = eyebrowRef.current;
-      }
-
-      animateHero(elements);
-    }
-  }, [eyebrow]);
+    const cleanupPrimary = setupMagneticButton(primaryBtnRef.current, 0.18);
+    const cleanupSecondary = setupMagneticButton(secondaryBtnRef.current, 0.18);
+    return () => {
+      cleanupPrimary();
+      cleanupSecondary();
+    };
+  }, []);
 
   return (
-    <Column fillWidth gap="m" style={{ minHeight: 'min(80vh, 800px)', alignItems: 'center', justifyContent: 'center' }}>
-      <Flex 
-        fillWidth 
-        gap="l" 
-        horizontal="center" 
-        vertical="center" 
-        mobileDirection="column" 
-        style={{ padding: 'clamp(2rem, 8vw, 6rem) 0' }}
-      >
-        <Column flex={1} gap="m" style={{ minWidth: '300px', maxWidth: 'clamp(600px, 80vw, 900px)' }}>
-          {eyebrow && (
-            <div ref={eyebrowRef}>
-              <Text 
-                variant="label-default-l"
-                onBackground="brand-weak"
-                style={{
-                  fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  marginBottom: '1rem',
-                }}
-              >
-                {eyebrow}
-              </Text>
-            </div>
-          )}
-          <div ref={headingRef}>
-            <Heading 
-              wrap="balance" 
-              variant="display-strong-l"
-              style={{ 
-                fontSize: typography.display.xl,
-                lineHeight: typography.lineHeight.tight,
-                letterSpacing: typography.letterSpacing.tight,
-              }}
-            >
-              {headline}
-            </Heading>
-          </div>
-          
-          <div ref={sublineRef}>
-            <Text 
-              wrap="balance" 
-              onBackground="neutral-weak" 
-              variant="heading-default-xl"
-              style={{ 
-                fontSize: typography.body.l,
-                lineHeight: typography.lineHeight.relaxed,
-                letterSpacing: typography.letterSpacing.wide,
-                maxWidth: '600px',
-              }}
-            >
-              {subline}
-            </Text>
-          </div>
-          
-          <div ref={buttonsRef}>
-            <Flex gap="m" wrap style={{ paddingTop: '1.5rem' }}>
-              <Button
-                id="about"
-                data-border="rounded"
-                href={aboutPath}
-                variant="secondary"
-                size="l"
-                weight="default"
-                arrowIcon
-                style={{
-                  borderRadius: '9999px',
-                  padding: '1rem 2rem',
-                  transition: `all 0.7s ${premiumEase}`,
-                }}
-                className="group"
-              >
-                <Flex gap="8" vertical="center" paddingRight="4">
-                  {aboutAvatarDisplay && (
-                    <Avatar
-                      marginRight="8"
-                      style={{ marginLeft: "-0.75rem" }}
-                      src={personAvatar}
-                      size="m"
-                    />
-                  )}
-                  {aboutTitle}
-                </Flex>
-              </Button>
-              <Button
-                href="/work"
-                variant="primary"
-                size="l"
-                weight="default"
-                arrowIcon
-                style={{
-                  borderRadius: '9999px',
-                  padding: '1rem 2rem',
-                  transition: `all 0.7s ${premiumEase}`,
-                }}
-                className="group"
-              >
-                View Projects
-              </Button>
-            </Flex>
-          </div>
-        </Column>
-        
-        <div ref={imageRef}>
-          <Flex
-            radius="xl"
-            border="neutral-medium"
-            overflow="hidden"
-            style={{
-              minWidth: 'clamp(280px, 40vw, 400px)',
-              minHeight: 'clamp(280px, 40vw, 400px)',
-              maxWidth: 'clamp(320px, 45vw, 450px)',
-              maxHeight: 'clamp(320px, 45vw, 450px)',
-              boxShadow: "0 25px 80px rgba(0,0,0,0.2)",
-              borderRadius: '2rem',
-            }}
-          >
-            <Media
-              src={personAvatar}
-              alt="Profile"
-              sizes="450px"
-              style={{ borderRadius: '2rem' }}
-            />
-          </Flex>
+    <section
+      style={{
+        width: "100%",
+        paddingTop: "clamp(3.25rem, 8vw, 6.25rem)",
+        paddingBottom: "clamp(2.75rem, 6vw, 4.75rem)",
+      }}
+    >
+      <div className="layout-container">
+        <div className="hero-rise" style={{ marginBottom: "1.35rem" }}>
+          <span className="kicker">Software engineer · Samarinda, Indonesia</span>
         </div>
-      </Flex>
-    </Column>
+
+        <h1
+          className="text-display hero-rise hero-rise-delay-1"
+          style={{ maxWidth: "18ch", marginBottom: "1.5rem" }}
+        >
+          I build the software schools and businesses <em>actually run on.</em>
+        </h1>
+
+        <p
+          className="text-body-large hero-rise hero-rise-delay-2"
+          style={{ maxWidth: "38rem", marginBottom: "2.25rem" }}
+        >
+          I&apos;m Andy. For three years I&apos;ve been the engineer behind live systems — a
+          52-module school platform, a provincial government portal, multi-branch ERP — not
+          mockups sitting in a folder.
+        </p>
+
+        <div
+          className="hero-rise hero-rise-delay-3"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 180px), 1fr))",
+            gap: "1.15rem",
+            padding: "1.15rem 0",
+            borderTop: "1px solid var(--border-subtle)",
+            borderBottom: "1px solid var(--border-subtle)",
+            marginBottom: "2.25rem",
+            maxWidth: "52rem",
+          }}
+        >
+          <div>
+            <div className="text-mono-label" style={{ marginBottom: "4px" }}>Based in</div>
+            <div style={{ fontSize: "0.975rem", fontWeight: 600 }}>Samarinda</div>
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>Remote-friendly</div>
+          </div>
+          <div>
+            <div className="text-mono-label" style={{ marginBottom: "4px" }}>Usually building</div>
+            <div style={{ fontSize: "0.975rem", fontWeight: 600 }}>Laravel &amp; Next.js</div>
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>APIs, data, the unglamorous parts</div>
+          </div>
+          <div>
+            <div className="text-mono-label" style={{ marginBottom: "4px" }}>Right now</div>
+            <div style={{ fontSize: "0.975rem", fontWeight: 600 }}>ProductSchool</div>
+            <div style={{ fontSize: "0.8125rem", color: "var(--text-muted)" }}>893 routes in production</div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <div
+              style={{
+                position: "relative",
+                width: "46px",
+                height: "46px",
+                borderRadius: "50%",
+                overflow: "hidden",
+                border: "1px solid var(--border-subtle)",
+                flexShrink: 0,
+              }}
+            >
+              <Image
+                src={personAvatar}
+                alt="Andy Pratama"
+                fill
+                sizes="46px"
+                style={{ objectFit: "cover" }}
+                priority
+              />
+            </div>
+            <div>
+              <div style={{ fontSize: "0.9rem", fontWeight: 600 }}>Andy Pratama</div>
+              <div style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Open for the next build</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="hero-rise hero-rise-delay-4"
+          style={{ display: "flex", alignItems: "center", gap: "0.85rem", flexWrap: "wrap" }}
+        >
+          <Link ref={primaryBtnRef} href="#selected-work" className="btn-primary">
+            <span>See selected work</span>
+            <span aria-hidden="true">↓</span>
+          </Link>
+          <Link ref={secondaryBtnRef} href="/#contact" className="btn-secondary">
+            <span>Write to me</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
+
+export default HeroSection;

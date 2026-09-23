@@ -8,8 +8,8 @@ const routes = {
   "/about": true,
   "/work": true,
   "/blog": false,
-  "/gallery": true,
-  "/product": true,
+  "/gallery": false,
+  "/product": false,
   "/plugin": false
 };
 
@@ -25,31 +25,32 @@ const protectedRoutes = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": false,
 };
 
-// Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+// Human editorial pairing — not the default Geist/Inter AI look
+import { Newsreader, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 
-const heading = Geist({
+const heading = Newsreader({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
+  style: ["normal", "italic"],
 });
 
-const body = Geist({
+const body = Source_Sans_3({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const label = Geist({
+const label = Source_Sans_3({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
 });
 
-const code = Geist_Mono({
+const code = IBM_Plex_Mono({
   variable: "--font-code",
   subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -96,8 +97,8 @@ const effects = {
     radius: 100,
   },
   gradient: {
-    display: true,
-    opacity: 60,
+    display: false,
+    opacity: 0,
     x: 50,
     y: 40,
     width: 80,
@@ -107,21 +108,21 @@ const effects = {
     colorEnd: "page-background",
   },
   dots: {
-    display: true,
-    opacity: 30,
+    display: false,
+    opacity: 0,
     size: "1",
     color: "brand-background-medium",
   },
   grid: {
     display: false,
-    opacity: 100,
+    opacity: 0,
     color: "neutral-alpha-medium",
     width: "0.25rem",
     height: "0.25rem",
   },
   lines: {
     display: false,
-    opacity: 100,
+    opacity: 0,
     color: "neutral-alpha-weak",
     size: "16",
     thickness: 1,

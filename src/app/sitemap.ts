@@ -31,19 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.warn("Failed to load work projects:", error);
   }
 
-  // Get all digital products
-  let products: MetadataRoute.Sitemap = [];
-  try {
-    products = getPosts(["src", "app", "product", "items"]).map((post) => ({
-      url: `${baseURL}/product/${post.slug}`,
-      lastModified: new Date(post.metadata.publishedAt),
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
-    }));
-  } catch (error) {
-    console.warn("Failed to load digital products:", error);
-  }
-
   // Get all active static routes
   const activeRoutes = Object.keys(routesConfig).filter(
     (route) => routesConfig[route as keyof typeof routesConfig]
@@ -59,5 +46,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  return [...routes, ...blogs, ...works, ...products];
+  return [...routes, ...blogs, ...works];
 }

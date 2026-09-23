@@ -1,186 +1,165 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import {
-  AvatarGroup,
-  Carousel,
-  Column,
-  Flex,
-  Heading,
-  SmartLink,
-  Text,
-} from "@once-ui-system/core";
-import { magneticButton, premiumEase } from "@/utils/gsap";
+import Link from "next/link";
+import Image from "next/image";
 
 interface ProjectCardProps {
   href: string;
-  priority?: boolean;
   images: string[];
   title: string;
-  content: string;
   description: string;
-  avatars: { src: string }[];
-  link: string;
   index?: number;
+  priority?: boolean;
+  featured?: boolean;
+  tags?: string[];
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
   images = [],
   title,
-  content,
   description,
-  avatars,
-  link,
   index = 0,
+  priority = false,
+  featured = false,
+  tags = [],
 }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const displayImage = images[0] || "/images/projects/products_shool/dashboard.png";
+  const indexFormatted = String(index + 1).padStart(2, "0");
 
-  useEffect(() => {
-    if (buttonRef.current) {
-      magneticButton(buttonRef.current);
-    }
-  }, []);
-
-  return (
-    <Column 
-      ref={cardRef}
-      fillWidth 
-      gap="m"
-      style={{
-        position: 'relative',
-        borderRadius: '2rem',
-        padding: '0.375rem',
-        background: 'var(--neutral-alpha-weak)',
-        border: '1px solid var(--neutral-alpha-medium)',
-        transition: `all 0.7s ${premiumEase}`,
-      }}
-      className="group hover:scale-[1.02] hover:shadow-2xl"
-    >
-      {/* Inner Core - Double-Bezel Architecture */}
-      <Column 
-        fillWidth 
-        gap="m"
+  if (featured) {
+    return (
+      <article
+        className="editorial-card"
         style={{
-          borderRadius: 'calc(2rem - 0.375rem)',
-          background: 'var(--surface)',
-          overflow: 'hidden',
-          position: 'relative',
+          width: "100%",
+          padding: "clamp(1.25rem, 3vw, 2rem)",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))",
+          gap: "2rem",
+          alignItems: "center",
         }}
       >
-        {/* Image Carousel with Hover Effect */}
-        <div 
-          style={{ 
-            overflow: 'hidden',
-            borderRadius: 'calc(2rem - 0.375rem) calc(2rem - 0.375rem) 0 0',
-          }}
-          className="group"
-        >
-          <Carousel
-            sizes="(max-width: 960px) 100vw, 960px"
-            items={images.map((image) => ({
-              slide: image,
-              alt: title,
-            }))}
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <span className="kicker">{indexFormatted} — Flagship, still in production</span>
+          <h3
             style={{
-              transition: `transform 0.7s ${premiumEase}`,
+              fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+              fontSize: "clamp(1.7rem, 3vw, 2.2rem)",
+              fontWeight: 500,
+              letterSpacing: "-0.018em",
+              lineHeight: 1.15,
+              margin: 0,
             }}
-            className="group-hover:scale-105"
-          />
+          >
+            {title}
+          </h3>
+          <p style={{ fontSize: "1.05rem", lineHeight: 1.65, color: "var(--text-secondary)", margin: 0 }}>
+            {description}
+          </p>
+          {tags.length > 0 && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.45rem" }}>
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                style={{
+                  fontSize: "0.8125rem",
+                  padding: "4px 10px",
+                  borderRadius: "var(--radius-pill)",
+                  border: "1px solid var(--border-subtle)",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          )}
+          <div style={{ paddingTop: "0.35rem" }}>
+            <Link href={href} className="text-link">
+              Read the case study →
+            </Link>
+          </div>
         </div>
 
-        {/* Content Section */}
-        <Column
-          fillWidth
-          paddingX="l"
-          paddingTop="l"
-          paddingBottom="l"
-          gap="m"
+        <Link
+          href={href}
+          style={{
+            position: "relative",
+            width: "100%",
+            aspectRatio: "16/10",
+            borderRadius: "var(--radius-md)",
+            overflow: "hidden",
+            border: "1px solid var(--border-subtle)",
+            display: "block",
+          }}
+          tabIndex={-1}
+          aria-hidden="true"
         >
-          {title && (
-            <Heading 
-              as="h2" 
-              wrap="balance" 
-              variant="heading-strong-xl"
-              style={{
-                fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
-                letterSpacing: '-0.02em',
-                lineHeight: '1.2',
-              }}
-            >
-              {title}
-            </Heading>
-          )}
-          {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-            <Column fillWidth gap="16">
-              {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
-              {description?.trim() && (
-                <Text 
-                  wrap="balance" 
-                  variant="body-default-s" 
-                  onBackground="neutral-weak"
-                  style={{
-                    fontSize: 'clamp(0.875rem, 1.2vw, 1rem)',
-                    lineHeight: '1.6',
-                  }}
-                >
-                  {description}
-                </Text>
-              )}
-              <Flex gap="24" wrap>
-                {content?.trim() && (
-                  <SmartLink
-                    ref={buttonRef}
-                    suffixIcon="arrowRight"
-                    style={{ 
-                      margin: "0", 
-                      width: "fit-content",
-                      borderRadius: '9999px',
-                      padding: '0.75rem 1.5rem',
-                      background: 'var(--brand-alpha-weak)',
-                      border: '1px solid var(--brand-alpha-medium)',
-                      transition: `all 0.7s ${premiumEase}`,
-                    }}
-                    href={href}
-                    className="group-hover:bg-brand-alpha-medium group-hover:scale-105 active:scale-[0.98]"
-                  >
-                    <Text 
-                      variant="body-default-s"
-                      style={{ fontWeight: 500 }}
-                    >
-                      View
-                    </Text>
-                  </SmartLink>
-                )}
-                {link && (
-                  <SmartLink
-                    suffixIcon="arrowUpRightFromSquare"
-                    style={{ 
-                      margin: "0", 
-                      width: "fit-content",
-                      borderRadius: '9999px',
-                      padding: '0.75rem 1.5rem',
-                      background: 'transparent',
-                      border: '1px solid var(--neutral-alpha-medium)',
-                      transition: `all 0.7s ${premiumEase}`,
-                    }}
-                    href={link}
-                    className="group-hover:border-brand-alpha-medium group-hover:scale-105 active:scale-[0.98]"
-                  >
-                    <Text 
-                      variant="body-default-s"
-                      style={{ fontWeight: 500 }}
-                    >
-                      View Project
-                    </Text>
-                  </SmartLink>
-                )}
-              </Flex>
-            </Column>
-          )}
-        </Column>
-      </Column>
-    </Column>
+          <Image
+            src={displayImage}
+            alt=""
+            fill
+            sizes="(max-width: 1024px) 100vw, 600px"
+            className="media-zoom"
+            style={{ objectFit: "cover" }}
+            priority={priority}
+          />
+        </Link>
+      </article>
+    );
+  }
+
+  return (
+    <article className="editorial-card" style={{ display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <Link
+        href={href}
+        style={{
+          position: "relative",
+          width: "100%",
+          aspectRatio: "16/10",
+          overflow: "hidden",
+          borderBottom: "1px solid var(--border-subtle)",
+          display: "block",
+          background: "var(--bg-surface-subtle)",
+        }}
+        tabIndex={-1}
+        aria-hidden="true"
+      >
+        <Image
+          src={displayImage}
+          alt=""
+          fill
+          sizes="(max-width: 768px) 100vw, 550px"
+          className="media-zoom"
+          style={{ objectFit: "cover" }}
+          priority={priority}
+        />
+      </Link>
+
+      <div style={{ padding: "1.4rem 1.5rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.7rem", flex: 1 }}>
+        <span className="text-mono-label">{indexFormatted}</span>
+        <h3
+          style={{
+            fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+            fontSize: "1.35rem",
+            fontWeight: 500,
+            letterSpacing: "-0.015em",
+            lineHeight: 1.25,
+            margin: 0,
+          }}
+        >
+          {title}
+        </h3>
+        <p style={{ fontSize: "0.975rem", lineHeight: 1.6, color: "var(--text-secondary)", margin: 0, flex: 1 }}>
+          {description}
+        </p>
+        <Link href={href} className="text-link" style={{ width: "fit-content" }}>
+          Case study →
+        </Link>
+      </div>
+    </article>
   );
 };
+
+export default ProjectCard;

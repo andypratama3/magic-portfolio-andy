@@ -13,6 +13,25 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/gallery",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/product",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/product/:slug*",
+        destination: "/work/:slug*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withMDX(nextConfig);

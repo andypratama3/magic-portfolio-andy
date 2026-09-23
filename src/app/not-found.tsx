@@ -1,15 +1,42 @@
-import { Column, Heading, Text } from "@once-ui-system/core";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <Column as="section" fill center paddingBottom="160">
-      <Text marginBottom="s" variant="display-strong-xl">
+    <div
+      style={{
+        width: "100%",
+        minHeight: "70vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        padding: "2rem",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: "var(--font-heading), Newsreader, Georgia, serif",
+          fontStyle: "italic",
+          fontSize: "clamp(4rem, 10vw, 7rem)",
+          fontWeight: 500,
+          letterSpacing: "-0.03em",
+          lineHeight: 1,
+          color: "var(--border-medium)",
+          marginBottom: "1rem",
+        }}
+      >
         404
-      </Text>
-      <Heading marginBottom="l" variant="display-default-xs">
-        Page Not Found
-      </Heading>
-      <Text onBackground="neutral-weak">The page you are looking for does not exist.</Text>
-    </Column>
+      </div>
+      <h1 className="text-h1" style={{ marginBottom: "1rem" }}>
+        This page wandered off.
+      </h1>
+      <p className="text-body-large" style={{ maxWidth: "480px", marginBottom: "2rem" }}>
+        Maybe it was renamed. The work is still on the home page.
+      </p>
+      <Link href="/" className="btn-primary">
+        Back home
+      </Link>
+    </div>
   );
 }

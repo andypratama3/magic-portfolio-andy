@@ -1,131 +1,86 @@
 import React from "react";
-import { Column, Schema } from "@once-ui-system/core";
-import { home, about, person, baseURL, testimonials } from "@/resources";
+import Link from "next/link";
+import { home, about, person, baseURL } from "@/resources";
 import { ProjectsWrapper } from "@/components/work/ProjectsWrapper";
-import { Testimonials } from "@/components/Testimonials";
 import { CTASection } from "@/components/CTASection";
 import { HeroSection } from "@/components/HeroSection";
 import { MetricsSection } from "@/components/MetricsSection";
-import { SectionTitle } from "@/components/SectionTitle";
-import { EngineeringPhilosophy } from "@/components/EngineeringPhilosophy";
+import { HowIBuild } from "@/components/HowIBuild";
 import { EnhancedTechStack } from "@/components/EnhancedTechStack";
+import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 
 export default function Home() {
-  const engineeringPhilosophy = {
-    display: true,
-    title: "Engineering Philosophy",
-    description: (
-      <>
-        I approach software development as an end-to-end engineering problem. Technology exists to solve real business problems, not to be an end in itself.
-        <br />
-        <br />
-        <strong>Solve the business problem:</strong> I focus on understanding requirements first, then choosing the right tools to solve them effectively.
-        <br />
-        <br />
-        <strong>Design for maintainability:</strong> I prefer clear boundaries, understandable architecture, and separation of concerns over clever code.
-        <br />
-        <br />
-        <strong>Build for production:</strong> I think about security, deployment, monitoring, and maintenance from the start, not as an afterthought.
-        <br />
-        <br />
-        <strong>Automate repetitive work:</strong> I use queues, jobs, integrations, and automation to reduce manual overhead and improve reliability.
-        <br />
-        <br />
-        <strong>Measure improvements:</strong> I use measurable results whenever possible — performance metrics, security scores, and user outcomes.
-      </>
-    ),
-  };
-
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center" style={{ padding: 'clamp(3rem, 6vw, 6rem) 0' }}>
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        path={home.path}
-        title={home.title}
-        description={home.description}
-        image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
+    <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: home.title,
+            description: home.description,
+            url: `${baseURL}${home.path}`,
+            author: {
+              "@type": "Person",
+              name: person.name,
+              url: `${baseURL}${about.path}`,
+            },
+          }),
         }}
       />
-      
-      {/* Cinematic Hero Section */}
-      <HeroSection 
-        eyebrow={home.eyebrow}
-        headline={home.headline}
-        subline={home.subline}
-        aboutPath={about.path}
-        aboutTitle="About Me"
-        aboutAvatarDisplay={about.avatar.display}
-        personAvatar={person.avatar}
-      />
 
-      {/* Metrics Section */}
+      <HeroSection personAvatar={person.avatar} />
       <MetricsSection />
 
-      {/* Featured Project */}
-      <Column fillWidth style={{ padding: 'clamp(2.5rem, 5vw, 5rem) 0' }}>
-        <SectionTitle 
-          title="Featured Project"
-          description="A showcase of my latest work and technical achievements"
-          align="center"
-        />
-        <ProjectsWrapper range={[1, 1]} />
-      </Column>
+      <section
+        id="selected-work"
+        style={{
+          width: "100%",
+          paddingTop: "clamp(3.5rem, 7vw, 5.75rem)",
+          paddingBottom: "clamp(3.5rem, 7vw, 5.75rem)",
+          borderBottom: "1px solid var(--border-subtle)",
+        }}
+      >
+        <div className="layout-container">
+          <div style={{ marginBottom: "0.65rem" }}>
+            <span className="kicker">Selected work</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1.25rem",
+              marginBottom: "2.25rem",
+            }}
+          >
+            <div style={{ maxWidth: "36rem" }}>
+              <h2 className="text-h1" style={{ marginBottom: "0.7rem" }}>
+                Systems still running after the launch party.
+              </h2>
+              <p className="text-body-large">
+                Architecture, data, permissions, and the messy integrations — written up as case studies,
+                not marketing pages.
+              </p>
+            </div>
+            <Link href="/work" className="btn-secondary">
+              All projects
+            </Link>
+          </div>
 
-      {/* Testimonials */}
-      {testimonials.display && (
-        <Column fillWidth style={{ padding: 'clamp(2.5rem, 5vw, 5rem) 0' }}>
-          <Testimonials
-            title={testimonials.title}
-            description={testimonials.description}
-            items={testimonials.items}
-          />
-        </Column>
-      )}
+          <ProjectsWrapper featuredSlug="productschool" range={[1, 1]} />
+          <div style={{ marginTop: "1.75rem" }}>
+            <ProjectsWrapper excludeSlug="productschool" range={[1, 4]} />
+          </div>
+        </div>
+      </section>
 
-      {/* More Projects */}
-      <Column fillWidth style={{ padding: 'clamp(2.5rem, 5vw, 5rem) 0' }}>
-        <SectionTitle 
-          title="More Projects"
-          description="Explore additional work and creative solutions"
-          align="center"
-        />
-        <ProjectsWrapper range={[2]} />
-      </Column>
-
-      {/* Engineering Philosophy */}
-      {engineeringPhilosophy.display && (
-        <EngineeringPhilosophy
-          title={engineeringPhilosophy.title}
-          description={engineeringPhilosophy.description}
-        />
-      )}
-
-      {/* Technical Stack */}
-      <Column fillWidth style={{ padding: 'clamp(2.5rem, 5vw, 5rem) 0' }}>
-        <SectionTitle 
-          title="Technical Stack"
-          description="Fullstack software engineering with production experience across modern frontend and backend technologies"
-          align="center"
-        />
-        <EnhancedTechStack skills={about.technical.skills} showHeader={false} />
-      </Column>
-
-      {/* CTA Section */}
-      <Column fillWidth style={{ padding: 'clamp(2.5rem, 5vw, 5rem) 0' }}>
-        <CTASection
-          title="Ready to Transform Your Business?"
-          description="Let's discuss how I can build scalable systems that automate operations and drive growth."
-          primaryButtonText="Schedule a Consultation"
-          primaryButtonHref="https://cal.com/andypratama"
-          secondaryButtonText="View My Work"
-          secondaryButtonHref="/work"
-        />
-      </Column>
-    </Column>
+      <HowIBuild />
+      <EnhancedTechStack showHeader />
+      <ExperienceTimeline compact />
+      <CTASection />
+    </div>
   );
 }
