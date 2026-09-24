@@ -45,7 +45,7 @@ const stages = [
 
 const CYCLE_MS = 5200;
 
-export function HowIBuild() {
+export function HowIBuild({ showHeader = true }: { showHeader?: boolean }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
@@ -98,25 +98,27 @@ export function HowIBuild() {
       onMouseLeave={() => setPaused(false)}
       style={{
         width: "100%",
-        paddingTop: "clamp(3.25rem, 6vw, 5.5rem)",
+        paddingTop: showHeader ? "clamp(3.25rem, 6vw, 5.5rem)" : "2rem",
         paddingBottom: "clamp(3.25rem, 6vw, 5.5rem)",
         borderBottom: "1px solid var(--border-subtle)",
       }}
     >
       <div className="layout-container">
-        <div ref={headerRef}>
-          <div style={{ marginBottom: "0.65rem" }}>
-            <span className="kicker reveal-body">How I work</span>
+        {showHeader && (
+          <div ref={headerRef}>
+            <div style={{ marginBottom: "0.65rem" }}>
+              <span className="kicker reveal-body">How I work</span>
+            </div>
+            <div style={{ maxWidth: "36rem", marginBottom: "2.5rem" }}>
+              <h2 className="text-h1 reveal-heading" style={{ marginBottom: "0.75rem" }}>
+                A quiet, repeatable way to ship.
+              </h2>
+              <p className="text-body-large reveal-body">
+                The loop keeps moving. Hover or click a step if you want to stay there.
+              </p>
+            </div>
           </div>
-          <div style={{ maxWidth: "36rem", marginBottom: "2.5rem" }}>
-            <h2 className="text-h1 reveal-heading" style={{ marginBottom: "0.75rem" }}>
-              A quiet, repeatable way to ship.
-            </h2>
-            <p className="text-body-large reveal-body">
-              The loop keeps moving. Hover or click a step if you want to stay there.
-            </p>
-          </div>
-        </div>
+        )}
 
         <div className={styles.layout}>
           <div ref={listRef} role="listbox" aria-label="Engineering stages" tabIndex={0}>

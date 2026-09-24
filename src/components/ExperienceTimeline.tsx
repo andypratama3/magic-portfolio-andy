@@ -39,7 +39,7 @@ function ExpPanel({ achievements }: { achievements: React.ReactNode[] }) {
   );
 }
 
-export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
+export function ExperienceTimeline({ compact = false, showHeader = true }: { compact?: boolean; showHeader?: boolean }) {
   const experiences = about.work.experiences;
   const [open, setOpen] = useState(0);
   const shown = compact ? experiences.slice(0, 4) : experiences;
@@ -63,13 +63,13 @@ export function ExperienceTimeline({ compact = false }: { compact?: boolean }) {
       id="experience"
       style={{
         width: "100%",
-        paddingTop: compact ? "clamp(3.25rem, 6vw, 5.5rem)" : 0,
+        paddingTop: compact && showHeader ? "clamp(3.25rem, 6vw, 5.5rem)" : 0,
         paddingBottom: compact ? "clamp(3.25rem, 6vw, 5.5rem)" : 0,
         borderBottom: compact ? "1px solid var(--border-subtle)" : undefined,
       }}
     >
       <div className="layout-container">
-        {compact && (
+        {compact && showHeader && (
           <div ref={headerRef}>
             <div style={{ marginBottom: "0.65rem" }}>
               <span className="kicker reveal-body">Where this work happened</span>

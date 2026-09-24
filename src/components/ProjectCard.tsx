@@ -25,7 +25,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   featured = false,
   tags = [],
 }) => {
-  const displayImage = images[0] || "/images/projects/products_shool/dashboard.png";
+  const displayImage = images[0] || "/images/projects/products_shool/dashboard.webp";
   const indexFormatted = String(index + 1).padStart(2, "0");
 
   if (featured) {

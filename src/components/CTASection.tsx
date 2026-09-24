@@ -38,10 +38,19 @@ export function CTASection() {
     >
       <div className="layout-container">
         <div className="contact-grid">
-          <div ref={leftRef}>
-            <div style={{ marginBottom: "0.65rem" }}>
-              <span className="kicker reveal-body">Say hello</span>
-            </div>
+          <div ref={leftRef} className="chapter-head">
+            <span className="chapter-ghost" aria-hidden="true">
+              05
+            </span>
+            <p className="chapter-line reveal-body">
+              <span className="chapter-index" aria-hidden="true">
+                05
+              </span>
+              <span className="chapter-sep" aria-hidden="true">
+                /
+              </span>
+              <span>LET&apos;S BUILD</span>
+            </p>
             <h2 className="text-h1 reveal-heading" style={{ maxWidth: "16ch", marginBottom: "1rem" }}>
               If you&apos;re hiring an engineer, not a pitch deck.
             </h2>

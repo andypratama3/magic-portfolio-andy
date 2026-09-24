@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, type MouseEvent } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { LiveClock } from "./LiveClock";
@@ -10,7 +10,8 @@ import styles from "./Header.module.scss";
 
 const links = [
   { href: "/work", label: "Work", match: (path: string) => path.startsWith("/work") },
-  { href: "/#how-i-build", label: "Process", match: () => false },
+  { href: "/#engineering", label: "Engineering", match: () => false },
+  { href: "/#experience", label: "Experience", match: () => false },
   { href: "/about", label: "About", match: (path: string) => path === "/about" },
   { href: "/#contact", label: "Contact", match: () => false },
 ];
@@ -18,9 +19,10 @@ const links = [
 const mobileNavItems = [
   { num: "01", href: "/", label: "Home", match: (path: string) => path === "/" },
   { num: "02", href: "/work", label: "Selected Work", match: (path: string) => path.startsWith("/work") },
-  { num: "03", href: "/#how-i-build", label: "Process", match: () => false },
-  { num: "04", href: "/about", label: "About", match: (path: string) => path === "/about" },
-  { num: "05", href: "/#contact", label: "Contact", match: () => false },
+  { num: "03", href: "/#engineering", label: "Engineering", match: () => false },
+  { num: "04", href: "/#experience", label: "Experience", match: () => false },
+  { num: "05", href: "/about", label: "About", match: (path: string) => path === "/about" },
+  { num: "06", href: "/#contact", label: "Contact", match: () => false },
 ];
 
 export const Header = () => {
@@ -28,12 +30,18 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
 
-  const handleLinkClick = useCallback((href: string) => {
+  const handleLinkClick = useCallback((event: MouseEvent<HTMLElement>, href: string) => {
     setIsMenuOpen(false);
     if (href.startsWith("/#") && pathname === "/") {
+      event.preventDefault();
       const targetId = href.replace("/#", "");
       const elem = document.getElementById(targetId);
       if (elem) {
+        const lenis = (window as unknown as { __lenis?: { scrollTo: (target: string, opts?: { offset?: number }) => void } }).__lenis;
+        if (lenis) {
+          lenis.scrollTo(`#${targetId}`, { offset: 80 });
+          return;
+        }
         elem.scrollIntoView({ behavior: "smooth" });
       }
     }
@@ -52,16 +60,20 @@ export const Header = () => {
   }, [pathname]);
 
   useEffect(() => {
+    const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none";
+      lenis?.stop();
     } else {
       document.body.style.overflow = "";
       document.body.style.touchAction = "";
+      lenis?.start();
     }
     return () => {
       document.body.style.overflow = "";
       document.body.style.touchAction = "";
+      lenis?.start();
     };
   }, [isMenuOpen]);
 
@@ -101,6 +113,7 @@ export const Header = () => {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(event) => handleLinkClick(event, link.href)}
               className={`${styles.navLink} ${link.match(pathname) ? styles.navLinkActive : ""}`}
             >
               {link.label}
@@ -110,7 +123,7 @@ export const Header = () => {
 
         <div className={styles.actions}>
           <ThemeToggle />
-          <Link href="/#contact" className={styles.contactBtn}>
+          <Link href="/#contact" onClick={(event) => handleLinkClick(event, "/#contact")} className={styles.contactBtn}>
             Let&apos;s talk
           </Link>
           <button
@@ -142,7 +155,7 @@ export const Header = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => handleLinkClick(item.href)}
+                  onClick={(event) => handleLinkClick(event, item.href)}
                   className={`${styles.mobileDrawerLink} ${isActive ? styles.mobileDrawerLinkActive : ""}`}
                   style={{ animationDelay: `${index * 45 + 50}ms` }}
                 >
@@ -176,7 +189,7 @@ export const Header = () => {
           <div className={styles.drawerCtaWrapper}>
             <Link
               href="/#contact"
-              onClick={() => handleLinkClick("/#contact")}
+              onClick={(event) => handleLinkClick(event, "/#contact")}
               className={styles.drawerContactBtn}
             >
               <span>Start a project / Get in touch</span>

@@ -140,6 +140,7 @@ html {
 #contact,
 #selected-work,
 #experience,
+#engineering,
 #capabilities,
 #main-content {
   scroll-margin-top: 5rem;
@@ -630,11 +631,9 @@ textarea:focus-visible {
 
 @keyframes hero-rise {
   from {
-    opacity: 0.01;
     transform: translateY(12px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
@@ -717,6 +716,379 @@ textarea:focus-visible {
 
 .theme-icon {
   animation: icon-swap-in 0.35s var(--ease-editorial);
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ============ Chapter scaffolding ============ */
+.chapter-block {
+  padding-top: clamp(3.5rem, 7vw, 5.75rem);
+}
+
+.chapter-block-bottom {
+  padding-bottom: clamp(3.5rem, 7vw, 5.75rem);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.chapter-head {
+  position: relative;
+  max-width: 44rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Ghost numeral — decorative watermark behind each chapter heading.
+   Moved by GSAP on scroll (scrub); aria-hidden, never interactive. */
+.chapter-ghost {
+  position: absolute;
+  top: -0.42em;
+  right: -0.05em;
+  z-index: -1;
+  font-family: var(--font-heading);
+  font-size: clamp(4.5rem, 13vw, 10rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+.chapter-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0 0 1.1rem;
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.chapter-index {
+  color: var(--text-secondary);
+}
+
+.chapter-sep {
+  color: var(--border-medium);
+}
+
+.chapter-title {
+  margin: 0 0 1rem;
+}
+
+.chapter-lead {
+  margin: 0;
+  max-width: 40rem;
+}
+
+.chapter-action {
+  margin-top: 1.25rem;
+}
+
+/* ============ Hero ============ */
+.hero-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-clock {
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-stack {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+}
+
+.hero-stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-stack-list li {
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+/* ============ What I build ============ */
+.what-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.what-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.3rem;
+  align-items: baseline;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.what-row:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.what-row-index {
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  color: var(--text-secondary);
+  grid-row: span 2;
+}
+
+.what-row-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.what-row-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 38rem;
+}
+
+/* ============ Featured case study ============ */
+.featured-case {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.case-viewport {
+  position: relative;
+}
+
+.case-media {
+  position: sticky;
+  top: clamp(1rem, 10vh, 4.5rem);
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface-subtle);
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem 2.5rem;
+  align-items: start;
+}
+
+.case-intro {
+  max-width: 36rem;
+}
+
+.case-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.case-fact {
+  background: var(--bg-surface);
+  padding: 0.95rem 1.05rem;
+  margin: 0;
+}
+
+.case-fact dt {
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.case-fact dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.case-narrative {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 1.75rem;
+}
+
+.case-note {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.case-note-title {
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem;
+}
+
+.case-note > p:last-child {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.supporting-projects {
+  margin-top: 2.5rem;
+}
+
+.section-foot {
+  margin-top: 1.75rem;
+}
+
+/* ============ Engineering rows ============ */
+.eng-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.eng-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.3rem;
+  padding: 1.3rem 0;
+  border-top: 1px solid var(--border-subtle);
+  align-items: start;
+}
+
+.eng-row:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.eng-row-index {
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  color: var(--text-secondary);
+  grid-row: span 2;
+}
+
+.eng-row-note {
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.eng-row-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0.2rem 0 0.35rem;
+}
+
+.eng-row-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 34rem;
+}
+
+.eng-row-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  grid-column: 2;
+}
+
+.eng-row-tags li {
+  font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
+  font-size: var(--font-mono);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 0.2rem 0.65rem;
+}
+
+/* ============ Chapter / component layouts @ desktop ============ */
+@media (min-width: 760px) {
+  .case-narrative {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 860px) {
+  .case-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+
+  .eng-row {
+    grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 1.5rem;
+  }
+
+  .eng-row-tags {
+    grid-column: 3;
+    justify-content: flex-end;
+    margin-top: 0.1rem;
+  }
 }
 
 /* Spinner for form sending state */

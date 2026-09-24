@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { home, about, person, baseURL } from "@/resources";
@@ -9,7 +8,10 @@ import { MetricsSection } from "@/components/MetricsSection";
 import { HowIBuild } from "@/components/HowIBuild";
 import { EnhancedTechStack } from "@/components/EnhancedTechStack";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
-import { SectionReveal } from "@/components/SectionReveal";
+import { WhatIBuild } from "@/components/WhatIBuild";
+import { FeaturedCaseStudy } from "@/components/FeaturedCaseStudy";
+import { Chapter } from "@/components/Chapter";
+import { CinematicScroll } from "@/components/CinematicScroll";
 
 export const metadata: Metadata = {
   alternates: {
@@ -48,50 +50,64 @@ export default function Home() {
         }}
       />
 
-      <HeroSection personAvatar={person.avatar} />
+      <HeroSection />
+
+      <section className="chapter-block">
+        <div className="layout-container">
+          <WhatIBuild />
+        </div>
+      </section>
+
       <MetricsSection />
 
-      <section
-        id="selected-work"
-        style={{
-          width: "100%",
-          paddingTop: "clamp(3.5rem, 7vw, 5.75rem)",
-          paddingBottom: "clamp(3.5rem, 7vw, 5.75rem)",
-          borderBottom: "1px solid var(--border-subtle)",
-        }}
-      >
+      <section id="selected-work" className="chapter-block chapter-block-bottom">
         <div className="layout-container">
-          <SectionReveal>
-            <div style={{ marginBottom: "0.65rem" }}>
-              <span className="kicker reveal-body">Selected work</span>
-            </div>
-            <div className="section-head">
-              <div style={{ maxWidth: "36rem" }}>
-                <h2 className="text-h1 reveal-heading" style={{ marginBottom: "0.7rem" }}>
-                  Systems still running after the launch party.
-                </h2>
-                <p className="text-body-large reveal-body">
-                  Architecture, data, permissions, and the messy integrations, written up as case studies,
-                  not marketing pages.
-                </p>
-              </div>
-              <Link href="/work" className="btn-secondary reveal-body">
-                All projects
-              </Link>
-            </div>
-          </SectionReveal>
+          <FeaturedCaseStudy />
 
-          <ProjectsWrapper featuredSlug="productschool" range={[1, 1]} />
-          <div style={{ marginTop: "1.75rem" }}>
+          <div className="supporting-projects">
             <ProjectsWrapper excludeSlug="productschool" range={[1, 4]} />
+          </div>
+
+          <div className="section-foot">
+            <Link href="/work" className="text-link">
+              All projects
+            </Link>
           </div>
         </div>
       </section>
 
-      <HowIBuild />
-      <EnhancedTechStack showHeader />
-      <ExperienceTimeline compact />
+      <section id="engineering" className="chapter-block">
+        <div className="layout-container">
+          <Chapter
+            index="03"
+            label="HOW I ENGINEER"
+            title="A quiet, repeatable way to ship."
+            lead="The loop keeps moving. Hover or click a step to stay there."
+          />
+        </div>
+        <HowIBuild showHeader={false} />
+        <EnhancedTechStack showHeader={false} />
+      </section>
+
+      <section className="chapter-block">
+        <div className="layout-container">
+          <Chapter
+            index="04"
+            label="EXPERIENCE"
+            title="Roles with real users on the other side."
+            lead="Where the work above actually shipped."
+            action={
+              <Link href="/about" className="text-link">
+                Full background
+              </Link>
+            }
+          />
+        </div>
+        <ExperienceTimeline compact showHeader={false} />
+      </section>
+
       <CTASection />
+      <CinematicScroll />
     </div>
   );
 }
