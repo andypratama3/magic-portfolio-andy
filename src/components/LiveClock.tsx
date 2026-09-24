@@ -41,16 +41,16 @@ export function LiveClock({ variant = "short" }: { variant?: "short" | "long" })
   }, []);
 
   if (!parts) {
-    return <span>{variant === "long" ? "Samarinda" : "--:--"}</span>;
+    return <span className="clock-neon">{variant === "long" ? "Samarinda" : "--:--"}</span>;
   }
 
   if (variant === "long") {
     return (
       <span>
-        {parts.weekday} {parts.partOfDay} in Samarinda · {parts.time}
+        {parts.weekday} {parts.partOfDay} in Samarinda · <span className="clock-neon">{parts.time}</span>
       </span>
     );
   }
 
-  return <span>{parts.time}</span>;
+  return <span className="clock-neon">{parts.time}</span>;
 }

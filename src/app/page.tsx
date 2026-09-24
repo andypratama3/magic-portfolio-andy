@@ -52,7 +52,7 @@ export default function Home() {
 
       <HeroSection />
 
-      <section className="chapter-block">
+      <section id="what-i-build" data-scrollspy className="chapter-block">
         <div className="layout-container">
           <WhatIBuild />
         </div>
@@ -60,7 +60,7 @@ export default function Home() {
 
       <MetricsSection />
 
-      <section id="selected-work" className="chapter-block chapter-block-bottom">
+      <section id="selected-work" data-scrollspy className="chapter-block chapter-block-bottom">
         <div className="layout-container">
           <FeaturedCaseStudy />
 
@@ -76,11 +76,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="engineering" className="chapter-block">
+      <section id="engineering" data-scrollspy className="chapter-block">
         <div className="layout-container">
           <Chapter
             index="03"
             label="HOW I ENGINEER"
+            sectionId="engineering"
             title="A quiet, repeatable way to ship."
             lead="The loop keeps moving. Hover or click a step to stay there."
           />
@@ -89,11 +90,12 @@ export default function Home() {
         <EnhancedTechStack showHeader={false} />
       </section>
 
-      <section className="chapter-block">
+      <section id="experience" data-scrollspy className="chapter-block">
         <div className="layout-container">
           <Chapter
             index="04"
             label="EXPERIENCE"
+            sectionId="experience"
             title="Roles with real users on the other side."
             lead="Where the work above actually shipped."
             action={

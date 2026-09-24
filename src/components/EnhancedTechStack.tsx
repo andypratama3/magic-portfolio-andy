@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { animateStaggeredCards, animateHeadingReveal } from "@/lib/gsap/animations";
+import { techIcon } from "@/lib/tech-icons";
 
 interface TechGroup {
   category: string;
@@ -94,9 +95,25 @@ export function EnhancedTechStack({ showHeader = true }: { skills?: unknown; sho
                 <p className="eng-row-desc">{group.description}</p>
               </div>
               <ul className="eng-row-tags">
-                {group.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
+                {group.items.map((item) => {
+                  const icon = techIcon(item);
+                  return (
+                    <li key={item}>
+                      {icon && (
+                        <img
+                          className="tech-chip-icon"
+                          src={icon}
+                          alt=""
+                          aria-hidden="true"
+                          loading="lazy"
+                          width={14}
+                          height={14}
+                        />
+                      )}
+                      <span>{item}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

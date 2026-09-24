@@ -55,7 +55,7 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/photo.jpg",
   label: "Home",
   title: `Andy Pratama: Fullstack Software Engineer`,
   description:
@@ -63,7 +63,7 @@ const home = {
   eyebrow: "Fullstack Software Engineer",
   headline: <>Building software systems from idea to production.</>,
   hero: {
-    kicker: "fullstack software engineer",
+    kicker: "Fullstack Developer | Software Engineer",
     statement:
       "I design and build production systems from architecture to deployment: school platforms, government portals, and the APIs and automation that keep them running.",
     stack: [

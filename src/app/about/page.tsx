@@ -123,7 +123,7 @@ export default function About() {
                   </div>
                 </TiltMedia>
                 <p className="kicker" style={{ marginTop: "0.75rem" }}>
-                  Right now: <LiveClock variant="long" />
+                  <LiveClock variant="long" />
                 </p>
               </div>
             </div>

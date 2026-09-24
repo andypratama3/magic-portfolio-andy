@@ -35,6 +35,7 @@ export function WhatIBuild() {
       <Chapter
         index="01"
         label="WHAT I BUILD"
+        sectionId="what-i-build"
         title="Systems people depend on every day."
         lead="Four kinds of work, all of it production-facing. If a school runs its morning roll, a department meets a deadline, or a shop closes its books on this code, it counts."
       />

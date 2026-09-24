@@ -21,6 +21,10 @@
   --border-medium: #B8B3A8;
   --accent-primary: #1A1814;
   --accent-contrast: #FFFdf8;
+  --neon-core: #1D4ED8;
+  --neon-halo: rgba(29, 78, 216, 0.3);
+  --neon-halo-far: rgba(29, 78, 216, 0.14);
+  --neon-pulse: rgba(37, 99, 235, 0.55);
   --status-live: #2F7D4A;
   --card-bg: rgba(255, 253, 248, 0.72);
   --header-bg: rgba(243, 241, 234, 0.82);
@@ -61,6 +65,10 @@
   --border-medium: #3D3933;
   --accent-primary: #F3F0E8;
   --accent-contrast: #0E0D0B;
+  --neon-core: #4DC9FF;
+  --neon-halo: rgba(77, 201, 255, 0.3);
+  --neon-halo-far: rgba(77, 201, 255, 0.14);
+  --neon-pulse: rgba(140, 220, 255, 0.6);
   --status-live: #4ADE80;
   --card-bg: rgba(23, 22, 20, 0.7);
   --header-bg: rgba(14, 13, 11, 0.82);
@@ -415,6 +423,61 @@ h1, h2, h3, h4,
   letter-spacing: -0.01em;
   text-transform: none;
   color: var(--text-muted);
+}
+
+.neon-sign {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.22em 0.34em;
+  color: var(--neon-core);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 3px var(--neon-halo), 0 0 12px var(--neon-halo), 0 0 26px var(--neon-halo-far);
+}
+
+.neon-sign.neon-label {
+  color: var(--neon-core);
+}
+
+a.nav-neon {
+  color: var(--neon-core);
+  text-shadow: 0 0 3px var(--neon-halo), 0 0 10px var(--neon-halo);
+}
+
+a.nav-mobile-neon .linkTitle {
+  color: var(--neon-core);
+  text-shadow: 0 0 3px var(--neon-halo), 0 0 10px var(--neon-halo);
+}
+
+.clock-neon {
+  color: var(--neon-core);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 3px var(--neon-halo), 0 0 9px var(--neon-halo);
+}
+
+.neon-word::first-letter {
+  font-size: 1.32em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .neon-word {
+    animation: neon-chase 1.8s infinite;
+  }
+}
+
+@keyframes neon-chase {
+  0%,
+  38%,
+  100% {
+    text-shadow: 0 0 4px var(--neon-halo), 0 0 12px var(--neon-halo-far);
+  }
+  12%,
+  26% {
+    text-shadow: 0 0 4px var(--neon-pulse), 0 0 14px var(--neon-pulse), 0 0 28px var(--neon-pulse);
+  }
 }
 
 .text-mono-label {
@@ -850,6 +913,43 @@ html.lenis {
   font-family: var(--font-code), "Geist Mono", ui-monospace, monospace;
   font-size: var(--font-mono);
   color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hero-stack-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.hero-scope .row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.hero-scope .col-6 {
+  min-width: 0;
+}
+
+.hero-visual {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 22px 48px -28px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 860px) {
+  .hero-scope .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* ============ What I build ============ */
@@ -1065,6 +1165,16 @@ html.lenis {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-pill);
   padding: 0.2rem 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tech-chip-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* ============ Chapter / component layouts @ desktop ============ */

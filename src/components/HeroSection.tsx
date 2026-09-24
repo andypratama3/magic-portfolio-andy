@@ -3,9 +3,11 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { home, person } from "@/resources";
+import { techIcon } from "@/lib/tech-icons";
 import { setupMagneticButton, animateSplitText } from "@/lib/gsap/animations";
 import { isReducedMotion } from "@/lib/gsap/config";
 import { LiveClock } from "./LiveClock";
+import Image from "next/image";
 
 export function HeroSection() {
   const primaryBtnRef = useRef<HTMLAnchorElement>(null);
@@ -43,37 +45,80 @@ export function HeroSection() {
       <div className="layout-container">
         <div className="hero-content">
           <div className="hero-topline hero-rise">
-          <span className="kicker">{home.hero.kicker}</span>
+          <span className="kicker neon-sign" aria-label={home.hero.kicker}>
+            {home.hero.kicker.split(" ").map((word, index) => (
+              <span
+                key={index}
+                className="neon-word"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                {word}
+              </span>
+            ))}
+          </span>
           <span className="hero-clock" aria-label="Local time">
             <LiveClock />
           </span>
         </div>
 
-        <h1
-          ref={headlineRef}
-          className="text-display hero-rise hero-rise-delay-1"
-          style={{
-            maxWidth: "12ch",
-            marginBottom: "1.75rem",
-            visibility: "hidden",
-          }}
-        >
-          {person.firstName} <em>{person.lastName}</em>
-        </h1>
+      <div className="row">
+          <div className="col-6">
+            <h1
+              ref={headlineRef}
+              className="text-display hero-rise hero-rise-delay-1"
+              style={{
+                maxWidth: "12ch",
+                marginBottom: "1.75rem",
+                visibility: "hidden",
+              }}
+            >
+              {person.firstName} <em>{person.lastName}</em>
+            </h1>
 
-        <p
-          className="text-body-large hero-rise hero-rise-delay-2"
-          style={{ maxWidth: "38rem", marginBottom: "2rem" }}
-        >
-          {home.hero.statement}
-        </p>
+            <p
+              className="text-body-large hero-rise hero-rise-delay-2"
+              style={{ maxWidth: "38rem", marginBottom: "2rem" }}
+            >
+              {home.hero.statement}
+            </p>
+          </div>
+          <div className="col-6">
+            <Image
+              src={home.image}
+              alt=""
+              width={1200}
+              height={1600}
+              priority
+              className="hero-visual"
+            />
+          </div>
+        </div>
+
 
         <div className="hero-stack hero-rise hero-rise-delay-3">
-          <span className="text-mono-label">Toolchain</span>
+          <span className="text-mono-label neon-sign neon-label">
+            <span className="neon-word">Toolchain</span>
+          </span>
           <ul className="hero-stack-list">
-            {home.hero.stack.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
+            {home.hero.stack.map((item) => {
+              const icon = techIcon(item);
+              return (
+                <li key={item}>
+                  {icon && (
+                    <img
+                      className="hero-stack-icon"
+                      src={icon}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      width={16}
+                      height={16}
+                    />
+                  )}
+                  <span>{item}</span>
+                </li>
+              );
+            })}
           </ul>
         </div>
 

@@ -2,6 +2,7 @@ import "@/resources/custom.css";
 import classNames from "classnames";
 import type { Metadata, Viewport } from "next";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
+import { ActiveSectionProvider } from "@/components/ActiveSectionProvider";
 import { GSAPProvider } from "@/components/GSAPProvider";
 import { SkipLink } from "@/components/SkipLink";
 import { SiteAtmosphere } from "@/components/SiteAtmosphere";
@@ -234,19 +235,21 @@ export default async function RootLayout({
               }),
             }}
           />
-          <Header />
-          <main
-            id="main-content"
-            className="page-shell"
-            style={{
-              minHeight: "100vh",
-              paddingTop: "64px",
-            }}
-          >
-            <RouteGuard>
-              <GSAPProvider>{children}</GSAPProvider>
-            </RouteGuard>
-          </main>
+          <ActiveSectionProvider>
+            <Header />
+            <main
+              id="main-content"
+              className="page-shell"
+              style={{
+                minHeight: "100vh",
+                paddingTop: "64px",
+              }}
+            >
+              <RouteGuard>
+                <GSAPProvider>{children}</GSAPProvider>
+              </RouteGuard>
+            </main>
+          </ActiveSectionProvider>
           <Footer />
         </Providers>
       </body>

@@ -29,6 +29,7 @@ export function CTASection() {
   return (
     <section
       id="contact"
+      data-scrollspy
       style={{
         width: "100%",
         paddingTop: "clamp(3.5rem, 7vw, 6rem)",

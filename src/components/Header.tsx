@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { LiveClock } from "./LiveClock";
 import { SocialLinks } from "./SocialLinks";
+import { useActiveSection } from "./ActiveSectionProvider";
 import styles from "./Header.module.scss";
 
 const links = [
@@ -27,8 +28,15 @@ const mobileNavItems = [
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const activeSection = useActiveSection();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+
+  const isNavActive = (
+    item: { href: string; match: (path: string) => boolean }
+  ) =>
+    item.match(pathname) ||
+    (item.href.startsWith("/#") && activeSection === item.href.slice(2));
 
   const handleLinkClick = useCallback((event: MouseEvent<HTMLElement>, href: string) => {
     setIsMenuOpen(false);
@@ -109,16 +117,20 @@ export const Header = () => {
         </div>
 
         <nav className={styles.nav} aria-label="Primary">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={(event) => handleLinkClick(event, link.href)}
-              className={`${styles.navLink} ${link.match(pathname) ? styles.navLinkActive : ""}`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const isActive = isNavActive(link);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={(event) => handleLinkClick(event, link.href)}
+                aria-current={isActive ? "true" : undefined}
+                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""} ${isActive ? "nav-neon" : ""}`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className={styles.actions}>
@@ -150,13 +162,14 @@ export const Header = () => {
         >
           <nav className={styles.mobileNavList} aria-label="Mobile primary">
             {mobileNavItems.map((item, index) => {
-              const isActive = item.match(pathname);
+              const isActive = isNavActive(item);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={(event) => handleLinkClick(event, item.href)}
-                  className={`${styles.mobileDrawerLink} ${isActive ? styles.mobileDrawerLinkActive : ""}`}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`${styles.mobileDrawerLink} ${isActive ? styles.mobileDrawerLinkActive : ""} ${isActive ? "nav-mobile-neon" : ""}`}
                   style={{ animationDelay: `${index * 45 + 50}ms` }}
                 >
                   <div className={styles.linkLeft}>

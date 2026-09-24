@@ -1,6 +1,7 @@
 "use client";
 
 import { SectionReveal } from "./SectionReveal";
+import { useActiveSection } from "./ActiveSectionProvider";
 
 interface ChapterProps {
   index: string;
@@ -8,9 +9,13 @@ interface ChapterProps {
   title: React.ReactNode;
   lead?: React.ReactNode;
   action?: React.ReactNode;
+  sectionId?: string;
 }
 
-export function Chapter({ index, label, title, lead, action }: ChapterProps) {
+export function Chapter({ index, label, title, lead, action, sectionId }: ChapterProps) {
+  const activeId = useActiveSection();
+  const isActive = Boolean(sectionId && activeId === sectionId);
+
   return (
     <SectionReveal className="chapter-head">
       <span className="chapter-ghost" aria-hidden="true">
@@ -23,7 +28,21 @@ export function Chapter({ index, label, title, lead, action }: ChapterProps) {
         <span className="chapter-sep" aria-hidden="true">
           /
         </span>
-        <span>{label}</span>
+        {isActive ? (
+          <span className="neon-sign neon-label">
+            {label.split(" ").map((word, wordIndex) => (
+              <span
+                key={wordIndex}
+                className="neon-word"
+                style={{ animationDelay: `${wordIndex * 0.2}s` }}
+              >
+                {word}
+              </span>
+            ))}
+          </span>
+        ) : (
+          <span>{label}</span>
+        )}
       </p>
       <h2 className="text-h1 chapter-title reveal-heading">{title}</h2>
       {lead && <p className="text-body-large chapter-lead reveal-body">{lead}</p>}

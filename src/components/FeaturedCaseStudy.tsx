@@ -37,6 +37,7 @@ export function FeaturedCaseStudy() {
       <Chapter
         index="02"
         label="SELECTED WORK"
+        sectionId="selected-work"
         title="One platform, written as a system."
         lead="ProductSchool is the flagship: a school management platform that replaced paper and spreadsheets. This is the case study version, not a marketing page."
         action={
