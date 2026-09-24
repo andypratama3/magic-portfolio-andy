@@ -9,6 +9,7 @@ import { MetricsSection } from "@/components/MetricsSection";
 import { HowIBuild } from "@/components/HowIBuild";
 import { EnhancedTechStack } from "@/components/EnhancedTechStack";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
+import { SectionReveal } from "@/components/SectionReveal";
 
 export const metadata: Metadata = {
   alternates: {
@@ -60,23 +61,25 @@ export default function Home() {
         }}
       >
         <div className="layout-container">
-          <div style={{ marginBottom: "0.65rem" }}>
-            <span className="kicker">Selected work</span>
-          </div>
-          <div className="section-head">
-            <div style={{ maxWidth: "36rem" }}>
-              <h2 className="text-h1" style={{ marginBottom: "0.7rem" }}>
-                Systems still running after the launch party.
-              </h2>
-              <p className="text-body-large">
-                Architecture, data, permissions, and the messy integrations, written up as case studies,
-                not marketing pages.
-              </p>
+          <SectionReveal>
+            <div style={{ marginBottom: "0.65rem" }}>
+              <span className="kicker reveal-body">Selected work</span>
             </div>
-            <Link href="/work" className="btn-secondary">
-              All projects
-            </Link>
-          </div>
+            <div className="section-head">
+              <div style={{ maxWidth: "36rem" }}>
+                <h2 className="text-h1 reveal-heading" style={{ marginBottom: "0.7rem" }}>
+                  Systems still running after the launch party.
+                </h2>
+                <p className="text-body-large reveal-body">
+                  Architecture, data, permissions, and the messy integrations, written up as case studies,
+                  not marketing pages.
+                </p>
+              </div>
+              <Link href="/work" className="btn-secondary reveal-body">
+                All projects
+              </Link>
+            </div>
+          </SectionReveal>
 
           <ProjectsWrapper featuredSlug="productschool" range={[1, 1]} />
           <div style={{ marginTop: "1.75rem" }}>

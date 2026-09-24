@@ -2,10 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPosts, mdxToPlainText } from "@/utils/utils";
 import { baseURL, about, person, work } from "@/resources";
-import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX, ImageGallery } from "@/components";
 import type { Metadata } from "next";
 import SchemaScript from "@/components/SchemaScript";
+import { CaseStudyHeader } from "@/components/work/CaseStudyHeader";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -131,77 +131,12 @@ export default async function Project({
         }}
       >
         <div className="layout-container">
-          <div style={{ marginBottom: "1.5rem" }}>
-            <Link
-              href="/work"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                fontSize: "0.875rem",
-                color: "var(--text-secondary)",
-                textDecoration: "none",
-                fontWeight: 500,
-                padding: "4px 10px",
-                borderRadius: "var(--radius-pill)",
-                border: "1px solid var(--border-subtle)",
-                background: "var(--bg-surface)",
-              }}
-            >
-              <span aria-hidden="true">←</span>
-              <span>All work</span>
-            </Link>
-          </div>
-
-          <div style={{ marginBottom: "0.75rem" }}>
-            <span className="kicker">Case study</span>
-          </div>
-
-          <h1
-            className="text-h1"
-            style={{
-              maxWidth: "960px",
-              marginBottom: "1.5rem",
-              color: "var(--text-primary)",
-            }}
-          >
-            {post.metadata.title}
-          </h1>
-
-          <p
-            className="text-body-large"
-            style={{
-              maxWidth: "820px",
-              marginBottom: "2rem",
-            }}
-          >
-            {post.metadata.summary}
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "1.5rem",
-              flexWrap: "wrap",
-              paddingTop: "1.25rem",
-              borderTop: "1px solid var(--border-subtle)",
-              fontSize: "0.875rem",
-              color: "var(--text-muted)",
-            }}
-          >
-            <div>
-              <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Author:</span> {person.name}
-            </div>
-            {post.metadata.publishedAt && (
-              <div>
-                <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Timeline:</span> {formatDate(post.metadata.publishedAt)}
-              </div>
-            )}
-            <div>
-              <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Status:</span> Live in Production
-            </div>
-          </div>
+          <CaseStudyHeader
+            title={post.metadata.title}
+            summary={post.metadata.summary}
+            publishedAt={post.metadata.publishedAt}
+            authorName={person.name}
+          />
         </div>
       </section>
 

@@ -74,7 +74,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           )}
           <div style={{ paddingTop: "0.35rem" }}>
             <Link href={href} className="text-link">
-              Read the case study →
+              Read the case study
             </Link>
           </div>
         </div>
@@ -153,7 +153,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             {description}
           </p>
           <span className="text-link" style={{ width: "fit-content" }}>
-            Case study →
+            Case study
           </span>
         </div>
       </article>

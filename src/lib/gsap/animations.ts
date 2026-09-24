@@ -1,4 +1,9 @@
 import { gsap, ScrollTrigger, editorialEase, smoothEase, isReducedMotion } from "./config";
+import { SplitText } from "gsap/SplitText";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(SplitText);
+}
 
 /**
  * Editorial Hero Entrance Sequence
@@ -74,11 +79,11 @@ export const animateHeroEntrance = (
  * Staggered Card Reveal on Scroll
  */
 export const animateStaggeredCards = (
-  container: HTMLElement,
+  container: HTMLElement | null,
   itemSelector: string = ".reveal-item",
   stagger: number = 0.1
 ) => {
-  if (isReducedMotion()) return () => {};
+  if (!container || isReducedMotion()) return () => {};
 
   const ctx = gsap.context(() => {
     const items = container.querySelectorAll(itemSelector);
@@ -107,9 +112,9 @@ export const animateStaggeredCards = (
 /**
  * Count-up for verified metrics. Reads data-count and optional data-suffix.
  */
-export const animateCountUp = (container: HTMLElement, itemSelector: string = "[data-count]") => {
-  if (isReducedMotion()) {
-    container.querySelectorAll<HTMLElement>(itemSelector).forEach((el) => {
+export const animateCountUp = (container: HTMLElement | null, itemSelector: string = "[data-count]") => {
+  if (!container || isReducedMotion()) {
+    container?.querySelectorAll<HTMLElement>(itemSelector).forEach((el) => {
       const target = Number(el.dataset.count || 0);
       const suffix = el.dataset.suffix || "";
       el.textContent = `${target}${suffix}`;
@@ -181,4 +186,132 @@ export const setupMagneticButton = (
     element.removeEventListener("mousemove", handleMouseMove);
     element.removeEventListener("mouseleave", handleMouseLeave);
   };
+};
+
+/**
+ * SplitText Hero Reveal
+ * Splits a heading into characters and animates them in with a stagger.
+ * Returns a cleanup function that reverts the split.
+ */
+export const animateSplitText = (
+  element: HTMLElement | null,
+  options: {
+    type?: "chars" | "words" | "lines";
+    stagger?: number;
+    duration?: number;
+    delay?: number;
+  } = {}
+): (() => void) => {
+  if (!element || isReducedMotion()) return () => {};
+
+  const {
+    type = "words",
+    stagger = 0.06,
+    duration = 0.7,
+    delay = 0,
+  } = options;
+
+  const split = new SplitText(element, { type });
+  const targets = type === "chars"
+    ? split.chars
+    : type === "words"
+    ? split.words
+    : split.lines;
+
+  // Keep original display so wrapping doesn't break layout
+  gsap.set(element, { visibility: "visible" });
+
+  gsap.fromTo(
+    targets,
+    { y: 32, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration,
+      stagger,
+      delay,
+      ease: editorialEase,
+      clearProps: "transform,opacity",
+    }
+  );
+
+  return () => {
+    split.revert();
+  };
+};
+
+/**
+ * Scroll-Triggered Heading Reveal
+ * Fades a heading (+ optional subtext) in from below when it enters the viewport.
+ * Designed for section headings that are NOT part of the hero entrance.
+ */
+export const animateHeadingReveal = (
+  container: HTMLElement | null,
+  options: {
+    headingSelector?: string;
+    bodySelector?: string;
+    stagger?: number;
+  } = {}
+): (() => void) => {
+  if (!container || isReducedMotion()) return () => {};
+
+  const {
+    headingSelector = ".reveal-heading",
+    bodySelector = ".reveal-body",
+    stagger = 0.12,
+  } = options;
+
+  const ctx = gsap.context(() => {
+    const headings = Array.from(container.querySelectorAll<HTMLElement>(headingSelector));
+    const bodies = Array.from(container.querySelectorAll<HTMLElement>(bodySelector));
+    const all = [...headings, ...bodies];
+
+    if (!all.length) return;
+
+    gsap.fromTo(
+      all,
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.65,
+        stagger,
+        ease: editorialEase,
+        clearProps: "transform,opacity",
+        scrollTrigger: {
+          trigger: container,
+          start: "top 85%",
+          once: true,
+        },
+      }
+    );
+  }, container);
+
+  return () => ctx.revert();
+};
+
+/**
+ * Stagger list items inside an already-open panel.
+ * Call immediately after the panel becomes visible (no ScrollTrigger needed).
+ */
+export const animateListStagger = (
+  listEl: HTMLElement | null,
+  itemSelector: string = "li"
+): void => {
+  if (!listEl || isReducedMotion()) return;
+
+  const items = listEl.querySelectorAll<HTMLElement>(itemSelector);
+  if (!items.length) return;
+
+  gsap.fromTo(
+    items,
+    { x: -10, opacity: 0 },
+    {
+      x: 0,
+      opacity: 1,
+      duration: 0.4,
+      stagger: 0.06,
+      ease: editorialEase,
+    }
+  );
 };

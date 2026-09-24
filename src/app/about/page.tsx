@@ -6,6 +6,7 @@ import { EnhancedTechStack } from "@/components/EnhancedTechStack";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { TiltMedia } from "@/components/TiltMedia";
 import { LiveClock } from "@/components/LiveClock";
+import { SectionReveal } from "@/components/SectionReveal";
 
 export async function generateMetadata(): Promise<Metadata> {
   const canonicalUrl = `${baseURL}/about`;
@@ -132,10 +133,12 @@ export default function About() {
 
       <div style={{ paddingTop: "clamp(3rem, 6vw, 4.5rem)", paddingBottom: "clamp(2rem, 4vw, 3rem)" }}>
         <div className="layout-container" style={{ marginBottom: "1.5rem" }}>
-          <span className="kicker">Experience</span>
-          <h2 className="text-h2" style={{ marginTop: "0.4rem" }}>
-            Places I&apos;ve been the engineer in the room.
-          </h2>
+          <SectionReveal>
+            <span className="kicker reveal-body">Experience</span>
+            <h2 className="text-h2 reveal-heading" style={{ marginTop: "0.4rem" }}>
+              Places I&apos;ve been the engineer in the room.
+            </h2>
+          </SectionReveal>
         </div>
         <ExperienceTimeline />
       </div>
@@ -144,12 +147,12 @@ export default function About() {
 
       <section style={{ paddingTop: "clamp(3rem, 6vw, 4.5rem)" }}>
         <div className="layout-container">
-          <div style={{ marginBottom: "1.5rem" }}>
-            <span className="kicker">School</span>
-            <h2 className="text-h2" style={{ marginTop: "0.4rem" }}>
+          <SectionReveal style={{ marginBottom: "1.5rem" }}>
+            <span className="kicker reveal-body">School</span>
+            <h2 className="text-h2 reveal-heading" style={{ marginTop: "0.4rem" }}>
               Education
             </h2>
-          </div>
+          </SectionReveal>
           <div
             style={{
               display: "grid",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { animateHeadingReveal } from "@/lib/gsap/animations";
 import styles from "./HowIBuild.module.scss";
 
 const stages = [
@@ -48,7 +49,15 @@ export function HowIBuild() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const current = stages[active];
+
+  useEffect(() => {
+    return animateHeadingReveal(headerRef.current, {
+      headingSelector: ".reveal-heading",
+      bodySelector: ".reveal-body",
+    });
+  }, []);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -95,16 +104,18 @@ export function HowIBuild() {
       }}
     >
       <div className="layout-container">
-        <div style={{ marginBottom: "0.65rem" }}>
-          <span className="kicker">How I work</span>
-        </div>
-        <div style={{ maxWidth: "36rem", marginBottom: "2.5rem" }}>
-          <h2 className="text-h1" style={{ marginBottom: "0.75rem" }}>
-            A quiet, repeatable way to ship.
-          </h2>
-          <p className="text-body-large">
-            The loop keeps moving. Hover or click a step if you want to stay there.
-          </p>
+        <div ref={headerRef}>
+          <div style={{ marginBottom: "0.65rem" }}>
+            <span className="kicker reveal-body">How I work</span>
+          </div>
+          <div style={{ maxWidth: "36rem", marginBottom: "2.5rem" }}>
+            <h2 className="text-h1 reveal-heading" style={{ marginBottom: "0.75rem" }}>
+              A quiet, repeatable way to ship.
+            </h2>
+            <p className="text-body-large reveal-body">
+              The loop keeps moving. Hover or click a step if you want to stay there.
+            </p>
+          </div>
         </div>
 
         <div className={styles.layout}>
@@ -139,7 +150,12 @@ export function HowIBuild() {
                   onClick={() => choose(index)}
                   tabIndex={-1}
                 >
-                  {index === active && !paused ? <span className={styles.progressFill} /> : null}
+                  {/* Show fill animation when cycling; show solid fill when paused on active */}
+                  {index === active && !paused ? (
+                    <span className={styles.progressFill} />
+                  ) : index === active && paused ? (
+                    <span className={styles.progressFill} style={{ animation: "none", transform: "scaleX(1)" }} />
+                  ) : null}
                 </button>
               ))}
             </div>

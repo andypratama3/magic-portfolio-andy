@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { setupMagneticButton } from "@/lib/gsap/animations";
+import { home } from "@/resources";
+import { setupMagneticButton, animateSplitText } from "@/lib/gsap/animations";
 import { LiveClock } from "./LiveClock";
 
 interface HeroSectionProps {
@@ -13,13 +14,22 @@ interface HeroSectionProps {
 export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionProps) {
   const primaryBtnRef = useRef<HTMLAnchorElement>(null);
   const secondaryBtnRef = useRef<HTMLAnchorElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     const cleanupPrimary = setupMagneticButton(primaryBtnRef.current, 0.18);
     const cleanupSecondary = setupMagneticButton(secondaryBtnRef.current, 0.18);
+    const cleanupSplit = animateSplitText(headlineRef.current, {
+      type: "words",
+      stagger: 0.08,
+      duration: 0.75,
+      delay: 0.22,
+    });
     return () => {
       cleanupPrimary();
       cleanupSecondary();
+      cleanupSplit();
     };
   }, []);
 
@@ -39,8 +49,13 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
         </div>
 
         <h1
+          ref={headlineRef}
           className="text-display hero-rise hero-rise-delay-1"
-          style={{ maxWidth: "18ch", marginBottom: "1.5rem" }}
+          style={{
+            maxWidth: "18ch",
+            marginBottom: "1.5rem",
+            visibility: "hidden",
+          }}
         >
           I build the software schools and businesses <em>actually run on.</em>
         </h1>
@@ -72,6 +87,7 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <div
+              ref={avatarRef}
               style={{
                 position: "relative",
                 width: "46px",
@@ -80,6 +96,16 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
                 overflow: "hidden",
                 border: "1px solid var(--border-subtle)",
                 flexShrink: 0,
+                transition: "transform 0.35s var(--ease-editorial), border-color 0.2s ease",
+                cursor: "default",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.1)";
+                e.currentTarget.style.borderColor = "var(--border-medium)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.borderColor = "var(--border-subtle)";
               }}
             >
               <Image
@@ -107,6 +133,70 @@ export function HeroSection({ personAvatar = "/images/photo.jpg" }: HeroSectionP
             <span>Write to me</span>
           </Link>
         </div>
+
+        {/* Featured project banner — rendered only when display:true in content.js */}
+        {home.featured?.display && (
+          <Link
+            href={home.featured.href}
+            className="hero-featured-banner hero-rise"
+            style={{
+              marginTop: "2rem",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.65rem",
+              padding: "0.6rem 1rem",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--border-subtle)",
+              background: "var(--bg-surface)",
+              textDecoration: "none",
+              color: "inherit",
+              fontSize: "0.875rem",
+              transition:
+                "border-color 0.22s var(--ease-smooth), transform 0.22s var(--ease-editorial), box-shadow 0.22s var(--ease-smooth)",
+              animationDelay: "0.44s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-medium)";
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 6px 18px rgba(26,24,20,0.08)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-subtle)";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            <span
+              style={{
+                display: "inline-block",
+                width: "7px",
+                height: "7px",
+                borderRadius: "50%",
+                background: "var(--status-live)",
+                flexShrink: 0,
+              }}
+              aria-hidden="true"
+            />
+            <span style={{ color: "var(--text-muted)", whiteSpace: "nowrap" }}>
+              {home.featured.title}
+            </span>
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              style={{ color: "var(--text-muted)", flexShrink: 0 }}
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </Link>
+        )}
       </div>
     </section>
   );

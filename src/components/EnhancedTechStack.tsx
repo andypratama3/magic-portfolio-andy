@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { animateStaggeredCards } from "@/lib/gsap/animations";
+import { animateStaggeredCards, animateHeadingReveal } from "@/lib/gsap/animations";
 
 interface TechGroup {
   category: string;
@@ -46,10 +46,19 @@ const techGroups: TechGroup[] = [
 
 export function EnhancedTechStack({ showHeader = true }: { skills?: unknown; showHeader?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
-    return animateStaggeredCards(containerRef.current, ".tech-group-card", 0.08);
+    const cleanupCards = animateStaggeredCards(containerRef.current, ".tech-group-card", 0.08);
+    const cleanupHeader = animateHeadingReveal(headerRef.current, {
+      headingSelector: ".reveal-heading",
+      bodySelector: ".reveal-body",
+    });
+    return () => {
+      cleanupCards?.();
+      cleanupHeader?.();
+    };
   }, []);
 
   return (
@@ -65,20 +74,20 @@ export function EnhancedTechStack({ showHeader = true }: { skills?: unknown; sho
     >
       <div className="layout-container">
         {showHeader && (
-          <>
+          <div ref={headerRef}>
             <div style={{ marginBottom: "0.65rem" }}>
-              <span className="kicker">Tools I actually use in production</span>
+              <span className="kicker reveal-body">Tools I actually use in production</span>
             </div>
             <div style={{ maxWidth: "36rem", marginBottom: "2.5rem" }}>
-              <h2 className="text-h1" style={{ marginBottom: "0.75rem" }}>
+              <h2 className="text-h1 reveal-heading" style={{ marginBottom: "0.75rem" }}>
                 A stack with scars, not a wishlist.
               </h2>
-              <p className="text-body-large">
+              <p className="text-body-large reveal-body">
                 These showed up in shipped systems (schools, government, and commercial ops), not in a
                 tutorial weekend.
               </p>
             </div>
-          </>
+          </div>
         )}
 
         <div
@@ -114,12 +123,23 @@ export function EnhancedTechStack({ showHeader = true }: { skills?: unknown; sho
                 {group.items.map((item) => (
                   <span
                     key={item}
+                    className="tech-tag"
                     style={{
                       fontSize: "0.8125rem",
                       padding: "4px 9px",
                       borderRadius: "var(--radius-pill)",
                       border: "1px solid var(--border-subtle)",
                       color: "var(--text-secondary)",
+                      cursor: "default",
+                      transition: "border-color 0.2s ease, color 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "var(--border-medium)";
+                      e.currentTarget.style.color = "var(--text-primary)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "var(--border-subtle)";
+                      e.currentTarget.style.color = "var(--text-secondary)";
                     }}
                   >
                     {item}

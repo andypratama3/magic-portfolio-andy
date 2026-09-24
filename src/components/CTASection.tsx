@@ -1,10 +1,31 @@
 "use client";
 
-import { person } from "@/resources";
+import { useEffect, useRef } from "react";
+import { animateHeadingReveal } from "@/lib/gsap/animations";
 import { ContactForm } from "./ContactForm";
 import { SocialLinks } from "./SocialLinks";
 
 export function CTASection() {
+  const leftRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const cleanupLeft = animateHeadingReveal(leftRef.current, {
+      headingSelector: ".reveal-heading",
+      bodySelector: ".reveal-body",
+      stagger: 0.1,
+    });
+    const cleanupForm = animateHeadingReveal(formRef.current, {
+      headingSelector: ".reveal-heading",
+      bodySelector: ".reveal-body",
+      stagger: 0.08,
+    });
+    return () => {
+      cleanupLeft?.();
+      cleanupForm?.();
+    };
+  }, []);
+
   return (
     <section
       id="contact"
@@ -17,19 +38,21 @@ export function CTASection() {
     >
       <div className="layout-container">
         <div className="contact-grid">
-          <div>
+          <div ref={leftRef}>
             <div style={{ marginBottom: "0.65rem" }}>
-              <span className="kicker">Say hello</span>
+              <span className="kicker reveal-body">Say hello</span>
             </div>
-            <h2 className="text-h1" style={{ maxWidth: "16ch", marginBottom: "1rem" }}>
+            <h2 className="text-h1 reveal-heading" style={{ maxWidth: "16ch", marginBottom: "1rem" }}>
               If you&apos;re hiring an engineer, not a pitch deck.
             </h2>
-            <p className="text-body-large" style={{ maxWidth: "32rem", marginBottom: "1.5rem" }}>
+            <p className="text-body-large reveal-body" style={{ maxWidth: "32rem", marginBottom: "1.5rem" }}>
               I&apos;m open to remote roles, contracts, and the kind of backend work where
               uptime actually matters. A short note is enough.
             </p>
-            <SocialLinks includeEmail />
-            <div style={{ marginTop: "1rem" }}>
+            <div className="reveal-body">
+              <SocialLinks includeEmail />
+            </div>
+            <div style={{ marginTop: "1rem" }} className="reveal-body">
               <a
                 className="text-link"
                 href="https://cal.com/andypratama"
@@ -40,7 +63,10 @@ export function CTASection() {
               </a>
             </div>
           </div>
-          <ContactForm />
+
+          <div ref={formRef} className="reveal-body">
+            <ContactForm />
+          </div>
         </div>
       </div>
     </section>
