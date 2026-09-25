@@ -7,6 +7,7 @@ import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { TiltMedia } from "@/components/TiltMedia";
 import { LiveClock } from "@/components/LiveClock";
 import { SectionReveal } from "@/components/SectionReveal";
+import { GitHubRepos } from "@/components/GitHubRepos";
 
 export async function generateMetadata(): Promise<Metadata> {
   const canonicalUrl = `${baseURL}/about`;
@@ -32,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: canonicalUrl,
       siteName: "Andy Pratama",
       countryName: "Indonesia",
-      images: [{ url: `${baseURL}${person.avatar}`, width: 1200, height: 1600, alt: person.name }],
+      images: [{ url: `${baseURL}${person.avatar}`, width: 1198, height: 1800, alt: person.name }],
       locale: "en_US",
       type: "profile",
       firstName: "Andy",
@@ -93,6 +94,9 @@ export default function About() {
                 <a href="https://cal.com/andypratama" target="_blank" rel="noopener noreferrer" className="btn-primary">
                   Book a call
                 </a>
+                <a href="/resume/CV_Andy_Pratama.pdf" download="CV_Andy_Pratama.pdf" className="btn-secondary">
+                  Download CV
+                </a>
                 <a href={`mailto:${person.email}`} className="btn-secondary">
                   Email
                 </a>
@@ -142,6 +146,8 @@ export default function About() {
         </div>
         <ExperienceTimeline />
       </div>
+
+      <GitHubRepos />
 
       <EnhancedTechStack showHeader />
 

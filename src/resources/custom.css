@@ -506,6 +506,89 @@ a.nav-mobile-neon .linkTitle {
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
 }
 
+/* GitHub repositories (About) */
+.github-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+}
+
+.github-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.35rem;
+  text-decoration: none;
+  color: inherit;
+  min-height: 100%;
+}
+
+.github-card-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
+}
+
+.github-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.github-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.github-card-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.lang-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.github-skeleton-line {
+  height: 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--border-subtle);
+  opacity: 0.6;
+}
+
+.github-skeleton-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .github-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1000px) {
+  .github-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* Buttons */
 .btn-primary,
 .btn-secondary {
@@ -939,8 +1022,11 @@ html.lenis {
 
 .hero-visual {
   width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
   height: auto;
   display: block;
+  margin-inline: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
   box-shadow: 0 22px 48px -28px rgba(0, 0, 0, 0.4);

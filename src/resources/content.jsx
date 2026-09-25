@@ -7,10 +7,60 @@ const person = {
   },
   role: "Fullstack Software Engineer",
   positioning: "Fullstack Software Engineer building production web applications from idea to deployment",
-  avatar: "/images/photo.jpg",
+  avatar: "/images/avatar.jpg",
   email: "andypratama1211@gmail.com",
   location: "Samarinda, Indonesia",
   languages: ["Indonesian", "English"],
+  github: {
+    username: "andypratama3",
+    profile: "https://github.com/andypratama3",
+    featured: [
+      {
+        name: "Sistem_Pembayaran_Sekolah",
+        note: "School web app with student management, online SPP payments via Midtrans, and parent communication.",
+      },
+      {
+        name: "Sd_Muhammadiyah_3",
+        note: "Production Laravel platform for SD Muhammadiyah 3 Samarinda: students, billing, attendance, report cards.",
+      },
+      {
+        name: "erd-generator-chen-notation",
+        note: "Python CLI tool to auto-generate ER diagrams in Chen notation from structured input.",
+      },
+      {
+        name: "Website_Generate_erd_chen",
+        note: "Web-based ER diagram generator in Chen notation, shipped as a v2.0 release.",
+      },
+      {
+        name: "office-skripsi",
+        note: "AI agent skill that teaches OpenCode and Claude Code to revise thesis DOCX documents.",
+      },
+      {
+        name: "automation-vps",
+        note: "Auto-heal and multi-agent system for VPS and Laravel servers: Discord bot, monitoring, auto-fix.",
+      },
+      {
+        name: "api-wilayah-indonesia",
+        note: "Static API for Indonesian regional data, hosted on GitHub.",
+      },
+      {
+        name: "ProductSchool-landing",
+        note: "Landing page for ProductSchool, an online school management system.",
+      },
+      {
+        name: "web-app-toko-kue",
+        note: "Order and delivery flow for a Pandan cake bakery with a reseller system.",
+      },
+      {
+        name: "crypto-market-dashboard",
+        note: "Cryptocurrency market dashboard, marked production ready.",
+      },
+      {
+        name: "magic-portfolio-andy",
+        note: "The site you are reading, built with Next.js, TypeScript, and GSAP.",
+      },
+    ],
+  },
 };
 
 const newsletter = {
@@ -55,7 +105,7 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/photo.jpg",
+  image: "/images/avatar.jpg",
   label: "Home",
   title: `Andy Pratama: Fullstack Software Engineer`,
   description:

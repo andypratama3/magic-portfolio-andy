@@ -183,9 +183,9 @@ export default async function RootLayout({
                     ],
                     image: {
                       "@type": "ImageObject",
-                      url: `${baseURL}/images/photo.jpg`,
-                      width: 400,
-                      height: 400,
+                      url: `${baseURL}/images/avatar.jpg`,
+                      width: 1198,
+                      height: 1800,
                     },
                     address: {
                       "@type": "PostalAddress",

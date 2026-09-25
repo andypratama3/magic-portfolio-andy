@@ -84,12 +84,12 @@ export function HeroSection() {
           </div>
           <div className="col-6">
             <Image
-              src={home.image}
-              alt=""
-              width={1200}
-              height={1600}
-              priority
+              src={person.avatar}
+              alt={person.name}
+              width={1198}
+              height={1800}
               className="hero-visual"
+              style={{ objectFit: "cover", objectPosition: "center top" }}
             />
           </div>
         </div>
