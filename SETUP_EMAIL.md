@@ -49,26 +49,26 @@ When someone submits your contact form:
 - ✅ You receive an email at `andypratama1211@gmail.com`
 - ✅ The email includes all form details (name, email, message, engagement types, availability)
 - ✅ You can reply directly to the sender's email
-- ✅ Beautiful HTML formatting with your brand colors
+- ✅ Matching plain-text version for clients that do not render HTML
 
 ## 🎨 Email Template Features
 
 The email you receive includes:
-- 👤 Sender's name
-- 📧 Sender's email (with reply-to configured)
-- 💬 Their message
-- 💼 Selected engagement types (Full-time, Contract, etc.)
-- 🕐 Their availability
-- 📬 Newsletter subscription preference
+- 📬 Timestamp of arrival in Jakarta time (UTC+7)
+- 👤 Sender's name and email, with the address set as Reply-To
+- 💬 Their message in its own reading surface
+- 💼 Only the optional fields they actually filled in (engagement, availability, newsletter)
 
 ## 🔧 Customization
 
-To customize the email template, edit:
+The template lives in:
 ```
-src/app/api/contact/route.ts
+src/lib/contact-email.ts
 ```
 
-Look for the `html` section in the `resend.emails.send()` call.
+- `C` at the top holds the colors, copied from `src/resources/custom.css`. Keep them in sync when the site palette changes.
+- `src/app/api/contact/route.ts` only validates input and sends, so the template stays readable.
+- Sender and recipient can be overridden with `CONTACT_FROM_EMAIL` and `CONTACT_TO_EMAIL` (see `.env.example`).
 
 ## 🆓 Free Tier Limits
 
