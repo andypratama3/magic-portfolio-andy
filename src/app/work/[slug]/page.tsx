@@ -68,8 +68,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      site: "@andypratama3",
-      creator: "@andypratama3",
+      site: "@andypratama3_",
+      creator: "@andypratama3_",
       title: `${post.metadata.title} | Andy Pratama`,
       description: post.metadata.summary,
       images: [ogImage],

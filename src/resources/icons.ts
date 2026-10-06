@@ -12,6 +12,7 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiOutlineBriefcase,
 } from "react-icons/hi2";
 
 import {
@@ -47,7 +48,8 @@ export const iconLibrary: Record<string, IconType> = {
   tiktok: FaTiktok,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
-  rocket: HiOutlineRocketLaunch
+  rocket: HiOutlineRocketLaunch,
+  jobstreet: HiOutlineBriefcase
 };
 
 export type IconLibrary = typeof iconLibrary;

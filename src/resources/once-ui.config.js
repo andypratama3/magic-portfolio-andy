@@ -175,8 +175,9 @@ const schema = {
 const sameAs = {
   github: "https://github.com/andypratama3",
   linkedin: "https://www.linkedin.com/in/andypratama3",
-  instagram: "https://www.instagram.com/andypratama3",
-  x: "https://x.com/andypratama3",
+  jobstreet: "https://id.jobstreet.com/id/profiles/andy-pratama-DZqBM5ZkPC",
+  instagram: "https://www.instagram.com/andypratama3_",
+  x: "https://x.com/andypratama3_",
 };
 
 export { display, mailchimp, routes, protectedRoutes, baseURL, fonts, style, schema, sameAs, effects, dataStyle };

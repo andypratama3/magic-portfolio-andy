@@ -87,14 +87,19 @@ const social = [
     link: "https://www.linkedin.com/in/andypratama3",
   },
   {
+    name: "JobStreet",
+    icon: "jobstreet",
+    link: "https://id.jobstreet.com/id/profiles/andy-pratama-DZqBM5ZkPC",
+  },
+  {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/andypratama3",
+    link: "https://www.instagram.com/andypratama3_",
   },
   {
     name: "X",
     icon: "x",
-    link: "https://x.com/andypratama3",
+    link: "https://x.com/andypratama3_",
   },
   {
     name: "Email",

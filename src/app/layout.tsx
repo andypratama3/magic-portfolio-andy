@@ -89,8 +89,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      site: "@andypratama3",
-      creator: "@andypratama3",
+      site: "@andypratama3_",
+      creator: "@andypratama3_",
       title: home.title,
       description: home.description,
       images: [`${baseURL}${home.image}`],
@@ -178,8 +178,9 @@ export default async function RootLayout({
                     sameAs: [
                       "https://github.com/andypratama3",
                       "https://www.linkedin.com/in/andypratama3",
+                      "https://id.jobstreet.com/id/profiles/andy-pratama-DZqBM5ZkPC",
                       "https://www.instagram.com/andypratama3_",
-                      "https://x.com/andypratama3",
+                      "https://x.com/andypratama3_",
                     ],
                     image: {
                       "@type": "ImageObject",

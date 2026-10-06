@@ -39,8 +39,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      site: "@andypratama3",
-      creator: "@andypratama3",
+      site: "@andypratama3_",
+      creator: "@andypratama3_",
       title: work.title,
       description: work.description,
       images: [`/api/og/generate?title=${encodeURIComponent(work.title)}`],
