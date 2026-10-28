@@ -31,7 +31,7 @@
 | `/about` | Static (SSG) | Table of Contents, Profile, Bio, Work Experience, Education, Skills, Philosophy | Overly nested, repetitive cards, hardcoded badges, heavy DOM tree |
 | `/work` | Static (SSG) | Project catalog with filtering & masonry cards | Card-based grid with double bezels and small hover carousels; doesn't feel like high-end engineering case studies |
 | `/work/[slug]` | SSG (`generateStaticParams`) | 10 MDX case studies: `productschool`, `kuepandanasli`, `kartaspa`, `bappedakaltim`, `sdmuhammadiyah3new`, `ismi`, `database-ansor-kaltim`, `blk-management-system`, `koetai-mahkota`, `sdmuhammadiyah3` | Contains rich, genuine engineering data. However, displays an awkward `<details>` accordion labeled "Text version" on every page, and layout is cramped (`maxWidth="xs"`) |
-| `/gallery` | Static (SSG) | "Digital Products" masonry grid | Displays 4 products (`ProductSchool`, `ERP System`, `Automated Billing`, `GovPortal CMS`) that are literally subsets of the `/work` projects |
+| `/gallery` | Static (SSG) | "Digital Products" masonry grid | Displays 4 products (`Sakolentra`, `ERP System`, `Automated Billing`, `GovPortal CMS`) that are literally subsets of the `/work` projects |
 | `/product` | Redirect | Client redirect to `/gallery` | Redundant redirect layer |
 | `/product/[slug]` | SSG | 4 product MDX files (`automated-billing`, `erp-system`, `govportal`, `productschool`) | Duplicate content of `/work/[slug]`; contains hardcoded fake WhatsApp order link (`wa.me/6281234567890`) |
 | `/api/contact` | Route Handler | Resend email submission handler | Hardcoded fallback domain references `andypratama.vercel.app` instead of `andypratama.studio` |
@@ -106,7 +106,7 @@
 ### Verified Real Facts:
 - **Identity:** Andy Pratama, Software Engineer based in Samarinda, Indonesia.
 - **Primary Expertise:** Backend Engineering (Laravel 10-12, PHP 8.3, MySQL, Redis, REST APIs, System Architecture) & Full-Stack (Next.js, React, TypeScript).
-- **Core Production Project (ProductSchool):**
+- **Core Production Project (Sakolentra):**
   - Production deployment at SD Muhammadiyah 3 Samarinda (2024–2026).
   - 52 modules, 893 routes, 132 models, 146 controllers, 111 services, 18 RBAC roles, 272 permissions.
   - Headless Chrome rapor generator, WhatsApp bot with function-calling, Midtrans payment gateway, WebSockets (Reverb).
@@ -163,6 +163,6 @@
    - Implement an editorial entrance sequence for the Hero and smooth scroll-triggered storytelling for "How I Build".
    - Full support for `prefers-reduced-motion`.
 4. **Elevate Engineering Storytelling:**
-   Focus on Andy Pratama as a Software Engineer building production systems (ProductSchool, Karta Spa, Bappeda, etc.), highlighting architecture, domain complexity, security, and measurable outcomes.
+   Focus on Andy Pratama as a Software Engineer building production systems (Sakolentra, Karta Spa, Bappeda, etc.), highlighting architecture, domain complexity, security, and measurable outcomes.
 5. **Fix Tooling & Production Integrity:**
    Fix `npm run lint`, clean up unused dependencies, eliminate duplicate meta tags, remove fake placeholder URLs/phones, and optimize performance.

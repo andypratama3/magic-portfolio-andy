@@ -39,7 +39,7 @@ export function FeaturedCaseStudy() {
         label="SELECTED WORK"
         sectionId="selected-work"
         title="One platform, written as a system."
-        lead="ProductSchool is the flagship: a school management platform that replaced paper and spreadsheets. This is the case study version, not a marketing page."
+        lead="Sakolentra is the flagship: a school management platform that replaced paper and spreadsheets. This is the case study version, not a marketing page."
         action={
           <Link href="/work/productschool" className="btn-secondary">
             Read the full case study
@@ -51,7 +51,7 @@ export function FeaturedCaseStudy() {
         <div className="case-media">
           <Image
             src="/images/projects/products_shool/dashboard.webp"
-            alt="ProductSchool dashboard: school management overview"
+            alt="Sakolentra dashboard: school management overview"
             fill
             sizes="(max-width: 1024px) 100vw, 1080px"
             className="media-zoom"
@@ -64,7 +64,7 @@ export function FeaturedCaseStudy() {
         <div className="case-intro">
           <p className="kicker">Flagship · Still in production</p>
           <h3 className="text-h2" style={{ margin: "0.4rem 0 0.6rem" }}>
-            ProductSchool
+            Sakolentra
           </h3>
           <p className="text-body-large" style={{ margin: 0 }}>
             Enterprise school management for SD Muhammadiyah 3 Samarinda. Billing, rapor,

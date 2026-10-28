@@ -44,8 +44,8 @@ const person = {
         note: "Static API for Indonesian regional data, hosted on GitHub.",
       },
       {
-        name: "ProductSchool-landing",
-        note: "Landing page for ProductSchool, an online school management system.",
+        name: "Sakolentra-landing",
+        note: "Landing page for Sakolentra, an online school management system.",
       },
       {
         name: "web-app-toko-kue",
@@ -186,7 +186,7 @@ const about = {
         role: "Fullstack Engineer (Contract)",
         achievements: [
           <>
-            Designed & built ProductSchool, a 52-module school management platform (Laravel 12, PHP 8.3,
+            Designed & built Sakolentra, a 52-module school management platform (Laravel 12, PHP 8.3,
             MySQL, Redis) serving 480+ students, 42 classrooms, and 100+ employees in production.
           </>,
           <>
@@ -457,13 +457,13 @@ const gallery = {
   path: "/gallery",
   label: "Digital Products",
   title: `Digital Products & Tools by Andy Pratama`,
-  description: `Explore my premium digital products, including full-scale systems and tools ready to be deployed. Features comprehensive solutions like ProductSchool and ERP Systems.`,
+  description: `Explore my premium digital products, including full-scale systems and tools ready to be deployed. Features comprehensive solutions like Sakolentra and ERP Systems.`,
   items: [
     {
       src: "/images/projects/products_shool/dashboard.webp",
-      alt: "ProductSchool Management System",
+      alt: "Sakolentra Management System",
       orientation: "horizontal",
-      title: "ProductSchool: Management System",
+      title: "Sakolentra: Management System",
       description: "An all-in-one school management system built with Laravel 12. Features an AI-powered WhatsApp assistant for parents, automated report cards with QR verification, Midtrans payments, GPS attendance, and 52 production modules.",
       link: "/product/productschool"
     },

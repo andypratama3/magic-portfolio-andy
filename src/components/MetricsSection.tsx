@@ -15,7 +15,7 @@ const metrics = [
     value: 893,
     suffix: "",
     label: "Production routes",
-    sub: "ProductSchool: 708 web, 185 API",
+    sub: "Sakolentra: 708 web, 185 API",
     /* progress bar: % of a meaningful ceiling */
     barPct: 89,
   },

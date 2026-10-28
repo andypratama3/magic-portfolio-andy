@@ -1,7 +1,7 @@
 ---
-title: "ProductSchool: Enterprise School Management System with AI-Powered WhatsApp Bot"
+title: "Sakolentra: Sistem Administrasi dan Keuangan Operasional Lembaga Pendidikan Terintegrasi"
 publishedAt: "2026-06-01"
-summary: "Full-scale school management platform serving 480+ students and 100+ employees at SD Muhammadiyah 3 Samarinda. Built with Laravel 12, PHP 8.3, MySQL, Redis. Features 893 routes, 18-role RBAC, AI-powered WhatsApp bot with function-calling, headless Chrome rapor generation, Midtrans payment gateway, GPS geofencing attendance, real-time WebSocket architecture, and 157+ test files."
+summary: "Rekomendasi sistem sekolah terintegrasi untuk akademik, administrasi, keuangan, presensi, dan integrasi perbankan. Serving 480+ students and 100+ employees at SD Muhammadiyah 3 Samarinda. Built with Laravel 12, PHP 8.3, MySQL, Redis. Features 893 routes, 18-role RBAC, AI-powered WhatsApp bot with function-calling, headless Chrome rapor generation, Midtrans payment gateway, GPS geofencing attendance, real-time WebSocket architecture, and 157+ test files."
 images:
   - "/images/projects/products_shool/dashboard.webp"
   - "/images/projects/products_shool/siswa.webp"
@@ -40,14 +40,14 @@ tech:
 
 ## Overview
 
-ProductSchool is an enterprise-grade school management system (Sistem Informasi Manajemen Sekolah) built to centralize every operational workflow of an Indonesian K-12 school into a single platform. Running in production at SD Muhammadiyah 3 Samarinda since 2024, it serves approximately 480 students across 42 classrooms and 100+ employees — handling academic management, automated report cards, financial processing, payroll, GPS-based attendance, WhatsApp communication with AI-powered chatbot, and real-time operations.
+Sakolentra is an enterprise-grade school management system (Sistem Informasi Manajemen Sekolah) built to centralize every operational workflow of an Indonesian K-12 school into a single platform. Running in production at SD Muhammadiyah 3 Samarinda since 2024, it serves approximately 480 students across 42 classrooms and 100+ employees — handling academic management, automated report cards, financial processing, payroll, GPS-based attendance, WhatsApp communication with AI-powered chatbot, and real-time operations.
 
 This project represents the most technically complex system I have engineered end-to-end: 132 Eloquent models, 146 controllers, 111 service classes, 893 routes, 18 distinct user roles with 272 granular permissions, and integrations with 8 external services. The codebase has been developed over 58+ intensive sessions with continuous production deployment.
 
 <ImageGallery
-  title="ProductSchool Interface & Module Showcase"
+  title="Sakolentra Interface & Module Showcase"
   images={[
-    { src: "/images/projects/products_shool/dashboard.webp", alt: "ProductSchool Main Dashboard Overview" },
+    { src: "/images/projects/products_shool/dashboard.webp", alt: "Sakolentra Main Dashboard Overview" },
     { src: "/images/projects/products_shool/siswa.webp", alt: "Student Lifecycle & Master Data Management" },
     { src: "/images/projects/products_shool/rapot.webp", alt: "Automated Report Card (Rapor) Generator" },
     { src: "/images/projects/products_shool/analitik.webp", alt: "Academic Analytics & Reporting Dashboard" },
@@ -76,6 +76,7 @@ This project represents the most technically complex system I have engineered en
 - **24 artisan console commands** for automation, monitoring, and operational workflows
 - **27 broadcast events and 21 listeners** powering real-time WebSocket updates across 12 channels
 - **16 AI tools** for the WhatsApp bot with function-calling, NLP intent detection, and OCR document analysis
+- **Host-to-Host (H2H) Bank Kaltim VA Integration** for direct zero-latency payment settlement
 - **Headless Chrome PDF generation** for report cards with QR verification, digital signatures, and batch processing
 - **Midtrans payment gateway** with Virtual Account, QRIS, webhook reconciliation, and automated billing
 - **43 mobile API endpoints** for the parent application with Sanctum authentication
@@ -147,9 +148,15 @@ Each student's rapor is dispatched as an individual job via Laravel Queue with `
 
 **Verification:** Public `/verify/{code}` endpoint displays the rapor + PDF when scanned via QR code. Rate-limited to 120 requests/minute.
 
-### Payment & Financial System
+### Financial System & H2H Banking
 
-**Midtrans integration** handles Virtual Account and QRIS payments. The system includes:
+**Host-to-Host (H2H) Bank Kaltim Integration:** Implemented direct API-level integration with Bank Kaltimdaltara for automated Virtual Account generation and payment settlement. This bypasses generic payment gateways, providing:
+- Zero-latency payment callback handling (00 success code)
+- Automated settlement and billing consolidation
+- High-availability webhook receiver with idempotency (dedupe_key)
+- Cost reduction by eliminating third-party payment gateway fees
+
+**Midtrans integration** also serves as a fallback, handling generic Virtual Account and QRIS payments. The financial system includes:
 - Automatic monthly bill generation (configurable via scheduler)
 - Webhook-driven status synchronization with SHA-512 signature verification
 - Payment reconciliation job running every 6 hours (queries Midtrans API for pending charges ≥24 hours old)
@@ -224,6 +231,7 @@ Article management with Quill editor, cover photos, multi-image galleries, and d
 - **Meta WhatsApp Cloud API** — two-way chat, templates, media, OCR
 - **Meta Graph API** — Facebook page publishing
 - **Instagram Graph API** — carousel publishing
+- **Bank Kaltim H2H API** — Direct Virtual Account and settlement integration
 - **Midtrans** — Virtual Account, QRIS, Snap UI, webhook reconciliation
 - **Ollama** — local LLM for AI chatbot
 - **Tesseract** — OCR for payment receipts and sick letters
@@ -281,7 +289,7 @@ Article management with Quill editor, cover photos, multi-image galleries, and d
 
 ## Engineering Impact
 
-ProductSchool demonstrates that a monolithic Laravel application, when organized with service classes, data-level scoping, and domain-driven module boundaries, can handle enterprise-level complexity across 52 interconnected modules. The system processes thousands of daily operations — attendance check-ins, payment transactions, grade entries, WhatsApp conversations, rapor generation — without architectural compromises.
+Sakolentra demonstrates that a monolithic Laravel application, when organized with service classes, data-level scoping, and domain-driven module boundaries, can handle enterprise-level complexity across 52 interconnected modules. The system processes thousands of daily operations — attendance check-ins, payment transactions, grade entries, WhatsApp conversations, rapor generation — without architectural compromises.
 
 The AI-powered WhatsApp bot shows how local LLMs can be production-ready for domain-specific tasks when combined with function-calling and proper data access controls. Parents interact with verified school data through natural language without installing an app or learning a new interface.
 

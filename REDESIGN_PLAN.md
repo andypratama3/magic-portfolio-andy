@@ -118,12 +118,12 @@ Create a modular, safe motion architecture adhering to React 18 lifecycles and `
    - CTAs: `[Explore Selected Work ↓]` and `[Get in Touch →]`.
 3. **Engineering Scale (Metrics):**
    - Highlighting verifiable numbers from Andy's production systems:
-     - `893` Production Routes Engineered (ProductSchool)
+     - `893` Production Routes Engineered (Sakolentra)
      - `52+` Production Modules Across Systems
      - `18` RBAC Roles & 272 Permissions
      - `150+` Automated Test Files
 4. **Selected Work (Editorial Showcase):**
-   - **01. ProductSchool** — Enterprise School Management System with AI WhatsApp Bot.
+   - **01. Sakolentra** — Enterprise School Management System with AI WhatsApp Bot.
    - **02. Bappeda East Kalimantan** — Provincial Government Web Portal & Multilingual CMS.
    - **03. Karta Spa** — Multi-Tenant ERP & Biometric Attendance Backend.
    - **04. Kue Pandan Asli** — High-Performance E-Commerce & Order Management.

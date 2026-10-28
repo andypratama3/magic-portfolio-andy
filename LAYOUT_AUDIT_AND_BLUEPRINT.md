@@ -91,12 +91,12 @@
    - Key engineering metrics (routes, models, database schemas, RBAC permissions) are completely buried or absent from the preview.
 
 ### Modern Blueprint:
-- **Flagship Project Feature (ProductSchool):**
+- **Flagship Project Feature (Sakolentra):**
   - High-impact asymmetric layout (60% visual / 40% architecture breakdown):
-    - **Visual Side:** Crisp, wide 16:10 high-resolution preview of the ProductSchool dashboard and AI WhatsApp module with subtle hover elevation and hairline border.
+    - **Visual Side:** Crisp, wide 16:10 high-resolution preview of the Sakolentra dashboard and AI WhatsApp module with subtle hover elevation and hairline border.
     - **Story & Architecture Side:**
       - Tag: `01 / FLAGSHIP PRODUCTION SYSTEM (2024–2026)`
-      - Title: `ProductSchool` — Enterprise K-12 School Management Platform
+      - Title: `Sakolentra` — Enterprise K-12 School Management Platform
       - Quantified Metric Pills:
         - `893 Routes` (708 Web + 185 API)
         - `52 Production Modules`
