@@ -7,6 +7,7 @@ import { GSAPProvider } from "@/components/GSAPProvider";
 import { SkipLink } from "@/components/SkipLink";
 import { SiteAtmosphere } from "@/components/SiteAtmosphere";
 import { baseURL, fonts, home } from "@/resources";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const viewport: Viewport = {
@@ -252,6 +253,7 @@ export default async function RootLayout({
             </main>
           </ActiveSectionProvider>
           <Footer />
+          <Analytics />
         </Providers>
       </body>
     </html>
